@@ -97,9 +97,12 @@ div.top-bar a:hover {
 }
 .secundario-banner {
     font-size: 2vw;
-    letter-spacing: 2px;
 }
 
 footer {
     background-color: #373737;
+    box-shadow: -1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
+    -webkit-box-shadow:-1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
+    -moz-box-shadow: -1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
+    color: #fff;
 }
