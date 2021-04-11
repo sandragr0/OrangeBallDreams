@@ -99,3 +99,7 @@ div.top-bar a:hover {
     font-size: 2vw;
     letter-spacing: 2px;
 }
+
+footer {
+    background-color: #373737;
+}
