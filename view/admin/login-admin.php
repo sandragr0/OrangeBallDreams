@@ -4,16 +4,16 @@
         <title>Orange Ball Dreams</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
-        <link href="../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
-        <link href="../assets/css/style-admin.css" rel="stylesheet">
-        <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../assets/js/admin-login.js"></script>
+        <link rel="stylesheet" href="../../assets/css/bootstrap/css/bootstrap.min.css">
+        <link href="../../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
+        <link href="../../assets/css/style-admin.css" rel="stylesheet">
+        <script src="../../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/js/admin-login.js"></script>
 
     </head>
     <body>
         <div class="container-fluid bg-lightgrey bg-gradient py-5 h-100">
-            <img src="../assets/img/logo.png" class="img-fluid h-25 mx-auto d-block pb-sm-5 pb-4">
+            <img src="../../assets/img/logo.png" class="img-fluid h-25 mx-auto d-block pb-sm-5 pb-4">
             <div class="container formLogin bg-white shadow  rounded p-4">
                  <div class="alert alert-danger mt-2 oculto" id="mensajeError3"role="alert">ERROR: El usuario o contraseña que has introducido no es correcto.</div>
                 <form onsubmit="return checkFormulario()">
