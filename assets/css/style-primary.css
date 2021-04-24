@@ -1,42 +1,113 @@
-
+/* Fuentes */
 @font-face {
     font-family: work-sans-regular; 
     src: url('../fonts/Work_Sans/WorkSans-Regular.ttf'); 
 }
 @font-face {
-    font-family: montserrat-black; 
-    src: url('../fonts/Montserrat/Montserrat-Black.ttf'); 
+    font-family: poppins-bold; 
+    src: url('../fonts/Poppins/Poppins-Bold.ttf'); 
 }
 
+/* General */
 
 * {
     font-family: work-sans-regular;
 }
 
-
 h1, h2, h3, h4,h5,h6 {
-    font-family: montserrat-black; 
+    font-family: poppins-bold; 
 }
 
-/* General */
+/* Utilidades */
 .detras {
     z-index: -1;
 }
 
-/* Header */
+.oculto-opacidad {
+    opacity:0;   
+}
 
-/* NavBar */
-.navbar-light .navbar-nav .nav-link {
-    color: #373737;
-    border-bottom: solid 3px transparent;
+/* ------------------- Header ------------------------- */
+
+/* Navbar-brand */
+a.navbar-brand {
+    height: 60px;
+    width: 200px;
+}
+
+.logo {
+    position:absolute;
+    transition:opacity 0.5s linear;
+}
+
+#logo-normal, #logo-small{
+    opacity:1;
+}
+
+#logo-animado, #logo-small-animado {
+    position:absolute;
+    transition:opacity 0.5s linear;
+}
+
+@media (min-width: 992px)  {
+    #logo-small {
+        display: inline !important;
+    }
+
+    #logo-small-animado {
+        display: inline !important;
+    }
+    #logo {
+        display: none !important;
+    }
+    #logo-animado {
+        display: none !important;
+    }
+    a.navbar-brand {
+        width: 50px;
+        margin-right: 40px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #logo-small {
+        display: none !important;
+    }
+
+    #logo-small-animado {
+        display: none !important;
+    }
+    #logo {
+        display: inline !important;
+    }
+    #logo-animado {
+        display: inline !important;
+    }
+    a.navbar-brand {
+        width: 200px;
+    }
+}
+
+/* Navbar */
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link, .navbar-light .navbar-nav .nav-link , a.nav-link span {
+    font-family: poppins-bold; 
+    color: #F26522;
+    border-bottom: solid 2px transparent;
+    border-top: solid 2px transparent;
+
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #000;
-    border-bottom: solid 3px #FB8B24;
+    color: #F26522;
+    border-bottom-color: #F7941D;
+    transition: border 0.3s linear;
 }
 
 .navbar-light .navbar-nav .nav-link.active {
-    color: #E36414;
+    border-bottom: solid 2px #F7941D;
 }
 
 .nav-link {
@@ -44,37 +115,42 @@ h1, h2, h3, h4,h5,h6 {
     letter-spacing: 1.5px;
 }
 
+.nav-button {
+    border: solid 2px #F26522 !important;
+}
 
-@media (max-width: 991px) {
-    .navbar-light .navbar-nav .nav-link:hover {
-        color: #000;
-        border-bottom: solid 3px transparent;
+.nav-button-bold {
+    background-color: #00B2C1;
+    color: #fff !important;
+    border: solid 2px transparent;
+}
+.nav-button-bold:hover {
+    background-color: #00D6E9;
+    border: solid 2px #00D6E9 !important;
+    border: solid 2px transparent;
+}
+
+
+@media (max-width: 992px) {
+    a.nav-link {
+        border: none !important;
+    }
+    .nav-link:hover  {
+        border: none !important;
+    }  
+    .active {
+        border: none !important;
     }  
 } 
 
-
-/* TopBar */
-.top-bar div.col a {
-    color: #373737;
-    text-decoration: none;
-}
-
-div.top-bar a:hover { 
-    color: #E36414;
-}
 
 /* Página de inicio */ 
 
 /* Banner */
 .fondo-banner {
     z-index: -1;
-    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/inicio/banner-md.jpg");
-
-    /* Set a specific height */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/inicio/banner-background.jpeg");
     height: 50%;
-
-    /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -88,15 +164,25 @@ div.top-bar a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    text-shadow: 3px 4px 5px #383838;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.51);
+}
+
+@media (min-width: 700px) {
+    .principal-banner {
+        font-size: 4vw !important;
+    }
+
+    .secundario-banner {
+        font-size: 2vh;
+    }
 }
 
 .principal-banner {
-    font-size: 5vw;
+    font-size: 10vw;
     letter-spacing: 3px;
 }
-.secundario-banner {
-    font-size: 2vw;
+.typewrite {
+    font-size: 4vh;
 }
 
 footer {
