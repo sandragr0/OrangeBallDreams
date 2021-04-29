@@ -1,17 +1,17 @@
 <?php
 
 include_once 'BaseDAO.php';
-include_once '../entity/Jugador.php';
+include_once "../model/entity/Jugador.php";
 
 class JugadorDAO extends BaseDAO {
 
-    private $conexion = parent::conexion;
+    private $nombreTabla = "jugador";
 
-    public function __construct($nombreTabla) {
-        parent::__construct($nombreTabla);
+    public function __construct() {
+        parent::__construct($this->nombreTabla);
     }
 
-    public function insert(Jugador $jugador) {
+    public function add(object $jugador) {
 
         $this->conexion->prepare('INSERT INTO `jugador`(`nombre`, `primerApellido`, `segundoApellido`, `altura`, `extracomunitario`, `fechaNacimiento`, `telefono`, `estado`, `biografia`, `informe`, `idEquipo`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 
@@ -32,12 +32,16 @@ class JugadorDAO extends BaseDAO {
         );
     }
 
-    public function update(Jugador $jugador) {
+    public function edit(object $objeto) {
         return null;
     }
 
-    public function getAll() {
-        parent::getAll();
+    public function view($id) {
+        return parent::view($id);
+    }
+
+    public function list() {
+        return parent::list();
     }
 
 }

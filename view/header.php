@@ -4,12 +4,12 @@
         <title>Orange Ball Dreams</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets\css\bootstrap\css\bootstrap.min.css">
-        <link href="assets/fonts/fontawesome/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets\css\style-primary.css">
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
-        <script src="assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/primary.js"></script>
+        <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
+        <link href="../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets\css\style-primary.css">
+        <script src="../assets/js/jquery-3.6.0.min.js"></script>
+        <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/primary.js"></script>
 
 
 
@@ -20,11 +20,11 @@
             <nav class=" container navbar navbar-expand-lg navbar-light fw-bold py-3">
                 <a class="navbar-brand" href="#">
                     <!-- para resoluciones grandes y movil !-->
-                    <img src="assets/img/logo.png" height=50 alt="Orange Ball Dreams logo" class="align-text-top logo" id="logo">
-                    <img src="assets/img/logo-animado.gif" height=50 alt="Orange Ball Dreams logo" class="align-text-top oculto-opacidad logo" id="logo-animado">
+                    <img src="../assets/img/logo.png" height=50 alt="Orange Ball Dreams logo" class="align-text-top logo" id="logo">
+                    <img src="../assets/img/logo-animado.gif" height=50 alt="Orange Ball Dreams logo" class="align-text-top oculto-opacidad logo" id="logo-animado">
                     <!-- para resoluciones pequeñas !-->
-                    <img src="assets/img/logo-small.png" height=50 alt="Orange Ball Dreams logo" class="align-text-top logo" id="logo-small">
-                    <img src="assets/img/logo-small-animado.gif" height=50 alt="Orange Ball Dreams logo" class="align-text-top oculto-opacidad logo" id="logo-small-animado">
+                    <img src="../assets/img/logo-small.png" height=50 alt="Orange Ball Dreams logo" class="align-text-top logo" id="logo-small">
+                    <img src="../assets/img/logo-small-animado.gif" height=50 alt="Orange Ball Dreams logo" class="align-text-top oculto-opacidad logo" id="logo-small-animado">
 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

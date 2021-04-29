@@ -1,24 +1,24 @@
-/* Fuentes */
+/* ------------------- Fuentes ------------------------- */
 @font-face {
-    font-family: work-sans-regular; 
-    src: url('../fonts/Work_Sans/WorkSans-Regular.ttf'); 
+    font-family: lato-regular; 
+    src: url('../fonts/Lato/Lato-Regular.ttf'); 
 }
 @font-face {
     font-family: poppins-bold; 
     src: url('../fonts/Poppins/Poppins-Bold.ttf'); 
 }
 
-/* General */
+/* ------------------- General ------------------------- */
 
 * {
-    font-family: work-sans-regular;
+    font-family: lato-regular;
 }
 
 h1, h2, h3, h4,h5,h6 {
     font-family: poppins-bold; 
 }
 
-/* Utilidades */
+/* ------------------- Utilidades ------------------------- */
 .detras {
     z-index: -1;
 }
@@ -90,7 +90,12 @@ a.navbar-brand {
 
 /* Navbar */
 .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") ;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgb(255 255 255 / 55%);
+    border-color: rgba(0,0,0,.1);
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link, .navbar-light .navbar-nav .nav-link , a.nav-link span {
@@ -101,7 +106,7 @@ a.navbar-brand {
 
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #F26522;
+    color: #F7941D;
     border-bottom-color: #F7941D;
     transition: border 0.3s linear;
 }
@@ -118,16 +123,21 @@ a.navbar-brand {
 .nav-button {
     border: solid 2px #F26522 !important;
 }
+.nav-button:hover {
+    border: solid 2px #F7941D !important;
+    transition: none !important; 
+}
 
 .nav-button-bold {
     background-color: #00B2C1;
     color: #fff !important;
     border: solid 2px transparent;
+    transition: background 0.3s linear;
 }
 .nav-button-bold:hover {
     background-color: #00D6E9;
     border: solid 2px #00D6E9 !important;
-    border: solid 2px transparent;
+    border: solid 2px transparent;     
 }
 
 
@@ -143,8 +153,39 @@ a.navbar-brand {
     }  
 } 
 
+/* ------------------- Footer ------------------------- */
 
-/* Página de inicio */ 
+footer {
+    background-color: #ffc20b;
+    color: #0D0A0F;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #0D0A0F;
+    text-decoration: none;
+    padding-bottom: 3px;
+    transition: border-bottom 0.3s ease-in;
+    border-bottom: solid 2px transparent;
+}
+footer a:hover {
+    color: #0D0A0F;
+    border-bottom: solid 2px #0D0A0F;
+    
+}
+
+.social a {
+    border-bottom: none;
+    transition: color 0.3s ease-in;
+}
+.social a:hover {
+    border-bottom: none;
+    color: #404040;
+     transition: color 0.3s ease-in;
+}
+
+
+/* ------------------- Página de inicio ------------------------- */
 
 /* Banner */
 .fondo-banner {
@@ -164,7 +205,6 @@ a.navbar-brand {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    text-shadow: 0px 0px 5px rgba(0,0,0,0.51);
 }
 
 @media (min-width: 700px) {
@@ -185,10 +225,3 @@ a.navbar-brand {
     font-size: 4vh;
 }
 
-footer {
-    background-color: #373737;
-    box-shadow: -1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
-    -webkit-box-shadow:-1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
-    -moz-box-shadow: -1px 10px 3px -6px rgb(29 29 29 / 59%) inset;
-    color: #fff;
-}

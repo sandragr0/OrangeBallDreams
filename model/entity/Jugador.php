@@ -3,7 +3,7 @@
 class Jugador {
 
     // Atributos
-    private $idjugador;
+    private $idJugador;
     private $nombre;
     private $primerApellido;
     private $segundoApellido;
@@ -18,8 +18,8 @@ class Jugador {
     private $idEquipo;
 
     // Getters y setters
-    function getIdjugador() {
-        return $this->idjugador;
+    function getIdJugador() {
+        return $this->idJugador;
     }
 
     function getNombre() {
@@ -70,8 +70,8 @@ class Jugador {
         return $this->idEquipo;
     }
 
-    function setIdjugador($idjugador): void {
-        $this->idjugador = $idjugador;
+    function setIdjugador($idJugador): void {
+        $this->idJugador = $idJugador;
     }
 
     function setNombre($nombre): void {

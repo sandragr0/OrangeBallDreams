@@ -64,7 +64,3 @@ function isEmpty(string) {
         return false;
     }
 }
-
-function isEmail() {
-
-}

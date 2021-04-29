@@ -1,6 +1,6 @@
-<script src="./assets/js/addJugador.js"></script>
+<script src="../assets/js/addJugador.js"></script>
 
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+
         <h1>Añadir jugador</h1>
         <form>
 
@@ -99,7 +99,7 @@
             </div> 
 
 
-            <button type="submit" class="btn btn-secondary">Añadir</button>
+            <button type="submit" class="btn btn-secondary boton-primario">Añadir</button>
             <div class="alert alert-danger mt-2 oculto" id="mensajeError"role="alert"></div>
         </form>
 </main>
