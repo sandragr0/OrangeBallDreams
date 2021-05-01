@@ -25,21 +25,17 @@ function checkFormulario() {
 
     // Validar nombre de usuario
     if (isEmpty(usuario)) {
-        error1.innerHTML = "Error: el campo nombre de usuario no puede estar vacio";
         error1.style.display = "block";
         errores = true;
     } else {
-        error1.innerHTML = "";
         error1.style.display = "none";
     }
 
     // Validar contraseña
     if (isEmpty(password)) {
-        error2.innerHTML = "Error: el campo contraseña no puede estar vacio";
         error2.style.display = "block";
         errores = true;
     } else {
-        error2.innerHTML = "";
         error2.style.display = "none";
     }
 

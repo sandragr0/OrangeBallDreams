@@ -10,12 +10,13 @@ class Jugador {
     private $apellidos;
     private $altura;
     private $extracomunitario;
-    private $fechaNac;
+    private $fechaNacimiento;
     private $telefono;
     private $estado;
     private $biografia;
     private $informe;
     private $idEquipo;
+    private $nombreEquipo;
 
     // Getters y setters
     function getIdJugador() {
@@ -46,8 +47,8 @@ class Jugador {
         return $this->extracomunitario;
     }
 
-    function getFechaNac() {
-        return $this->fechaNac;
+    function getfechaNacimiento() {
+        return $this->fechaNacimiento;
     }
 
     function getTelefono() {
@@ -68,6 +69,10 @@ class Jugador {
 
     function getIdEquipo() {
         return $this->idEquipo;
+    }
+
+    function getNombreEquipo() {
+        return $this->nombreEquipo;
     }
 
     function setIdjugador($idJugador): void {
@@ -98,8 +103,8 @@ class Jugador {
         $this->extracomunitario = $extracomunitario;
     }
 
-    function setFechaNac($fechaNac): void {
-        $this->fechaNac = $fechaNac;
+    function setfechaNacimiento($fechaNac): void {
+        $this->fechaNacimiento = fechaNacimiento;
     }
 
     function setTelefono($telefono): void {
@@ -120,6 +125,10 @@ class Jugador {
 
     function setIdEquipo($idEquipo): void {
         $this->idEquipo = $idEquipo;
+    }
+
+    function setNombreEquipo($nombreEquipo): void {
+        $this->nombreEquipo = $nombreEquipo;
     }
 
 }

@@ -28,7 +28,7 @@ abstract class BaseDAO {
 
     function view($id) {
         try {
-            $stm = $this->conexion->prepare("SELECT * FROM jugador WHERE id$this->nombreTabla = ?");
+            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
             $stm->execute(array($id));
             return $stm->fetchObject($this->nombreTabla);
         } catch (Exception $e) {
