@@ -3,7 +3,7 @@
     <table  class="table">
         <tr>     
             <th>Nombre</th>
-            <th>Telefono</th>
+            <th>Visibilidad</th>
             <th>Estado</th>
         </tr>
         <?php
@@ -20,7 +20,7 @@
                     <a href="?c=jugador&a=edit&id=<?php echo $r->getIdjugador() ?>">Editar</a>
                     </span>
                 </td>
-                <td><?php echo $r->getTelefono() ?></td>
+                <td><?php echo $r->getVisible() == 1 ? "Visible" : "Oculto" ?></td>
                 <td><?php echo $r->getEstado() ?></td>    
             </tr>
         <?php endforeach; ?>

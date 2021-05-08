@@ -17,6 +17,7 @@ class Jugador {
     private $informe;
     private $idEquipo;
     private $posicion;
+    private $visible;
 
     function getIdJugador() {
         return $this->idJugador;
@@ -74,6 +75,10 @@ class Jugador {
         return $this->posicion;
     }
 
+    function getVisible() {
+        return $this->visible;
+    }
+
     function setIdJugador($idJugador): void {
         $this->idJugador = $idJugador;
     }
@@ -128,6 +133,10 @@ class Jugador {
 
     function setPosicion($posicion): void {
         $this->posicion = $posicion;
+    }
+
+    function setVisible($visible): void {
+        $this->visible = $visible;
     }
 
 }

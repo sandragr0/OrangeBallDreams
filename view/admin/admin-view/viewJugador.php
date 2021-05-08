@@ -50,6 +50,15 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h2 class="card-title mb-4 fs-4">Datos Jugador</h2>
+                <!-- Visible -->
+                <div class="mb-3">
+                    <label for="visibilidad" class="form-label">Visibilidad</label>
+                    <select disabled class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
+                        <option value="1"  <?php echo $objeto->getVisible() == "1" ? "selected" : "" ?>>Visible</option>
+                        <option value="0" <?php echo $objeto->getVisible() == "0" ? "selected" : "" ?>>Oculto</option>
+                    </select>
+                     <small id="visibilidadHelp" class="form-text text-muted">Si un jugador está visible aparecerá en el listado de jugadores, si está oculto no aparecerá </small>
+                </div>
                 <!-- Altura -->
                 <div class="mb-3">
                     <label for="altura" class="form-label">Altura</label>

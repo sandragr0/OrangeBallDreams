@@ -15,12 +15,14 @@ abstract class BaseDAO {
 
     function list() {
         try {
-            $result = array();
+            $result = null;
 
             $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla");
             $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
+            }
+            return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }
