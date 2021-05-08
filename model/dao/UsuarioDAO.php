@@ -31,10 +31,10 @@ class UsuarioDAO extends BaseDAO {
         return parent::list();
     }
 
-    public function login($usuario) {
+    public function login($usuario, $rol) {
         try {
             $pdo = $this->conexion->prepare("SELECT nombre, contraseña, rol FROM `usuario` where usuario=? and rol =?");
-            $pdo->execute(array($usuario, "administrador"));
+            $pdo->execute(array($usuario, $rol));
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {
@@ -42,13 +42,13 @@ class UsuarioDAO extends BaseDAO {
         }
     }
 
-    public function validarUsuario($usuario, $pass) {
+    public function validarUsuario($usuario, $pass, $rol) {
         if ($usuario == null) {
             return -1;
         } else if ($pass == null) {
             return -2;
         } else {
-            $data = $this->login($usuario);
+            $data = $this->login($usuario, $rol);
             if ($data != false) {
                 if ($data['contraseña'] == md5($pass)) {
                     $errorNoExiste = false;
