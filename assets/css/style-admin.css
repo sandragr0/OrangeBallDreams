@@ -118,7 +118,15 @@ h1, h2, h3, h4,h5,h6 {
 }
 
 /* Admin panel */
-
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 2.5rem !important;
+    }
+    .navbar-nav {
+        background-color: #f8f9fa;
+    }
+    
+}
 /*
 * Toggler
 */
@@ -312,4 +320,12 @@ a.active {
 
 a.active:hover {
     color: #F26522;
+}
+
+.detalles {
+    visibility: hidden;
+}
+
+tr.jugador:hover .detalles{
+    visibility: visible;
 }

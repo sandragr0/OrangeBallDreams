@@ -5,11 +5,13 @@
         <group>
             <file>file:/D:/xampp/htdocs/OrangeBallDreams/controller/admin/AdminController.php</file>
             <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-view/viewJugador.php</file>
-            <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-panel-footer.php</file>
             <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/login-admin.php</file>
-            <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-view/addJugador.php</file>
-            <file>file:/D:/xampp/htdocs/OrangeBallDreams/public/admin.php</file>
+            <file>file:/D:/xampp/htdocs/OrangeBallDreams/model/dao/BaseDAO.php</file>
+            <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-view/editJugador.php</file>
             <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-panel-header.php</file>
+            <file>file:/D:/xampp/htdocs/OrangeBallDreams/view/admin/admin-view/error.php</file>
+            <file>file:/D:/xampp/htdocs/OrangeBallDreams/model/dao/JugadorDAO.php</file>
+            <file>file:/D:/xampp/htdocs/OrangeBallDreams/assets/css/style-admin.css</file>
         </group>
     </open-files>
 </project-private>

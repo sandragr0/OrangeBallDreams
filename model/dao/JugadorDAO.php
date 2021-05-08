@@ -12,7 +12,7 @@ class JugadorDAO extends BaseDAO {
     }
 
     public function add(object $jugador) {
-        $this->conexion->prepare('INSERT INTO `jugador`(`nombre`, `primerApellido`, `segundoApellido`, `altura`, `extracomunitario`, `fechaNacimiento`, `telefono`, `estado`, `biografia`, `informe`, `idEquipo`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+        $this->conexion->prepare('INSERT INTO `jugador`(`nombre`, `primerApellido`, `segundoApellido`, `altura`, `extracomunitario`, `fechaNacimiento`, `telefono`, `estado`, `biografia`, `informe`, `idEquipo`, `posicion`) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 
         $this->pdo->prepare($sql)->execute(
                 array(
@@ -26,7 +26,8 @@ class JugadorDAO extends BaseDAO {
                     $jugador->getEstado(),
                     $jugador->getBiografia(),
                     $jugador->getInforme(),
-                    $jugador->getIdEquipo()
+                    $jugador->getIdEquipo(),
+                    $jugador->getPosicion()
                 )
         );
     }
@@ -36,13 +37,7 @@ class JugadorDAO extends BaseDAO {
     }
 
     public function view($id) {
-        try {
-            $stm = $this->conexion->prepare("SELECT idJugador, jugador.nombre, primerApellido, segundoApellido, altura, extracomunitario, fechaNacimiento, telefono, estado, biografia, informe, jugador.idEquipo, equipo.nombre as nombreEquipo FROM $this->nombreTabla LEFT JOIN equipo ON equipo.idEquipo = jugador.idEquipo WHERE id$this->nombreTabla = ?");
-            $stm->execute(array($id));
-            return $stm->fetchObject($this->nombreTabla);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        return parent::view($id);
     }
 
     public function list() {

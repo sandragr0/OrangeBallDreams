@@ -8,7 +8,7 @@
         <link href="../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
         <link href="../assets/css/style-admin.css" rel="stylesheet">
         <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
-       <script src="../assets/js/admin-login.js"></script>
+        <script src="../assets/js/admin.js"></script>
 
     </head>
     <body>
@@ -19,7 +19,7 @@
                 <?php
                 if (isset($estadoErrores)) {
                     if ($estadoErrores == -3) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El usuario o contraseña que has introducido no es correcto.</div>';
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError4">ERROR: El usuario o contraseña que has introducido no es correcto.</div>';
                     }
                 }
                 ?>
@@ -27,13 +27,13 @@
                     <!-- Usuario -->
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" name="user" id="user" value="<?php echo isset($_POST['user']) ? $_POST['user'] : ""?>">
+                        <input type="text" class="form-control" name="user" id="user" value="<?php echo isset($_POST['user']) ? $_POST['user'] : "" ?>">
                     </div>
                     <div class="alert alert-danger mt-2 oculto" id="mensajeError1"role="alert">Error: el campo nombre de usuario no puede estar vacio</div>
                     <?php
                     if (isset($estadoErrores)) {
                         if ($estadoErrores == -1) {
-                            echo ' <div class="alert alert-danger mt-2" role="alert">Error: el campo nombre de usuario no puede estar vacio</div>';
+                            echo ' <div class="alert alert-danger mt-2" role="alert" id="mensajeError5">Error: el campo nombre de usuario no puede estar vacio</div>';
                         }
                     }
                     ?>
@@ -41,14 +41,14 @@
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <div class="input-group mb-3">
-                            <input type="password" name="password" class="form-control" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : ""?>">
+                            <input type="password" name="password" class="form-control" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
                             <span class="input-group-text" style="width:3em;" id="basic-addon1" onclick="visibilidadPass()"><i class="fas fa-eye" id="ojo"></i></span>
                         </div>
-                        <div class="alert alert-danger mt-2 oculto" id="mensajeError2"role="alert">Error: el campo contraseña no puede estar vacio</div>
+                        <div class="alert alert-danger mt-2 oculto" id="mensajeError2" role="alert">Error: el campo contraseña no puede estar vacio</div>
                         <?php
                         if (isset($estadoErrores)) {
                             if ($estadoErrores == -2) {
-                                echo ' <div class="alert alert-danger mt-2" role="alert">Error: el campo contraseña no puede estar vacio</div>';
+                                echo ' <div class="alert alert-danger mt-2" role="alert" id="mensajeError6">Error: el campo contraseña no puede estar vacio</div>';
                             }
                         }
                         ?>

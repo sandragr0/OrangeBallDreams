@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
         <link href="../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
         <link href="../assets/css/style-admin.css" rel="stylesheet">
-     
-
+        <script src="../assets/js/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/admin.js"></script>
     </head>
     <body>
         <?php
@@ -22,6 +24,11 @@
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <ul class="navbar-nav px-3 w-100 text-end">
+                <li class="nav-item text-nowrap">
+                    <span class="nav-link">Hola, <?php echo $_SESSION['usuario'];?> | <a href="?c=usuario&a=exit">Cerrar sesión</a></span>
+                </li>
+            </ul>
         </header>
 
         <!-- Menu lateral -->
@@ -82,7 +89,6 @@
                             <div class = "collapse show" id = "cuenta-collapse" style = "">
                                 <ul class = "btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href = "?c=usuario&a=list" class = "link-dark rounded">Mi cuenta</a></li>
-                                    <li><a href = "?c=usuario&a=exit" class = "link-dark rounded">Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </li>

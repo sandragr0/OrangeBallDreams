@@ -9,7 +9,10 @@ class Usuario {
     private $correoElectronico;
     private $contraseña;
     private $usuario;
-    
+    private $fechaCreacion;
+    private $fechaAcceso;
+    private $activo;
+    private $rol;
     function getIdUsuario() {
         return $this->idUsuario;
     }
@@ -42,6 +45,22 @@ class Usuario {
         return $this->usuario;
     }
 
+    function getFechaCreacion() {
+        return $this->fechaCreacion;
+    }
+
+    function getFechaAcceso() {
+        return $this->fechaAcceso;
+    }
+
+    function getActivo() {
+        return $this->activo;
+    }
+
+    function getRol() {
+        return $this->rol;
+    }
+
     function setIdUsuario($idUsuario): void {
         $this->idUsuario = $idUsuario;
     }
@@ -72,6 +91,22 @@ class Usuario {
 
     function setUsuario($usuario): void {
         $this->usuario = $usuario;
+    }
+
+    function setFechaCreacion($fechaCreacion): void {
+        $this->fechaCreacion = $fechaCreacion;
+    }
+
+    function setFechaAcceso($fechaAcceso): void {
+        $this->fechaAcceso = $fechaAcceso;
+    }
+
+    function setActivo($activo): void {
+        $this->activo = $activo;
+    }
+
+    function setRol($rol): void {
+        $this->rol = $rol;
     }
 
 

@@ -28,9 +28,27 @@ abstract class BaseDAO {
 
     function view($id) {
         try {
+            $result = null;
             $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
             $stm->execute(array($id));
-            return $stm->fetchObject($this->nombreTabla);
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchObject($this->nombreTabla);
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    function exists($id) {
+        try {
+            $result = false;
+            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = true;
+            }
+            return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }

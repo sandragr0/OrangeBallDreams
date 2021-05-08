@@ -2,103 +2,101 @@
 
 <h1>Añadir jugador</h1>
 <form>
-    <!-- Nombre -->
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre<span data-bs-toggle="tooltip" data-bs-placement="top" title="Campo obligatorio">*</span></label>
-        <input type="text" class="form-control" id="nombre" required>
-    </div>
-
-    <!-- Apellido 1 -->
-    <div class="mb-3">
-        <label for="apellido1" class="form-label">Primer apellido*</label>
-        <input type="text" class="form-control" id="apellido1" required>
-    </div>
-
-    <!-- Apellido 2 -->
-    <div class="mb-3">
-        <label for="apellido2" class="form-label">Segundo apellido</label>
-        <input type="text" class="form-control" id="apellido2">
-    </div>
-
-    <!-- Altura -->
-    <div class="mb-3">
-        <label for="altura" class="form-label">Altura</label>
-        <input type="text" class="form-control" id="altura">
-    </div>
-
-    <!-- Extracomunitario -->
-    <div class="mb-3">
-        <label for="extracomunitario" class="form-label">Extracomunitario</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="extracomunitario" id="extracomSi" checked>
-            <label class="form-check-label" for="extracomSi">
-                Si
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="extracomunitario" id="extracomNo">
-            <label class="form-check-label" for="extracomNo">
-                No
-            </label>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="card-title mb-4 fs-4">Datos personales</h2>
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre *</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : "" ?>">
+            </div>
+            <!-- Apellido 1 -->
+            <div class="mb-3">
+                <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Primer apellido *</label>
+                <input type="text" class="form-control" id="apellido1" name="apellido1" value="<?php echo isset($_POST["apellido1"]) ? $_POST["apellido1"] : "" ?>">
+            </div>
+            <!-- Apellido 2 -->
+            <div class="mb-3">
+                <label for="apellido2" class="form-label">Segundo apellido</label>
+                <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : "" ?>">
+            </div>
+            <!-- fecha de nacimiento -->
+            <div class="mb-3">
+                <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="fechaNac" name="fechaNac" value="<?php echo isset($_POST["fechaNac"]) ? $_POST["fechaNac"] : "" ?>" aria-describedby="fechaNacimientoHelp">
+                <small id="fechaNacimientoHelp" class="form-text text-muted">Formato dd/mm/aaaa</small>
+            </div>
+            <!-- Telefono -->
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : "" ?>">
+            </div>
         </div>
     </div>
-
-    <!-- Fecha Nacimiento -->
-    <div class="mb-3">
-        <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="fechaNac">
-        <div class="alert alert-danger mt-2 oculto" id="mensajeError6" role="alert"></div>
-    </div>
-
-    <!-- Telefono -->
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Telefono</label>
-        <input type="tel" class="form-control" id="telefono">
-    </div> 
-
-    <!-- Estado -->
-    <div class="mb-3">
-        <label for="extracomunitario" class="form-label">Estado</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="estado" id="disponible" checked>
-            <label class="form-check-label" for="disponible">
-                Disponible
-            </label>
+    <div>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2 class="card-title mb-4 fs-4">Datos Jugador</h2>
+                <!-- Altura -->
+                <div class="mb-3">
+                    <label for="altura" class="form-label">Altura</label>
+                    <input type="text" class="form-control" id="altura" name="altura" value="<?php echo isset($_POST["altura"]) ? $_POST["altura"] : "" ?>" aria-describedby="alturaHelp">
+                    <small id="alturaHelp" class="form-text text-muted">Formato decimal, sin añadir prefijos ni sufijos, por ejemplo 2.10</small>
+                </div>
+                <!-- Posicion -->
+                <div class="mb-3">
+                    <label for="posicion" class="form-label">Posicion</label>
+                    <select class="form-select" id="posicion" name="posicion">
+                        <option value="no especificado" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "no especificado" ? "selected" : "" : "" ?>>No especificado</option>
+                        <option value="Base" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Base" ? "selected" : "" : "" ?>>Base</option>
+                        <option value="Escolta" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Escolta" ? "selected" : "" : "" ?>>Escolta</option>
+                        <option value="Alero" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Alero" ? "selected" : "" : "" ?>>Alero</option>
+                        <option value="Ala-pivot" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Ala-pivot" ? "selected" : "" : "" ?>>Ala-pivot</option>
+                        <option value="Pivot" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Pivot" ? "selected" : "" : "" ?>>Pivot</option>
+                    </select>
+                </div>
+                <!-- Extracomunitario -->
+                <div class="mb-3">
+                    <label for="extracomunitario" class="form-label">Extracomunitario</label>
+                    <select class="form-select" id="extracomunitario" name="extracomunitario">
+                        <option value="no especificado" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "no especificado" ? "selected" : "" : "" ?>>No especificado</option>
+                        <option value="si" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "si" ? "selected" : "" : "" ?>>Si</option>
+                        <option value="no" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "no" ? "selected" : "" : "" ?>>No</option>
+                    </select>
+                </div>
+                <!-- Estado -->
+                <div class="mb-3">
+                    <label for="estado" class="form-label">Estado</label>
+                    <select class="form-select" id="estado" name="estado">
+                        <option value="no especificado" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "no especificado" ? "selected" : "" : "" ?>>No especificado</option>
+                        <option value="disponible" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "disponible" ? "selected" : "" : "" ?>>Disponible</option>
+                        <option value="fichado" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "fichado" ? "selected" : "" : "" ?>>Fichado</option>
+                    </select>
+                </div>
+                <!-- Equipo -->
+                <div class="mb-3">
+                    <label for="equipo" class="form-label">Equipo</label>
+                    <input type="text" class="form-control" id="equipo" name="equipo" value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
+                </div>
+                <!-- Biografia -->
+                <div class="mb-3">
+                    <label for="biografia" class="form-label">Biografia</label>
+                    <textarea id="biografia" name="biografia" name="biografia" class="form-control"><?php echo isset($_POST["biografia"]) ? $_POST["biografia"] : "" ?></textarea>
+                </div>
+                <!-- Informe -->
+                <div class="mb-3">
+                    <label for="informe" class="form-label">Informe</label>
+                    <textarea id="informe" name="informe" name="informe" class="form-control"><?php echo isset($_POST["informe"]) ? $_POST["informe"] : "" ?></textarea>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="estado" id="fichado">
-            <label class="form-check-label" for="fichado">
-                Fichado
-            </label>
-        </div>
     </div>
-
-    <!-- Biografia -->
+    <!-- Enviar -->
     <div class="mb-3">
-        <label for="biografia" class="form-label">Biografia</label>
-        <textarea class="form-control" id="biografia" rows="3"></textarea>
+        <button type="submit" class="btn btn-secondary boton-primario">Editar</button>
+        <button type="submit" class="btn btn-secondary boton-primario">Cancelar</button>
+        <div class="alert alert-danger mt-2 oculto" id="mensajeError"role="alert"></div>
     </div> 
-
-    <!-- Informe -->
-    <div class="mb-3">
-        <label for="biografia" class="form-label">Informe</label>
-        <textarea class="form-control" id="informe" rows="3"></textarea>
-    </div> 
-
-    <!-- Informe -->
-    <div class="mb-3">
-        <label for="equipo" class="form-label">Equipo</label>
-        <select class="form-select" id="equipo">
-            <option selected>Seleccionar</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div> 
-
-
-    <button type="submit" class="btn btn-secondary boton-primario">Añadir</button>
-    <div class="alert alert-danger mt-2 oculto" id="mensajeError"role="alert"></div>
 </form>
 </main>
 

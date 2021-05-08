@@ -1,12 +1,8 @@
 <h1>Ver jugadores</h1>
-<div class="table-responsive">
+<div class="table-responsive table-striped">
     <table  class="table">
         <tr>     
-            <th>Ver</th>
-            <th>Editar</th>
             <th>Nombre</th>
-            <th>Primer apellido</th>
-            <th>Segundo apellido</th>
             <th>Telefono</th>
             <th>Estado</th>
         </tr>
@@ -16,12 +12,14 @@
         $r = new Jugador();
         foreach ($this->model->list() as $r):
             ?>
-            <tr>
-                <td><a href="?c=jugador&a=view&id=<?php echo $r->getIdjugador() ?>"><i class="fas fa-search"></i></a></td>
-                <td><a href="?c=jugador&a=edit&id=<?php echo $r->getIdjugador() ?>"><i class="fas fa-edit"></i></a></td>
-                <td><?php echo $r->getNombre() ?></td>
-                <td><?php echo $r->getPrimerApellido() ?></td>
-                <td><?php echo $r->getSegundoApellido() ?></td>
+            <tr class="jugador">
+                <td><a href="?c=jugador&a=view&id=<?php echo $r->getIdjugador() ?>"><?php echo $r->getNombre() . " " . $r->getPrimerApellido() . " " . $r->getSegundoApellido()  ?></a> 
+                    <span class="d-block detalles mt-2">
+                    <span>ID: <?php echo $r->getIdjugador()?></span> |
+                    <a href="?c=jugador&a=view&id=<?php echo $r->getIdjugador() ?>">Ver</a> |
+                    <a href="?c=jugador&a=edit&id=<?php echo $r->getIdjugador() ?>">Editar</a>
+                    </span>
+                </td>
                 <td><?php echo $r->getTelefono() ?></td>
                 <td><?php echo $r->getEstado() ?></td>    
             </tr>
