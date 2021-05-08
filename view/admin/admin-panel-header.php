@@ -26,7 +26,7 @@
             </button>
             <ul class="navbar-nav px-3 w-100 text-end">
                 <li class="nav-item text-nowrap">
-                    <span class="nav-link">Hola, <?php echo $_SESSION['usuario'];?> | <a href="?c=usuario&a=exit">Cerrar sesión</a></span>
+                    <span class="nav-link">Hola, <a href="?c=cuenta&a=view&id=<?php echo $_SESSION['idUsuario']; ?>"><?php echo $_SESSION['usuario']; ?></a> | <a href="?c=usuario&a=exit">Cerrar sesión</a></span>
                 </li>
             </ul>
         </header>

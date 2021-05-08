@@ -26,9 +26,7 @@ class AdminController {
             $pass = isset($_POST['password']) ? $_POST['password'] : null;
             $estadoErrores = $this->model->validarUsuario($usuario, $pass, "administrador");
             if ($estadoErrores == 0) {
-                session_start();
-                $_SESSION["usuario"] = $usuario;
-                $_SESSION["rol"] = "administrador";
+                $this->model->createSesionUsuario($usuario);
                 header('Location: admin.php?c=jugador&a=list');
             } else {
                 include_once '../view/admin/login-admin.php';

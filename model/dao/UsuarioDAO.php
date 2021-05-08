@@ -31,10 +31,24 @@ class UsuarioDAO extends BaseDAO {
         return parent::list();
     }
 
+    public function createSesionUsuario($usuario) {
+        try {
+            $pdo = $this->conexion->prepare("SELECT idUsuario, nombre, rol FROM `usuario` where usuario=? or correoElectronico=?");
+            $pdo->execute(array($usuario, $usuario));
+            $data = $pdo->fetch(PDO::FETCH_ASSOC);
+            $_SESSION["idUsuario"] = $data["idUsuario"];
+            $_SESSION["usuario"] = $data["nombre"];
+            $_SESSION["rol"] = $data["rol"];
+            return $data;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function login($usuario, $rol) {
         try {
-            $pdo = $this->conexion->prepare("SELECT nombre, contraseña, rol FROM `usuario` where usuario=? and rol =?");
-            $pdo->execute(array($usuario, $rol));
+            $pdo = $this->conexion->prepare("SELECT nombre, contraseña, rol FROM `usuario` where usuario=? or correoElectronico=? and rol =?");
+            $pdo->execute(array($usuario, $usuario, $rol));
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {

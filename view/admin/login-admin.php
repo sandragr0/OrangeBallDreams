@@ -26,7 +26,7 @@
                 <form onsubmit="return checkFormulario()" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                     <!-- Usuario -->
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                        <label for="exampleInputEmail1" class="form-label">Nombre de usuario o correo electrónico</label>
                         <input type="text" class="form-control" name="user" id="user" value="<?php echo isset($_POST['user']) ? $_POST['user'] : "" ?>">
                     </div>
                     <div class="alert alert-danger mt-2 oculto" id="mensajeError1"role="alert">Error: el campo nombre de usuario no puede estar vacio</div>
