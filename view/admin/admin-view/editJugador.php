@@ -18,6 +18,11 @@
     <div class="card mb-3">
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
+            <!-- dni -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">DNI</label>
+                <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $objeto->getDni() ?>">
+            </div>
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre *</label>
@@ -98,7 +103,7 @@
                 <!-- Equipo -->
                 <div class="mb-3">
                     <label for="equipo" class="form-label">Equipo</label>
-                    <input type="text" class="form-control" id="equipo" name="equipo" value="<?php echo $objeto->getIdEquipo() ?>">
+                    <input type="text" class="form-control" id="equipo" name="equipo" value="<?php echo $objeto->getEquipo() ?>">
                 </div>
                 <!-- Biografia -->
                 <div class="mb-3">

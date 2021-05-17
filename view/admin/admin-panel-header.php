@@ -14,13 +14,14 @@
     </head>
     <body>
         <?php
+
         $controller = isset($_REQUEST["c"]) ? $_REQUEST["c"] : null;
         $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
         ?>
 
         <!-- Cabecera -->
         <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow-sm">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Orange Ball Dreams</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">O.B.D</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
