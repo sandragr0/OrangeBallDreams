@@ -24,7 +24,17 @@ class UsuarioDAO extends BaseDAO {
     }
 
     public function view($id) {
-        return parent::view();
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla left join persona on persona.idPersona = usuario.idUsuario WHERE usuario.idUsuario=1");
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchObject($this->nombreTabla);
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     public function list() {
@@ -33,11 +43,11 @@ class UsuarioDAO extends BaseDAO {
 
     public function createSesionUsuario($usuario) {
         try {
-            $pdo = $this->conexion->prepare("SELECT idUsuario, nombre, rol FROM `usuario` where usuario=? or correoElectronico=?");
+            $pdo = $this->conexion->prepare("SELECT idUsuario, nombreUsuario, rol FROM `usuario` where nombreUsuario=? or correoElectronico=?");
             $pdo->execute(array($usuario, $usuario));
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
             $_SESSION["idUsuario"] = $data["idUsuario"];
-            $_SESSION["usuario"] = $data["nombre"];
+            $_SESSION["usuario"] = $data["nombreUsuario"];
             $_SESSION["rol"] = $data["rol"];
             return $data;
         } catch (Exception $e) {
@@ -47,7 +57,7 @@ class UsuarioDAO extends BaseDAO {
 
     public function login($usuario, $rol) {
         try {
-            $pdo = $this->conexion->prepare("SELECT nombre, contraseña, rol FROM `usuario` where usuario=? or correoElectronico=? and rol =?");
+            $pdo = $this->conexion->prepare("SELECT nombreUsuario, contraseña, rol FROM `usuario` where nombreUsuario=? or correoElectronico=? and rol =?");
             $pdo->execute(array($usuario, $usuario, $rol));
             $data = $pdo->fetch(PDO::FETCH_ASSOC);
             return $data;
@@ -74,6 +84,10 @@ class UsuarioDAO extends BaseDAO {
                 return -3;
             }
         }
+    }
+
+    public function delete($id) {
+        parent::delete($id);
     }
 
 }

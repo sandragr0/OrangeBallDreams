@@ -27,7 +27,17 @@ abstract class BaseDAO {
             die($e->getMessage());
         }
     }
+    
+    function delete($id) {
+        try {
+            $stm = $this->conexion->prepare("DELETE FROM $this->nombreTabla where id$this->nombreTabla = ?");
+            $stm->execute(array($id));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
+    
     function view($id) {
         try {
             $result = null;
