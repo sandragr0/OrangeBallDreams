@@ -2,19 +2,25 @@
 
 class Usuario {
     private $idUsuario;
+    private $dni;
     private $nombre;
     private $primerApellido;
     private $segundoApellido;
     private $telefono;
     private $correoElectronico;
     private $contraseña;
-    private $usuario;
+    private $nombreUsuario;
     private $fechaCreacion;
     private $fechaAcceso;
     private $activo;
     private $rol;
+  
     function getIdUsuario() {
         return $this->idUsuario;
+    }
+
+    function getDni() {
+        return $this->dni;
     }
 
     function getNombre() {
@@ -41,8 +47,8 @@ class Usuario {
         return $this->contraseña;
     }
 
-    function getUsuario() {
-        return $this->usuario;
+    function getNombreUsuario() {
+        return $this->nombreUsuario;
     }
 
     function getFechaCreacion() {
@@ -63,6 +69,10 @@ class Usuario {
 
     function setIdUsuario($idUsuario): void {
         $this->idUsuario = $idUsuario;
+    }
+
+    function setDni($dni): void {
+        $this->dni = $dni;
     }
 
     function setNombre($nombre): void {
@@ -89,8 +99,8 @@ class Usuario {
         $this->contraseña = $contraseña;
     }
 
-    function setUsuario($usuario): void {
-        $this->usuario = $usuario;
+    function setNombreUsuario($nombreUsuario): void {
+        $this->nombreUsuario = $nombreUsuario;
     }
 
     function setFechaCreacion($fechaCreacion): void {

@@ -4,6 +4,7 @@ class Jugador {
 
     // Atributos
     private $idJugador;
+    private $dni;
     private $nombre;
     private $primerApellido;
     private $segundoApellido;
@@ -18,9 +19,20 @@ class Jugador {
     private $idEquipo;
     private $posicion;
     private $visible;
+    private $equipo;
+    private $ruta;
+    private $genero;
+
+    function getFullName() {
+        return $this->getNombre() . " " . $this->getPrimerApellido() . " " . $this->getSegundoApellido();
+    }
 
     function getIdJugador() {
         return $this->idJugador;
+    }
+
+    function getDni() {
+        return $this->dni;
     }
 
     function getNombre() {
@@ -79,8 +91,24 @@ class Jugador {
         return $this->visible;
     }
 
+    function getEquipo() {
+        return $this->equipo;
+    }
+
+    function getRuta() {
+        return $this->ruta;
+    }
+
+    function getGenero() {
+        return $this->genero;
+    }
+
     function setIdJugador($idJugador): void {
         $this->idJugador = $idJugador;
+    }
+
+    function setDni($dni): void {
+        $this->dni = $dni;
     }
 
     function setNombre($nombre): void {
@@ -137,6 +165,18 @@ class Jugador {
 
     function setVisible($visible): void {
         $this->visible = $visible;
+    }
+
+    function setEquipo($equipo): void {
+        $this->equipo = $equipo;
+    }
+
+    function setRuta($ruta): void {
+        $this->ruta = $ruta;
+    }
+
+    function setGenero($genero): void {
+        $this->genero = $genero;
     }
 
 }
