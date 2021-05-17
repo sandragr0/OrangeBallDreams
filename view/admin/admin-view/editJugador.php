@@ -18,11 +18,6 @@
     <div class="card mb-3">
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
-            <!-- dni -->
-            <div class="mb-3">
-                <label for="nombre" class="form-label">DNI</label>
-                <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $objeto->getDni() ?>">
-            </div>
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre *</label>
@@ -38,11 +33,24 @@
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?php echo $objeto->getSegundoApellido() ?>">
             </div>
+            <!-- dni -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">DNI</label>
+                <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $objeto->getDni() ?>">
+            </div>
             <!-- fecha de nacimiento -->
             <div class="mb-3">
                 <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac" value="<?php echo $objeto->getFechaNacimiento() ?>" aria-describedby="fechaNacimientoHelp">
                 <small id="fechaNacimientoHelp" class="form-text text-muted">Formato dd/mm/aaaa</small>
+            </div>
+            <!-- Género -->
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <select class="form-select" id="genero" name="genero">
+                    <option value="masculino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "masculino" ? "selected" : "" : "" ?>>Masculino</option>
+                    <option value="femenino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "femenino" ? "selected" : "" : "" ?>>Femenino</option>
+                </select>
             </div>
             <!-- Telefono -->
             <div class="mb-3">

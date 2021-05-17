@@ -20,7 +20,7 @@
         <div class="card-body"> 
             <!-- Imagen -->
             <div class="text-center">
-                <img src="<?php echo $objeto->getRuta() ?>" class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm" width="200">
+                <img src="<?php echo $objeto->getRuta() ?>" class="img-fluid rounded-circle mb-2 shadow-sm" width="200">
             </div>
             <h2 class="card-title text-center mb-4 fs-3"><?php echo $objeto->getFullName() ?></h2>
             <h2 class="mb-4 fs-4">Datos personales</h2>
@@ -39,10 +39,23 @@
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input disabled type="text" class="form-control" id="apellido2" name="apellido2" value="<?php echo $objeto->getSegundoApellido() ?>">
             </div>
+            <!-- dni -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">DNI</label>
+                <input disabled type="text" class="form-control" id="dni" name="dni" value="<?php echo $objeto->getDni() ?>">
+            </div>
             <!-- fecha de nacimiento -->
             <div class="mb-3">
                 <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
                 <input disabled type="date" class="form-control" id="fechaNac" name="fechaNac" value="<?php echo $objeto->getFechaNacimiento() ?>">
+            </div>
+            <!-- Género -->
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <select disabled class="form-select" id="genero" name="genero">
+                    <option value="masculino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "masculino" ? "selected" : "" : "" ?>>Masculino</option>
+                    <option value="femenino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "femenino" ? "selected" : "" : "" ?>>Femenino</option>
+                </select>
             </div>
             <!-- Telefono -->
             <div class="mb-3">
@@ -82,18 +95,18 @@
             <div class="mb-3">
                 <label for="extracomunitario" class="form-label">Extracomunitario</label>
                 <select disabled class="form-select" id="extracomunitario" name="extracomunitario">
-                    <option value="no especificado" <?php echo $objeto->getExtracomunitario() == "no especificado" ? "selected" : "" ?>>No especificado</option>
-                    <option value="si" <?php echo $objeto->getExtracomunitario() == "si" ? "selected" : "" ?>>Si</option>
-                    <option value="no"  <?php echo $objeto->getExtracomunitario() == "no" ? "selected" : "" ?>>No</option>
+                    <option value="null" <?php echo $objeto->getExtracomunitario() == "null" ? "selected" : "" ?>>No especificado</option>
+                    <option value="0" <?php echo $objeto->getExtracomunitario() == "0" ? "selected" : "" ?>>Si</option>
+                    <option value="1"  <?php echo $objeto->getExtracomunitario() == "1" ? "selected" : "" ?>>No</option>
                 </select>
             </div>
             <!-- Estado -->
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
                 <select disabled class="form-select" id="estado" name="estado">
-                    <option value="no especificado" <?php echo $objeto->getEstado() == "no especificado" ? "selected" : "" ?>>No especificado</option>
-                    <option value="disponible" <?php echo $objeto->getEstado() == "disponible" ? "selected" : "" ?>>Disponible</option>
-                    <option value="fichado"  <?php echo $objeto->getEstado() == "fichado" ? "selected" : "" ?>>Fichado</option>
+                    <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>No especificado</option>
+                    <option value="0" <?php echo $objeto->getEstado() == "0" ? "selected" : "" ?>>Disponible</option>
+                    <option value="1"  <?php echo $objeto->getEstado() == "1" ? "selected" : "" ?>>Fichado</option>
                 </select>
             </div>
             <!-- Equipo -->

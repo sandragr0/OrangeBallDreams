@@ -4,9 +4,6 @@
     <div class="card mb-3">
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
-            <?php print_r($_FILES);
-            print_r($_POST);
-            ?>
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre *</label>
@@ -162,8 +159,8 @@
                     <label for="extracomunitario" class="form-label">Extracomunitario</label>
                     <select class="form-select" id="extracomunitario" name="extracomunitario">
                         <option value="null" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "null" ? "selected" : "" : "" ?>>No especificado</option>
-                        <option value="si" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "1" ? "selected" : "" : "" ?>>Si</option>
-                        <option value="no" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "0" ? "selected" : "" : "" ?>>No</option>
+                        <option value="1" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "1" ? "selected" : "" : "" ?>>Si</option>
+                        <option value="0" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "0" ? "selected" : "" : "" ?>>No</option>
                     </select>
                 </div>
                 <!-- Estado -->
