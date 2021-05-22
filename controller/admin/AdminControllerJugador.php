@@ -3,17 +3,20 @@
 require_once('AdminController.php');
 require_once('../model/dao/JugadorDAO.php');
 
-class AdminControllerJugador extends AdminController {
+class AdminControllerJugador extends AdminController
+{
 
     private $model;
     private $controllerName = "Jugador";
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new JugadorDAO();
         parent::__construct($this->controllerName, $this->model);
     }
 
-    public function add() {
+    public function add()
+    {
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-panel-header.php';
             include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
@@ -32,23 +35,28 @@ class AdminControllerJugador extends AdminController {
         }
     }
 
-    public function edit() {
+    public function edit()
+    {
         parent::edit();
     }
 
-    public function insert(object $object) {
+    public function insert(object $object)
+    {
         parent::insert($object);
     }
 
-    public function list() {
+    public function list()
+    {
         parent::list();
     }
 
-    public function view() {
+    public function view()
+    {
         parent::view();
     }
 
-    public function delete() {
+    public function delete()
+    {
         if (isset($_REQUEST['id'])) {
             // Borrar la imagen local del usuario
             $arrayImagen = $this->model->getImage($_REQUEST['id']);
@@ -64,75 +72,76 @@ class AdminControllerJugador extends AdminController {
         }
     }
 
-    private function validarDatos($datos, $archivos) {
+    private function validarDatos($datos, $archivos)
+    {
         if ($datos["nombre"] != "") {
             if (!Utilidades::isString($datos["nombre"])) {
-                return 1;
+                return CodigosError::nombre_invalid;
             }
         } else {
-            return 2;
+            return CodigosError::nombre_empty;
         }
 
         if ($datos["apellido1"] != "") {
             if (!Utilidades::isString($datos["apellido1"])) {
-                return 3;
+                return CodigosError::apellido1_invalid;
             }
         } else {
-            return 4;
+            return CodigosError::apellido1_empty;
         }
 
 
         if ($datos["apellido2"] != "") {
             if (!Utilidades::isString($datos["apellido2"])) {
-                return 5;
-            }
-        }
-
-
-        if ($datos["fechaNac"] != "") {
-            if (!Utilidades::isFecha($datos["fechaNac"])) {
-                return 6;
-            }
-        }
-
-        if ($datos["telefono"] != "") {
-            if (!Utilidades::isTelefono($datos["telefono"])) {
-                return 7;
-            }
-        }
-
-        if ($datos["altura"] != "") {
-            if (!Utilidades::isAltura($datos["altura"])) {
-                return 8;
+                return CodigosError::apellido2_invalid;
             }
         }
 
         if ($datos["dni"] != "") {
             if (!Utilidades::isDNI($datos["dni"])) {
-                return 10;
+                return CodigosError::dni_invalid;
             }
         }
 
-        if ($datos["equipo"] != "") {
-            if (!Utilidades::isAlpha($datos["equipo"])) {
-                return 9;
+        if ($datos["fechaNac"] != "") {
+            if (!Utilidades::isFecha($datos["fechaNac"])) {
+                return CodigosError::fechaNac_invalid;
+            }
+        }
+
+        if ($datos["telefono"] != "") {
+            if (!Utilidades::isTelefono($datos["telefono"])) {
+                return CodigosError::telefono_invalid;
             }
         }
 
         if ($archivos["imagen"]["name"] != "") {
             if (!Utilidades::imgFormatoCorrecto($archivos["imagen"]["type"])) {
-                return 11;
+                return CodigosError::imagen_wrong_format;
             }
             if (!Utilidades::isValidImgSize($archivos["imagen"]["size"])) {
-                return 12;
+                return CodigosError::imagen_wrong_size;
+            }
+        }
+
+        if ($datos["altura"] != "") {
+            if (!Utilidades::isAltura($datos["altura"])) {
+                return CodigosError::altura_invalid;
             }
         }
 
 
+        if ($datos["equipo"] != "") {
+            if (!Utilidades::isAlpha($datos["equipo"])) {
+                return CodigosError::equipo_invalid;
+            }
+        }
+
         return 0;
     }
 
-    private function createJugador($datos, $archivos) {
+    private function createJugador($datos, $archivos)
+    {
         $jugador = new Jugador();
         // Limpiar datos y mapearlos
         $jugador->setNombre(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["nombre"])));
@@ -166,7 +175,8 @@ class AdminControllerJugador extends AdminController {
         return $jugador;
     }
 
-    private function guardarImagen($archivos, $nombreImagen, $ext) {
+    private function guardarImagen($archivos, $nombreImagen, $ext)
+    {
         $resultado = move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
         return $resultado;
     }

@@ -1,6 +1,5 @@
-<html>
+<html lang="es">
     <head>
-    <html lang="es">
         <title>Orange Ball Dreams</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,7 @@
                 <div class="alert alert-danger mt-2 oculto" id="mensajeError3"role="alert">ERROR: El usuario o contraseña que has introducido no es correcto.</div>
                 <?php
                 if (isset($estadoErrores)) {
-                    if ($estadoErrores == -3) {
+                    if ($estadoErrores == CodigosError::user_not_exists) {
                         echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError4">ERROR: El usuario o contraseña que has introducido no es correcto.</div>';
                     }
                 }
@@ -32,7 +31,7 @@
                     <div class="alert alert-danger mt-2 oculto" id="mensajeError1"role="alert">Error: el campo nombre de usuario no puede estar vacio</div>
                     <?php
                     if (isset($estadoErrores)) {
-                        if ($estadoErrores == -1) {
+                        if ($estadoErrores == CodigosError::usuario_empty) {
                             echo ' <div class="alert alert-danger mt-2" role="alert" id="mensajeError5">Error: el campo nombre de usuario no puede estar vacio</div>';
                         }
                     }
@@ -47,7 +46,7 @@
                         <div class="alert alert-danger mt-2 oculto" id="mensajeError2" role="alert">Error: el campo contraseña no puede estar vacio</div>
                         <?php
                         if (isset($estadoErrores)) {
-                            if ($estadoErrores == -2) {
+                            if ($estadoErrores == CodigosError::pass_empty) {
                                 echo ' <div class="alert alert-danger mt-2" role="alert" id="mensajeError6">Error: el campo contraseña no puede estar vacio</div>';
                             }
                         }
