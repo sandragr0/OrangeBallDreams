@@ -2,6 +2,10 @@
 
 class Utilidades {
 
+    static function getDocumentRoot() {
+        return $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams";
+    }
+
     static function fechaToFormulario($fecha) {
         $fechaArray = explode("-", $fecha);
         return $fechaArray[2] . "/" . $fechaArray[1] . "/" . $fechaArray[0];
@@ -83,20 +87,19 @@ class Utilidades {
         $resto = mb_substr($string, 1, $stringLenght - 1, $encoding);
         return mb_strtoupper($primerCaracter, $encoding) . $resto;
     }
-    
-   static function imgFormatoCorrecto($type) {
-       if ($type == "image/jpeg" || $type == "image/png") {
-           return true;
-       } 
-       return false;
-   }
-   
-   static function isValidImgSize($size) { 
-       if ($size <= 2097152) {
-           return true;
-       }
-       return false;
-   }
-   
+
+    static function imgFormatoCorrecto($type) {
+        if ($type == "image/jpeg" || $type == "image/png") {
+            return true;
+        }
+        return false;
+    }
+
+    static function isValidImgSize($size) {
+        if ($size <= 2097152) {
+            return true;
+        }
+        return false;
+    }
 
 }
