@@ -30,13 +30,16 @@ h1, h2, h3, h4,h5,h6 {
     padding: 0.2em 1em !important;
 }
 
-.boton-primario {
+.boton-orange {
     background-color: #F26522 !important;
     color: #fff !important;
-    border: none !important;
-    border-radius: 0 !important;
-    transition: background-color 0.3 ease-out;
+    border-top-color: #E36414 !important;
+    border-bottom-color: #E36414 !important;
+    border-left-color: #E36414 !important;
+    border-right-color: #E36414 !important;
 }
+
+
 
 .boton-menu {
     margin-right: 0.5em;
@@ -125,7 +128,7 @@ h1, h2, h3, h4,h5,h6 {
     .navbar-nav {
         background-color: #f8f9fa;
     }
-    
+
 }
 /*
 * Toggler
@@ -320,12 +323,4 @@ a.active {
 
 a.active:hover {
     color: #F26522;
-}
-
-.detalles {
-    visibility: hidden;
-}
-
-tr.jugador:hover .detalles{
-    visibility: visible;
 }
