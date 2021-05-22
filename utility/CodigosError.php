@@ -26,5 +26,9 @@ abstract class CodigosError
     const imagen_wrong_format = 14;
     const imagen_wrong_size = 15;
 
+    // Códigos de error de la base de datos
+    const db_duplicate_entry = 16;
+    const db_generic_error = 17;
+
 
 }
