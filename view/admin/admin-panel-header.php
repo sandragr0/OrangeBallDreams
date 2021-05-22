@@ -1,6 +1,6 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
-    <html lang="es">
         <title>Orange Ball Dreams</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,6 @@
     </head>
     <body>
         <?php
-
         $controller = isset($_REQUEST["c"]) ? $_REQUEST["c"] : null;
         $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
         ?>
@@ -56,17 +55,6 @@
                                 <ul class = "btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                     <li><a href = "?c=equipo&a=list" class = "link-dark rounded <?php echo ($controller == "equipo" && $action == "list") ? "active" : "" ?>">Ver equipos</a></li>
                                     <li><a href = "?c=equipo&a=add" class = "link-dark rounded <?php echo ($controller == "equipo" && $action == "add") ? "active" : "" ?>">Añadir equipo</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class = "border-top my-3"></li>
-                        <li class = "mb-1">
-                            <button class = "btn btn-toggle align-items-center rounded mb-2" data-bs-toggle = "collapse" data-bs-target = "#contacto-collapse" aria-expanded = "true">
-                                Contacto
-                            </button>
-                            <div class = "collapse show" id = "contacto-collapse" style = "">
-                                <ul class = "btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href = "?c=contacto&a=list" class = "link-dark rounded">Ver formularios de contacto</a></li>
                                 </ul>
                             </div>
                         </li>
