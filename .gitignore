@@ -1,2 +1,3 @@
 # ignore player picture uploads
 assets/img/Jugador/uploads/*
+.idea
