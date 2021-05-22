@@ -13,7 +13,58 @@ class AdminControllerJugador extends AdminController {
         parent::__construct($this->controllerName, $this->model);
     }
 
-    public function validarDatos($datos, $archivos) {
+    public function add() {
+        if (sizeof($_POST) == 0) {
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+            include_once '../view/admin/admin-panel-footer.php';
+        } else {
+            $error = $this->validarDatos($_POST, $_FILES);
+            if ($error == 0) {
+                $jugador = $this->createJugador($_POST, $_FILES);
+                $this->model->add($jugador);
+                header('Location: admin.php?c=jugador&a=list');
+            } else {
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                include_once '../view/admin/admin-panel-footer.php';
+            }
+        }
+    }
+
+    public function edit() {
+        parent::edit();
+    }
+
+    public function insert(object $object) {
+        parent::insert($object);
+    }
+
+    public function list() {
+        parent::list();
+    }
+
+    public function view() {
+        parent::view();
+    }
+
+    public function delete() {
+        if (isset($_REQUEST['id'])) {
+            // Borrar la imagen local del usuario
+            $arrayImagen = $this->model->getImage($_REQUEST['id']);
+            if ($arrayImagen["ruta"] != "/assets/img/jugador/imagen-default.jpg") {
+                $ruta = Utilidades::getDocumentRoot() . $arrayImagen["ruta"];
+                unlink($ruta);
+            }
+            // Borrar el jugador
+            $objeto = $this->model->delete($_REQUEST['id']);
+
+            // Redirigir a la página actual
+            header('Location:' . $_SERVER["PHP_SELF"]);
+        }
+    }
+
+    private function validarDatos($datos, $archivos) {
         if ($datos["nombre"] != "") {
             if (!Utilidades::isString($datos["nombre"])) {
                 return 1;
@@ -96,6 +147,7 @@ class AdminControllerJugador extends AdminController {
         $jugador->setPosicion($datos["posicion"]);
         $jugador->setExtracomunitario($datos["extracomunitario"]);
         $jugador->setEstado($datos["estado"]);
+        $jugador->setEquipo(mb_strtoupper(Utilidades::cleanString($datos["equipo"])));
         $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["biografia"])));
         $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["informe"])));
 
@@ -105,53 +157,18 @@ class AdminControllerJugador extends AdminController {
 
         $isImagenSubida = $this->guardarImagen($archivos, $nombreImagen, $ext);
         if ($isImagenSubida) {
-            $ruta = "../assets/img/jugador/" . $nombreImagen . "." . "$ext";
+            $ruta = "/assets/img/jugador/uploads/" . $nombreImagen . "." . "$ext";
             $jugador->setRuta($ruta);
         } else {
-            $ruta = "../assets/img/jugador/imagen-default.jpg";
+            $ruta = "/assets/img/jugador/default/imagen-default.jpg";
             $jugador->setRuta($ruta);
         }
         return $jugador;
     }
 
     private function guardarImagen($archivos, $nombreImagen, $ext) {
-        $resultado = move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/" . $nombreImagen . "." . $ext);
+        $resultado = move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
         return $resultado;
-    }
-
-    public function add() {
-        if (sizeof($_POST) == 0) {
-            include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
-            include_once '../view/admin/admin-panel-footer.php';
-        } else {
-            $error = $this->validarDatos($_POST, $_FILES);
-            if ($error == 0) {
-                $jugador = $this->createJugador($_POST, $_FILES);
-                $this->model->add($jugador);
-                header('Location: admin.php?c=jugador&a=list');
-            } else {
-                include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
-                include_once '../view/admin/admin-panel-footer.php';
-            }
-        }
-    }
-
-    public function edit() {
-        parent::edit();
-    }
-
-    public function insert(object $object) {
-        parent::insert($object);
-    }
-
-    public function list() {
-        parent::list();
-    }
-
-    public function view() {
-        parent::view();
     }
 
 }

@@ -24,7 +24,12 @@ class Jugador {
     private $genero;
 
     function getFullName() {
-        return $this->getNombre() . " " . $this->getPrimerApellido() . " " . $this->getSegundoApellido();
+        if ($this->getSegundoApellido() != "") {
+            $apellido2 = " " . $this->getSegundoApellido();
+        } else {
+            $apellido2 = "";
+        }
+        return $this->getNombre() . " " . $this->getPrimerApellido() . $apellido2;
     }
 
     function getIdJugador() {
