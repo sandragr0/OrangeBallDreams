@@ -10,13 +10,13 @@
                 <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : "" ?>">
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no puede estar vacio.</div>';
+                    if ($error == 2) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El nombre no puede estar vacio.</div>';
                     }
                 }
                 if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no es válido.</div>';
+                    if ($error == 1) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El nombre no es válido.</div>';
                     }
                 }
                 ?>
@@ -27,13 +27,13 @@
                 <input type="text" class="form-control" id="apellido1" name="apellido1" value="<?php echo isset($_POST["apellido1"]) ? $_POST["apellido1"] : "" ?>">
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::apellido1_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no puede estar vacio.</div>';
+                    if ($error == 4) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El apellido no puede estar vacio.</div>';
                     }
                 }
                 if (isset($error)) {
-                    if ($error == CodigosError::apellido1_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no es válido.</div>';
+                    if ($error == 3) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El apellido no es válido.</div>';
                     }
                 }
                 ?>
@@ -44,8 +44,8 @@
                 <input type="text" class="form-control" id="apellido2" name="apellido2" value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : "" ?>">
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::apellido2_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no es válido.</div>';
+                    if ($error == 5) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El apellido no es válido.</div>';
                     }
                 }
                 ?>
@@ -58,8 +58,8 @@
             </div>
             <?php
             if (isset($error)) {
-                if ($error == CodigosError::dni_invalid) {
-                    echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El DNI no es válido.</div>';
+                if ($error == 10) {
+                    echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El DNI no es válido.</div>';
                 }
             }
             ?>
@@ -78,8 +78,8 @@
                 <small id="fechaNacimientoHelp" class="form-text text-muted">Formato dd/mm/aaaa</small>
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::fechaNac_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La fecha de nacimiento no es válida.</div>';
+                    if ($error == 6) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: La fecha de nacimiento no es válida.</div>';
                     }
                 }
                 ?>
@@ -90,8 +90,8 @@
                 <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : "" ?>">
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::telefono_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El teléfono no es válido.</div>';
+                    if ($error == 7) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El teléfono no es válido.</div>';
                     }
                 }
                 ?>
@@ -103,13 +103,13 @@
                 <small id="imagenHelp" class="form-text text-muted">Formato jpeg/png. Tamaño máximo 2GB.</small>
                 <?php
                 if (isset($error)) {
-                    if ($error == CodigosError::imagen_wrong_format) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El formato de imagen no es correcto.</div>';
+                    if ($error == 11) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El formato de imagen no es correcto.</div>';
                     }
                 }
                 if (isset($error)) {
-                    if ($error == CodigosError::imagen_wrong_size) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El tamaño de imagen es superior a 2GB.</div>';
+                    if ($error == 12) {
+                        echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El tamaño de imagen es superior a 2GB.</div>';
                     }
                 }
                 ?>
@@ -136,8 +136,8 @@
                     <small id="alturaHelp" class="form-text text-muted">Formato decimal, sin añadir prefijos ni sufijos, por ejemplo 2.10</small>
                     <?php
                     if (isset($error)) {
-                        if ($error == CodigosError::altura_invalid) {
-                            echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La altura no es válida.</div>';
+                        if ($error == 8) {
+                            echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: La altura no es válida.</div>';
                         }
                     }
                     ?>
@@ -178,8 +178,8 @@
                     <input type="text" class="form-control" id="equipo" name="equipo" value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
                     <?php
                     if (isset($error)) {
-                        if ($error == CodigosError::equipo_invalid) {
-                            echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El equipo no es válido.</div>';
+                        if ($error == 9) {
+                            echo '<div class="alert alert-danger mt-2" role="alert" id="mensajeError1">ERROR: El equipo no es válido.</div>';
                         }
                     }
                     ?>
