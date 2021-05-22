@@ -1,7 +1,7 @@
 <?php
 
-require_once('AdminController.php');
-require_once('../model/dao/UsuarioDAO.php');
+include_once('AdminController.php');
+include_once('../model/dao/UsuarioDAO.php');
 
 class AdminControllerUsuario extends AdminController {
 
