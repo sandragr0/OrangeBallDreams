@@ -2,28 +2,35 @@
 
 include_once 'BaseDAO.php';
 include_once "../model/entity/Usuario.php";
+include_once('../utility/CodigosError.php');
 
-class UsuarioDAO extends BaseDAO {
+class UsuarioDAO extends BaseDAO
+{
 
     private $nombreTabla = "usuario";
 
-    function getNombreTabla() {
+    function getNombreTabla()
+    {
         return $this->nombreTabla;
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct($this->nombreTabla);
     }
 
-    public function add(object $objeto) {
-        
+    public function add(object $objeto)
+    {
+
     }
 
-    public function edit(object $objeto) {
-        
+    public function edit(object $objeto)
+    {
+
     }
 
-    public function view($id) {
+    public function view($id)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla left join persona on persona.idPersona = usuario.idUsuario WHERE usuario.idUsuario=1");
@@ -37,11 +44,13 @@ class UsuarioDAO extends BaseDAO {
         }
     }
 
-    public function list() {
+    public function list()
+    {
         return parent::list();
     }
 
-    public function createSesionUsuario($usuario) {
+    public function createSesionUsuario($usuario)
+    {
         try {
             $pdo = $this->conexion->prepare("SELECT idUsuario, nombreUsuario, rol FROM `usuario` where nombreUsuario=? or correoElectronico=?");
             $pdo->execute(array($usuario, $usuario));
@@ -55,7 +64,8 @@ class UsuarioDAO extends BaseDAO {
         }
     }
 
-    public function login($usuario, $rol) {
+    public function login($usuario, $rol)
+    {
         try {
             $pdo = $this->conexion->prepare("SELECT nombreUsuario, contraseña, rol FROM `usuario` where nombreUsuario=? or correoElectronico=? and rol =?");
             $pdo->execute(array($usuario, $usuario, $rol));
@@ -66,27 +76,26 @@ class UsuarioDAO extends BaseDAO {
         }
     }
 
-    public function validarUsuario($usuario, $pass, $rol) {
+    public function validarUsuario($usuario, $pass, $rol)
+    {
         if ($usuario == null) {
-            return -1;
+            return CodigosError::usuario_empty;
         } else if ($pass == null) {
-            return -2;
+            return CodigosError::pass_empty;
         } else {
             $data = $this->login($usuario, $rol);
             if ($data != false) {
                 if ($data['contraseña'] == md5($pass)) {
                     $errorNoExiste = false;
                     return 0;
-                } else {
-                    return -3;
                 }
-            } else {
-                return -3;
             }
+            return CodigosError::user_not_exists;
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         parent::delete($id);
     }
 
