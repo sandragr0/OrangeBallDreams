@@ -3,12 +3,14 @@
 /**
  * Class Utilidades
  */
-abstract class Utilidades {
+abstract class Utilidades
+{
 
     /**
      * @return string
      */
-    static function getDocumentRoot() {
+    static function getDocumentRoot()
+    {
         return $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams";
     }
 
@@ -16,7 +18,8 @@ abstract class Utilidades {
      * @param $fecha
      * @return string
      */
-    static function fechaToFormulario($fecha) {
+    static function fechaToFormulario($fecha)
+    {
         $fechaArray = explode("-", $fecha);
         return $fechaArray[2] . "/" . $fechaArray[1] . "/" . $fechaArray[0];
     }
@@ -25,7 +28,8 @@ abstract class Utilidades {
      * @param $fecha
      * @return string
      */
-    static function fechaToBD($fecha) {
+    static function fechaToBD($fecha)
+    {
         $fechaArray = explode("/", $fecha);
         return $fechaArray[2] . "-" . $fechaArray[1] . "-" . $fechaArray[0];
     }
@@ -34,7 +38,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isAlpha($string) {
+    static function isAlpha($string)
+    {
         if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú0-9\s]+$)/", $string)) {
             return true;
         }
@@ -45,7 +50,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isString($string) {
+    static function isString($string)
+    {
         if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú]+$)/", $string)) {
             return true;
         }
@@ -56,7 +62,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isTelefono($string) {
+    static function isTelefono($string)
+    {
         if (preg_match("/(^[0-9]{9}+$)/", $string)) {
             return true;
         }
@@ -67,7 +74,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isAltura($string) {
+    static function isAltura($string)
+    {
         if (preg_match("/(^[0-9]{1}[.]{1}[0-9]{2}+$)/", $string)) {
             return true;
         }
@@ -78,7 +86,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isEmpty($string) {
+    static function isEmpty($string)
+    {
         if ($string == "") {
             return true;
         }
@@ -89,7 +98,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isValidPasswd($string) {
+    static function isValidPasswd($string)
+    {
         if (preg_match("/((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/", $string)) {
             return true;
         }
@@ -100,7 +110,8 @@ abstract class Utilidades {
      * @param $string
      * @return bool
      */
-    static function isDNI($string) {
+    static function isDNI($string)
+    {
         if (preg_match('/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke]{1}$/', $string)) {
             return true;
         }
@@ -111,7 +122,8 @@ abstract class Utilidades {
      * @param $string
      * @return string
      */
-    static function cleanString($string) {
+    static function cleanString($string)
+    {
         return strip_tags(trim($string));
     }
 
@@ -119,7 +131,8 @@ abstract class Utilidades {
      * @param $fecha
      * @return bool
      */
-    static function isFecha($fecha) {
+    static function isFecha($fecha)
+    {
         $fechaArray = explode("-", $fecha);
         if (count($fechaArray) == 3) {
             if (is_numeric($fechaArray[0]) && is_numeric($fechaArray[1]) && is_numeric($fechaArray[2])) {
@@ -136,7 +149,8 @@ abstract class Utilidades {
      * @param string $encoding
      * @return string
      */
-    static function mb_ucfirst($string, $encoding = 'UTF-8') {
+    static function mb_ucfirst($string, $encoding = 'UTF-8')
+    {
         $stringLenght = mb_strlen($string, $encoding);
         $primerCaracter = mb_substr($string, 0, 1, $encoding);
         $resto = mb_substr($string, 1, $stringLenght - 1, $encoding);
@@ -147,7 +161,8 @@ abstract class Utilidades {
      * @param $type
      * @return bool
      */
-    static function imgFormatoCorrecto($type) {
+    static function imgFormatoCorrecto($type)
+    {
         if ($type == "image/jpeg" || $type == "image/png") {
             return true;
         }
@@ -158,11 +173,22 @@ abstract class Utilidades {
      * @param $size
      * @return bool
      */
-    static function isValidImgSize($size) {
+    static function isValidImgSize($size)
+    {
         if ($size <= 2097152) {
             return true;
         }
         return false;
     }
+
+    static function logError($e)
+    {
+        $log_filename = $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/logs/log_" . date('Ymd') . ".log";
+        if (!file_exists($log_filename)) {
+            fopen($log_filename ,"x");
+        }
+        error_log($e->getMessage() . "\n", 3, $log_filename);
+    }
+
 
 }

@@ -1,30 +1,33 @@
 <?php
 
-require_once('../utility/Utilidades.php');
+include_once('../utility/Utilidades.php');
 include_once 'BaseDAO.php';
 include_once "../model/entity/Jugador.php";
 
-class JugadorDAO extends BaseDAO {
+class JugadorDAO extends BaseDAO
+{
 
     private $nombreTabla = "jugador";
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct($this->nombreTabla);
     }
 
-    public function add(object $jugador) {
+    public function add(object $jugador)
+    {
         try {
             // Añadir persona
             $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
 
             $pdo->execute(
-                    array(
-                        $jugador->getDni(),
-                        $jugador->getNombre(),
-                        $jugador->getPrimerApellido(),
-                        $jugador->getSegundoApellido(),
-                        $jugador->getTelefono()
-                    )
+                array(
+                    $jugador->getDni(),
+                    $jugador->getNombre(),
+                    $jugador->getPrimerApellido(),
+                    $jugador->getSegundoApellido(),
+                    $jugador->getTelefono()
+                )
             );
 
             $idJugador = $this->conexion->lastInsertId();
@@ -33,28 +36,28 @@ class JugadorDAO extends BaseDAO {
             $pdo = $this->conexion->prepare('INSERT INTO `jugador`(`idJugador`, `genero`, `altura`, `extracomunitario`, `fechaNacimiento`, `estado`, `posicion`, `biografia`, `informe`, `visible`) VALUES (?,?,?,?,?,?,?,?,?,?)');
 
             $pdo->execute(
-                    array(
-                        $idJugador,
-                        $jugador->getGenero(),
-                        $jugador->getAltura(),
-                        $jugador->getExtracomunitario(),
-                        $jugador->getFechaNacimiento(),
-                        $jugador->getEstado(),
-                        $jugador->getPosicion(),
-                        $jugador->getBiografia(),
-                        $jugador->getInforme(),
-                        $jugador->getVisible()
-                    )
+                array(
+                    $idJugador,
+                    $jugador->getGenero(),
+                    $jugador->getAltura(),
+                    $jugador->getExtracomunitario(),
+                    $jugador->getFechaNacimiento(),
+                    $jugador->getEstado(),
+                    $jugador->getPosicion(),
+                    $jugador->getBiografia(),
+                    $jugador->getInforme(),
+                    $jugador->getVisible()
+                )
             );
 
             // Añadir imagen del usuario
             $pdo = $this->conexion->prepare("INSERT INTO `imagen`(`ruta`,`idJugador`) VALUES(?,?)");
 
             $pdo->execute(
-                    array(
-                        $jugador->getRuta(),
-                        $idJugador
-                    )
+                array(
+                    $jugador->getRuta(),
+                    $idJugador
+                )
             );
 
             // Añadir equipo 
@@ -75,15 +78,18 @@ class JugadorDAO extends BaseDAO {
                 }
             }
         } catch (Exception $e) {
-            die($e->getMessage());
+            Utilidades::logError($e);
+            echo $e->getMessage();
         }
     }
 
-    public function edit(object $objeto) {
+    public function edit(object $objeto)
+    {
         return null;
     }
 
-    function view($id) {
+    function view($id)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT jugador.idJugador, dni, persona.nombre, primerApellido, segundoApellido, genero, telefono, altura, extracomunitario, fechaNacimiento, telefono, estado, posicion, biografia, informe, visible, jugador.idEquipo, equipo.nombre as equipo, ruta FROM $this->nombreTabla INNER JOIN persona on persona.idPersona = jugador.idJugador LEFT JOIN equipo on equipo.idEquipo = jugador.idEquipo LEFT JOIN imagen on jugador.idJugador = imagen.idJugador where jugador.idJugador=?");
@@ -97,7 +103,8 @@ class JugadorDAO extends BaseDAO {
         }
     }
 
-    public function list() {
+    public function list()
+    {
         try {
             $result = null;
 
@@ -112,11 +119,13 @@ class JugadorDAO extends BaseDAO {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         parent::delete($id);
     }
 
-    public function getImage($id) {
+    public function getImage($id)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT ruta FROM $this->nombreTabla LEFT JOIN imagen on jugador.idJugador = imagen.idJugador where jugador.idJugador=?");
@@ -130,7 +139,8 @@ class JugadorDAO extends BaseDAO {
         }
     }
 
-    public function checkEquipo($nombreEquipo) {
+    public function checkEquipo($nombreEquipo)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT `idEquipo` FROM `equipo` WHERE `nombre`=?");
