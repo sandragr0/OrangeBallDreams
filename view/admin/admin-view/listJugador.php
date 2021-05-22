@@ -10,68 +10,81 @@ if ($result == null) {
     </div>
     <?php
 } else {
-    ?>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Visibilidad</th>
-                    <th>Estado</th>
-                    <th>Equipo</th>
-                    <th>Posicion</th>
-                    <th>Extracomunitario</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include_once '../model/dao/JugadorDAO.php';
-                include_once '../model/entity/Jugador.php';
-                foreach ($result as $jugador):
-                    ?>
-                    <tr class="jugador align-middle">
-                        <td class="py-3">
-                            <div class="row align-items-center w-100">
-                                <div class="col-auto">
-                                    <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><img src="<?php echo ".." . $jugador->getRuta() ?>" class="img-fluid rounded-circle" alt="<?php echo $jugador->getFullName() ?>" width="90"></a>
-                                </div>
-                                <div class="col-auto">
-                                    <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido() ?></a>
+?>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Visibilidad</th>
+            <th class="d-none d-md-table-cell">Estado</th>
+            <th class="d-none d-md-table-cell">Equipo</th>
+            <th class="d-none d-md-table-cell">Posicion</th>
+            <th class="d-none d-md-table-cell">Extracomunitario</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody>
+        <?php
+        include_once '../model/dao/JugadorDAO.php';
+        include_once '../model/entity/Jugador.php';
+        foreach ($result as $jugador):
+            ?>
+            <!-- Jugador -->
+            <tr class="jugador align-middle">
+                <td class="py-3">
+                    <div class="row align-items-center w-100">
+                        <div class="col-auto">
+                            <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><img
+                                        src="<?php echo ".." . $jugador->getRuta() ?>" class="img-fluid rounded-circle"
+                                        alt="<?php echo $jugador->getFullName() ?>" width="90"></a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido() ?></a>
 
-                                </div>
-                            </div>
-                        </td>
-                        <td class="py-3"><?php echo $jugador->getVisible() == 1 ? 'Visible' : "Oculto" ?></td>
-                        <td class="py-3"><?php
-                            if ($jugador->getEstado() == 1) {
-                                echo 'Disponible';
-                            } else if ($jugador->getEstado() == 0) {
-                                echo "Fichado";
-                            } else {
-                                "No especificado";
-                            }
-                            ?></td>
-                        <td class="py-3"><?php echo $jugador->getEquipo() != "" ? $jugador->getEquipo() : "-" ?></td>
-                        <td class="py-3"><?php echo ucfirst($jugador->getPosicion()) ?></td>
-                        <td class="py-3"><?php
-                            if ($jugador->getExtracomunitario() == 1) {
-                                echo 'Si';
-                            } else if ($jugador->getExtracomunitario() == 0) {
-                                echo "No";
-                            } else {
-                                "No especificado";
-                            }
-                            ?></td>
-                        <td class="py-3">
-                            <a class="boton-menu mx-1" href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>">Ver</a>
-                            <a class="boton-menu mx-1" href="?c=jugador&a=edit&id=<?php echo $jugador->getIdjugador() ?>">Editar</a>
-                            <a class="boton-menu mx-1" href="#"  data-bs-toggle="modal" data-bs-target="#confirm-delete">Eliminar</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </td>
+                <!-- Visible -->
+                <td class="py-3"><?php echo $jugador->getVisible() == 1 ? 'Visible' : "Oculto" ?></td>
+                <!-- Estado -->
+                <td class="py-3 d-none d-md-table-cell"><?php
+                    if ($jugador->getEstado() == 1) {
+                        echo 'Disponible';
+                    } else if ($jugador->getEstado() == 0) {
+                        echo "Fichado";
+                    } else {
+                        "No especificado";
+                    }
+                    ?></td>
+                <!-- Equipo -->
+                <td class="py-3 d-none d-md-table-cell"><?php echo $jugador->getEquipo() != "" ? $jugador->getEquipo() : "-" ?></td>
+                <!-- Posición -->
+                <td class="py-3 d-none d-md-table-cell"><?php echo ucfirst($jugador->getPosicion()) ?></td>
+                <!-- Extracomunitario -->
+                <td class="py-3 d-none d-md-table-cell"><?php
+                    if ($jugador->getExtracomunitario() == 1) {
+                        echo 'Si';
+                    } else if ($jugador->getExtracomunitario() == 0) {
+                        echo "No";
+                    } else {
+                        "No especificado";
+                    }
+                    ?></td>
+                <!-- Acciones -->
+                <td class="py-3">
+                    <div class="row w-100">
+                    <a class="boton-menu m-1 col-auto"
+                       href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>">Ver</a>
+                    <a class="boton-menu m-1 col-auto"
+                       href="?c=jugador&a=edit&id=<?php echo $jugador->getIdjugador() ?>">Editar</a>
+                    <a class="boton-menu m-1 col-auto" href="#" data-bs-toggle="modal"
+                       data-bs-target="#confirm-delete">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
     <?php } ?>
 </div>
 <!-- Modal -->

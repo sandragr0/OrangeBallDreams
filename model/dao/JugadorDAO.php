@@ -16,7 +16,6 @@ class JugadorDAO extends BaseDAO
 
     public function add(object $jugador)
     {
-        try {
             // Añadir persona
             $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
 
@@ -77,10 +76,6 @@ class JugadorDAO extends BaseDAO
                     $pdo->execute(array($idEquipo, $idJugador));
                 }
             }
-        } catch (Exception $e) {
-            Utilidades::logError($e);
-            echo $e->getMessage();
-        }
     }
 
     public function edit(object $objeto)

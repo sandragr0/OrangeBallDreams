@@ -18,21 +18,43 @@ class AdminControllerJugador extends AdminController
     public function add()
     {
         if (sizeof($_POST) == 0) {
-            include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
-            include_once '../view/admin/admin-panel-footer.php';
+           $this->showAddJugador();
         } else {
+            // Validar datos
             $error = $this->validarDatos($_POST, $_FILES);
+
             if ($error == 0) {
+                // Crear objeto jugador
                 $jugador = $this->createJugador($_POST, $_FILES);
-                $this->model->add($jugador);
-                header('Location: admin.php?c=jugador&a=list');
+
+                // Añadir jugador a la BD
+                try {
+                    $this->model->add($jugador);
+                    header('Location: admin.php?c=jugador&a=list');
+                } catch (Exception $e) {
+                    // Loguear error
+                    Utilidades::logError($e);
+
+                    // Mostrar error
+                    if ($e->getCode() == 23000) {
+                        $db_error = CodigosError::db_duplicate_entry;
+                    } else {
+                        $db_error = CodigosError::db_generic_error;
+                    }
+
+                    $this->showAddJugador();
+                }
             } else {
-                include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
-                include_once '../view/admin/admin-panel-footer.php';
+                $this->showAddJugador();
             }
         }
+    }
+
+    private function showAddJugador()
+    {
+        include_once '../view/admin/admin-panel-header.php';
+        include_once "../view/admin/admin-view/addJugador.php";
+        include_once '../view/admin/admin-panel-footer.php';
     }
 
     public function edit()
@@ -60,12 +82,12 @@ class AdminControllerJugador extends AdminController
         if (isset($_REQUEST['id'])) {
             // Borrar la imagen local del usuario
             $arrayImagen = $this->model->getImage($_REQUEST['id']);
-            if ($arrayImagen["ruta"] != "/assets/img/jugador/imagen-default.jpg") {
+            if ($arrayImagen["ruta"] != "/assets/img/jugador/default/imagen-default.jpg") {
                 $ruta = Utilidades::getDocumentRoot() . $arrayImagen["ruta"];
                 unlink($ruta);
             }
             // Borrar el jugador
-            $objeto = $this->model->delete($_REQUEST['id']);
+            $this->model->delete($_REQUEST['id']);
 
             // Redirigir a la página actual
             header('Location:' . $_SERVER["PHP_SELF"]);
