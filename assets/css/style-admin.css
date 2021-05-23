@@ -53,7 +53,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .boton-primario:hover {
     background-color: #F7941D !Important;
-    transition: background-color 0.3 ease-in;
 }
 
 /* Formulario login */
@@ -133,19 +132,10 @@ h1, h2, h3, h4, h5, h6 {
         background-color: #f8f9fa;
         transition: none !important;
     }
+    .navbar-brand {
+        border-right: none !important;
+    }
 
-}
-
-/*
-* Toggler
-*/
-.navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.navbar-light .navbar-toggler {
-    color: rgb(255 255 255 / 55%);
-    border-color: rgba(0, 0, 0, .1);
 }
 
 /*
@@ -162,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
     /* rtl:remove */
     left: 0;
     z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
+    padding: 74px 0 0; /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -198,35 +188,43 @@ h1, h2, h3, h4, h5, h6 {
     font-size: .75rem;
     text-transform: uppercase;
 }
+header, header a {
+    color: #212529;
+}
 
+header {
+    box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+}
+/*
+* Navbar brand
+*/
+
+.logo, .oculto-opacidad {
+    position: absolute;
+}
+.oculto-opacidad {
+    opacity: 0;
+    transition: all 0.3ms linear;
+}
+
+.navbar-brand:hover .oculto-opacidad {
+    opacity: 1;
+    transition: all 0.3ms linear;
+}
+.image-container {
+    height: 50px;
+    width: 160px;
+}
 /*
  * Navbar
  */
 
+
+
 .navbar-light .navbar-brand {
     color: #fff;
-    background-color: #F26522;
     text-transform: uppercase;
     font-family: 'poppins-bold';
-}
-
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:active, .navbar-light .navbar-brand:visited, .navbar-light .navbar-brand:link {
-    color: #fff !important;
-}
-
-.navbar-brand:hover::after {
-    opacity: 1;
-    transition: all 0.3ms linear;
-}
-
-.navbar-brand::after {
-    margin-left: 10px;
-    content: ">";
-    display: inline-block;
-    padding-right: 3px;
-    font-weight: 900;
-    opacity: 0;
-    transition: all 0.3ms linear;
 }
 
 .navbar-brand {
@@ -235,12 +233,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
 }
 
-header.bg-light {
-    background-color: #ff9800 !important;
-}
-
 .navbar .navbar-toggler {
-    top: .25rem;
+    top: 0.9rem;
     right: 1rem;
 }
 
