@@ -66,7 +66,7 @@ abstract class BaseDAO {
         }
     }
 
-    abstract function edit(object $objeto);
+    abstract function edit($id, object $objeto);
 
     abstract function add(object $objeto);
 }

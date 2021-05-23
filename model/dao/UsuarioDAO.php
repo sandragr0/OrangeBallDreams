@@ -24,7 +24,7 @@ class UsuarioDAO extends BaseDAO
 
     }
 
-    public function edit(object $objeto)
+    public function edit($id, object $objeto)
     {
 
     }
