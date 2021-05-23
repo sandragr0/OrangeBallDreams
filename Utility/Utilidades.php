@@ -187,7 +187,7 @@ abstract class Utilidades
         if (!file_exists($log_filename)) {
             fopen($log_filename ,"x");
         }
-        error_log($e->getMessage() . "\n", 3, $log_filename);
+        error_log(date("H:i:s") . " ". $e->getMessage() . "\n", 3, $log_filename);
     }
 
 
