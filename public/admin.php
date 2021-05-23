@@ -4,6 +4,7 @@
 session_start();
 include_once '../controller/admin/AdminControllerJugador.php';
 include_once '../controller/admin/AdminControllerUsuario.php';
+include_once '../controller/admin/AdminControllerEquipo.php';
 
 // Obtener parámetros de la sesión
 $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
