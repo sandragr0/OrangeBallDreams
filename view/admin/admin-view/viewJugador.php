@@ -107,8 +107,8 @@
                 <label for="estado" class="form-label">Estado</label>
                 <select disabled class="form-select" id="estado" name="estado">
                     <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>No especificado</option>
-                    <option value="0" <?php echo $objeto->getEstado() == "0" ? "selected" : "" ?>>Disponible</option>
-                    <option value="1"  <?php echo $objeto->getEstado() == "1" ? "selected" : "" ?>>Fichado</option>
+                    <option value="disponible" <?php echo $objeto->getEstado() == "disponible" ? "selected" : "" ?>>Disponible</option>
+                    <option value="fichado"  <?php echo $objeto->getEstado() == "fichado" ? "selected" : "" ?>>Fichado</option>
                 </select>
             </div>
             <!-- Equipo -->

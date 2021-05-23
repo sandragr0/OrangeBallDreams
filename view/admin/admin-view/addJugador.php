@@ -223,10 +223,10 @@
                     <option value="null" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "null" ? "selected" : "" : "" ?>>
                         No especificado
                     </option>
-                    <option value="1" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "1" ? "selected" : "" : "" ?>>
+                    <option value="disponible" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "disponible" ? "selected" : "" : "" ?>>
                         Disponible
                     </option>
-                    <option value="0" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "0" ? "selected" : "" : "" ?>>
+                    <option value="fichado" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "fichado" ? "selected" : "" : "" ?>>
                         Fichado
                     </option>
                 </select>

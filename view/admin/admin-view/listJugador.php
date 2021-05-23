@@ -48,12 +48,12 @@ if ($result == null) {
                 <td class="py-3"><?php echo $jugador->getVisible() == 1 ? 'Visible' : "Oculto" ?></td>
                 <!-- Estado -->
                 <td class="py-3 d-none d-md-table-cell"><?php
-                    if ($jugador->getEstado() == 1) {
+                    if ($jugador->getEstado() == "disponible") {
                         echo 'Disponible';
-                    } else if ($jugador->getEstado() == 0) {
+                    } else if ($jugador->getEstado() == "fichado") {
                         echo "Fichado";
                     } else {
-                        "No especificado";
+                       echo "No especificado";
                     }
                     ?></td>
                 <!-- Equipo -->
@@ -77,14 +77,13 @@ if ($result == null) {
                            href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>">Ver</a>
                         <a class="boton-menu m-1 col-auto"
                            href="?c=jugador&a=edit&id=<?php echo $jugador->getIdjugador() ?>">Editar</a>
-                        <a class="boton-menu m-1 col-auto" href="#" data-bs-toggle="modal"
-                           data-bs-target="#confirm-delete">Eliminar</a>
+                        <a class="boton-menu m-1 col-auto" href="#" data-id=<?php echo $jugador->getIdjugador() ?> data-bs-toggle="modal"
+                           data-bs-target="#confirm-delete-<?php echo $jugador->getIdjugador() ?>">Eliminar</a>
                     </div>
                 </td>
             </tr>
-
             <!-- Modal -->
-            <div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="confirm-delete-<?php echo $jugador->getIdjugador() ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -109,5 +108,4 @@ if ($result == null) {
     </table>
     <?php } ?>
 </div>
-
 </main>

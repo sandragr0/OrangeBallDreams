@@ -224,7 +224,7 @@
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
                 <select class="form-select" id="estado" name="estado">
-                    <option value="no especificado" <?php echo $objeto->getEstado() == "no especificado" ? "selected" : "" ?>>
+                    <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>
                         No especificado
                     </option>
                     <option value="disponible" <?php echo $objeto->getEstado() == "disponible" ? "selected" : "" ?>>

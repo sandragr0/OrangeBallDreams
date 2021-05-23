@@ -33,12 +33,12 @@ if ($result == null) {
                     <a class="boton-menu m-1 col-auto"
                        href="?c=equipo&a=edit&id=<?php echo $equipo->getIdEquipo() ?>">Editar</a>
                     <a class="boton-menu m-1 col-auto" href="#" data-bs-toggle="modal"
-                       data-bs-target="#confirm-delete">Eliminar</a>
+                       data-bs-target="#confirm-delete-<?php echo $equipo->getIdEquipo() ?>">Eliminar</a>
                 </div>
             </td>
         </tr>
         <!-- Modal -->
-        <div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirm-delete-<?php echo $equipo->getIdEquipo() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
