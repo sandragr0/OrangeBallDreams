@@ -6,7 +6,7 @@ include_once('../utility/CodigosError.php');
 /**
  * Class AdminController
  */
-class AdminController {
+abstract class AdminController {
 
     /**
      * @var mixed
