@@ -13,6 +13,20 @@ abstract class BaseDAO {
         $this->conexion = Database::connect();
     }
 
+    function view($id) {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchObject($this->nombreTabla);
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     function list() {
         try {
             $result = null;
@@ -32,35 +46,6 @@ abstract class BaseDAO {
         try {
             $stm = $this->conexion->prepare("DELETE FROM $this->nombreTabla where id$this->nombreTabla = ?");
             $stm->execute(array($id));
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    
-    function view($id) {
-        try {
-            $result = null;
-            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
-            $stm->execute(array($id));
-            if ($stm->rowCount() != 0) {
-                $result = $stm->fetchObject($this->nombreTabla);
-            }
-            return $result;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    function exists($id) {
-        try {
-            $result = false;
-            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
-            $stm->execute(array($id));
-            if ($stm->rowCount() != 0) {
-                $result = true;
-            }
-            return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }
