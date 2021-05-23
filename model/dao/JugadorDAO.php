@@ -16,72 +16,132 @@ class JugadorDAO extends BaseDAO
 
     public function add(object $jugador)
     {
-            // Añadir persona
-            $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
+        // Añadir persona
+        $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
 
-            $pdo->execute(
-                array(
-                    $jugador->getDni(),
-                    $jugador->getNombre(),
-                    $jugador->getPrimerApellido(),
-                    $jugador->getSegundoApellido(),
-                    $jugador->getTelefono()
-                )
-            );
+        $pdo->execute(
+            array(
+                $jugador->getDni(),
+                $jugador->getNombre(),
+                $jugador->getPrimerApellido(),
+                $jugador->getSegundoApellido(),
+                $jugador->getTelefono()
+            )
+        );
 
-            $idJugador = $this->conexion->lastInsertId();
+        $idJugador = $this->conexion->lastInsertId();
 
-            // Añadir jugador
-            $pdo = $this->conexion->prepare('INSERT INTO `jugador`(`idJugador`, `genero`, `altura`, `extracomunitario`, `fechaNacimiento`, `estado`, `posicion`, `biografia`, `informe`, `visible`) VALUES (?,?,?,?,?,?,?,?,?,?)');
+        // Añadir jugador
+        $pdo = $this->conexion->prepare('INSERT INTO `jugador`(`idJugador`, `genero`, `altura`, `extracomunitario`, `fechaNacimiento`, `estado`, `posicion`, `biografia`, `informe`, `visible`) VALUES (?,?,?,?,?,?,?,?,?,?)');
 
-            $pdo->execute(
-                array(
-                    $idJugador,
-                    $jugador->getGenero(),
-                    $jugador->getAltura(),
-                    $jugador->getExtracomunitario(),
-                    $jugador->getFechaNacimiento(),
-                    $jugador->getEstado(),
-                    $jugador->getPosicion(),
-                    $jugador->getBiografia(),
-                    $jugador->getInforme(),
-                    $jugador->getVisible()
-                )
-            );
+        $pdo->execute(
+            array(
+                $idJugador,
+                $jugador->getGenero(),
+                $jugador->getAltura(),
+                $jugador->getExtracomunitario(),
+                $jugador->getFechaNacimiento(),
+                $jugador->getEstado(),
+                $jugador->getPosicion(),
+                $jugador->getBiografia(),
+                $jugador->getInforme(),
+                $jugador->getVisible()
+            )
+        );
 
-            // Añadir imagen del usuario
-            $pdo = $this->conexion->prepare("INSERT INTO `imagen`(`ruta`,`idJugador`) VALUES(?,?)");
+        // Añadir imagen del usuario
+        $pdo = $this->conexion->prepare("INSERT INTO `imagen`(`ruta`,`idJugador`) VALUES(?,?)");
 
-            $pdo->execute(
-                array(
-                    $jugador->getRuta(),
-                    $idJugador
-                )
-            );
+        $pdo->execute(
+            array(
+                $jugador->getRuta(),
+                $idJugador
+            )
+        );
 
-            // Añadir equipo 
-            if ($jugador->getEquipo != "") {
-                $idEquipo = $this->checkEquipo($jugador->getEquipo());
-                if ($idEquipo != null) {
-                    $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                    $pdo->execute(array($idEquipo, $idJugador));
-                } else {
-                    $pdo = $this->conexion->prepare('INSERT INTO `equipo`(`nombre`) VALUES (?)');
-                    $pdo->execute(array($jugador->getEquipo()));
+        // Añadir equipo
+        if ($jugador->getEquipo() != "") {
 
-                    $idEquipo = $this->conexion->lastInsertId();
+            $idEquipo = $this->checkEquipo($jugador->getEquipo());
+            echo $idEquipo;
+            if ($idEquipo != null) {
+                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+                $pdo->execute(array($idEquipo, $idJugador));
+            } else {
+                $pdo = $this->conexion->prepare('INSERT INTO `equipo`(`nombre`) VALUES (?)');
+                $pdo->execute(array($jugador->getEquipo()));
+
+                $idEquipo = $this->conexion->lastInsertId();
 
 
-                    $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                    $pdo->execute(array($idEquipo, $idJugador));
-                }
+                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+                $pdo->execute(array($idEquipo, $idJugador));
             }
+        }
     }
 
-    public function edit(object $objeto)
+    public function edit($idJugador, object $jugador)
     {
-        return null;
+        // Editar persona
+        $pdo = $this->conexion->prepare('UPDATE `persona` set `dni`=?, `nombre`=?, `primerApellido`=?, `segundoApellido`=?, `telefono`=? where `idPersona`=? ');
+
+        $pdo->execute(
+            array(
+                $jugador->getDni(),
+                $jugador->getNombre(),
+                $jugador->getPrimerApellido(),
+                $jugador->getSegundoApellido(),
+                $jugador->getTelefono(),
+                $idJugador
+            )
+        );
+
+        // Añadir jugador
+        $pdo = $this->conexion->prepare('UPDATE `jugador` set `genero`=?, `altura`=?, `extracomunitario`=?, `fechaNacimiento`=?, `estado`=?, `posicion`=?, `biografia`=?, `informe`=?, `visible`=? where idJugador=?');
+
+        $pdo->execute(
+            array(
+                $jugador->getGenero(),
+                $jugador->getAltura(),
+                $jugador->getExtracomunitario(),
+                $jugador->getFechaNacimiento(),
+                $jugador->getEstado(),
+                $jugador->getPosicion(),
+                $jugador->getBiografia(),
+                $jugador->getInforme(),
+                $jugador->getVisible(),
+                $idJugador
+            )
+        );
+
+        // Añadir imagen del usuario
+        $pdo = $this->conexion->prepare("UPDATE `imagen` set `ruta`=? where idJugador=?");
+
+        $pdo->execute(
+            array(
+                $jugador->getRuta(),
+                $idJugador
+            )
+        );
+
+        // Añadir equipo
+        if ($jugador->getEquipo() != "") {
+            $idEquipo = $this->checkEquipo($jugador->getEquipo());
+            if ($idEquipo != null) {
+                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+                $pdo->execute(array($idEquipo, $idJugador));
+            } else {
+                $pdo = $this->conexion->prepare('INSERT INTO `equipo`(`nombre`) VALUES (?)');
+                $pdo->execute(array($jugador->getEquipo()));
+
+                $idEquipo = $this->conexion->lastInsertId();
+
+                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+                $pdo->execute(array($idEquipo, $idJugador));
+            }
+        }
     }
+
 
     function view($id)
     {
@@ -98,7 +158,7 @@ class JugadorDAO extends BaseDAO
         }
     }
 
-    public function list()
+    function list()
     {
         try {
             $result = null;
@@ -143,7 +203,7 @@ class JugadorDAO extends BaseDAO
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetch(PDO::FETCH_ASSOC);
             }
-            return $result;
+            return $result["idEquipo"];
         } catch (Exception $e) {
             die($e->getMessage());
         }
