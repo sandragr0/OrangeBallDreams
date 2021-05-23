@@ -18,49 +18,80 @@ class AdminControllerJugador extends AdminController
     public function add()
     {
         if (sizeof($_POST) == 0) {
-           $this->showAddJugador();
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/addJugador.php";
+            include_once '../view/admin/admin-panel-footer.php';
         } else {
-            // Validar datos
             $error = $this->validarDatos($_POST, $_FILES);
 
             if ($error == 0) {
-                // Crear objeto jugador
                 $jugador = $this->createJugador($_POST, $_FILES);
-
-                // Añadir jugador a la BD
                 try {
                     $this->model->add($jugador);
                     header('Location: admin.php?c=jugador&a=list');
                 } catch (Exception $e) {
-                    // Loguear error
                     Utilidades::logError($e);
-
-                    // Mostrar error
                     if ($e->getCode() == 23000) {
                         $db_error = CodigosError::db_duplicate_entry;
                     } else {
                         $db_error = CodigosError::db_generic_error;
                     }
-
-                    $this->showAddJugador();
+                    include_once '../view/admin/admin-panel-header.php';
+                    include_once "../view/admin/admin-view/addJugador.php";
+                    include_once '../view/admin/admin-panel-footer.php';
                 }
             } else {
-                $this->showAddJugador();
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/addJugador.php";
+                include_once '../view/admin/admin-panel-footer.php';
             }
         }
     }
 
-    private function showAddJugador()
-    {
-        include_once '../view/admin/admin-panel-header.php';
-        include_once "../view/admin/admin-view/addJugador.php";
-        include_once '../view/admin/admin-panel-footer.php';
-    }
-
     public function edit()
     {
-        parent::edit();
+        if (isset($_REQUEST['id'])) {
+            $objeto = $this->model->view($_REQUEST['id']);
+        } else {
+            $objeto = null;
+        }
+
+        if ($objeto == null) {
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/error.php";
+            include_once '../view/admin/admin-panel-footer.php';
+        } else {
+            if (sizeof($_POST) == 0) {
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/editJugador.php";
+                include_once '../view/admin/admin-panel-footer.php';
+            } else {
+                $error = $this->validarDatos($_POST, $_FILES);
+                if ($error == 0) {
+                    $jugador = $this->createJugador($_POST, $_FILES);
+                    try {
+                        $this->model->edit($_REQUEST["id"], $jugador);
+                        header('Location: admin.php?c=jugador&a=view&id=' . $_GET["id"]);
+                    } catch (Exception $e) {
+                        Utilidades::logError($e);
+                        if ($e->getCode() == 23000) {
+                            $db_error = CodigosError::db_duplicate_entry;
+                        } else {
+                            $db_error = CodigosError::db_generic_error;
+                        }
+                        include_once '../view/admin/admin-panel-header.php';
+                        include_once "../view/admin/admin-view/editJugador.php";
+                        include_once '../view/admin/admin-panel-footer.php';
+                    }
+                } else {
+                    include_once '../view/admin/admin-panel-header.php';
+                    include_once "../view/admin/admin-view/editJugador.php";
+                    include_once '../view/admin/admin-panel-footer.php';
+                }
+            }
+        }
     }
+
 
     public function insert(object $object)
     {
@@ -162,10 +193,11 @@ class AdminControllerJugador extends AdminController
         return 0;
     }
 
+
     private function createJugador($datos, $archivos)
     {
-        $jugador = new Jugador();
         // Limpiar datos y mapearlos
+        $jugador = new Jugador();
         $jugador->setNombre(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["nombre"])));
         $jugador->setPrimerApellido(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["apellido1"])));
         $jugador->setSegundoApellido(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["apellido2"])));
@@ -178,21 +210,26 @@ class AdminControllerJugador extends AdminController
         $jugador->setPosicion($datos["posicion"]);
         $jugador->setExtracomunitario($datos["extracomunitario"]);
         $jugador->setEstado($datos["estado"]);
-        $jugador->setEquipo(mb_strtoupper(Utilidades::cleanString($datos["equipo"])));
+        $jugador->setEquipo(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["equipo"])));
         $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["biografia"])));
         $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["informe"])));
 
-        $nombreImagen = $datos["nombre"] . "-" . $datos["apellido1"];
-        $ext = pathinfo($archivos["imagen"]["name"], PATHINFO_EXTENSION);
-
-
-        $isImagenSubida = $this->guardarImagen($archivos, $nombreImagen, $ext);
-        if ($isImagenSubida) {
-            $ruta = "/assets/img/jugador/uploads/" . $nombreImagen . "." . "$ext";
-            $jugador->setRuta($ruta);
+        // Imagen del jugador
+        if (isset($datos["antiguaRuta"]) && empty($archivos["imagen"]["name"])) {
+            $jugador->setRuta($datos["antiguaRuta"]);
         } else {
-            $ruta = "/assets/img/jugador/default/imagen-default.jpg";
-            $jugador->setRuta($ruta);
+            $nombreImagen = $datos["nombre"] . "-" . $datos["apellido1"];
+            $ext = pathinfo($archivos["imagen"]["name"], PATHINFO_EXTENSION);
+
+
+            $isImagenSubida = $this->guardarImagen($archivos, $nombreImagen, $ext);
+            if ($isImagenSubida) {
+                $ruta = "/assets/img/jugador/uploads/" . $nombreImagen . "." . "$ext";
+                $jugador->setRuta($ruta);
+            } else {
+                $ruta = "/assets/img/jugador/default/imagen-default.jpg";
+                $jugador->setRuta($ruta);
+            }
         }
         return $jugador;
     }

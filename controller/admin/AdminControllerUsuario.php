@@ -15,7 +15,7 @@ class AdminControllerUsuario extends AdminController {
 
     public function login() {
         if (sizeof($_POST) == 0) {
-            include_once '../view/admin/login-admin.php';
+            include_once '../view/admin/admin-view/login-admin.php';
         } else {
             $usuario = isset($_POST['user']) ? Utilidades::cleanString($_POST['user']) : null;
             $pass = isset($_POST['password']) ? Utilidades::cleanString($_POST['password']) : null;
@@ -25,7 +25,7 @@ class AdminControllerUsuario extends AdminController {
                 $this->model->createSesionUsuario($usuario);
                 header('Location: admin.php?c=jugador&a=list');
             } else {
-                include_once '../view/admin/login-admin.php';
+                include_once '../view/admin/admin-view/login-admin.php';
             }
         }
     }
@@ -33,7 +33,7 @@ class AdminControllerUsuario extends AdminController {
     public function exit() {
         $_SESSION['usuario'] = null;
         session_destroy();
-        include_once '../view/admin/login-admin.php';
+        include_once '../view/admin/admin-view/login-admin.php';
     }
 
     public function add() {
