@@ -17,7 +17,6 @@
 </div>
 <form>
     <div class="row">
-
         <div class="col-12 col-lg-3 col-xl-2 me-lg-4">
             <!-- Imagen -->
             <div class="text-center mb-2">
