@@ -18,8 +18,14 @@ class EquipoDAO extends BaseDAO {
         );
     }
 
-    public function edit($id, object $objeto) {
-        
+    public function edit($id, object $equipo)
+    {
+        $pdo = $this->conexion->prepare('UPDATE `equipo` set `nombre`=?');
+        $pdo->execute(
+            array(
+                $equipo->getNombre(),
+            )
+        );
     }
 
     public function view($id) {
@@ -47,6 +53,15 @@ class EquipoDAO extends BaseDAO {
     public function deleteJugador($id) {
         try {
             $stm = $this->conexion->prepare("UPDATE jugador set idEquipo=null where idJugador=?");
+            $stm->execute(array($id));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteJugadorSetDispo($id) {
+        try {
+            $stm = $this->conexion->prepare("UPDATE jugador set idEquipo=null, estado='disponible' where idJugador=?");
             $stm->execute(array($id));
         } catch (Exception $e) {
             die($e->getMessage());
