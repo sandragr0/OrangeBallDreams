@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="temporada" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Temporada *</label>
-                <input type="text" list="datalistOptions" class="form-control" id="temporada" name="temporada"
+                <input type="text" autocomplete="off" list="datalistOptions" class="form-control" id="temporada" name="temporada"
                        value="<?php echo isset($_POST["temporada"]) ? $_POST["temporada"] : "" ?>">
                 <datalist id="datalistOptions">
                     <option value="<?php echo date("y") - 1 . "-" . date("y") ?>">
