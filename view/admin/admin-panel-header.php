@@ -23,18 +23,18 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
 <!-- Cabecera -->
 <header class="navbar navbar-light sticky-top bg-white flex-md-nowrap p-0 align-items-center">
     <div class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fw-bold border-end">
-            <div class="image-container">
-                <a href="inicio.php" target="_blank">
+        <div class="image-container">
+            <a href="inicio.php" target="_blank">
                 <img src="../assets/img/logo.png" height="50" alt="Orange Ball Dreams logo" class="align-text-top logo"
                      id="logo">
                 <img src="../assets/img/logo-animado.gif" height="50" alt="Orange Ball Dreams logo"
                      class="align-text-top logo oculto-opacidad" id="logo-animado">
-                </a>
-            </div>
+            </a>
+        </div>
 
     </div>
-    <div class="d-inline px-3">
-    <span class="nav-link d-block w-100 text-md-end text-start navbar-nav">Hola, <a
+    <div class="d-block d-md-inline w-100 px-3">
+        <span class="d-block nav-link text-md-end text-start navbar-nav">Hola, <a
                 href="?c=cuenta&a=view&id=<?php echo $_SESSION['idUsuario']; ?>"><?php echo Utilidades::mb_ucfirst($_SESSION['usuario']); ?></a> | <a
                 href="?c=usuario&a=exit">Cerrar sesión</a></span>
     </div>
@@ -50,6 +50,7 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
     <nav id="sidebarMenu" class="col-12 col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
         <div class="position-sticky pt-3">
             <ul class="list-unstyled ps-0">
+                <!-- Jugadores -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
                             data-bs-target="#jugador-collapse" aria-expanded="true">
@@ -66,32 +67,48 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                         </ul>
                     </div>
                 </li>
+                <!-- Estadisticas -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
-                            data-bs-target="#cuenta-collapse" aria-expanded="true">
+                            data-bs-target="#estadisticas-collapse" aria-expanded="true">
                         Estadísticas
                     </button>
-                    <div class="collapse show" id="cuenta-collapse" style="">
+                    <div class="collapse show" id="estadisticas-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Añadir estadísticas</a></li>
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Ver estadísticas</a></li>
+                            <li><a href="?c=estadistica&a=list" class="link-dark rounded">Ver estadísticas</a></li>
+                            <li><a href="?c=estadistica&a=add" class="link-dark rounded">Añadir estadística</a></li>
                         </ul>
                     </div>
                 </li>
-
+                <!-- Nacionalidad -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
-                            data-bs-target="#cuenta-collapse" aria-expanded="true">
-                        Vídeos
+                            data-bs-target="#nacionalidad-collapse" aria-expanded="true">
+                        Nacionalidades
                     </button>
-                    <div class="collapse show" id="cuenta-collapse" style="">
+                    <div class="collapse show" id="nacionalidad-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Ver vídeos</a></li>
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Añadir vídeo</a></li>
+                            <li><a href="?c=nacionalidad&a=list" class="link-dark rounded">Ver nacionalidades</a></li>
+                            <li><a href="?c=nacionalidad&a=add" class="link-dark rounded">Añadir nacionalidad</a></li>
                         </ul>
                     </div>
                 </li>
+                <!-- Vídeos -->
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
+                            data-bs-target="#videos-collapse" aria-expanded="true">
+                        Vídeos
+                    </button>
+                    <div class="collapse show" id="videos-collapse" style="">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="?c=video&a=list" class="link-dark rounded">Ver vídeos</a></li>
+                            <li><a href="?c=videos&a=add" class="link-dark rounded">Añadir vídeo</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Separador -->
                 <li class="border-top my-3"></li>
+                <!-- Equipos -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
                             data-bs-target="#equipo-collapse" aria-expanded="true">
@@ -108,23 +125,26 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                         </ul>
                     </div>
                 </li>
+                <!-- Contactos -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
-                            data-bs-target="#equipo-collapse" aria-expanded="true">
+                            data-bs-target="#contacto-collapse" aria-expanded="true">
                         Contactos
                     </button>
-                    <div class="collapse show" id="equipo-collapse" style="">
+                    <div class="collapse show" id="contacto-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=equipo&a=list"
+                            <li><a href="?c=contacto&a=list"
                                    class="link-dark rounded <?php echo ($controller == "equipo" && $action == "list") ? "active" : "" ?>">Ver
                                     contactos</a></li>
-                            <li><a href="?c=equipo&a=add"
+                            <li><a href="?c=contacto&a=add"
                                    class="link-dark rounded <?php echo ($controller == "equipo" && $action == "add") ? "active" : "" ?>">Añadir
                                     contacto</a></li>
                         </ul>
                     </div>
                 </li>
+                <!-- Separador -->
                 <li class="border-top my-3"></li>
+                <!-- Usuarios -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
                             data-bs-target="#usuario-collapse" aria-expanded="true">
