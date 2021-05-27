@@ -26,9 +26,7 @@
     </div>
 </form>
 <!-- Jugadores -->
-<?php
-if ($jugadores != null) {
-?>
+<?php if ($jugadores != null) { ?>
 <span>Jugadores</span>
 <table class="table mt-1">
     <thead>

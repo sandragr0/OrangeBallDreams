@@ -1,3 +1,18 @@
+// Scripts generales (afectan a todas las páginas) ----------------------------------------------
+// Mostrar tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+// Functiones de utilidades ----------------------------------------------
+function isEmpty(string) {
+    if (string == "") {
+    } else {
+        return false;
+    }
+}
+
+// Específico de la página login ----------------------------------------------
 function visibilidadPass() {
     var ojo = document.getElementById("ojo");
     var input = document.getElementById("password");
@@ -38,7 +53,6 @@ function checkFormulario() {
         error6.style.display = "none";
     }
 
-
     // Flag errores
     var errores = false;
 
@@ -62,69 +76,87 @@ function checkFormulario() {
 
     // Comprobar si hay errores
     if (errores) {
-        console.log("aqui");
         return false;
     } else {
         return true;
     }
 }
 
-function isEmpty(string) {
-    if (string == "") {
-        return true;
-    } else {
-        return false;
-    }
-}
+// Específico de la página estadísticas ----------------------------------------------
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
-
-
-$(document).ready(function () {
-    var id = $("select#jugador option:selected").val();
+function mostrarEstadisticas() {
+    // Llamar por primera vez al cargar la página
+    const id = $("select#jugadorList option:selected").val();
     getData(id);
-    $("select#jugador").change(function () {
-        var id = $("select#jugador option:selected").val();
+
+    // Llamar cada vez que se cambia de jugador
+    $("select#jugadorList").change(function () {
+        var id = $("select#jugadorList option:selected").val();
         getData(id);
     });
-});
+}
 
 function getData(id) {
-    fetch("http://localhost/OrangeBallDreams/assets/estadisticas.json")
-        .then((resp) => resp.json()) // Transform the data into json
-        .then(function (data) {
-                // Filtrar el json
-                var filteredData = $(data).filter(function (i, n) {
-                    return n.idJugador === id
+    fetch("http://localhost/OrangeBallDreams/assets/data/estadisticas.json")
+        .then((resp) => resp.json()) // Transformar los datos a JSON
+        .then(function (datos) {
+                const datosFiltrados = $(datos).filter(function (datos, datoFiltrado) { // Filtrar el json
+                    return datoFiltrado.idJugador === id
                 });
-                if (filteredData.length != 0) {
-                    var content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>Equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th></tr>';
-                    for (i = 0; i < filteredData.length; i++) {
-                         content +=
-                            "<tr>"+
-                            "<td>" + filteredData[i].temporada + "</td>" +
-                            "<td>" + filteredData[i].nombreLiga + "</td>" +
-                            "<td>" + filteredData[i].nombreEquipo + "</td>" +
-                            "<td>" + filteredData[i].PPP + "</td>" +
-                            "<td>" + filteredData[i].APP + "</td>" +
-                            "<td>" + filteredData[i].RPP + "</td>" +
-                            "<td>" + filteredData[i].porcentajeDobles + "</td>" +
-                            "<td>" + filteredData[i].porcentajeTriples + "</td>" +
-                            "<td>" + filteredData[i].porcentajeTL + "</td>" +
-                            "<td>" + filteredData[i].MIN + "</td>" +
-                            "<td>" + filteredData[i].ROB + "</td>" +
-                            "<td>" + filteredData[i].TAP + "</td>" +
+
+                if (datosFiltrados.length != 0) {
+                    let content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>Equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th><th>Acciones</th></tr>';
+                    for (i = 0; i < datosFiltrados.length; i++) {
+                        content +=
+                            "<tr class='align-middle'>" +
+                            "<td class='py-3'>" + datosFiltrados[i].temporada + "</td>" +
+                            "<td>" + datosFiltrados[i].nombreLiga + "</td>" +
+                            "<td>" + datosFiltrados[i].nombreEquipo + "</td>" +
+                            "<td>" + datosFiltrados[i].PPP + "</td>" +
+                            "<td>" + datosFiltrados[i].APP + "</td>" +
+                            "<td>" + datosFiltrados[i].RPP + "</td>" +
+                            "<td>" + datosFiltrados[i].porcentajeDobles + "</td>" +
+                            "<td>" + datosFiltrados[i].porcentajeTriples + "</td>" +
+                            "<td>" + datosFiltrados[i].porcentajeTL + "</td>" +
+                            "<td>" + datosFiltrados[i].MIN + "</td>" +
+                            "<td>" + datosFiltrados[i].ROB + "</td>" +
+                            "<td>" + datosFiltrados[i].TAP + "</td>" +
+                            "<td>" +
+                            "<a href='?c=estadistica&a=edit&id=" + datosFiltrados[i].idEstadistica + "' class='boton-menu m-1 col-auto'>Editar</a>" +
+                            "<a href=# data-bs-toggle='modal' data-bs-target='#confirm-delete' data-id='" + datosFiltrados[i].idEstadistica + "' class='boton-menu m-1 col-auto botonEliminarEstadistica'>Eliminar</a>" +
+                            "</td>" +
                             "</tr>";
                     }
-                    content +='</table>';
-                    $("#panel_infoUsuario").html(content);
+                    content += '</table>';
+                    $("#panel_estadisticas").html(content);
                 } else {
-                    $("#panel_infoUsuario").text("El jugador aún no tiene estadísticas");
+                    $("#panel_estadisticas").html("El jugador aún no tiene estadísticas. <a href='?c=estadistica&a=add'>¿Quieres añadir una estadística?</a>");
                 }
 
             }
         );
-
 }
+
+// Botones borrar para los modales ----------------------------------------------
+
+$(document).on("click", ".botonEliminarJugador", function () {
+    const id = $(this).attr('data-id');
+    $("#link-eliminar").attr("href", "?c=jugador&a=delete&id=" + id)
+});
+
+$(document).on("click", ".botonEliminarEstadistica", function () {
+    const id = $(this).attr('data-id');
+    $("#link-eliminar").attr("href", "?c=estadistica&a=delete&id=" + id)
+});
+
+$(document).on("click", ".botonEliminarEquipo", function () {
+    const id = $(this).attr('data-id');
+    $("#<link-eliminar>").attr("href", "?c=equipo&a=delete&id=" + id)
+});
+
+$(document).on("click", ".botonEliminarJugadorEquipo", function () {
+    const idEquipo = $(this).attr('data-idequipo');
+    const idJugador = $(this).attr('data-idjugador');
+    $("#link-eliminar").attr("href", "?c=jugador&a=delete&id=" + idEquipo + "&a=deleteJugador&idJugador" + idJugador)
+    $("#link-eliminar-dispo").attr("href", "?c=equipo&id" + idEquipo + "&a=deleteJugadorSetDispo&idJugador=" + idJugador)
+});
