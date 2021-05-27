@@ -2,4 +2,4 @@
 assets/img/Jugador/uploads/*
 .idea
 logs/*
-assets/data/estadisticas.json
+assets/data/*
