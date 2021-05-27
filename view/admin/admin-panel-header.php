@@ -80,19 +80,6 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                         </ul>
                     </div>
                 </li>
-                <!-- Nacionalidad -->
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
-                            data-bs-target="#nacionalidad-collapse" aria-expanded="true">
-                        Nacionalidades
-                    </button>
-                    <div class="collapse show" id="nacionalidad-collapse" style="">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=nacionalidad&a=list" class="link-dark rounded">Ver nacionalidades</a></li>
-                            <li><a href="?c=nacionalidad&a=add" class="link-dark rounded">Añadir nacionalidad</a></li>
-                        </ul>
-                    </div>
-                </li>
                 <!-- Vídeos -->
                 <li class="mb-1">
                     <button class="btn btn-toggle align-items-center rounded mb-2" data-bs-toggle="collapse"
