@@ -45,5 +45,7 @@ abstract class CodigosError
     const rob_invalid = 29;
     const min_invalid = 30;
 
-
+    // Códigos de error de vídeos
+    const ruta_empty = 31;
+    const ruta_invalid = 32;
 }
