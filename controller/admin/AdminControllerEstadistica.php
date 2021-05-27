@@ -13,20 +13,30 @@ class AdminControllerEstadistica extends AdminController
         parent::__construct($this->controllerName, $this->model);
     }
 
-public function list()
-{
-    include_once '../view/admin/admin-panel-header.php';
-    $list = $this->model->list();
-    // Crear json
-    $json = json_encode($list,JSON_PRETTY_PRINT);
-    $file = fopen(Utilidades::getDocumentRoot(). '/assets/estadisticas.json', 'w');
-    fwrite($file, $json);
-    fclose($file);
-    $jugadores = $this->model->getJugadores();
-    include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
-    include_once '../view/admin/admin-panel-footer.php';
+    public function delete()
+    {
+        parent::delete();
+        // Redirigir a la página actual
+        header('Location:?c=estadistica&a=list');
+    }
 
-}
+
+    public function list()
+    {
+        include_once '../view/admin/admin-panel-header.php';
+        $listaEstadisticas = $this->model->list();
+
+        $json = json_encode($listaEstadisticas, JSON_PRETTY_PRINT);
+
+        $file = fopen(Utilidades::getDocumentRoot() . '/assets/data/estadisticas.json', 'w');
+        fwrite($file, $json);
+        fclose($file);
+
+        $jugadores = $this->model->getJugadores();
+
+        include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
+        include_once '../view/admin/admin-panel-footer.php';
+    }
 
     public function add()
     {
@@ -168,18 +178,18 @@ public function list()
     {
         $estadistica = new Estadistica();
         $estadistica->setIdJugador($datos["jugador"]);
-        $estadistica->setTemporada(Utilidades::cleanString($datos["temporada"]));
-        $estadistica->setNombreEquipo(Utilidades::cleanString($datos["nombreEquipo"]));
-        $estadistica->setNombreLiga(Utilidades::cleanString($datos["nombreLiga"]));
-        $estadistica->setPPP(Utilidades::cleanString($datos["PPP"]));
-        $estadistica->setAPP(Utilidades::cleanString($datos["APP"]));
-        $estadistica->setRPP(Utilidades::cleanString($datos["RPP"]));
-        $estadistica->setPorcentajeDobles(Utilidades::cleanString($datos["porcentajeDobles"]));
-        $estadistica->setPorcentajeTriples(Utilidades::cleanString($datos["porcentajeTriples"]));
-        $estadistica->setPorcentajeTL(Utilidades::cleanString($datos["porcentajeTL"]));
-        $estadistica->setTAP(Utilidades::cleanString($datos["TAP"]));
-        $estadistica->setROB(Utilidades::cleanString($datos["ROB"]));
-        $estadistica->setMIN(Utilidades::cleanString($datos["MIN"]));
+        $estadistica->setTemporada(Utilidades::cleanValue($datos["temporada"]));
+        $estadistica->setNombreEquipo(Utilidades::cleanValue($datos["nombreEquipo"]));
+        $estadistica->setNombreLiga(Utilidades::cleanValue($datos["nombreLiga"]));
+        $estadistica->setPPP(Utilidades::cleanValue($datos["PPP"]));
+        $estadistica->setAPP(Utilidades::cleanValue($datos["APP"]));
+        $estadistica->setRPP(Utilidades::cleanValue($datos["RPP"]));
+        $estadistica->setPorcentajeDobles(Utilidades::cleanValue($datos["porcentajeDobles"]));
+        $estadistica->setPorcentajeTriples(Utilidades::cleanValue($datos["porcentajeTriples"]));
+        $estadistica->setPorcentajeTL(Utilidades::cleanValue($datos["porcentajeTL"]));
+        $estadistica->setTAP(Utilidades::cleanValue($datos["TAP"]));
+        $estadistica->setROB(Utilidades::cleanValue($datos["ROB"]));
+        $estadistica->setMIN(Utilidades::cleanValue($datos["MIN"]));
         return $estadistica;
     }
 

@@ -198,10 +198,10 @@ class AdminControllerJugador extends AdminController
     {
         // Limpiar datos y mapearlos
         $jugador = new Jugador();
-        $jugador->setNombre(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["nombre"])));
-        $jugador->setPrimerApellido(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["apellido1"])));
-        $jugador->setSegundoApellido(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["apellido2"])));
-        $jugador->setDni(mb_strtoupper(Utilidades::cleanString($datos["dni"])));
+        $jugador->setNombre(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["nombre"])));
+        $jugador->setPrimerApellido(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["apellido1"])));
+        $jugador->setSegundoApellido(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["apellido2"])));
+        $jugador->setDni(mb_strtoupper(Utilidades::cleanValue($datos["dni"])));
         $jugador->setGenero($datos["genero"]);
         $datos["fechaNac"] == "" ? $jugador->setFechaNacimiento(null) : $jugador->setFechaNacimiento($datos["fechaNac"]);
         $datos["telefono"] == "" ? $jugador->setTelefono(null) : $jugador->setTelefono($datos["telefono"]);
@@ -210,9 +210,9 @@ class AdminControllerJugador extends AdminController
         $jugador->setPosicion($datos["posicion"]);
         $jugador->setExtracomunitario($datos["extracomunitario"]);
         $jugador->setEstado($datos["estado"]);
-        $jugador->setEquipo(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["equipo"])));
-        $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["biografia"])));
-        $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanString($datos["informe"])));
+        $jugador->setEquipo(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["equipo"])));
+        $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["biografia"])));
+        $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["informe"])));
 
         // Imagen del jugador
         if (isset($datos["antiguaRuta"]) && empty($archivos["imagen"]["name"])) {

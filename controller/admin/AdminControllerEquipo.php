@@ -92,7 +92,7 @@ class AdminControllerEquipo extends AdminController
 
     private function createEquipo($datos) {
         $equipo = new Equipo();
-        $equipo->setNombre(Utilidades::cleanString($datos["nombre"]));
+        $equipo->setNombre(Utilidades::cleanValue($datos["nombre"]));
         return $equipo;
     }
 

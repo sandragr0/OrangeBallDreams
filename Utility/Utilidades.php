@@ -122,7 +122,7 @@ abstract class Utilidades
      * @param $string
      * @return string
      */
-    static function cleanString($string)
+    static function cleanValue($string)
     {
         return strip_tags(trim($string));
     }
