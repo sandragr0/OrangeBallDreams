@@ -176,6 +176,13 @@ abstract class Utilidades
         return false;
     }
 
+    static function isRuta($string) {
+        if (preg_match("/^http.*youtube.com{1}.*(embed){1}.+$/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * @param $string
