@@ -1,20 +1,65 @@
 <?php
 
+/**
+ * Class Estadistica
+ */
 class Estadistica implements JsonSerializable
 {
+    /**
+     * @var
+     */
     private $idEstadistica;
+    /**
+     * @var
+     */
     private $idJugador;
+    /**
+     * @var
+     */
     private $nombreEquipo;
+    /**
+     * @var
+     */
     private $nombreLiga;
+    /**
+     * @var
+     */
     private $PPP;
+    /**
+     * @var
+     */
     private $APP;
+    /**
+     * @var
+     */
     private $RPP;
+    /**
+     * @var
+     */
     private $porcentajeDobles;
+    /**
+     * @var
+     */
     private $porcentajeTriples;
+    /**
+     * @var
+     */
     private $MIN;
+    /**
+     * @var
+     */
     private $porcentajeTL;
+    /**
+     * @var
+     */
     private $ROB;
+    /**
+     * @var
+     */
     private $TAP;
+    /**
+     * @var
+     */
     private $temporada;
 
     /**
@@ -138,6 +183,14 @@ class Estadistica implements JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPorcentajeDoblesWithSimbolo()
+    {
+        return $this->porcentajeDobles ."%";
+    }
+
+    /**
      * @param mixed $porcentajeDobles
      */
     public function setPorcentajeDobles($porcentajeDobles): void
@@ -151,6 +204,14 @@ class Estadistica implements JsonSerializable
     public function getPorcentajeTriples()
     {
         return $this->porcentajeTriples;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPorcentajeTriplesWithSimbolo()
+    {
+        return $this->porcentajeTriples . "%";
     }
 
     /**
@@ -183,6 +244,14 @@ class Estadistica implements JsonSerializable
     public function getPorcentajeTL()
     {
         return $this->porcentajeTL;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPorcentajeTLWithSimbolo()
+    {
+        return $this->porcentajeTL . "%";
     }
 
     /**
@@ -241,7 +310,9 @@ class Estadistica implements JsonSerializable
         $this->temporada = $temporada;
     }
 
-
+    /**
+     * @return array
+     */
     public function jsonSerialize()
     {
         return [
@@ -252,10 +323,10 @@ class Estadistica implements JsonSerializable
             'PPP' => $this->getPPP(),
             'APP' => $this->getAPP(),
             'RPP' => $this->getRPP(),
-            'porcentajeDobles' => $this->getPorcentajeDobles(),
-            'porcentajeTriples' => $this->getPorcentajeTriples(),
+            'porcentajeDobles' => $this->getPorcentajeDoblesWithSimbolo(),
+            'porcentajeTriples' => $this->getPorcentajeTriplesWithSimbolo(),
             'MIN' => $this->getMIN(),
-            'porcentajeTL' => $this->getPorcentajeTL(),
+            'porcentajeTL' => $this->getPorcentajeTLWithSimbolo(),
             'ROB' => $this->getROB(),
             'TAP' => $this->getTAP(),
             'temporada' => $this->getTemporada()
