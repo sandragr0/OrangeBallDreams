@@ -1,15 +1,19 @@
 <?php
-abstract class BaseDAO {
+
+abstract class BaseDAO implements InterfaceDAO
+{
 
     private $nombreTabla;
     protected $conexion;
 
-    function __construct($nombreTabla) {
+    function __construct($nombreTabla)
+    {
         $this->nombreTabla = $nombreTabla;
         $this->conexion = Database::connect();
     }
 
-    function view($id) {
+    function view($id)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla WHERE id$this->nombreTabla = ?");
@@ -23,7 +27,8 @@ abstract class BaseDAO {
         }
     }
 
-    function list() {
+    function list()
+    {
         try {
             $result = null;
 
@@ -37,8 +42,13 @@ abstract class BaseDAO {
             die($e->getMessage());
         }
     }
-    
-    function delete($id) {
+
+    abstract function edit($id, object $objeto);
+
+    abstract function add(object $objeto);
+
+    function delete($id)
+    {
         try {
             $stm = $this->conexion->prepare("DELETE FROM $this->nombreTabla where id$this->nombreTabla = ?");
             $stm->execute(array($id));
@@ -47,7 +57,4 @@ abstract class BaseDAO {
         }
     }
 
-    abstract function edit($id, object $objeto);
-
-    abstract function add(object $objeto);
 }
