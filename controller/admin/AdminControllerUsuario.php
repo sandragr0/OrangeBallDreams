@@ -17,8 +17,8 @@ class AdminControllerUsuario extends AdminController {
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-view/login-admin.php';
         } else {
-            $usuario = isset($_POST['user']) ? Utilidades::cleanString($_POST['user']) : null;
-            $pass = isset($_POST['password']) ? Utilidades::cleanString($_POST['password']) : null;
+            $usuario = isset($_POST['user']) ? Utilidades::cleanValue($_POST['user']) : null;
+            $pass = isset($_POST['password']) ? Utilidades::cleanValue($_POST['password']) : null;
             $estadoErrores = $this->model->validarUsuario($usuario, $pass, "administrador");
             if ($estadoErrores == 0) {
                 session_start();
