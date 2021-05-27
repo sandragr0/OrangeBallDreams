@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Class AdminController
  */
-abstract class AdminController {
+abstract class AdminController
+{
 
     /**
      * @var mixed
@@ -18,7 +20,8 @@ abstract class AdminController {
      * @param $controllerName
      * @param $model
      */
-    public function __construct($controllerName, $model) {
+    public function __construct($controllerName, $model)
+    {
         $this->controllerName = $controllerName;
         $this->model = new $model();
     }
@@ -26,7 +29,8 @@ abstract class AdminController {
     /**
      *
      */
-    public function list() {
+    public function list()
+    {
         $this->model->list();
         include_once '../view/admin/admin-panel-header.php';
         include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
@@ -34,23 +38,10 @@ abstract class AdminController {
     }
 
     /**
-     * @param object $object
-     */
-    public function insert(object $object) {
-        $this->model->insert($object);
-    }
-
-    /**
      *
      */
-    public function add() {
-
-    }
-
-    /**
-     *
-     */
-    public function view() {
+    public function view()
+    {
         if (isset($_REQUEST['id'])) {
             $objeto = $this->model->view($_REQUEST['id']);
         } else {
@@ -68,17 +59,22 @@ abstract class AdminController {
     /**
      *
      */
-    public function edit() {
+    abstract function add();
 
-    }
 
     /**
      *
      */
-    public function delete() {
+    abstract function edit();
+
+    /**
+     *
+     */
+    public function delete()
+    {
         if (isset($_REQUEST['id'])) {
             $this->model->delete($_REQUEST['id']);
-        } 
+        }
     }
 
 
