@@ -118,9 +118,6 @@ h1, h2, h3, h4, h5, h6 {
         width: 27%;
     }
 }
-.navbar-nav {
-    transition: none !important;
-}
 
 /* Admin panel */
 @media (max-width: 767.98px) {
@@ -128,10 +125,6 @@ h1, h2, h3, h4, h5, h6 {
         top: 2.5rem !important;
     }
 
-    .navbar-nav {
-        background-color: #f8f9fa;
-        transition: none !important;
-    }
     .navbar-brand {
         border-right: none !important;
     }
