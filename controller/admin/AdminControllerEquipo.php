@@ -1,7 +1,4 @@
 <?php
-require_once('AdminController.php');
-require_once('../model/dao/EquipoDAO.php');
-
 class AdminControllerEquipo extends AdminController
 {
     private $model;

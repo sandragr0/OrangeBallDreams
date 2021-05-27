@@ -1,8 +1,4 @@
 <?php
-
-include_once('AdminController.php');
-include_once('../model/dao/UsuarioDAO.php');
-
 class AdminControllerUsuario extends AdminController {
 
     private $model;

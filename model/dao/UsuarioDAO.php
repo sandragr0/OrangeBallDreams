@@ -1,9 +1,4 @@
 <?php
-
-include_once 'BaseDAO.php';
-include_once "../model/entity/Usuario.php";
-include_once('../utility/CodigosError.php');
-
 class UsuarioDAO extends BaseDAO
 {
 

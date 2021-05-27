@@ -1,7 +1,4 @@
 <?php
-include_once 'BaseDAO.php';
-include_once "../model/entity/Equipo.php";
-
 class EquipoDAO extends BaseDAO {
     private $nombreTabla = "equipo";
 

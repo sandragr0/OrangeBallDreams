@@ -1,8 +1,4 @@
 <?php
-
-require_once('AdminController.php');
-require_once('../model/dao/JugadorDAO.php');
-
 class AdminControllerJugador extends AdminController
 {
 

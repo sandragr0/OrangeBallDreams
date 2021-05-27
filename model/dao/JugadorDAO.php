@@ -1,9 +1,4 @@
 <?php
-
-include_once('../utility/Utilidades.php');
-include_once 'BaseDAO.php';
-include_once "../model/entity/Jugador.php";
-
 class JugadorDAO extends BaseDAO
 {
 

@@ -1,8 +1,4 @@
 <?php
-
-include_once '../DB/Database.php';
-include_once '../model/entity/Jugador.php';
-
 abstract class BaseDAO {
 
     private $nombreTabla;

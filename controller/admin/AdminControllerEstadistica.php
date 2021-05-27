@@ -1,7 +1,4 @@
 <?php
-require_once('AdminController.php');
-require_once('../model/dao/EstadisticaDAO.php');
-
 class AdminControllerEstadistica extends AdminController
 {
     private $model;

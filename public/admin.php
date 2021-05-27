@@ -1,5 +1,47 @@
 <?php
 
+// Autoloaders
+spl_autoload_register('autoloadDB');
+spl_autoload_register('autoloadControlador');
+spl_autoload_register('autoloadModelEntidad');
+spl_autoload_register('autoloadModelDAO');
+spl_autoload_register('autoloadutilidades');
+
+function autoloadDB($className) {
+    $filename = __DIR__ . "/../DB/" . $className . ".php";
+    if (file_exists($filename)) {
+        include($filename);
+    }
+}
+
+function autoloadControlador($className) {
+    $filename = __DIR__ . "/../controller/admin/" . $className . ".php";
+    if (file_exists($filename)) {
+        include($filename);
+    }
+}
+
+function autoloadModelEntidad($className) {
+    $filename = __DIR__ . "/../model/entity/" . $className . ".php";
+    if (file_exists($filename)) {
+        include($filename);
+    }
+}
+
+function autoloadModelDAO($className) {
+    $filename = __DIR__ . "/../model/dao/" . $className . ".php";
+    if (file_exists($filename)) {
+        include($filename);
+    }
+}
+
+function autoloadutilidades($className) {
+    $filename = __DIR__ . "/../utility/" . $className . ".php";
+    if (file_exists($filename)) {
+        include($filename);
+    }
+}
+
 // Necesitaremos usar sesiones así que abrimos aquí la sesión
 session_start();
 include_once '../controller/admin/AdminControllerJugador.php';

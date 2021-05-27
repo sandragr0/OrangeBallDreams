@@ -1,8 +1,4 @@
 <?php
-
-include_once('../utility/Utilidades.php');
-include_once('../utility/CodigosError.php');
-
 /**
  * Class AdminController
  */
