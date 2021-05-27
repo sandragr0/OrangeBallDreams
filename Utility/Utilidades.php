@@ -144,6 +144,39 @@ abstract class Utilidades
         return false;
     }
 
+    static function isTemporada($string)
+    {
+        if (preg_match("/^[0-9]{2}[-]{1}[0-9]{2}$/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isNumeroValidoHastaDosCifras($num)
+    {
+        if (preg_match("/^[0-9]{1,2}$/", $num)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isNumeroValidoHastaTresCifras($num)
+    {
+        if (preg_match("/^[0-9]{1,3}$/", $num)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isDecimalHastaDosCifras($num)
+    {
+        if (preg_match("/^[0-9]{1}[.]{1}[0-9]{1}$/", $num)) {
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * @param $string
      * @param string $encoding
@@ -185,9 +218,9 @@ abstract class Utilidades
     {
         $log_filename = $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/logs/log_" . date('Ymd') . ".log";
         if (!file_exists($log_filename)) {
-            fopen($log_filename ,"x");
+            fopen($log_filename, "x");
         }
-        error_log(date("H:i:s") . " ". $e->getMessage() . "\n", 3, $log_filename);
+        error_log(date("H:i:s") . " " . $e->getMessage() . "\n", 3, $log_filename);
     }
 
 
