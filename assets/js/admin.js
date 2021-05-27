@@ -87,16 +87,16 @@ function checkFormulario() {
 function mostrarEstadisticas() {
     // Llamar por primera vez al cargar la página
     const id = $("select#jugadorList option:selected").val();
-    getData(id);
+    getEstadisticas(id);
 
     // Llamar cada vez que se cambia de jugador
     $("select#jugadorList").change(function () {
         var id = $("select#jugadorList option:selected").val();
-        getData(id);
+        getEstadisticas(id);
     });
 }
 
-function getData(id) {
+function getEstadisticas(id) {
     fetch("http://localhost/OrangeBallDreams/assets/data/estadisticas.json")
         .then((resp) => resp.json()) // Transformar los datos a JSON
         .then(function (datos) {
@@ -137,6 +137,53 @@ function getData(id) {
         );
 }
 
+// Específico de la página vídeos ----------------------------------------------
+
+function mostrarVideos() {
+    // Llamar por primera vez al cargar la página
+    const id = $("select#jugadorList option:selected").val();
+    getVideos(id);
+
+    // Llamar cada vez que se cambia de jugador
+    $("select#jugadorList").change(function () {
+        var id = $("select#jugadorList option:selected").val();
+        getVideos(id);
+    });
+}
+
+function getVideos(id) {
+    fetch("http://localhost/OrangeBallDreams/assets/data/videos.json")
+        .then((resp) => resp.json()) // Transformar los datos a JSON
+        .then(function (datos) {
+                const datosFiltrados = $(datos).filter(function (datos, datoFiltrado) { // Filtrar el json
+                    return datoFiltrado.idJugador === id
+                });
+                if (datosFiltrados.length != 0) {
+
+                    let content = '<table class="table"><tr><th>Video</th></th><th>Visibilidad</th><th>Tipo de video</th><th>Acciones</th></tr>';
+                    for (i = 0; i < datosFiltrados.length; i++) {
+                        content +=
+                            "<tr class='align-middle'>" +
+                            "<td class='py-3 col-3'><iframe src='" + datosFiltrados[i].ruta + "'></iframe></td>" +
+                            "<td>" + (datosFiltrados[i].isPublico == 1 ? "publico" : "privado") + "</td>" +
+                            "<td>" + datosFiltrados[i].tipoVideo + "</td>" +
+                            "<td>" +
+                            "<a href='?c=estadistica&a=edit&id=" + datosFiltrados[i].idVideo + "' class='boton-menu m-1 col-auto'>Editar</a>" +
+                            "<a href=# data-bs-toggle='modal' data-bs-target='#confirm-delete' data-id='" + datosFiltrados[i].idVideo + "' class='boton-menu m-1 col-auto botonEliminarVideo'>Eliminar</a>" +
+                            "</td>" +
+                            "</tr>";
+                    }
+                    content += '</table>';
+                    $("#panel_videos").html(content);
+                } else {
+                    $("#panel_videos").html("El jugador aún no tiene vídeos. <a href='?c=video&a=add'>¿Quieres añadir un video?</a>");
+                }
+
+            }
+        );
+}
+
+
 // Botones borrar para los modales ----------------------------------------------
 
 $(document).on("click", ".botonEliminarJugador", function () {
@@ -159,4 +206,9 @@ $(document).on("click", ".botonEliminarJugadorEquipo", function () {
     const idJugador = $(this).attr('data-idjugador');
     $("#link-eliminar").attr("href", "?c=jugador&a=delete&id=" + idEquipo + "&a=deleteJugador&idJugador" + idJugador)
     $("#link-eliminar-dispo").attr("href", "?c=equipo&id" + idEquipo + "&a=deleteJugadorSetDispo&idJugador=" + idJugador)
+});
+
+$(document).on("click", ".botonEliminarVideo", function () {
+    const id = $(this).attr('data-id');
+    $("#link-eliminar").attr("href", "?c=video&a=delete&id=" + id)
 });
