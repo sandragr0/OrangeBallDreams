@@ -29,13 +29,32 @@ class EstadisticaDAO extends BaseDAO
 
     function edit($id, object $objeto)
     {
-        // TODO: Implement edit() method.
+        try {
+            $stm = $this->conexion->prepare("UPDATE `estadistica` set `idJugador`=?, `nombreEquipo`=?, `nombreLiga`=?, `PPP`=?, `APP`=?, `RPP`=?, `porcentajeDobles`=?, `porcentajeTriples`=?, `MIN`=?, `porcentajeTL`=?, `ROB`=?, `TAP`=?, `temporada`=? where idEstadistica=?");
+            $stm->execute(array(
+                $objeto->getIdJugador(),
+                $objeto->getNombreEquipo(),
+                $objeto->getNombreLiga(),
+                $objeto->getPPP(),
+                $objeto->getAPP(),
+                $objeto->getRPP(),
+                $objeto->getPorcentajeDobles(),
+                $objeto->getPorcentajeTriples(),
+                $objeto->getMIN(),
+                $objeto->getPorcentajeTL(),
+                $objeto->getROB(),
+                $objeto->getTAP(),
+                $objeto->getTemporada(),
+                $id
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     function add(object $objeto)
     {
         try {
-            $result = null;
             $stm = $this->conexion->prepare("INSERT INTO `estadistica`(`idJugador`, `nombreEquipo`, `nombreLiga`, `PPP`, `APP`, `RPP`, `porcentajeDobles`, `porcentajeTriples`, `MIN`, `porcentajeTL`, `ROB`, `TAP`, `temporada`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
             $stm->execute(array(
                 $objeto->getIdJugador(),
@@ -52,10 +71,6 @@ class EstadisticaDAO extends BaseDAO
                 $objeto->getTAP(),
                 $objeto->getTemporada()
             ));
-            if ($stm->rowCount() != 0) {
-                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
-            }
-            return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }

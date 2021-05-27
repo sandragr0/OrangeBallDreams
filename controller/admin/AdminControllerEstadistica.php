@@ -38,6 +38,57 @@ class AdminControllerEstadistica extends AdminController
         include_once '../view/admin/admin-panel-footer.php';
     }
 
+    public function edit()
+    {
+        if (isset($_REQUEST['id'])) {
+            $estadistica = $this->model->view($_REQUEST['id']);
+        } else {
+            $estadistica = null;
+        }
+
+        if ($estadistica == null) {
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/error.php";
+            include_once '../view/admin/admin-panel-footer.php';
+        } else {
+            $jugadores = $this->getJugadores();
+            if ($jugadores != null) {
+                if (sizeof($_POST) == 0) {
+                    include_once '../view/admin/admin-panel-header.php';
+                    include_once "../view/admin/admin-view/edit" . $this->controllerName . ".php";
+                    include_once '../view/admin/admin-panel-footer.php';
+                } else {
+                    $error = $this->validarEstadistica($_POST);
+                    if ($error == 0) {
+                        $estadistica = $this->createEstadistica($_POST);
+                        try {
+                            $this->model->edit($_REQUEST['id'], $estadistica);
+                            header('Location: admin.php?c=estadistica&a=list');
+                        } catch (Exception $e) {
+                            Utilidades::logError($e);
+                            if ($e->getCode() == 23000) {
+                                $db_error = CodigosError::db_duplicate_entry;
+                            } else {
+                                $db_error = CodigosError::db_generic_error;
+                            }
+                            include_once '../view/admin/admin-panel-header.php';
+                            include_once "../view/admin/admin-view/edit" . $this->controllerName . ".php";
+                            include_once '../view/admin/admin-panel-footer.php';
+                        }
+                    } else {
+                        include_once '../view/admin/admin-panel-header.php';
+                        include_once "../view/admin/admin-view/edit" . $this->controllerName . ".php";
+                        include_once '../view/admin/admin-panel-footer.php';
+                    }
+                }
+            } else {
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/edit" . $this->controllerName . "ErrorJugador" . ".php";
+                include_once '../view/admin/admin-panel-footer.php';
+            }
+        }
+    }
+
     public function add()
     {
         $jugadores = $this->getJugadores();
@@ -53,9 +104,6 @@ class AdminControllerEstadistica extends AdminController
                     try {
                         $this->model->add($estadistica);
                         header('Location: admin.php?c=estadistica&a=list');
-                        include_once '../view/admin/admin-panel-header.php';
-                        include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
-                        include_once '../view/admin/admin-panel-footer.php';
                     } catch (Exception $e) {
                         Utilidades::logError($e);
                         if ($e->getCode() == 23000) {
