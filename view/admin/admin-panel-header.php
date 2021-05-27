@@ -102,7 +102,7 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     <div class="collapse show" id="videos-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="?c=video&a=list" class="link-dark rounded">Ver vídeos</a></li>
-                            <li><a href="?c=videos&a=add" class="link-dark rounded">Añadir vídeo</a></li>
+                            <li><a href="?c=video&a=add" class="link-dark rounded">Añadir vídeo</a></li>
                         </ul>
                     </div>
                 </li>
