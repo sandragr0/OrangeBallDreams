@@ -65,7 +65,7 @@ function checkFormulario() {
         console.log("aqui");
         return false;
     } else {
-            return true;
+        return true;
     }
 }
 
@@ -78,5 +78,53 @@ function isEmpty(string) {
 }
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+$(document).ready(function () {
+    var id = $("select#jugador option:selected").val();
+    getData(id);
+    $("select#jugador").change(function () {
+        var id = $("select#jugador option:selected").val();
+        getData(id);
+    });
+});
+
+function getData(id) {
+    fetch("http://localhost/OrangeBallDreams/assets/estadisticas.json")
+        .then((resp) => resp.json()) // Transform the data into json
+        .then(function (data) {
+                // Filtrar el json
+                var filteredData = $(data).filter(function (i, n) {
+                    return n.idJugador === id
+                });
+                if (filteredData.length != 0) {
+                    var content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>Equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th></tr>';
+                    for (i = 0; i < filteredData.length; i++) {
+                         content +=
+                            "<tr>"+
+                            "<td>" + filteredData[i].temporada + "</td>" +
+                            "<td>" + filteredData[i].nombreLiga + "</td>" +
+                            "<td>" + filteredData[i].nombreEquipo + "</td>" +
+                            "<td>" + filteredData[i].PPP + "</td>" +
+                            "<td>" + filteredData[i].APP + "</td>" +
+                            "<td>" + filteredData[i].RPP + "</td>" +
+                            "<td>" + filteredData[i].porcentajeDobles + "</td>" +
+                            "<td>" + filteredData[i].porcentajeTriples + "</td>" +
+                            "<td>" + filteredData[i].porcentajeTL + "</td>" +
+                            "<td>" + filteredData[i].MIN + "</td>" +
+                            "<td>" + filteredData[i].ROB + "</td>" +
+                            "<td>" + filteredData[i].TAP + "</td>" +
+                            "</tr>";
+                    }
+                    content +='</table>';
+                    $("#panel_infoUsuario").html(content);
+                } else {
+                    $("#panel_infoUsuario").text("El jugador aún no tiene estadísticas");
+                }
+
+            }
+        );
+
+}
