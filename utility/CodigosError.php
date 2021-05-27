@@ -30,5 +30,20 @@ abstract class CodigosError
     const db_duplicate_entry = 16;
     const db_generic_error = 17;
 
+    // Códigos de error de estadísticas
+    const temporada_empty = 18;
+    const temporada_invalid = 19;
+    const liga_empty = 20;
+    const liga_invalid = 21;
+    const ppp_invalid = 22;
+    const app_invalid = 23;
+    const rpp_invalid = 24;
+    const porcentajeTirosDobles_invalid = 25;
+    const porcentajeTirosTriples_invalid = 26;
+    const porcentajeTirosLibres_invalid = 27;
+    const tap_invalid = 28;
+    const rob_invalid = 29;
+    const min_invalid = 30;
+
 
 }
