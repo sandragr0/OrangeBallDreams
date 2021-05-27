@@ -71,19 +71,4 @@ class EstadisticaDAO extends BaseDAO
             die($e->getMessage());
         }
     }
-
-    function getJugadores()
-    {
-        try {
-            $result = null;
-            $stm = $this->conexion->prepare("SELECT jugador.idJugador, persona.nombre, primerApellido, segundoApellido FROM jugador INNER JOIN persona on persona.idPersona = jugador.idJugador");
-            $stm->execute();
-            if ($stm->rowCount() != 0) {
-                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
-            }
-            return $result;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
 }

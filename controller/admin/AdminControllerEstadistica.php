@@ -2,11 +2,13 @@
 class AdminControllerEstadistica extends AdminController
 {
     private $model;
+    private $modelJugador;
     private $controllerName = "Estadistica";
 
     public function __construct()
     {
         $this->model = new EstadisticaDAO();
+        $this->modelJugador = new JugadorDAO();
         parent::__construct($this->controllerName, $this->model);
     }
 
@@ -16,7 +18,6 @@ class AdminControllerEstadistica extends AdminController
         // Redirigir a la página actual
         header('Location:?c=estadistica&a=list');
     }
-
 
     public function list()
     {
@@ -29,7 +30,7 @@ class AdminControllerEstadistica extends AdminController
         fwrite($file, $json);
         fclose($file);
 
-        $jugadores = $this->model->getJugadores();
+        $jugadores = $this->getJugadores();
 
         include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
         include_once '../view/admin/admin-panel-footer.php';
@@ -240,6 +241,6 @@ class AdminControllerEstadistica extends AdminController
 
     private function getJugadores()
     {
-        return $this->model->getJugadores();
+        return $this->modelJugador->getJugadores();
     }
 }
