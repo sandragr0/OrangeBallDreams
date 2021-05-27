@@ -88,12 +88,6 @@ class AdminControllerJugador extends AdminController
         }
     }
 
-
-    public function insert(object $object)
-    {
-        parent::insert($object);
-    }
-
     public function list()
     {
         parent::list();
