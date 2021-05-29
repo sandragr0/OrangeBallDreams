@@ -65,5 +65,22 @@ class EquipoDAO extends BaseDAO {
         }
     }
 
+    public function getIdEquipo($nombreEquipo)
+    {
+        try {
+            $result = "";
+            $stm = $this->conexion->prepare("SELECT `idEquipo` FROM `equipo` WHERE `nombre`=?");
+            $stm->execute(array($nombreEquipo));
+            if ($stm->rowCount() != 0) {
+                $arrayEquipo = $stm->fetch(PDO::FETCH_ASSOC);
+                $result = $arrayEquipo["idEquipo"];
+            }
+            echo $result;
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 
 }
