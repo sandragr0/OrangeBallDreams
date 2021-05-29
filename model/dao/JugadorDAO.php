@@ -4,10 +4,12 @@ class JugadorDAO extends BaseDAO
 {
 
     private $nombreTabla = "jugador";
+    private $modelEquipo;
 
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
+        $this->modelEquipo =  new EquipoDAO();
     }
 
     public function add(object $jugador)
@@ -57,21 +59,14 @@ class JugadorDAO extends BaseDAO
 
         // Añadir equipo
         if ($jugador->getEquipo() != "") {
-            $idEquipo = $this->checkEquipo($jugador->getEquipo());
-            echo $idEquipo;
-            if ($idEquipo != null) {
-                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                $pdo->execute(array($idEquipo, $idJugador));
-            } else {
+            $idEquipo = $this->modelEquipo->getIdEquipo($jugador->getEquipo());
+            if ($idEquipo == null) {
                 $pdo = $this->conexion->prepare('INSERT INTO `equipo`(`nombre`) VALUES (?)');
                 $pdo->execute(array($jugador->getEquipo()));
-
                 $idEquipo = $this->conexion->lastInsertId();
-
-
-                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                $pdo->execute(array($idEquipo, $idJugador));
             }
+            $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+            $pdo->execute(array($idEquipo, $idJugador));
         }
 
         // Añadir nacionalidades
@@ -127,19 +122,14 @@ class JugadorDAO extends BaseDAO
 
         // Añadir equipo
         if ($jugador->getEquipo() != "") {
-            $idEquipo = $this->checkEquipo($jugador->getEquipo());
-            if ($idEquipo != null) {
-                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                $pdo->execute(array($idEquipo, $idJugador));
-            } else {
+            $idEquipo = $this->modelEquipo->getIdEquipo($jugador->getEquipo());
+            if ($idEquipo == null) {
                 $pdo = $this->conexion->prepare('INSERT INTO `equipo`(`nombre`) VALUES (?)');
                 $pdo->execute(array($jugador->getEquipo()));
-
                 $idEquipo = $this->conexion->lastInsertId();
-
-                $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
-                $pdo->execute(array($idEquipo, $idJugador));
             }
+            $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
+            $pdo->execute(array($idEquipo, $idJugador));
         }
     }
 
@@ -177,7 +167,7 @@ class JugadorDAO extends BaseDAO
     function listNacionalidades()
     {
         $nacionalidades = null;
-        $stm = $this->conexion->prepare('SELECT * FROM nacionalidad');
+        $stm = $this->conexion->prepare('SELECT * FROM nacionalidad order by nombre');
         $stm->execute();
         if ($stm->rowCount() != 0) {
             $nacionalidades = $stm->fetchAll(PDO::FETCH_CLASS, "Nacionalidad");
@@ -192,7 +182,7 @@ class JugadorDAO extends BaseDAO
         try {
             $result = null;
 
-            $stm = $this->conexion->prepare("SELECT jugador.idJugador, dni, persona.nombre, primerApellido, segundoApellido, genero, telefono, altura, extracomunitario, fechaNacimiento, telefono, estado, posicion, biografia, informe, visible, jugador.idEquipo, equipo.nombre as equipo, ruta FROM $this->nombreTabla INNER JOIN persona on persona.idPersona = jugador.idJugador LEFT JOIN equipo on equipo.idEquipo = jugador.idEquipo LEFT JOIN imagen on jugador.idJugador = imagen.idJugador");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugador`");
             $stm->execute();
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
@@ -223,26 +213,12 @@ class JugadorDAO extends BaseDAO
         }
     }
 
-    public function checkEquipo($nombreEquipo)
-    {
-        try {
-            $result = null;
-            $stm = $this->conexion->prepare("SELECT `idEquipo` FROM `equipo` WHERE `nombre`=?");
-            $stm->execute(array($nombreEquipo));
-            if ($stm->rowCount() != 0) {
-                $result = $stm->fetch(PDO::FETCH_ASSOC);
-            }
-            return $result["idEquipo"];
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
 
     function getJugadores()
     {
         try {
             $result = null;
-            $stm = $this->conexion->prepare("SELECT jugador.idJugador, persona.nombre, primerApellido, segundoApellido FROM jugador INNER JOIN persona on persona.idPersona = jugador.idJugador");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewgetjugadoresresumen`");
             $stm->execute();
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
