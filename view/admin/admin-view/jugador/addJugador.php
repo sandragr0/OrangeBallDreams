@@ -9,14 +9,13 @@
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {
                     echo "Error. Ya existe un jugador con el mismo nombre y apellidos.";
-                } else {
+                } else if ($db_error == CodigosError::db_generic_error) {
                     echo "Error en la base de datos. Contacte con el administrador del sitio.";
                 }
                 ?>
             </div>
         </div>
-        <?php
-    }
+    <?php }
     ?>
     <div class="card mb-3">
         <div class="card-body">
@@ -142,6 +141,26 @@
                 if (isset($error)) {
                     if ($error == CodigosError::imagen_wrong_size) {
                         echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El tamaño de imagen es superior a 2GB.</div>';
+                    }
+                }
+                ?>
+            </div>
+            <!-- Nacionalidades -->
+            <div class="mb-3">
+                <label for="nacionalidades" class="form-label">Nacionalidades</label>
+                <?php
+                if ($nacionalidades != null) {
+                    foreach ($nacionalidades as $nacionalidad) {
+                        ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="nacionalidad[]"
+                                   id="<?php echo $nacionalidad->getNombre() ?>"
+                                   value="<?php echo $nacionalidad->getIdNacionalidad() ?>" <?php echo isset($_POST["nacionalidad"]) && in_array($nacionalidad->getIdNacionalidad(), $_POST["nacionalidad"]) ? "checked" : "" ?>>
+                            <label class="form-check-label" for="europa">
+                                <?php echo $nacionalidad->getNombre() ?>
+                            </label>
+                        </div>
+                        <?php
                     }
                 }
                 ?>
