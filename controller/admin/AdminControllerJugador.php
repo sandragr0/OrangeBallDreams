@@ -57,6 +57,7 @@ class AdminControllerJugador extends AdminController
             include_once "../view/admin/admin-view/error.php";
             include_once '../view/admin/admin-panel-footer.php';
         } else {
+            $nacionalidades = $this->model->listNacionalidades();
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
                 include_once "../view/admin/admin-view/" . $this->controllerName . "/editJugador.php";
@@ -193,7 +194,7 @@ class AdminControllerJugador extends AdminController
         $jugador->setDni(mb_strtoupper(Utilidades::cleanValue($datos["dni"])));
         $jugador->setGenero($datos["genero"]);
         $datos["fechaNac"] == "" ? $jugador->setFechaNacimiento(null) : $jugador->setFechaNacimiento($datos["fechaNac"]);
-        $datos["telefono"] == "" ? $jugador->setTelefono(null) : $jugador->setTelefono($datos["telefono"]);
+        $jugador->setTelefono(mb_strtoupper(Utilidades::cleanValue($datos["telefono"])));
         $jugador->setVisible($datos["visibilidad"]);
         $datos["altura"] == "" ? $jugador->setAltura(null) : $jugador->setAltura($datos["altura"]);
         $jugador->setPosicion($datos["posicion"]);
