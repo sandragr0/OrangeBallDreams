@@ -88,8 +88,8 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="videos-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=video&a=list" class="link-dark rounded">Ver vídeos</a></li>
-                            <li><a href="?c=video&a=add" class="link-dark rounded">Añadir vídeo</a></li>
+                            <li><a href="?c=video&a=list" class="link-dark rounded <?php echo ($controller == "video" && $action == "list") ? "active" : "" ?>">Ver vídeos</a></li>
+                            <li><a href="?c=video&a=add" class="link-dark rounded <?php echo ($controller == "video" && $action == "add") ? "active" : "" ?>">Añadir vídeo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -121,10 +121,10 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     <div class="collapse show" id="contacto-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li><a href="?c=contacto&a=list"
-                                   class="link-dark rounded <?php echo ($controller == "equipo" && $action == "list") ? "active" : "" ?>">Ver
+                                   class="link-dark rounded <?php echo ($controller == "contacto" && $action == "list") ? "active" : "" ?>">Ver
                                     contactos</a></li>
                             <li><a href="?c=contacto&a=add"
-                                   class="link-dark rounded <?php echo ($controller == "equipo" && $action == "add") ? "active" : "" ?>">Añadir
+                                   class="link-dark rounded <?php echo ($controller == "contacto" && $action == "add") ? "active" : "" ?>">Añadir
                                     contacto</a></li>
                         </ul>
                     </div>

@@ -48,4 +48,7 @@ abstract class CodigosError
     // Códigos de error de vídeos
     const ruta_empty = 31;
     const ruta_invalid = 32;
+
+    // Códigos de error de contactos
+    const nota_invalid = 33;
 }

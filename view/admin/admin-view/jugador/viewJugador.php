@@ -1,4 +1,3 @@
-<?php include_once '../utility/Utilidades.php'; ?>
 <div class="mb-4">
     <div class="row">
         <div class="col">
@@ -29,7 +28,7 @@
             if ($objeto->getNacionalidades() != null) {
                 foreach ($objeto->getNacionalidades() as $nacionalidad) {
                     ?>
-                    <img height="50" src="..<?php echo $nacionalidad->getIcono()?>" alt="<?php echo $nacionalidad->getNombre()?>" title="<?php echo $nacionalidad->getNombre()?>">
+                    <img height="30" src="..<?php echo $nacionalidad->getIcono()?>" alt="<?php echo $nacionalidad->getNombre()?>" title="<?php echo $nacionalidad->getNombre()?>">
                     <?php
                 }
 

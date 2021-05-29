@@ -33,6 +33,7 @@ class Jugador
         }
         return $this->getNombre() . " " . $this->getPrimerApellido() . $apellido2;
     }
+    
     /**
      * @return mixed
      */
