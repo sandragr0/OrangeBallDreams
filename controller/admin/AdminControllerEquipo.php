@@ -1,8 +1,9 @@
 <?php
+
 class AdminControllerEquipo extends AdminController
 {
     private $model;
-    private $controllerName = "Equipo";
+    private $controllerName = "equipo";
 
     public function __construct()
     {
@@ -14,7 +15,7 @@ class AdminControllerEquipo extends AdminController
     {
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+            include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
             include_once '../view/admin/admin-panel-footer.php';
         } else {
             $error = $this->validarEquipo($_POST);
@@ -31,12 +32,12 @@ class AdminControllerEquipo extends AdminController
                         $db_error = CodigosError::db_generic_error;
                     }
                     include_once '../view/admin/admin-panel-header.php';
-                    include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
                     include_once '../view/admin/admin-panel-footer.php';
                 }
             } else {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
                 include_once '../view/admin/admin-panel-footer.php';
             }
         }
@@ -58,7 +59,7 @@ class AdminControllerEquipo extends AdminController
             $jugadores = $this->model->getJugadores($_REQUEST['id']);
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/editEquipo.php";
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/editEquipo.php";
                 include_once '../view/admin/admin-panel-footer.php';
             } else {
                 $error = $this->validarEquipo($_POST);
@@ -75,26 +76,28 @@ class AdminControllerEquipo extends AdminController
                             $db_error = CodigosError::db_generic_error;
                         }
                         include_once '../view/admin/admin-panel-header.php';
-                        include_once "../view/admin/admin-view/editEquipo.php";
+                        include_once "../view/admin/admin-view/" . $this->controllerName . "/editEquipo.php";
                         include_once '../view/admin/admin-panel-footer.php';
                     }
                 } else {
                     include_once '../view/admin/admin-panel-header.php';
-                    include_once "../view/admin/admin-view/editEquipo.php";
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/editEquipo.php";
                     include_once '../view/admin/admin-panel-footer.php';
                 }
             }
         }
     }
 
-    private function createEquipo($datos) {
+    private function createEquipo($datos)
+    {
         $equipo = new Equipo();
         $equipo->setNombre(Utilidades::cleanValue($datos["nombre"]));
         return $equipo;
     }
 
 
-    private function validarEquipo($datos) {
+    private function validarEquipo($datos)
+    {
         if (Utilidades::isEmpty($datos["nombre"])) {
             return CodigosError::nombre_empty;
         } else {
@@ -124,24 +127,27 @@ class AdminControllerEquipo extends AdminController
             include_once "../view/admin/admin-view/error.php";
         } else {
             $jugadores = $this->model->getJugadores($_REQUEST['id']);
-            include_once "../view/admin/admin-view/view" . $this->controllerName . ".php";
+            include_once "../view/admin/admin-view/" . $this->controllerName . "/view" . $this->controllerName . ".php";
         }
         include_once '../view/admin/admin-panel-footer.php';
     }
 
-    public function delete() {
+    public function delete()
+    {
         parent::delete($_GET["id"]);
         header('Location:?c=equipo&a=list');
     }
 
-    public function deleteJugador() {
+    public function deleteJugador()
+    {
         if (isset($_REQUEST['idJugador'])) {
             $this->model->deleteJugador($_REQUEST['idJugador']);
         }
         header('Location: admin.php?c=equipo&a=edit&id=' . $_GET["id"]);
     }
 
-    public function deleteJugadorSetDispo() {
+    public function deleteJugadorSetDispo()
+    {
         if (isset($_REQUEST['idJugador'])) {
             $this->model->deleteJugadorSetDispo($_REQUEST['idJugador']);
         }

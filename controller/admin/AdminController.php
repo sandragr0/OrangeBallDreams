@@ -33,7 +33,7 @@ abstract class AdminController
     {
         $this->model->list();
         include_once '../view/admin/admin-panel-header.php';
-        include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
+        include_once "../view/admin/admin-view/" . $this->controllerName . "/list" . $this->controllerName . ".php";
         include_once '../view/admin/admin-panel-footer.php';
     }
 
@@ -51,7 +51,7 @@ abstract class AdminController
         if ($objeto == null) {
             include_once "../view/admin/admin-view/error.php";
         } else {
-            include_once "../view/admin/admin-view/view" . $this->controllerName . ".php";
+            include_once "../view/admin/admin-view/" . $this->controllerName . "/view" . $this->controllerName . ".php";
         }
         include_once '../view/admin/admin-panel-footer.php';
     }

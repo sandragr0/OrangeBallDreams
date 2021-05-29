@@ -34,7 +34,7 @@ class AdminControllerVideo extends AdminController
 
         $jugadores = $this->getJugadores();
 
-        include_once "../view/admin/admin-view/list" . $this->controllerName . ".php";
+        include_once "../view/admin/admin-view/" . $this->controllerName . "/list" . $this->controllerName . ".php";
         include_once '../view/admin/admin-panel-footer.php';
     }
 
@@ -44,7 +44,7 @@ class AdminControllerVideo extends AdminController
         if ($jugadores != null) {
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
                 include_once '../view/admin/admin-panel-footer.php';
             } else {
                 $error = $this->validarVideo($_POST);
@@ -61,18 +61,18 @@ class AdminControllerVideo extends AdminController
                             $db_error = CodigosError::db_generic_error;
                         }
                         include_once '../view/admin/admin-panel-header.php';
-                        include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                        include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
                         include_once '../view/admin/admin-panel-footer.php';
                     }
                 } else {
                     include_once '../view/admin/admin-panel-header.php';
-                    include_once "../view/admin/admin-view/add" . $this->controllerName . ".php";
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . ".php";
                     include_once '../view/admin/admin-panel-footer.php';
                 }
             }
         } else {
             include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/add" . $this->controllerName . "ErrorJugador" . ".php";
+            include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . "ErrorJugador" . ".php";
             include_once '../view/admin/admin-panel-footer.php';
         }
     }

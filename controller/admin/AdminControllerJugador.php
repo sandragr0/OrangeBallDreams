@@ -13,13 +13,13 @@ class AdminControllerJugador extends AdminController
 
     public function add()
     {
+        $nacionalidades = $this->model->listNacionalidades();
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/addJugador.php";
+            include_once "../view/admin/admin-view/" . $this->controllerName . "/addJugador.php";
             include_once '../view/admin/admin-panel-footer.php';
         } else {
             $error = $this->validarDatos($_POST, $_FILES);
-
             if ($error == 0) {
                 $jugador = $this->createJugador($_POST, $_FILES);
                 try {
@@ -33,12 +33,12 @@ class AdminControllerJugador extends AdminController
                         $db_error = CodigosError::db_generic_error;
                     }
                     include_once '../view/admin/admin-panel-header.php';
-                    include_once "../view/admin/admin-view/addJugador.php";
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/addJugador.php";
                     include_once '../view/admin/admin-panel-footer.php';
                 }
             } else {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/addJugador.php";
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/addJugador.php";
                 include_once '../view/admin/admin-panel-footer.php';
             }
         }
@@ -59,7 +59,7 @@ class AdminControllerJugador extends AdminController
         } else {
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/editJugador.php";
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/editJugador.php";
                 include_once '../view/admin/admin-panel-footer.php';
             } else {
                 $error = $this->validarDatos($_POST, $_FILES);
@@ -76,12 +76,12 @@ class AdminControllerJugador extends AdminController
                             $db_error = CodigosError::db_generic_error;
                         }
                         include_once '../view/admin/admin-panel-header.php';
-                        include_once "../view/admin/admin-view/editJugador.php";
+                        include_once "../view/admin/admin-view/" . $this->controllerName . "/editJugador.php";
                         include_once '../view/admin/admin-panel-footer.php';
                     }
                 } else {
                     include_once '../view/admin/admin-panel-header.php';
-                    include_once "../view/admin/admin-view/editJugador.php";
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/editJugador.php";
                     include_once '../view/admin/admin-panel-footer.php';
                 }
             }
@@ -183,7 +183,6 @@ class AdminControllerJugador extends AdminController
         return 0;
     }
 
-
     private function createJugador($datos, $archivos)
     {
         // Limpiar datos y mapearlos
@@ -203,6 +202,7 @@ class AdminControllerJugador extends AdminController
         $jugador->setEquipo(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["equipo"])));
         $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["biografia"])));
         $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["informe"])));
+        $jugador->setNacionalidades($datos["nacionalidad"]);
 
         // Imagen del jugador
         if (isset($datos["antiguaRuta"]) && empty($archivos["imagen"]["name"])) {
