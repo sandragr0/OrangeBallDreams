@@ -57,7 +57,6 @@ class JugadorDAO extends BaseDAO
 
         // Añadir equipo
         if ($jugador->getEquipo() != "") {
-
             $idEquipo = $this->checkEquipo($jugador->getEquipo());
             echo $idEquipo;
             if ($idEquipo != null) {
@@ -73,6 +72,12 @@ class JugadorDAO extends BaseDAO
                 $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
                 $pdo->execute(array($idEquipo, $idJugador));
             }
+        }
+
+        // Añadir nacionalidades
+        foreach ($jugador->getNacionalidades() as $nacionalidad) {
+            $pdo = $this->conexion->prepare('INSERT INTO `jugadores_nacionalidades`(`idJugador`, `idNacionalidad`) VALUES (?,?)');
+            $pdo->execute(array($idJugador, $nacionalidad));
         }
     }
 
@@ -147,12 +152,40 @@ class JugadorDAO extends BaseDAO
             $stm->execute(array($id));
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchObject($this->nombreTabla);
+
+                // Añadir nacionalidades
+                $result->setNacionalidades($this->getNacionalidadesJugador($id));
             }
             return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
+
+    private function getNacionalidadesJugador($idJugador)
+    {
+        $nacionalidades = array();
+        $stm = $this->conexion->prepare('SELECT nacionalidad.* FROM jugadores_nacionalidades left join nacionalidad on jugadores_nacionalidades.idNacionalidad = nacionalidad.idNacionalidad WHERE idJugador=?');
+        $stm->execute(array($idJugador));
+        if ($stm->rowCount() != 0) {
+            $nacionalidades = $stm->fetchAll(PDO::FETCH_CLASS, "Nacionalidad");
+        }
+        return $nacionalidades;
+
+    }
+
+    function listNacionalidades()
+    {
+        $nacionalidades = null;
+        $stm = $this->conexion->prepare('SELECT * FROM nacionalidad');
+        $stm->execute();
+        if ($stm->rowCount() != 0) {
+            $nacionalidades = $stm->fetchAll(PDO::FETCH_CLASS, "Nacionalidad");
+        }
+        return $nacionalidades;
+
+    }
+
 
     function list()
     {

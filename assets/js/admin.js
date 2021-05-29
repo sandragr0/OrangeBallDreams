@@ -105,7 +105,7 @@ function getEstadisticas(id) {
                 });
 
                 if (datosFiltrados.length != 0) {
-                    let content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>Equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th><th>Acciones</th></tr>';
+                    let content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th><th>Acciones</th></tr>';
                     for (i = 0; i < datosFiltrados.length; i++) {
                         content +=
                             "<tr class='align-middle'>" +
@@ -168,7 +168,6 @@ function getVideos(id) {
                             "<td>" + (datosFiltrados[i].isPublico == 1 ? "publico" : "privado") + "</td>" +
                             "<td>" + datosFiltrados[i].tipoVideo + "</td>" +
                             "<td>" +
-                            "<a href='?c=estadistica&a=edit&id=" + datosFiltrados[i].idVideo + "' class='boton-menu m-1 col-auto'>Editar</a>" +
                             "<a href=# data-bs-toggle='modal' data-bs-target='#confirm-delete' data-id='" + datosFiltrados[i].idVideo + "' class='boton-menu m-1 col-auto botonEliminarVideo'>Eliminar</a>" +
                             "</td>" +
                             "</tr>";
