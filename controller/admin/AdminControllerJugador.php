@@ -1,4 +1,5 @@
 <?php
+
 class AdminControllerJugador extends AdminController
 {
 
@@ -188,6 +189,7 @@ class AdminControllerJugador extends AdminController
     {
         // Limpiar datos y mapearlos
         $jugador = new Jugador();
+
         $jugador->setNombre(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["nombre"])));
         $jugador->setPrimerApellido(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["apellido1"])));
         $jugador->setSegundoApellido(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["apellido2"])));
@@ -203,7 +205,13 @@ class AdminControllerJugador extends AdminController
         $jugador->setEquipo(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["equipo"])));
         $jugador->setBiografia(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["biografia"])));
         $jugador->setInforme(Utilidades::mb_ucfirst(Utilidades::cleanValue($datos["informe"])));
-        $jugador->setNacionalidades($datos["nacionalidad"]);
+
+        // Nacionalidad
+        if (isset($datos["nacionalidad"])) {
+            $jugador->setNacionalidades($datos["nacionalidad"]);
+        } else {
+            $jugador->setNacionalidades(null);
+        }
 
         // Imagen del jugador
         if (isset($datos["antiguaRuta"]) && empty($archivos["imagen"]["name"])) {
