@@ -28,7 +28,9 @@
             if ($objeto->getNacionalidades() != null) {
                 foreach ($objeto->getNacionalidades() as $nacionalidad) {
                     ?>
-                    <img height="30" src="..<?php echo $nacionalidad->getIcono()?>" alt="<?php echo $nacionalidad->getNombre()?>" title="<?php echo $nacionalidad->getNombre()?>">
+                    <img height="30" src="..<?php echo $nacionalidad->getIcono() ?>"
+                         alt="<?php echo $nacionalidad->getNombre() ?>"
+                         title="<?php echo $nacionalidad->getNombre() ?>">
                     <?php
                 }
 
@@ -82,10 +84,10 @@
                 <div class="mb-3">
                     <label for="genero" class="form-label">Género</label>
                     <select disabled class="form-select" id="genero" name="genero">
-                        <option value="masculino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "masculino" ? "selected" : "" : "" ?>>
+                        <option value="masculino" <?php echo $objeto->getGenero() == "masculino" ? "selected" : "" ?>>
                             Masculino
                         </option>
-                        <option value="femenino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "femenino" ? "selected" : "" : "" ?>>
+                        <option value="femenino" <?php echo $objeto->getGenero() == "femenino" ? "selected" : "" ?>>
                             Femenino
                         </option>
                     </select>
@@ -132,8 +134,8 @@
                     <option value="null" <?php echo $objeto->getExtracomunitario() == "null" ? "selected" : "" ?>>No
                         especificado
                     </option>
-                    <option value="0" <?php echo $objeto->getExtracomunitario() == "0" ? "selected" : "" ?>>Si</option>
-                    <option value="1" <?php echo $objeto->getExtracomunitario() == "1" ? "selected" : "" ?>>No</option>
+                    <option value="0" <?php echo $objeto->getExtracomunitario() == "0" ? "selected" : "" ?>>No</option>
+                    <option value="1" <?php echo $objeto->getExtracomunitario() == "1" ? "selected" : "" ?>>Si</option>
                 </select>
             </div>
             <!-- Estado -->
