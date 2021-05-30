@@ -130,6 +130,17 @@ class JugadorDAO extends BaseDAO
             $pdo = $this->conexion->prepare('UPDATE `jugador` SET `idEquipo`=? WHERE `idJugador` = ?');
             $pdo->execute(array($idEquipo, $idJugador));
         }
+
+        // Cambiar nacionalidades
+
+        // Eliminar antiguas nacionalidades
+        $pdo = $this->conexion->prepare('DELETE from `jugadores_nacionalidades` where idJugador=?');
+        $pdo->execute(array($idJugador));
+        // Añadir las nuevas nacionalidades
+        foreach ($jugador->getNacionalidades() as $nacionalidad) {
+            $pdo = $this->conexion->prepare('INSERT INTO `jugadores_nacionalidades`(`idJugador`, `idNacionalidad`) VALUES (?,?)');
+            $pdo->execute(array($idJugador, $nacionalidad));
+        }
     }
 
     function list()
