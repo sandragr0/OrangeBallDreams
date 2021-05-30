@@ -12,7 +12,7 @@ function isEmpty(string) {
     }
 }
 
-// Específico de la página login ----------------------------------------------
+// Específico de la página login y addusuario ----------------------------------------------
 function visibilidadPass() {
     var ojo = document.getElementById("ojo");
     var input = document.getElementById("password");
@@ -215,3 +215,32 @@ $(document).on("click", ".botonEliminarContacto", function () {
     const id = $(this).attr('data-id');
     $("#link-eliminar").attr("href", "?c=contacto&a=delete&id=" + id)
 });
+
+// Buscar en las tablas ----------------------------------------------
+
+$(function() {
+    $("#tabla_jugadores").tablesorter({ sortList: [[0,0]] })
+});
+
+function buscarNombre(input, tabla) {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById(input);
+    filter = input.value.toUpperCase();
+    table = document.getElementById(tabla);
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
