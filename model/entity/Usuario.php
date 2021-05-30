@@ -14,7 +14,17 @@ class Usuario {
     private $fechaAcceso;
     private $activo;
     private $rol;
-  
+
+    function getFullName()
+    {
+        if ($this->getSegundoApellido() != "") {
+            $apellido2 = " " . $this->getSegundoApellido();
+        } else {
+            $apellido2 = "";
+        }
+        return $this->getNombre() . " " . $this->getPrimerApellido() . $apellido2;
+    }
+
     function getIdUsuario() {
         return $this->idUsuario;
     }

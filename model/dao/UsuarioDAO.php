@@ -1,4 +1,5 @@
 <?php
+
 class UsuarioDAO extends BaseDAO
 {
 
@@ -14,21 +15,70 @@ class UsuarioDAO extends BaseDAO
         parent::__construct($this->nombreTabla);
     }
 
-    public function add(object $objeto)
+    public function add(object $usuario)
     {
+        // Añadir persona
+        $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
 
+        $pdo->execute(
+            array(
+                $usuario->getDni(),
+                $usuario->getNombre(),
+                $usuario->getPrimerApellido(),
+                $usuario->getSegundoApellido(),
+                $usuario->getTelefono()
+            )
+        );
+
+        $idUsuario = $this->conexion->lastInsertId();
+
+        // Añadir jugador
+        $pdo = $this->conexion->prepare('INSERT INTO `usuario`(`idUsuario`,`correoElectronico`, `contraseña`, `nombreUsuario`, `rol`) VALUES (?,?,?,?,?);');
+        $pdo->execute(
+            array(
+                $idUsuario,
+                $usuario->getCorreoElectronico(),
+                $usuario->getContraseña(),
+                $usuario->getNombreUsuario(),
+                $usuario->getRol()
+            )
+        );
     }
 
-    public function edit($id, object $objeto)
+    public function edit($id, object $usuario)
     {
+        // Editar persona
+        $pdo = $this->conexion->prepare('UPDATE `persona` set  `dni`=?, `nombre`=?, `primerApellido`=?, `segundoApellido`=?, `telefono`=? where idPersona=?;');
 
+        $pdo->execute(
+            array(
+                $usuario->getDni(),
+                $usuario->getNombre(),
+                $usuario->getPrimerApellido(),
+                $usuario->getSegundoApellido(),
+                $usuario->getTelefono(),
+                $id
+            )
+        );
+
+        // Editar usuario
+        $pdo = $this->conexion->prepare('UPDATE `usuario` set `correoElectronico`=?, `contraseña`=?, `nombreUsuario`=?, `rol`=? where idUsuario=?;');
+        $pdo->execute(
+            array(
+                $usuario->getCorreoElectronico(),
+                $usuario->getContraseña(),
+                $usuario->getNombreUsuario(),
+                $usuario->getRol(),
+                $id
+            )
+        );
     }
 
     public function view($id)
     {
         try {
             $result = null;
-            $stm = $this->conexion->prepare("SELECT * FROM $this->nombreTabla left join persona on persona.idPersona = usuario.idUsuario WHERE usuario.idUsuario=1");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewusuarios` WHERE idUsuario=?");
             $stm->execute(array($id));
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchObject($this->nombreTabla);
@@ -41,7 +91,18 @@ class UsuarioDAO extends BaseDAO
 
     public function list()
     {
-        return parent::list();
+        try {
+            $result = null;
+
+            $stm = $this->conexion->prepare("SELECT * FROM `viewusuarios`");
+            $stm->execute();
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     public function createSesionUsuario($usuario)
