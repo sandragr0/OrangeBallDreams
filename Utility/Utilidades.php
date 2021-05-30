@@ -98,18 +98,6 @@ abstract class Utilidades
      * @param $string
      * @return bool
      */
-    static function isValidPasswd($string)
-    {
-        if (preg_match("/((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/", $string)) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @param $string
-     * @return bool
-     */
     static function isDNI($string)
     {
         if (preg_match('/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke]{1}$/', $string)) {
@@ -178,6 +166,27 @@ abstract class Utilidades
 
     static function isRuta($string) {
         if (preg_match("/^http.*youtube.com{1}.*(embed){1}.+$/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isCorreoElectronico($string) {
+        if (preg_match("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isValidUsuario($string) {
+        if (preg_match("/[a-zA-Z0-9]{6,12}/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
+    static function isValidPassword($string) {
+        if (preg_match("/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/", $string)) {
             return true;
         }
         return false;

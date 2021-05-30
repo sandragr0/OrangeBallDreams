@@ -13,6 +13,8 @@
             crossorigin="anonymous"></script>
     <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/admin.js"></script>
+    <script type="text/javascript" src="../assets/js/tableSort/js/jquery.tablesorter.min.js"></script>
+    <link rel="stylesheet" href="../assets/js/tableSort/css/theme.bootstrap_4.min.css">
 </head>
 <body>
 <?php
@@ -35,8 +37,8 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
     </div>
     <div class="d-block d-md-inline w-100 px-3">
         <span class="d-block nav-link text-md-end text-start navbar-nav">Hola, <a
-                href="?c=cuenta&a=view&id=<?php echo $_SESSION['idUsuario']; ?>"><?php echo Utilidades::mb_ucfirst($_SESSION['usuario']); ?></a> | <a
-                href="?c=usuario&a=exit">Cerrar sesión</a></span>
+                    href="?c=usuario&a=view&id=<?php echo $_SESSION['idUsuario']; ?>"><?php echo Utilidades::mb_ucfirst($_SESSION['usuario']); ?></a> | <a
+                    href="?c=usuario&a=exit">Cerrar sesión</a></span>
     </div>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -88,8 +90,12 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="videos-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=video&a=list" class="link-dark rounded <?php echo ($controller == "video" && $action == "list") ? "active" : "" ?>">Ver vídeos</a></li>
-                            <li><a href="?c=video&a=add" class="link-dark rounded <?php echo ($controller == "video" && $action == "add") ? "active" : "" ?>">Añadir vídeo</a></li>
+                            <li><a href="?c=video&a=list"
+                                   class="link-dark rounded <?php echo ($controller == "video" && $action == "list") ? "active" : "" ?>">Ver
+                                    vídeos</a></li>
+                            <li><a href="?c=video&a=add"
+                                   class="link-dark rounded <?php echo ($controller == "video" && $action == "add") ? "active" : "" ?>">Añadir
+                                    vídeo</a></li>
                         </ul>
                     </div>
                 </li>
@@ -139,9 +145,9 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="usuario-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Mi cuenta</a></li>
+                            <li><a href="?c=usuario&a=view&id=<?php echo $_SESSION['idUsuario']; ?>" class="link-dark rounded">Mi cuenta</a></li>
                             <li><a href="?c=usuario&a=list" class="link-dark rounded">Ver usuarios</a></li>
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Añadir usuario</a></li>
+                            <li><a href="?c=usuario&a=add" class="link-dark rounded">Añadir usuario</a></li>
                         </ul>
                     </div>
                 </li>

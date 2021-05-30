@@ -11,10 +11,15 @@ if ($result == null) {
     <?php
 } else {
 ?>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+    <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..." onkeyup="buscarNombre('inputBuscarNombre', 'tabla_equipos')" aria-describedby="buscarNombre">
+</div>
 <div class="table-responsive">
-    <table class="table">
+    <table class="table" id="tabla_equipos">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Acciones</th>
         </tr>
@@ -24,6 +29,7 @@ if ($result == null) {
         foreach ($result as $equipo):
             ?>
             <tr class="align-middle">
+                <td class="py-2"><?php echo $equipo->getIdEquipo() ?></td>
                 <td class="py-2"><?php echo $equipo->getNombre() ?></td>
                 <!-- Acciones -->
                 <td>

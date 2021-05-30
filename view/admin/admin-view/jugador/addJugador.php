@@ -4,7 +4,7 @@
     <?php
     if (isset($db_error)) {
         ?>
-        <div class="card  border-danger mb-3">
+        <div class="card border-danger mb-3">
             <div class="card-body">
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {
@@ -17,7 +17,7 @@
         </div>
     <?php }
     ?>
-    <div class="card mb-3">
+    <div class="card border-0 mb-3">
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
             <!-- Nombre -->

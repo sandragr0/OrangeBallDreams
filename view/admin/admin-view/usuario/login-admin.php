@@ -38,7 +38,7 @@
                     ?>
                     <!-- Contraseña -->
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group mb-3">
                             <input type="password" name="password" class="form-control" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
                             <span class="input-group-text" style="width:3em;" id="basic-addon1" onclick="visibilidadPass()"><i class="fas fa-eye" id="ojo"></i></span>

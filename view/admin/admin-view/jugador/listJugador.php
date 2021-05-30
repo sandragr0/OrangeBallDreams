@@ -11,17 +11,22 @@ if ($result == null) {
     <?php
 } else {
 ?>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+    <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+           onkeyup="buscarNombre('inputBuscarNombre', 'tabla_jugadores')" aria-describedby="buscarNombre">
+</div>
 <div class="table-responsive">
-    <table class="table">
+    <table class="table tablesorter-bootstrap" id="tabla_jugadores">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
-            <th>Visibilidad</th>
-            <th class="d-none d-md-table-cell">Estado</th>
-            <th class="d-none d-md-table-cell">Equipo</th>
-            <th class="d-none d-md-table-cell">Posicion</th>
-            <th class="d-none d-md-table-cell">Extracomunitario</th>
-            <th>Acciones</th>
+            <th data-sorter="false">Visibilidad</th>
+            <th class="d-none d-md-table-cell" data-sorter="false">Estado</th>
+            <th class="d-none d-md-table-cell" data-sorter="false">Equipo</th>
+            <th class="d-none d-md-table-cell" data-sorter="false">Posicion</th>
+            <th data-sorter="false">Acciones</th>
         </thead>
         <tbody>
         <?php
@@ -29,8 +34,10 @@ if ($result == null) {
         include_once '../model/entity/Jugador.php';
         foreach ($result as $jugador):
             ?>
-            <!-- Jugador -->
             <tr class="jugador align-middle">
+                <!-- idJugador -->
+                <td class="py-3"><?php echo $jugador->getIdJugador() ?></td>
+                <!-- nombre jugador -->
                 <td class="py-3">
                     <div class="row align-items-center w-100">
                         <div class="col-auto">
@@ -60,16 +67,6 @@ if ($result == null) {
                 <td class="py-3 d-none d-md-table-cell"><?php echo $jugador->getEquipo() != "" ? $jugador->getEquipo() : "-" ?></td>
                 <!-- Posición -->
                 <td class="py-3 d-none d-md-table-cell"><?php echo ucfirst($jugador->getPosicion()) ?></td>
-                <!-- Extracomunitario -->
-                <td class="py-3 d-none d-md-table-cell"><?php
-                    if ($jugador->getExtracomunitario() == 1) {
-                        echo 'Si';
-                    } else if ($jugador->getExtracomunitario() == 0) {
-                        echo "No";
-                    } else {
-                        "No especificado";
-                    }
-                    ?></td>
                 <!-- Acciones -->
                 <td class="py-3">
                     <div class="row w-100">
@@ -77,7 +74,8 @@ if ($result == null) {
                            href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>">Ver</a>
                         <a class="boton-menu m-1 col-auto"
                            href="?c=jugador&a=edit&id=<?php echo $jugador->getIdjugador() ?>">Editar</a>
-                        <a class="boton-menu m-1 col-auto botonEliminarJugador" href="#" data-id="<?php echo $jugador->getIdjugador() ?>"
+                        <a class="boton-menu m-1 col-auto botonEliminarJugador" href="#"
+                           data-id="<?php echo $jugador->getIdjugador() ?>"
                            data-bs-toggle="modal"
                            data-bs-target="#confirm-delete">Eliminar</a>
                     </div>
