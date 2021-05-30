@@ -241,6 +241,6 @@ class AdminControllerEstadistica extends AdminController
 
     private function getJugadores()
     {
-        return $this->modelJugador->getJugadores();
+        return $this->modelJugador->getJugadoresWithEstadisticas();
     }
 }
