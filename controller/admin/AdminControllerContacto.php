@@ -98,6 +98,13 @@ class AdminControllerContacto extends AdminController
 
     }
 
+    public function delete()
+    {
+        parent::delete();
+        header('Location: admin.php?c=contacto&a=list');
+    }
+
+
     private function createContacto($datos): Contacto
     {
         // Limpiar datos y mapearlos
@@ -117,6 +124,46 @@ class AdminControllerContacto extends AdminController
      */
     function edit()
     {
-        // TODO: Implement edit() method.
+        if (isset($_REQUEST['id'])) {
+            $objeto = $this->model->view($_REQUEST['id']);
+        } else {
+            $objeto = null;
+        }
+
+        if ($objeto == null) {
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/error.php";
+            include_once '../view/admin/admin-panel-footer.php';
+        } else {
+            if (sizeof($_POST) == 0) {
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/" . $this->controllerName . "/editContacto.php";
+                include_once '../view/admin/admin-panel-footer.php';
+            } else {
+                $error = $this->validarDatos($_POST);
+                if ($error == 0) {
+                    $contacto = $this->createContacto($_POST);
+                    try {
+                        $this->model->edit($_REQUEST['id'], $contacto);
+                        header('Location: admin.php?c=contacto&a=list');
+                    } catch (Exception $e) {
+                        Utilidades::logError($e);
+                        if ($e->getCode() == 23000) {
+                            $db_error = CodigosError::db_duplicate_entry;
+                        } else {
+                            $db_error = CodigosError::db_generic_error;
+                        }
+                        include_once '../view/admin/admin-panel-header.php';
+                        include_once "../view/admin/admin-view/" . $this->controllerName . "/editContacto.php";
+                        include_once '../view/admin/admin-panel-footer.php';
+                    }
+                } else {
+                    include_once '../view/admin/admin-panel-header.php';
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/editContacto.php";
+                    include_once '../view/admin/admin-panel-footer.php';
+                }
+            }
+        }
+
     }
 }
