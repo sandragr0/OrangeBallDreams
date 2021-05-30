@@ -4,10 +4,12 @@ class AdminControllerJugador extends AdminController
 {
 
     private $model;
+    private $modelEquipo;
     private $controllerName = "Jugador";
 
     public function __construct()
     {
+        $this->modelEquipo = new EquipoDAO();
         $this->model = new JugadorDAO();
         parent::__construct($this->controllerName, $this->model);
     }
@@ -58,7 +60,8 @@ class AdminControllerJugador extends AdminController
             include_once "../view/admin/admin-view/error.php";
             include_once '../view/admin/admin-panel-footer.php';
         } else {
-            $nacionalidades = $this->model->listNacionalidades();
+            $listadoNombresEquipos = $this->modelEquipo->getNombresEquipos();
+            $listadoNacionalidades = $this->model->listNacionalidades();
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
                 include_once "../view/admin/admin-view/" . $this->controllerName . "/editJugador.php";

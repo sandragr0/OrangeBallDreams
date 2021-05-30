@@ -154,4 +154,7 @@ class AdminControllerEquipo extends AdminController
         header('Location: admin.php?c=equipo&a=view&id=' . $_GET["id"]);
     }
 
+    public function getNombresEquipos() {
+        return $this->model->getNombresEquipos();
+    }
 }
