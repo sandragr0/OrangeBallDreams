@@ -13,7 +13,7 @@
             crossorigin="anonymous"></script>
     <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/admin.js"></script>
-    <script type="text/javascript" src="../assets/js/tableSort/js/jquery.tablesorter.min.js"></script>
+    <script src="../assets/js/tableSort/js/jquery.tablesorter.min.js"></script>
     <link rel="stylesheet" href="../assets/js/tableSort/css/theme.bootstrap_4.min.css">
 </head>
 <body>
