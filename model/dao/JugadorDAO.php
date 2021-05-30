@@ -9,14 +9,13 @@ class JugadorDAO extends BaseDAO
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
-        $this->modelEquipo =  new EquipoDAO();
+        $this->modelEquipo = new EquipoDAO();
     }
 
     public function add(object $jugador)
     {
         // Añadir persona
         $pdo = $this->conexion->prepare('INSERT INTO `persona`( `dni`, `nombre`, `primerApellido`, `segundoApellido`, `telefono`) VALUES (?,?,?,?,?)');
-
         $pdo->execute(
             array(
                 $jugador->getDni(),
@@ -133,12 +132,27 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    function list()
+    {
+        try {
+            $result = null;
+
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugador`");
+            $stm->execute();
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     function view($id)
     {
         try {
             $result = null;
-            $stm = $this->conexion->prepare("SELECT jugador.idJugador, dni, persona.nombre, primerApellido, segundoApellido, genero, telefono, altura, extracomunitario, fechaNacimiento, telefono, estado, posicion, biografia, informe, visible, jugador.idEquipo, equipo.nombre as equipo, ruta FROM $this->nombreTabla INNER JOIN persona on persona.idPersona = jugador.idJugador LEFT JOIN equipo on equipo.idEquipo = jugador.idEquipo LEFT JOIN imagen on jugador.idJugador = imagen.idJugador where jugador.idJugador=?");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugador` where idJugador=?");
             $stm->execute(array($id));
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchObject($this->nombreTabla);
@@ -177,22 +191,6 @@ class JugadorDAO extends BaseDAO
     }
 
 
-    function list()
-    {
-        try {
-            $result = null;
-
-            $stm = $this->conexion->prepare("SELECT * FROM `viewjugador`");
-            $stm->execute();
-            if ($stm->rowCount() != 0) {
-                $result = $stm->fetchAll(PDO::FETCH_CLASS, $this->nombreTabla);
-            }
-            return $result;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
     public function delete($id)
     {
         parent::delete($id);
@@ -213,6 +211,35 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    function getJugadoresWithEstadisticas()
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT persona.nombre, persona.primerApellido, persona.segundoApellido, jugador.idJugador FROM `estadistica` LEFT JOIN jugador on estadistica.idJugador = jugador.idJugador LEFT JOIN persona on persona.idPersona = estadistica.idJugador");
+            $stm->execute();
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    function getJugadoresWithVideos()
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT persona.nombre, persona.primerApellido, persona.segundoApellido, jugador.idJugador FROM `video` LEFT JOIN jugador on video.idJugador = jugador.idJugador LEFT JOIN persona on persona.idPersona = video.idJugador");
+            $stm->execute();
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     function getJugadores()
     {
