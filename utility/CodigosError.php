@@ -12,6 +12,12 @@ abstract class CodigosError
     const pass_empty = 2;
     const user_not_exists = 3;
 
+    // Códigos de error de usuarios (add)
+    const usuario_invalid = 34;
+    const correo_electronico_empty = 35;
+    const correo_electronico_invalid = 36;
+    const pass_invalid = 37;
+
     // Códigos de error de jugadores
     const nombre_invalid = 4;
     const nombre_empty = 5;
