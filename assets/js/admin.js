@@ -12,7 +12,7 @@ function isEmpty(string) {
     }
 }
 
-// Específico de la página login y addusuario ----------------------------------------------
+// Específico de la página login ----------------------------------------------
 function visibilidadPass() {
     var ojo = document.getElementById("ojo");
     var input = document.getElementById("password");
@@ -216,12 +216,14 @@ $(document).on("click", ".botonEliminarContacto", function () {
     $("#link-eliminar").attr("href", "?c=contacto&a=delete&id=" + id)
 });
 
-// Buscar en las tablas ----------------------------------------------
+// Funciones de tablas ----------------------------------------------
 
-$(function() {
-    $("#tabla_jugadores").tablesorter({ sortList: [[0,0]] })
+// Filtrar tablas
+$(function () {
+    $("#tabla_jugadores").tablesorter({sortList: [[0, 0]]})
 });
 
+// Ordenar tablas
 function buscarNombre(input, tabla) {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
@@ -243,4 +245,27 @@ function buscarNombre(input, tabla) {
         }
     }
 }
+
+// Filtrar nacionalidades
+
+function filtrarNacionalidades() {
+    // Declare variables
+    const inputBuscar = document.getElementById("filtroNacionalidades");
+    const textoFiltro = inputBuscar.value.toUpperCase(inputBuscar);
+    const cajaCheckbox = $("div#caja-nacionalidades div.form-check");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    let txtValue;
+    for (i = 0; i < cajaCheckbox.length; i++) {
+        txtValue = $(cajaCheckbox[i]).data('id');
+        if (txtValue.toUpperCase().indexOf(textoFiltro) > -1) {
+            cajaCheckbox[i].style.display = "";
+        } else {
+            cajaCheckbox[i].style.display = "none";
+        }
+    }
+
+}
+
+
 
