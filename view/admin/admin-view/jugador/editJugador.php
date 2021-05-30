@@ -32,15 +32,16 @@
         <?php
     }
     ?>
-    <div class="card mb-3">
-        <div class="card-body">
-            <h2 class="card-title mb-2 fs-4">Datos personales</h2>
+    <div class="card mb-3 border-0">
+        <div class="card-body row">
+            <h2 class="card-title mb-3 fs-4">Datos personales</h2>
             <!-- Nombre -->
-            <div class="mb-3">
-                <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
+            <div class="mb-3 col-12 col-md-6">
+                <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top"
+                       title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
-                       value="<?php echo $objeto->getNombre() ?>">
+                       value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : $objeto->getNombre() ?>">
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::nombre_empty) {
@@ -55,11 +56,11 @@
                 ?>
             </div>
             <!-- Apellido 1 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
-                       value="<?php echo $objeto->getPrimerApellido() ?>">
+                       value="<?php echo isset($_POST["apellido1"]) ? $_POST["apellido1"] : $objeto->getPrimerApellido() ?>">
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::apellido1_empty) {
@@ -74,10 +75,10 @@
                 ?>
             </div>
             <!-- Apellido 2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
-                       value="<?php echo $objeto->getSegundoApellido() ?>">
+                       value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : $objeto->getSegundoApellido() ?>">
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::apellido2_invalid) {
@@ -87,9 +88,10 @@
                 ?>
             </div>
             <!-- dni -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
-                <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $objeto->getDni() ?>">
+                <input type="text" class="form-control" id="dni" name="dni"
+                       value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : $objeto->getDni() ?>">
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::dni_invalid) {
@@ -99,19 +101,52 @@
                 ?>
             </div>
             <!-- Género -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="genero" class="form-label">Género</label>
                 <select class="form-select" id="genero" name="genero">
-                    <option value="masculino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "masculino" ? "selected" : "" : "" ?>>
+                    <option value="masculino" <?php
+                    if (isset($_POST["genero"])) {
+                        if ($_POST["genero"] == "masculino") {
+                            echo "selected";
+                        }
+                    } else {
+                        if ($objeto->getGenero() == "masculino") {
+                            echo "selected";
+                        }
+                    }
+                    ?>>
                         Masculino
                     </option>
-                    <option value="femenino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "femenino" ? "selected" : "" : "" ?>>
+                    <option value="femenino" <?php
+                    if (isset($_POST["genero"])) {
+                        if ($_POST["genero"] == "femenino") {
+                            echo "selected";
+                        }
+                    } else {
+                        if ($objeto->getGenero() == "femenino") {
+                            echo "selected";
+                        }
+                    }
+                    ?>>
                         Femenino
                     </option>
                 </select>
             </div>
+            <!-- Telefono -->
+            <div class="mb-3 col-12 col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono"
+                       value="<?php echo $objeto->getTelefono() ?>">
+                <?php
+                if (isset($error)) {
+                    if ($error == CodigosError::telefono_invalid) {
+                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El teléfono no es válido.</div>';
+                    }
+                }
+                ?>
+            </div>
             <!-- fecha de nacimiento -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac"
                        value="<?php echo $objeto->getFechaNacimiento() ?>" aria-describedby="fechaNacimientoHelp">
@@ -124,25 +159,50 @@
                 }
                 ?>
             </div>
-            <!-- Telefono -->
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="tel" class="form-control" id="telefono" name="telefono"
-                       value="<?php echo $objeto->getTelefono() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::telefono_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El teléfono no es válido.</div>';
+            <div class="w-100"></div>
+            <!-- Nacionalidades -->
+            <div class="mb-3 col-12 col-md-6">
+                <label class="form-label">Nacionalidades</label>
+                <div id="caja-nacionalidades" class="p-1">
+                    <input class="form-control w-auto" type="text" onkeyup="filtrarNacionalidades()"
+                           id="filtroNacionalidades" placeholder="Buscar nacionalidades...">
+                    <?php
+                    if ($listadoNacionalidades != null) {
+                        for ($i = 0; $i < sizeof($listadoNacionalidades); $i++) { ?>
+                            <div class="form-check my-2" data-id="<?php echo $listadoNacionalidades[$i]->getNombre() ?>">
+                                <input class="form-check-input" type="checkbox" name="nacionalidad[]"
+                                       value="<?php echo $listadoNacionalidades[$i]->getIdNacionalidad() ?>" <?php
+                                if (isset($_POST["nacionalidad"])) {
+                                    if (in_array($listadoNacionalidades[$i]->getIdNacionalidad(), $_POST["nacionalidad"])) {
+                                        echo "checked";
+                                    }
+                                } else {
+                                    $nacionalidadesJugador = $objeto->getNacionalidades();
+                                    if ($nacionalidadesJugador != null) {
+                                        for ($j = 0; $j < sizeof($nacionalidadesJugador); $j++) {
+                                            if ($nacionalidadesJugador[$j]->getIdNacionalidad() == $listadoNacionalidades[$i]->getIdNacionalidad()) {
+                                                echo " checked";
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
+                                ><label class="form-check-label">
+                                    <?php echo $listadoNacionalidades[$i]->getNombre() ?>
+                                </label>
+                            </div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
             <!-- Imagen -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Imagen</label>
                 <img src="<?php echo ".." . $objeto->getRuta() ?>"
-                     class="img-fluid rounded-circle shadow-sm d-block my-2" alt="<?php echo $objeto->getFullName() ?>"
-                     width="200">
+                     class="rounded-circle shadow-sm d-block my-2" alt="<?php echo $objeto->getFullName() ?>"
+                     height="90">
                 <input type="hidden" name="antiguaRuta" value="<?php echo $objeto->getRuta() ?>">
                 <input type="file" class="form-control" id="imagen" name="imagen" accept="image/png, image/jpeg"
                        aria-describedby="imagenHelp">
@@ -160,9 +220,9 @@
                 }
                 ?>
             </div>
-            <h2 class="card-title mt-5 mb-2 fs-4">Datos Jugador</h2>
+            <h2 class="card-title mt-4 mb-3 fs-4">Datos Jugador</h2>
             <!-- Visible -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="visibilidad" class="form-label">Visibilidad</label>
                 <select class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
                     <option value="1" <?php echo $objeto->getVisible() == "1" ? "selected" : "" ?>>Visible</option>
@@ -172,7 +232,7 @@
                     listado de jugadores, si está oculto no aparecerá </small>
             </div>
             <!-- Altura -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="altura" class="form-label">Altura</label>
                 <input type="text" class="form-control" id="altura" name="altura"
                        value="<?php echo $objeto->getAltura() ?>" aria-describedby="alturaHelp">
@@ -187,7 +247,7 @@
                 ?>
             </div>
             <!-- Posicion -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="posicion" class="form-label">Posicion</label>
                 <select class="form-select" id="posicion" name="posicion">
                     <option value="no especificado" <?php echo $objeto->getPosicion() == "no especificado" ? "selected" : "" ?>>
@@ -208,20 +268,50 @@
                 </select>
             </div>
             <!-- Extracomunitario -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="extracomunitario" class="form-label">Extracomunitario</label>
                 <select class="form-select" id="extracomunitario" name="extracomunitario">
-                    <option value="no especificado" <?php echo $objeto->getExtracomunitario() == "no especificado" ? "selected" : "" ?>>
+                    <option value="NULL" <?php
+                    if (isset($_POST["extracomunitario"])) {
+                        if ($_POST["extracomunitario"] == "NULL") {
+                            echo "selected";
+                        }
+                    } else {
+                        if ($objeto->getExtracomunitario() == "NULL") {
+                            echo "selected";
+                        }
+                    }
+                    ?>>
                         No especificado
                     </option>
-                    <option value="si" <?php echo $objeto->getExtracomunitario() == "si" ? "selected" : "" ?>>Si
+                    <option value="1" <?php
+                    if (isset($_POST["extracomunitario"])) {
+                        if ($_POST["extracomunitario"] == "1") {
+                            echo "selected";
+                        }
+                    } else {
+                        if ($objeto->getExtracomunitario() == "1") {
+                            echo "selected";
+                        }
+                    }
+                    ?>>Si
                     </option>
-                    <option value="no" <?php echo $objeto->getExtracomunitario() == "no" ? "selected" : "" ?>>No
+                    <option value="0" <?php
+                    if (isset($_POST["extracomunitario"])) {
+                        if ($_POST["extracomunitario"] == "0") {
+                            echo "selected";
+                        }
+                    } else {
+                        if ($objeto->getExtracomunitario() == "0") {
+                            echo "selected";
+                        }
+                    }
+                    ?>>No
                     </option>
                 </select>
             </div>
             <!-- Estado -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="estado" class="form-label">Estado</label>
                 <select class="form-select" id="estado" name="estado">
                     <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>
@@ -236,10 +326,15 @@
                 </select>
             </div>
             <!-- Equipo -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
-                <input type="text" class="form-control" id="equipo" name="equipo"
+                <input list="equipos" class="form-control" id="equipo" name="equipo"
                        value="<?php echo $objeto->getEquipo() ?>">
+                <datalist id="equipos">
+                    <?php foreach ($listadoNombresEquipos as $equipo): ?>
+                    <option value="<?php echo $equipo["nombre"] ?>">
+                        <?php endforeach; ?>
+                </datalist>
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::equipo_invalid) {
@@ -249,13 +344,13 @@
                 ?>
             </div>
             <!-- Biografia -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="biografia" class="form-label">Biografia</label>
                 <textarea id="biografia" name="biografia"
                           class="form-control"><?php echo $objeto->getBiografia() ?></textarea>
             </div>
             <!-- Informe -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="informe" class="form-label">Informe</label>
                 <textarea id="informe" name="informe"
                           class="form-control"><?php echo $objeto->getInforme() ?></textarea>
