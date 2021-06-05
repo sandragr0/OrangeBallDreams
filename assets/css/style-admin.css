@@ -3,9 +3,7 @@
     min-height: 170px;
     overflow: auto;
 }
-.noFocusBorder:focus {
 
-}
 /* Fuentes */
 @font-face {
     font-family: lato-regular;
