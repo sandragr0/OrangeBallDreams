@@ -40,7 +40,7 @@ class AdminControllerVideo extends AdminController
 
     function add()
     {
-        $jugadores = $this->getJugadores();
+        $jugadores = $this->getAllJugadores();
         if ($jugadores != null) {
             if (sizeof($_POST) == 0) {
                 include_once '../view/admin/admin-panel-header.php';
@@ -80,6 +80,11 @@ class AdminControllerVideo extends AdminController
     function edit()
     {
         // TODO: Implement edit() method.
+    }
+
+    private function getAllJugadores()
+    {
+        return $this->modelJugador->getJugadores();
     }
 
     private function getJugadores()

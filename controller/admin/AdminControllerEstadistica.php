@@ -30,7 +30,7 @@ class AdminControllerEstadistica extends AdminController
         fwrite($file, $json);
         fclose($file);
 
-        $jugadores = $this->getJugadores();
+        $jugadores = $this->getJugadoresWithEstadistica();
 
         include_once "../view/admin/admin-view/" . $this->controllerName . "/list" . $this->controllerName . ".php";
         include_once '../view/admin/admin-panel-footer.php';
@@ -240,6 +240,11 @@ class AdminControllerEstadistica extends AdminController
     }
 
     private function getJugadores()
+    {
+        return $this->modelJugador->getJugadores();
+    }
+
+    private function getJugadoresWithEstadistica()
     {
         return $this->modelJugador->getJugadoresWithEstadisticas();
     }

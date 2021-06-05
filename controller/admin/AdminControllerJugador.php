@@ -17,6 +17,8 @@ class AdminControllerJugador extends AdminController
     public function add()
     {
         $nacionalidades = $this->model->listNacionalidades();
+        $listadoNombresEquipos = $this->modelEquipo->getNombresEquipos();
+
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-panel-header.php';
             include_once "../view/admin/admin-view/" . $this->controllerName . "/addJugador.php";
