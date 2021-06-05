@@ -3,7 +3,7 @@
         <div class="col-12 col-md mx-2">
             <div class="row mb-4">
                 <div class="col">
-                    <img class="img-fluid w-25" src="./assets/img/logo-dark.png"></img>
+                    <img class="img-fluid w-25" src="../assets/img/logo-dark.png"></img>
                 </div>
             </div>
             <div class="row mb-4">

@@ -1,21 +1,34 @@
 /* ------------------- Fuentes ------------------------- */
 @font-face {
-    font-family: lato-regular; 
-    src: url('../fonts/Lato/Lato-Regular.ttf'); 
+    font-family: lato-regular;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
 }
+
 @font-face {
-    font-family: poppins-bold; 
-    src: url('../fonts/Poppins/Poppins-Bold.ttf'); 
+    font-family: poppins-bold;
+    src: url('../fonts/Poppins/Poppins-Bold.ttf');
 }
 
 /* ------------------- General ------------------------- */
 
 * {
     font-family: lato-regular;
+    color: #0D0A0F;
 }
 
-h1, h2, h3, h4,h5,h6 {
-    font-family: poppins-bold; 
+h1, h2, h3, h4, h5, h6 {
+    font-family: poppins-bold;
+}
+
+.tituloLink {
+    color: #0D0A0F;
+    text-decoration: none;
+    font-family: poppins-bold;
+}
+
+.tituloLink:hover {
+    color: #F26522;
+    font-weight: 900;
 }
 
 /* ------------------- Utilidades ------------------------- */
@@ -24,7 +37,7 @@ h1, h2, h3, h4,h5,h6 {
 }
 
 .oculto-opacidad {
-    opacity:0;   
+    opacity: 0;
 }
 
 /* ------------------- Header ------------------------- */
@@ -36,20 +49,20 @@ a.navbar-brand {
 }
 
 .logo {
-    position:absolute;
-    transition:opacity 0.5s linear;
+    position: absolute;
+    transition: opacity 0.5s linear;
 }
 
-#logo-normal, #logo-small{
-    opacity:1;
+#logo-normal, #logo-small {
+    opacity: 1;
 }
 
 #logo-animado, #logo-small-animado {
-    position:absolute;
-    transition:opacity 0.5s linear;
+    position: absolute;
+    transition: opacity 0.5s linear;
 }
 
-@media (min-width: 992px)  {
+@media (min-width: 992px) {
     #logo-small {
         display: inline !important;
     }
@@ -57,12 +70,15 @@ a.navbar-brand {
     #logo-small-animado {
         display: inline !important;
     }
+
     #logo {
         display: none !important;
     }
+
     #logo-animado {
         display: none !important;
     }
+
     a.navbar-brand {
         width: 50px;
         margin-right: 40px;
@@ -77,12 +93,15 @@ a.navbar-brand {
     #logo-small-animado {
         display: none !important;
     }
+
     #logo {
         display: inline !important;
     }
+
     #logo-animado {
         display: inline !important;
     }
+
     a.navbar-brand {
         width: 200px;
     }
@@ -90,21 +109,22 @@ a.navbar-brand {
 
 /* Navbar */
 .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") ;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .navbar-light .navbar-toggler {
     color: rgb(255 255 255 / 55%);
-    border-color: rgba(0,0,0,.1);
+    border-color: rgba(0, 0, 0, .1);
 }
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link, .navbar-light .navbar-nav .nav-link , a.nav-link span {
-    font-family: poppins-bold; 
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .nav-link, a.nav-link span {
+    font-family: poppins-bold;
     color: #F26522;
     border-bottom: solid 2px transparent;
     border-top: solid 2px transparent;
 
 }
+
 .navbar-light .navbar-nav .nav-link:hover {
     color: #F7941D;
     border-bottom-color: #F7941D;
@@ -123,9 +143,10 @@ a.navbar-brand {
 .nav-button {
     border: solid 2px #F26522 !important;
 }
+
 .nav-button:hover {
     border: solid 2px #F7941D !important;
-    transition: none !important; 
+    transition: none !important;
 }
 
 .nav-button-bold {
@@ -134,10 +155,11 @@ a.navbar-brand {
     border: solid 2px transparent;
     transition: background 0.3s linear;
 }
+
 .nav-button-bold:hover {
     background-color: #00D6E9;
     border: solid 2px #00D6E9 !important;
-    border: solid 2px transparent;     
+    border: solid 2px transparent;
 }
 
 
@@ -145,13 +167,15 @@ a.navbar-brand {
     a.nav-link {
         border: none !important;
     }
-    .nav-link:hover  {
+
+    .nav-link:hover {
         border: none !important;
-    }  
+    }
+
     .active {
         border: none !important;
-    }  
-} 
+    }
+}
 
 /* ------------------- Footer ------------------------- */
 
@@ -168,20 +192,22 @@ footer a {
     transition: border-bottom 0.3s ease-in;
     border-bottom: solid 2px transparent;
 }
+
 footer a:hover {
     color: #0D0A0F;
     border-bottom: solid 2px #0D0A0F;
-    
+
 }
 
 .social a {
     border-bottom: none;
     transition: color 0.3s ease-in;
 }
+
 .social a:hover {
     border-bottom: none;
     color: #404040;
-     transition: color 0.3s ease-in;
+    transition: color 0.3s ease-in;
 }
 
 
@@ -221,7 +247,13 @@ footer a:hover {
     font-size: 10vw;
     letter-spacing: 3px;
 }
+
 .typewrite {
     font-size: 4vh;
 }
 
+/* Listado jugadores */
+.nacionalidades {
+    min-height: 30px;
+    box-sizing: border-box;
+}

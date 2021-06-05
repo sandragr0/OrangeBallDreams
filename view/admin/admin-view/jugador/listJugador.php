@@ -30,8 +30,6 @@ if ($result == null) {
         </thead>
         <tbody>
         <?php
-        include_once '../model/dao/JugadorDAO.php';
-        include_once '../model/entity/Jugador.php';
         foreach ($result as $jugador):
             ?>
             <tr class="jugador align-middle">
