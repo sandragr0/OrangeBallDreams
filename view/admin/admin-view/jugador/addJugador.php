@@ -99,7 +99,7 @@
             </div>
             <!-- fecha de nacimiento -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                <label for="fechaNac" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Fecha de nacimiento *</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac"
                        value="<?php echo isset($_POST["fechaNac"]) ? $_POST["fechaNac"] : "" ?>"
                        aria-describedby="fechaNacimientoHelp">
@@ -108,6 +108,9 @@
                 if (isset($error)) {
                     if ($error == CodigosError::fechaNac_invalid) {
                         echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La fecha de nacimiento no es válida.</div>';
+                    }
+                    if ($error == CodigosError::fechaNac_empty) {
+                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no puede estar vacio.</div>';
                     }
                 }
                 ?>
@@ -170,7 +173,7 @@
             <h2 class="card-title mb-4 fs-4">Datos Jugador</h2>
             <!-- Visible -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="visibilidad" class="form-label">Visibilidad</label>
+                <label for="visibilidad" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Visibilidad *</label>
                 <select class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
                     <option value="1" <?php echo isset($_POST["visibilidad"]) ? $_POST["visibilidad"] == "1" ? "selected" : "" : "" ?>>
                         Visible
@@ -184,7 +187,7 @@
             </div>
             <!-- Altura -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="altura" class="form-label">Altura</label>
+                <label for="altura" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Altura *</label>
                 <input type="text" class="form-control" id="altura" name="altura"
                        value="<?php echo isset($_POST["altura"]) ? $_POST["altura"] : "" ?>"
                        aria-describedby="alturaHelp">
@@ -195,16 +198,16 @@
                     if ($error == CodigosError::altura_invalid) {
                         echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La altura no es válida.</div>';
                     }
+                    if ($error == CodigosError::altura_empty) {
+                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no puede estar vacio.</div>';
+                    }
                 }
                 ?>
             </div>
             <!-- Posicion -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="posicion" class="form-label">Posicion</label>
+                <label for="posicion" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Posicion *</label>
                 <select class="form-select" id="posicion" name="posicion">
-                    <option value="no especificado" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "no especificado" ? "selected" : "" : "" ?>>
-                        No especificado
-                    </option>
                     <option value="Base" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Base" ? "selected" : "" : "" ?>>
                         Base
                     </option>
@@ -224,11 +227,8 @@
             </div>
             <!-- Extracomunitario -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="extracomunitario" class="form-label">Extracomunitario</label>
+                <label for="extracomunitario" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Extracomunitario *</label>
                 <select class="form-select" id="extracomunitario" name="extracomunitario">
-                    <option value="null" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "null" ? "selected" : "" : "" ?>>
-                        No especificado
-                    </option>
                     <option value="1" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "1" ? "selected" : "" : "" ?>>
                         Si
                     </option>
@@ -239,11 +239,8 @@
             </div>
             <!-- Estado -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="estado" class="form-label">Estado</label>
+                <label for="estado" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Estado *</label>
                 <select class="form-select" id="estado" name="estado">
-                    <option value="null" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "null" ? "selected" : "" : "" ?>>
-                        No especificado
-                    </option>
                     <option value="disponible" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "disponible" ? "selected" : "" : "" ?>>
                         Disponible
                     </option>

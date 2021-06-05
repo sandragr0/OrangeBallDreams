@@ -153,16 +153,18 @@ class AdminControllerJugador extends AdminController
             }
         }
 
-        if ($datos["fechaNac"] != "") {
-            if (!Utilidades::isFecha($datos["fechaNac"])) {
-                return CodigosError::fechaNac_invalid;
-            }
-        }
-
         if ($datos["telefono"] != "") {
             if (!Utilidades::isTelefono($datos["telefono"])) {
                 return CodigosError::telefono_invalid;
             }
+        }
+
+        if ($datos["fechaNac"] != "") {
+            if (!Utilidades::isFecha($datos["fechaNac"])) {
+                return CodigosError::fechaNac_invalid;
+            }
+        } else {
+            return CodigosError::fechaNac_empty;
         }
 
         if ($archivos["imagen"]["name"] != "") {
@@ -178,6 +180,8 @@ class AdminControllerJugador extends AdminController
             if (!Utilidades::isAltura($datos["altura"])) {
                 return CodigosError::altura_invalid;
             }
+        } else {
+            return CodigosError::altura_empty;
         }
 
 
