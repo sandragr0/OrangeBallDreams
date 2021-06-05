@@ -158,7 +158,7 @@ abstract class Utilidades
 
     static function isDecimalHastaDosCifras($num)
     {
-        if (preg_match("/^[0-9]{1}[.]{1}[0-9]{1}$/", $num)) {
+        if (preg_match("/^[0-9]{1,2}[.]{1}[0-9]{1}$/", $num)) {
             return true;
         }
         return false;
