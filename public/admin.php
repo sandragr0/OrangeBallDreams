@@ -44,10 +44,6 @@ function autoloadutilidades($className) {
 
 // Necesitaremos usar sesiones así que abrimos aquí la sesión
 session_start();
-include_once '../controller/admin/AdminControllerJugador.php';
-include_once '../controller/admin/AdminControllerUsuario.php';
-include_once '../controller/admin/AdminControllerEquipo.php';
-include_once '../controller/admin/AdminControllerEstadistica.php';
 
 // Obtener parámetros de la sesión
 $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
