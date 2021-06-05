@@ -111,9 +111,6 @@
             <div class="mb-3">
                 <label for="posicion" class="form-label">Posicion</label>
                 <select disabled class="form-select" id="posicion" name="posicion">
-                    <option value="no especificado" <?php echo $objeto->getPosicion() == "no especificado" ? "selected" : "" ?>>
-                        No especificado
-                    </option>
                     <option value="Base" <?php echo $objeto->getPosicion() == "Base" ? "selected" : "" ?>>Base</option>
                     <option value="Escolta" <?php echo $objeto->getPosicion() == "Escolta" ? "selected" : "" ?>>
                         Escolta
@@ -131,9 +128,6 @@
             <div class="mb-3">
                 <label for="extracomunitario" class="form-label">Extracomunitario</label>
                 <select disabled class="form-select" id="extracomunitario" name="extracomunitario">
-                    <option value="null" <?php echo $objeto->getExtracomunitario() == "null" ? "selected" : "" ?>>No
-                        especificado
-                    </option>
                     <option value="0" <?php echo $objeto->getExtracomunitario() == "0" ? "selected" : "" ?>>No</option>
                     <option value="1" <?php echo $objeto->getExtracomunitario() == "1" ? "selected" : "" ?>>Si</option>
                 </select>
@@ -142,9 +136,6 @@
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
                 <select disabled class="form-select" id="estado" name="estado">
-                    <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>No
-                        especificado
-                    </option>
                     <option value="disponible" <?php echo $objeto->getEstado() == "disponible" ? "selected" : "" ?>>
                         Disponible
                     </option>

@@ -136,7 +136,7 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
-                       value="<?php echo $objeto->getTelefono() ?>">
+                       value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : $objeto->getTelefono() ?>">
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::telefono_invalid) {
@@ -147,14 +147,19 @@
             </div>
             <!-- fecha de nacimiento -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                <label for="fechaNac" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Fecha
+                    de nacimiento *</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac"
-                       value="<?php echo $objeto->getFechaNacimiento() ?>" aria-describedby="fechaNacimientoHelp">
+                       value="<?php echo isset($_POST["fechaNac"]) ? $_POST["fechaNac"] : $objeto->getFechaNacimiento() ?>"
+                       aria-describedby="fechaNacimientoHelp">
                 <small id="fechaNacimientoHelp" class="form-text text-muted">Formato dd/mm/aaaa</small>
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::fechaNac_invalid) {
                         echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La fecha de nacimiento no es válida.</div>';
+                    }
+                    if ($error == CodigosError::fechaNac_empty) {
+                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no puede estar vacio.</div>';
                     }
                 }
                 ?>
@@ -169,7 +174,8 @@
                     <?php
                     if ($listadoNacionalidades != null) {
                         for ($i = 0; $i < sizeof($listadoNacionalidades); $i++) { ?>
-                            <div class="form-check my-2" data-id="<?php echo $listadoNacionalidades[$i]->getNombre() ?>">
+                            <div class="form-check my-2"
+                                 data-id="<?php echo $listadoNacionalidades[$i]->getNombre() ?>">
                                 <input class="form-check-input" type="checkbox" name="nacionalidad[]"
                                        value="<?php echo $listadoNacionalidades[$i]->getIdNacionalidad() ?>" <?php
                                 if (isset($_POST["nacionalidad"])) {
@@ -223,19 +229,36 @@
             <h2 class="card-title mt-4 mb-3 fs-4">Datos Jugador</h2>
             <!-- Visible -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="visibilidad" class="form-label">Visibilidad</label>
+                <label for="visibilidad" class="form-label" data-toggle="tooltip" data-placement="top"
+                       title="Obligatorio">Visibilidad *</label>
                 <select class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
-                    <option value="1" <?php echo $objeto->getVisible() == "1" ? "selected" : "" ?>>Visible</option>
-                    <option value="0" <?php echo $objeto->getVisible() == "0" ? "selected" : "" ?>>Oculto</option>
+                    <option value="1" <?php
+                    if (isset($_POST["visibilidad"])) {
+                        echo $_POST["visibilidad"] == "1" ? "selected" : "";
+                    } else {
+                        echo $objeto->getVisible() == "1" ? "selected" : "";
+                    }
+                    ?>>Visible
+                    </option>
+                    <option value="0" <?php
+                    if (isset($_POST["visibilidad"])) {
+                        echo $_POST["visibilidad"] == "0" ? "selected" : "";
+                    } else {
+                        echo $objeto->getVisible() == "0" ? "selected" : "";
+                    }
+                    ?>>Oculto
+                    </option>
                 </select>
                 <small id="visibilidadHelp" class="form-text text-muted">Si un jugador está visible aparecerá en el
                     listado de jugadores, si está oculto no aparecerá </small>
             </div>
             <!-- Altura -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="altura" class="form-label">Altura</label>
+                <label for="altura" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Altura
+                    *</label>
                 <input type="text" class="form-control" id="altura" name="altura"
-                       value="<?php echo $objeto->getAltura() ?>" aria-describedby="alturaHelp">
+                       value="<?php echo isset($_POST["altura"]) ? $_POST["altura"] : $objeto->getAltura() ?>"
+                       aria-describedby="alturaHelp">
                 <small id="alturaHelp" class="form-text text-muted">Formato decimal, sin añadir prefijos ni sufijos,
                     por ejemplo 2.10</small>
                 <?php
@@ -243,47 +266,66 @@
                     if ($error == CodigosError::altura_invalid) {
                         echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La altura no es válida.</div>';
                     }
+                    if ($error == CodigosError::altura_empty) {
+                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no puede estar vacio.</div>';
+                    }
                 }
                 ?>
             </div>
             <!-- Posicion -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="posicion" class="form-label">Posicion</label>
+                <label for="posicion" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Posicion
+                    *</label>
                 <select class="form-select" id="posicion" name="posicion">
-                    <option value="no especificado" <?php echo $objeto->getPosicion() == "no especificado" ? "selected" : "" ?>>
-                        No especificado
+                    <option value="Base" <?php
+                    if (isset($_POST["posicion"])) {
+                        echo $_POST["posicion"] == "Base" ? "selected" : "";
+                    } else {
+                        echo $objeto->getPosicion() == "Base" ? "selected" : "";
+                    }
+                    ?>>Base
                     </option>
-                    <option value="Base" <?php echo $objeto->getPosicion() == "Base" ? "selected" : "" ?>>Base
-                    </option>
-                    <option value="Escolta" <?php echo $objeto->getPosicion() == "Escolta" ? "selected" : "" ?>>
+                    <option value="Escolta" <?php
+                    if (isset($_POST["posicion"])) {
+                        echo $_POST["posicion"] == "Escolta" ? "selected" : "";
+                    } else {
+                        echo $objeto->getPosicion() == "Escolta" ? "selected" : "";
+                    }
+                    ?>>
                         Escolta
                     </option>
-                    <option value="Alero" <?php echo $objeto->getPosicion() == "Alero" ? "selected" : "" ?>>Alero
+                    <option value="Alero" <?php
+                    if (isset($_POST["posicion"])) {
+                        echo $_POST["posicion"] == "Alero" ? "selected" : "";
+                    } else {
+                        echo $objeto->getPosicion() == "Alero" ? "selected" : "";
+                    }
+                    ?>>Alero
                     </option>
-                    <option value="Ala-pivot" <?php echo $objeto->getPosicion() == "Ala-pivot" ? "selected" : "" ?>>
+                    <option value="Ala-pivot" <?php
+                    if (isset($_POST["posicion"])) {
+                        echo $_POST["posicion"] == "Ala-pivot" ? "selected" : "";
+                    } else {
+                        echo $objeto->getPosicion() == "Ala-pivot" ? "selected" : "";
+                    }
+                    ?>>
                         Ala-pivot
                     </option>
-                    <option value="Pivot" <?php echo $objeto->getPosicion() == "Pivot" ? "selected" : "" ?>>Pivot
+                    <option value="Pivot" <?php
+                    if (isset($_POST["posicion"])) {
+                        echo $_POST["posicion"] == "Pivot" ? "selected" : "";
+                    } else {
+                        echo $objeto->getPosicion() == "Pivot" ? "selected" : "";
+                    }
+                    ?>>Pivot
                     </option>
                 </select>
             </div>
             <!-- Extracomunitario -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="extracomunitario" class="form-label">Extracomunitario</label>
+                <label for="extracomunitario" class="form-label" data-toggle="tooltip" data-placement="top"
+                       title="Obligatorio">Extracomunitario *</label>
                 <select class="form-select" id="extracomunitario" name="extracomunitario">
-                    <option value="NULL" <?php
-                    if (isset($_POST["extracomunitario"])) {
-                        if ($_POST["extracomunitario"] == "NULL") {
-                            echo "selected";
-                        }
-                    } else {
-                        if ($objeto->getExtracomunitario() == "NULL") {
-                            echo "selected";
-                        }
-                    }
-                    ?>>
-                        No especificado
-                    </option>
                     <option value="1" <?php
                     if (isset($_POST["extracomunitario"])) {
                         if ($_POST["extracomunitario"] == "1") {
@@ -312,15 +354,25 @@
             </div>
             <!-- Estado -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="estado" class="form-label">Estado</label>
+                <label for="estado" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Estado
+                    *</label>
                 <select class="form-select" id="estado" name="estado">
-                    <option value="null" <?php echo $objeto->getEstado() == "null" ? "selected" : "" ?>>
-                        No especificado
-                    </option>
-                    <option value="disponible" <?php echo $objeto->getEstado() == "disponible" ? "selected" : "" ?>>
+                    <option value="disponible" <?php
+                    if (isset($_POST["estado"])) {
+                        echo $_POST["estado"] == "disponible" ? "selected" : "";
+                    } else {
+                        echo $objeto->getEstado() == "disponible" ? "selected" : "";
+                    }
+                    ?>>
                         Disponible
                     </option>
-                    <option value="fichado" <?php echo $objeto->getEstado() == "fichado" ? "selected" : "" ?>>
+                    <option value="fichado" <?php
+                    if (isset($_POST["estado"])) {
+                        echo $_POST["estado"] == "fichado" ? "selected" : "";
+                    } else {
+                        echo $objeto->getEstado() == "fichado" ? "selected" : "";
+                    }
+                    ?>>
                         Fichado
                     </option>
                 </select>
@@ -329,9 +381,13 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
                 <input list="equipos" class="form-control" id="equipo" name="equipo"
-                       value="<?php echo $objeto->getEquipo() ?>">
+                       value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : $objeto->getEquipo() ?>">
                 <datalist id="equipos">
-                    <?php foreach ($listadoNombresEquipos as $equipo): ?>
+                    <?php
+                    foreach ($listadoNombresEquipos
+
+                    as $equipo):
+                    ?>
                     <option value="<?php echo $equipo["nombre"] ?>">
                         <?php endforeach; ?>
                 </datalist>
@@ -347,13 +403,13 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="biografia" class="form-label">Biografia</label>
                 <textarea id="biografia" name="biografia"
-                          class="form-control"><?php echo $objeto->getBiografia() ?></textarea>
+                          class="form-control"><?php echo isset($_POST["biografia"]) ? $_POST["biografia"] : $objeto->getBiografia() ?></textarea>
             </div>
             <!-- Informe -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="informe" class="form-label">Informe</label>
                 <textarea id="informe" name="informe"
-                          class="form-control"><?php echo $objeto->getInforme() ?></textarea>
+                          class="form-control"><?php echo isset($_POST["informe"]) ? $_POST["informe"] : $objeto->getInforme() ?></textarea>
             </div>
 
             <!-- Enviar -->
