@@ -226,7 +226,7 @@ class JugadorDAO extends BaseDAO
     {
         try {
             $result = null;
-            $stm = $this->conexion->prepare("SELECT persona.nombre, persona.primerApellido, persona.segundoApellido, jugador.idJugador FROM `estadistica` LEFT JOIN jugador on estadistica.idJugador = jugador.idJugador LEFT JOIN persona on persona.idPersona = estadistica.idJugador");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugadoreswithestadisticas`;");
             $stm->execute();
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
@@ -241,7 +241,7 @@ class JugadorDAO extends BaseDAO
     {
         try {
             $result = null;
-            $stm = $this->conexion->prepare("SELECT persona.nombre, persona.primerApellido, persona.segundoApellido, jugador.idJugador FROM `video` LEFT JOIN jugador on video.idJugador = jugador.idJugador LEFT JOIN persona on persona.idPersona = video.idJugador");
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugadoreswithvideos`");
             $stm->execute();
             if ($stm->rowCount() != 0) {
                 $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
