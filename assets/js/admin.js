@@ -86,12 +86,12 @@ function checkFormulario() {
 
 function mostrarEstadisticas() {
     // Llamar por primera vez al cargar la página
-    const id = $("select#jugadorList option:selected").val();
+    const id = $("select#jugador option:selected").val();
     getEstadisticas(id);
 
     // Llamar cada vez que se cambia de jugador
-    $("select#jugadorList").change(function () {
-        var id = $("select#jugadorList option:selected").val();
+    $("select#jugador").change(function () {
+        var id = $("select#jugador option:selected").val();
         getEstadisticas(id);
     });
 }
@@ -141,12 +141,12 @@ function getEstadisticas(id) {
 
 function mostrarVideos() {
     // Llamar por primera vez al cargar la página
-    const id = $("select#jugadorList option:selected").val();
+    const id = $("select#jugador option:selected").val();
     getVideos(id);
 
     // Llamar cada vez que se cambia de jugador
-    $("select#jugadorList").change(function () {
-        var id = $("select#jugadorList option:selected").val();
+    $("select#jugador").change(function () {
+        var id = $("select#jugador option:selected").val();
         getVideos(id);
     });
 }
@@ -216,7 +216,7 @@ $(document).on("click", ".botonEliminarContacto", function () {
     $("#link-eliminar").attr("href", "?c=contacto&a=delete&id=" + id)
 });
 
-// Funciones de tablas ----------------------------------------------
+// Funciones de búsqueda y filtros ----------------------------------------------
 
 // Filtrar tablas
 $(function () {
@@ -225,14 +225,14 @@ $(function () {
 
 // Ordenar tablas
 function buscarNombre(input, tabla) {
-    // Declare variables
+    // Declarar variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById(input);
     filter = input.value.toUpperCase();
     table = document.getElementById(tabla);
     tr = table.getElementsByTagName("tr");
 
-    // Loop through all table rows, and hide those who don't match the search query
+    // Bucle por cada tr, oculta los tr que no cumplan la condición
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[1];
         if (td) {
@@ -247,7 +247,6 @@ function buscarNombre(input, tabla) {
 }
 
 // Filtrar nacionalidades
-
 function filtrarNacionalidades() {
     // Declare variables
     const inputBuscar = document.getElementById("filtroNacionalidades");
@@ -263,6 +262,41 @@ function filtrarNacionalidades() {
         } else {
             cajaCheckbox[i].style.display = "none";
         }
+    }
+}
+
+// Filtrar jugadores en los select
+function buscarJugador() {
+    const selectJugadores = document.getElementById("jugador");
+    const input = document.getElementById("inputBuscarNombre");
+    const filter = input.value.toUpperCase();
+    const option = selectJugadores.getElementsByTagName("option");
+    const searchIcon = document.getElementById("search-icon");
+
+    let encontrado = false;
+    for (i = 0; i < option.length; i++) {
+        searchIcon.classList.add("ms-2", "fas", "fa-spinner", "fa-pulse");
+        if (option[i]) {
+            txtValue = option[i].textContent || option[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                encontrado = true;
+                option[i].style.display = "";
+            } else {
+                option[i].style.display = "none";
+            }
+        }
+    }
+
+    if (filter != "") {
+        if (encontrado == true) {
+            searchIcon.classList.remove("fas", "fa-spinner", "fa-pulse");
+            searchIcon.classList.add("ms-2", "fas", "fa-check-circle");
+        } else {
+            searchIcon.classList.remove("fas", "fa-spinner", "fa-pulse");
+            searchIcon.classList.add("ms-2", "fas", "fa-exclamation-circle");
+        }
+    } else {
+        searchIcon.className = "";
     }
 
 }
