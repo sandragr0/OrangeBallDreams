@@ -17,24 +17,24 @@
     <?php }
     ?>
     <div class="card border-0 mb-3">
-        <div class="card-body">
+        <div class="card-body row">
             <!-- Datos del usuario -->
             <h2 class="card-title mb-4 fs-4">Datos del usuario</h2>
             <!-- Nombre del usuario -->
-            <div class="mb-3">
+            <div>
                 <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario"
                        value="<?php echo $objeto->getNombreUsuario() ?>">
             </div>
             <!-- Correo electrónico -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="correoElectronico" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Correo electrónico *</label>
                 <input type="text" class="form-control" id="correoElectronico" name="correoElectronico"
                        value="<?php  echo $objeto->getCorreoElectronico() ?>">
             </div>
             <!-- Contraseña -->
-            <div class="mb-3">
-                <div class="input-group mb-3">
+            <div>
+                <div class="input-group">
                     <input type="hidden" name="contraseña" class="form-control" id="password"
                            value="<?php echo $objeto->getContraseña() ?>">
                     <input type="hidden" name="modoEdicion" class="form-control" id="modoEdicion"
@@ -43,7 +43,7 @@
             </div>
             <?php if ($objeto->getIdUsuario() != 1) { ?>
             <!-- Rol -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="rol" class="form-label">Rol</label>
                 <select class="form-select" id="rol" name="rol" aria-describedby="rolHelp">
                     <option value="usuario" <?php echo isset($_POST["rol"]) ? $_POST["rol"] == "usuario" ? "selected" : "" : "" ?>>
@@ -62,7 +62,7 @@
             <!-- Datos personales -->
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -81,7 +81,7 @@
                 ?>
             </div>
             <!-- Apellido 1 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
@@ -100,7 +100,7 @@
                 ?>
             </div>
             <!-- Apellido 2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
                        value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : $objeto->getSegundoApellido() ?>">
@@ -113,7 +113,7 @@
                 ?>
             </div>
             <!-- dni -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
                        value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : $objeto->getDni() ?>" aria-describedby="dniHelp">
@@ -127,7 +127,7 @@
             }
             ?>
             <!-- Telefono -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
                        value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : $objeto->getTelefono() ?>">

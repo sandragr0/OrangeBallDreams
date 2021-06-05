@@ -1,7 +1,15 @@
 <h1>Ver videos</h1>
+<div class="col-12 mb-3">
+    <div class="input-group">
+        <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+        <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+               onkeyup="buscarJugador()"
+               aria-describedby="buscarNombre">
+    </div>
+</div>
 <div class="mb-3">
-    <label for="jugador" class="form-label">Jugador</label>
-    <select class="form-select" id="jugadorList" name="jugador">
+    <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
+    <select class="form-select" id="jugador" name="jugador">
         <?php foreach ($jugadores as $jugador): ?>
             <option value="<?php echo $jugador->getIdJugador(); ?>">
                 <?php echo $jugador->getFullName(); ?>

@@ -16,12 +16,12 @@
         </div>
     <?php }
     ?>
-    <div class="card border-0 mb-3">
-        <div class="card-body">
+    <div class="card border-0">
+        <div class="card-body row">
             <!-- Datos del usuario -->
             <h2 class="card-title mb-4 fs-4">Datos del usuario</h2>
             <!-- Nombre del usuario -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombreUsuario" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Nombre de usuario *</label>
                 <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
@@ -38,7 +38,7 @@
                 ?>
             </div>
             <!-- Correo electrónico -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="correoElectronico" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Correo electrónico *</label>
                 <input type="tel" class="form-control" id="correoElectronico" name="correoElectronico"
@@ -55,11 +55,12 @@
                 ?>
             </div>
             <!-- Contraseña -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="contraseña" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Contraseña *</label>
                 <div class="input-group mb-3">
-                    <input type="password" name="contraseña" class="form-control" aria-describedby="passwordHelp" id="password"
+                    <input type="password" name="contraseña" class="form-control" aria-describedby="passwordHelp"
+                           id="password"
                            value="<?php echo isset($_POST['contraseña']) ? $_POST['contraseña'] : "" ?>">
                     <span class="input-group-text" style="width:3em;" id="basic-addon1" onclick="visibilidadPass()"><i
                                 class="fas fa-eye" id="ojo"></i></span>
@@ -82,7 +83,7 @@
                 ?>
             </div>
             <!-- Rol -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="rol" class="form-label">Rol</label>
                 <select class="form-select" id="rol" name="rol" aria-describedby="rolHelp">
                     <option value="usuario" <?php echo isset($_POST["rol"]) ? $_POST["rol"] == "usuario" ? "selected" : "" : "" ?>>
@@ -100,7 +101,7 @@
             <!-- Datos personales -->
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -119,7 +120,7 @@
                 ?>
             </div>
             <!-- Apellido 1 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
@@ -138,7 +139,7 @@
                 ?>
             </div>
             <!-- Apellido 2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
                        value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : "" ?>">
@@ -151,7 +152,7 @@
                 ?>
             </div>
             <!-- dni -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
                        value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : "" ?>" aria-describedby="dniHelp">
@@ -165,7 +166,7 @@
             }
             ?>
             <!-- Telefono -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
                        value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : "" ?>">
@@ -178,10 +179,13 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="mt-4 row">
+                <div class="col-auto pe-1">
+                    <input type="reset" class="btn btn-secondary" value="Reestablecer"></input>
+                </div>
+                <div class="col-auto ps-1">
+                    <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
+                </div>
             </div>
         </div>
     </div>

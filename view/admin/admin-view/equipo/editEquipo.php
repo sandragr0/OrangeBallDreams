@@ -12,12 +12,12 @@
         </div>
     </div>
 </div>
-<form method="post" action="?c=equipo&a=edit&id=<?php echo $_GET["id"] ?>">
-    <div class="card mb-3">
+<form method="post" action="?c=equipo&a=edit&id=<?php echo $_GET["id"] ?>" class="row">
+    <div class="card mb-3 border-0">
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -47,32 +47,36 @@
 <?php
 if ($jugadores != null) {
 ?>
-<div class="card mb-3">
+<div class="card mb-3 border-0 row">
     <div class="card-body">
         <h2 class="card-title mb-4 fs-4">Jugadores</h2>
-        <table class="table mt-1">
-            <thead>
-            <th>Nombre</th>
-            <th>Acción</th>
-            </thead>
-            <?php
-            foreach ($jugadores as $jugador):
-                ?>
-                <tr class="align-middle">
-                    <td class="py-3 col-4"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
-                    <td>
-                        <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
-                           href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
-                        <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
-                           href="#" data-bs-toggle="modal" data-idequipo="<?php echo $objeto->getIdEquipo()?>" data-idjugador="<?php echo $jugador->getIdJugador()?>"
-                           data-bs-target="#confirm-delete">Quitar del equipo</a>
-                    </td>
-                </tr>
-            <?php endforeach;
-            } ?>
-        </table>
+        <div class="col-12 col-md-6">
+            <table class="table mt-1">
+                <thead>
+                <th class="col-auto">Nombre</th>
+                <th>Acción</th>
+                </thead>
+                <?php
+                foreach ($jugadores as $jugador):
+                    ?>
+                    <tr class="align-middle">
+                        <td class="py-3"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
+                        <td>
+                            <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
+                               href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
+                            <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
+                               href="#" data-bs-toggle="modal" data-idequipo="<?php echo $objeto->getIdEquipo() ?>"
+                               data-idjugador="<?php echo $jugador->getIdJugador() ?>"
+                               data-bs-target="#confirm-delete">Quitar del equipo</a>
+                        </td>
+                    </tr>
+                <?php endforeach;
+                } ?>
+            </table>
+        </div>
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete" tabindex="-1"
      aria-labelledby="exampleModalLabel"
@@ -85,13 +89,14 @@ if ($jugadores != null) {
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               Se eliminará al jugador, ¿desea establecer su estado como disponible?
+                Se eliminará al jugador, ¿desea establecer su estado como disponible?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
                 </button>
                 <a class="btn btn-danger btn-ok" href="#" id="link-eliminar">Solo quitar del equipo</a>
-                <a class="btn btn-danger btn-ok" href="#" id="link-eliminar-dispo">Quitar y establecer como disponible</a>
+                <a class="btn btn-danger btn-ok" href="#" id="link-eliminar-dispo">Quitar y establecer como
+                    disponible</a>
             </div>
         </div>
     </div>

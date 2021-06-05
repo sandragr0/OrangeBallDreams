@@ -16,34 +16,42 @@
         </div>
     </div>
 </div>
-<form class="mb-4">
-    <!-- Nombre -->
-    <div class="mb-3">
-        <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
-            *</label>
-        <input disabled type="text" class="form-control" id="nombre" name="nombre"
-               value="<?php echo $objeto->getNombre() ?>">
+<div class="row">
+    <h2 class="mb-4 fs-4">Datos del equipo</h2>
+    <div class="mb-3 col-12 col-md-6">
+        <form class="mb-4">
+            <!-- Nombre -->
+            <label for="nombre" class="form-label">Nombre</label>
+            <input disabled type="text" class="form-control" id="nombre" name="nombre"
+                   value="<?php echo $objeto->getNombre() ?>">
+        </form>
     </div>
-</form>
-<!-- Jugadores -->
-<?php if ($jugadores != null) { ?>
-<span>Jugadores</span>
-<table class="table mt-1">
-    <thead>
-    <th>Nombre</th>
-    <th>Acción</th>
-    </thead>
-    <?php
-    foreach ($jugadores as $jugador):
-        ?>
-        <tr class="align-middle">
-            <td class="py-3 col-4"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
-            <td>
-                <a target="_blank" class="boton-menu m-1 col-auto"
-                   href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
-            </td>
-        </tr>
-    <?php endforeach;
-    } ?>
-</table>
+    <div class="col-12"></div>
+    <div class="col-12 col-md-6">
+        <h2 class="mb-4 fs-4">Jugadores</h2>
+        <!-- Jugadores -->
+        <?php if ($jugadores != null) { ?>
+            <table class="table mt-1">
+                <thead>
+                <th>Nombre</th>
+                <th class="col-1">Acción</th>
+                </thead>
+                <?php
+                foreach ($jugadores as $jugador):
+                    ?>
+                    <tr class="align-middle">
+                        <td class="py-3 col-4"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
+                        <td>
+                            <a target="_blank" class="boton-menu m-1 col-auto"
+                               href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php } else { ?>
+            <p>El equipo no tiene jugadores</p>
+        <?php } ?>
+
+    </div>
+</div>
 </main>

@@ -17,11 +17,11 @@
         <?php
     }
     ?>
-    <div class="card mb-3">
-        <div class="card-body">
+    <div class="card mb-3 border-0">
+        <div class="card-body row">
             <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"

@@ -17,10 +17,11 @@
         <?php
     }
     ?>
-    <div class="card mb-3">
-        <div class="card-body">
-            <h2 class="card-title mb-4 fs-4">Jugador</h2>
-            <div class="mb-3">
+    <div class="card mb-3 border-0">
+        <div class="card-body row">
+            <h2 class="card-title mb-4 fs-4">Estadistica</h2>
+            <!-- Jugador -->
+            <div class="mb-3 col-12 col-md-6">
                 <label for="jugador" class="form-label">Jugador</label>
                 <select class="form-select" id="jugador" name="jugador">
                     <?php foreach ($jugadores as $jugador): ?>
@@ -30,9 +31,8 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <h2 class="card-title mt-4 fs-4">Estadistica</h2>
             <!-- Temporada -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="temporada" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Temporada *</label>
                 <input type="text" autocomplete="off" list="datalistOptions" class="form-control" id="temporada" name="temporada"
@@ -58,7 +58,7 @@
                 ?>
             </div>
             <!-- Nombre equipo -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombreEquipo" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Nombre equipo
                     *</label>
@@ -78,7 +78,7 @@
                 ?>
             </div>
             <!-- Nombre Liga -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombreLiga" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Liga *</label>
                 <input type="text" class="form-control" id="nombreLiga" name="nombreLiga"
@@ -97,7 +97,7 @@
                 ?>
             </div>
             <!-- PPP -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="PPP" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">PPP</label>
                 <input type="text" class="form-control" id="PPP" name="PPP"
@@ -113,7 +113,7 @@
                 ?>
             </div>
             <!-- APP -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="APP" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">APP</label>
                 <input type="text" class="form-control" id="APP" name="APP"
@@ -129,7 +129,7 @@
                 ?>
             </div>
             <!-- RPP -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="RPP" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">RPP</label>
                 <input type="text" class="form-control" id="RPP" name="RPP"
@@ -145,7 +145,7 @@
                 ?>
             </div>
             <!-- %T2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="porcentajeDobles" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">%2T</label>
                 <input type="text" class="form-control" id="porcentajeDobles" name="porcentajeDobles"
@@ -161,7 +161,7 @@
                 ?>
             </div>
             <!-- %T3 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="porcentajeTriples" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">%T3</label>
                 <input type="text" class="form-control" id="porcentajeTriples" name="porcentajeTriples"
@@ -177,7 +177,7 @@
                 ?>
             </div>
             <!-- %TL -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="porcentajeTL" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">%TL</label>
                 <input type="text" class="form-control" id="porcentajeTL" name="porcentajeTL"
@@ -193,7 +193,7 @@
                 ?>
             </div>
             <!-- TAP -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="TAP" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">TAP</label>
                 <input type="text" class="form-control" id="TAP" name="TAP"
@@ -209,7 +209,7 @@
                 ?>
             </div>
             <!-- ROB -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="ROB" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">ROB</label>
                 <input type="text" class="form-control" id="ROB" name="ROB"
@@ -225,7 +225,7 @@
                 ?>
             </div>
             <!-- MIN -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="MIN" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">MIN</label>
                 <input type="text" class="form-control" id="MIN" name="MIN"

@@ -16,11 +16,11 @@
         </div>
     <?php }
     ?>
-    <div class="card mb-3">
-        <div class="card-body">
+    <div class="card mb-3 border-0">
+        <div class="card-body row">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -39,7 +39,7 @@
                 ?>
             </div>
             <!-- Apellido 1 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
@@ -58,7 +58,7 @@
                 ?>
             </div>
             <!-- Apellido 2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
                        value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : "" ?>">
@@ -71,7 +71,7 @@
                 ?>
             </div>
             <!-- dni -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
                        value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : "" ?>" aria-describedby="dniHelp">
@@ -85,7 +85,7 @@
             }
             ?>
             <!-- Telefono -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
                        value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : "" ?>">
@@ -98,7 +98,7 @@
                 ?>
             </div>
             <!-- Equipo -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
                 <input type="text" class="form-control" id="equipo" name="equipo"
                        value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
@@ -111,7 +111,7 @@
                 ?>
             </div>
             <!-- Nota -->
-            <div class="mb-3">
+            <div class="mb-3 col-12">
                 <label for="nota" class="form-label">Nota</label>
                 <textarea id="nota" name="nota" name="nota"
                           class="form-control"><?php echo isset($_POST["nota"]) ? $_POST["nota"] : "" ?></textarea>

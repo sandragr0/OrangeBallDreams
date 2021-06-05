@@ -18,10 +18,10 @@
     <?php }
     ?>
     <div class="card border-0 mb-3">
-        <div class="card-body">
+        <div class="card-body row">
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
             <!-- Nombre -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -40,7 +40,7 @@
                 ?>
             </div>
             <!-- Apellido 1 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
@@ -59,7 +59,7 @@
                 ?>
             </div>
             <!-- Apellido 2 -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
                        value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : "" ?>">
@@ -72,7 +72,7 @@
                 ?>
             </div>
             <!-- dni -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
                        value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : "" ?>" aria-describedby="dniHelp">
@@ -86,7 +86,7 @@
             }
             ?>
             <!-- Género -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="genero" class="form-label">Género</label>
                 <select class="form-select" id="genero" name="genero">
                     <option value="masculino" <?php echo isset($_POST["genero"]) ? $_POST["genero"] == "masculino" ? "selected" : "" : "" ?>>
@@ -98,7 +98,7 @@
                 </select>
             </div>
             <!-- fecha de nacimiento -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac"
                        value="<?php echo isset($_POST["fechaNac"]) ? $_POST["fechaNac"] : "" ?>"
@@ -113,7 +113,7 @@
                 ?>
             </div>
             <!-- Telefono -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
                        value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : "" ?>">
@@ -126,11 +126,10 @@
                 ?>
             </div>
             <!-- Imagen -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Imagen</label>
-                <input type="file" class="form-control" id="imagen" name="imagen"
-                       value="<?php echo isset($_POST["imagen"]) ? $_POST["imagen"] : "" ?>"
-                       accept="image/png, image/jpeg" aria-describedby="imagenHelp">
+                <input type="file" class="form-control" id="imagen" name="imagen" accept="image/png, image/jpeg"
+                       aria-describedby="imagenHelp">
                 <small id="imagenHelp" class="form-text text-muted">Formato jpeg/png. Tamaño máximo 2GB.</small>
                 <?php
                 if (isset($error)) {
@@ -146,28 +145,31 @@
                 ?>
             </div>
             <!-- Nacionalidades -->
-            <div class="mb-3">
-                <label for="nacionalidades" class="form-label">Nacionalidades</label>
-                <?php
-                if ($nacionalidades != null) {
-                    foreach ($nacionalidades as $nacionalidad) {
-                        ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="nacionalidad[]"
-                                   id="<?php echo $nacionalidad->getNombre() ?>"
-                                   value="<?php echo $nacionalidad->getIdNacionalidad() ?>" <?php echo isset($_POST["nacionalidad"]) && in_array($nacionalidad->getIdNacionalidad(), $_POST["nacionalidad"]) ? "checked" : "" ?>>
-                            <label class="form-check-label" for="europa">
-                                <?php echo $nacionalidad->getNombre() ?>
-                            </label>
-                        </div>
-                        <?php
+            <div class="mb-3 col-12 col-md-6">
+                <div id="caja-nacionalidades" class="p-1">
+                    <label class="form-label">Nacionalidades</label>
+                    <input class="form-control w-auto" type="text" onkeyup="filtrarNacionalidades()"
+                           id="filtroNacionalidades" placeholder="Buscar nacionalidades...">
+                    <?php
+                    if ($nacionalidades != null) {
+                        foreach ($nacionalidades as $nacionalidad) {
+                            ?>
+                            <div class="form-check my-2" data-id="<?php echo $nacionalidad->getNombre() ?>">
+                                <input class="form-check-input" type="checkbox" name="nacionalidad[]"
+                                       value="<?php echo $nacionalidad->getIdNacionalidad() ?>" <?php echo isset($_POST["nacionalidad"]) && in_array($nacionalidad->getIdNacionalidad(), $_POST["nacionalidad"]) ? "checked" : "" ?>>
+                                <label class="form-check-label">
+                                    <?php echo $nacionalidad->getNombre() ?>
+                                </label>
+                            </div>
+                            <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
             <h2 class="card-title mb-4 fs-4">Datos Jugador</h2>
             <!-- Visible -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="visibilidad" class="form-label">Visibilidad</label>
                 <select class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
                     <option value="1" <?php echo isset($_POST["visibilidad"]) ? $_POST["visibilidad"] == "1" ? "selected" : "" : "" ?>>
@@ -181,7 +183,7 @@
                     listado de jugadores, si está oculto no aparecerá </small>
             </div>
             <!-- Altura -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="altura" class="form-label">Altura</label>
                 <input type="text" class="form-control" id="altura" name="altura"
                        value="<?php echo isset($_POST["altura"]) ? $_POST["altura"] : "" ?>"
@@ -197,7 +199,7 @@
                 ?>
             </div>
             <!-- Posicion -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="posicion" class="form-label">Posicion</label>
                 <select class="form-select" id="posicion" name="posicion">
                     <option value="no especificado" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "no especificado" ? "selected" : "" : "" ?>>
@@ -221,7 +223,7 @@
                 </select>
             </div>
             <!-- Extracomunitario -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="extracomunitario" class="form-label">Extracomunitario</label>
                 <select class="form-select" id="extracomunitario" name="extracomunitario">
                     <option value="null" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "null" ? "selected" : "" : "" ?>>
@@ -236,7 +238,7 @@
                 </select>
             </div>
             <!-- Estado -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="estado" class="form-label">Estado</label>
                 <select class="form-select" id="estado" name="estado">
                     <option value="null" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "null" ? "selected" : "" : "" ?>>
@@ -251,10 +253,17 @@
                 </select>
             </div>
             <!-- Equipo -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
-                <input type="text" class="form-control" id="equipo" name="equipo"
+                <input list="equipos" class="form-control" id="equipo" name="equipo"
                        value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
+                <datalist id="equipos">
+                    <?php foreach ($listadoNombresEquipos
+
+                    as $equipo): ?>
+                    <option value="<?php echo $equipo["nombre"] ?>">
+                        <?php endforeach; ?>
+                </datalist>
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::equipo_invalid) {
@@ -264,21 +273,20 @@
                 ?>
             </div>
             <!-- Biografia -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="biografia" class="form-label">Biografia</label>
-                <textarea id="biografia" name="biografia" name="biografia"
+                <textarea id="biografia" name="biografia"
                           class="form-control"><?php echo isset($_POST["biografia"]) ? $_POST["biografia"] : "" ?></textarea>
             </div>
             <!-- Informe -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="informe" class="form-label">Informe</label>
-                <textarea id="informe" name="informe" name="informe"
+                <textarea id="informe" name="informe"
                           class="form-control"><?php echo isset($_POST["informe"]) ? $_POST["informe"] : "" ?></textarea>
             </div>
             <!-- Enviar -->
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
                 <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
             </div>
         </div>

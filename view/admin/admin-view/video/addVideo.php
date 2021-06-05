@@ -17,11 +17,19 @@
         <?php
     }
     ?>
-    <div class="card mb-3">
-        <div class="card-body">
+    <div class="card mb-3 border-0">
+        <div class="card-body row">
             <h2 class="card-title mb-4 fs-4">Jugador</h2>
-            <div class="mb-3">
-                <label for="jugador" class="form-label">Jugador</label>
+            <div class="col-12 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+                           onkeyup="buscarJugador()"
+                           aria-describedby="buscarNombre">
+                </div>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
                 <select class="form-select" id="jugador" name="jugador">
                     <?php foreach ($jugadores as $jugador): ?>
                         <option value="<?php echo $jugador->getIdJugador(); ?>">
@@ -32,7 +40,7 @@
             </div>
             <h2 class="card-title mt-4 fs-4">Video</h2>
             <!-- Ruta -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-12">
                 <label for="ruta" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Link del vídeo
                     *</label>
@@ -53,7 +61,7 @@
                 ?>
             </div>
             <!-- isPublico -->
-            <div class="mb-3">
+            <div class="mb-3 col-12 col-md-6">
                 <label for="isPublico" class="form-label">Visibilidad</label>
                 <select class="form-select" id="isPublico" name="isPublico">
                     <option value="1" <?php echo isset($_POST["isPublico"]) ? $_POST["isPublico"] == "1" ? "selected" : "" : "" ?>>
@@ -65,7 +73,7 @@
                 </select>
             </div>
             <!-- Tipo de video -->
-            <div class="mb-5">
+            <div class="mb-5 col-12 col-md-6">
                 <label for="tipoVideo" class="form-label">Visibilidad</label>
                 <select class="form-select" id="tipoVideo" name="tipoVideo">
                     <option value="highlight" <?php echo isset($_POST["tipoVideo"]) ? $_POST["tipoVideo"] == "highlight" ? "selected" : "" : "" ?>>

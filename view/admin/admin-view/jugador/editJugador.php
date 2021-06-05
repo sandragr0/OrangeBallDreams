@@ -359,8 +359,6 @@
             <!-- Enviar -->
             <div class="mb-3">
                 <button type="submit" class="btn btn-secondary boton-primario">Editar</button>
-                <button type="submit" class="btn btn-secondary boton-primario">Cancelar</button>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
             </div>
         </div>
     </div>

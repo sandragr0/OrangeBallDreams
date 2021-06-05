@@ -36,9 +36,9 @@ if ($result == null) {
             ?>
             <tr class="jugador align-middle">
                 <!-- idJugador -->
-                <td class="py-3"><?php echo $jugador->getIdJugador() ?></td>
+                <td class="py-2"><?php echo $jugador->getIdJugador() ?></td>
                 <!-- nombre jugador -->
-                <td class="py-3">
+                <td>
                     <div class="row align-items-center w-100">
                         <div class="col-auto">
                             <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><img
@@ -52,9 +52,9 @@ if ($result == null) {
                     </div>
                 </td>
                 <!-- Visible -->
-                <td class="py-3"><?php echo $jugador->getVisible() == 1 ? 'Visible' : "Oculto" ?></td>
+                <td><?php echo $jugador->getVisible() == 1 ? 'Visible' : "Oculto" ?></td>
                 <!-- Estado -->
-                <td class="py-3 d-none d-md-table-cell"><?php
+                <td class="d-none d-md-table-cell"><?php
                     if ($jugador->getEstado() == "disponible") {
                         echo 'Disponible';
                     } else if ($jugador->getEstado() == "fichado") {
@@ -64,11 +64,11 @@ if ($result == null) {
                     }
                     ?></td>
                 <!-- Equipo -->
-                <td class="py-3 d-none d-md-table-cell"><?php echo $jugador->getEquipo() != "" ? $jugador->getEquipo() : "-" ?></td>
+                <td class="d-none d-md-table-cell"><?php echo $jugador->getEquipo() != "" ? $jugador->getEquipo() : "-" ?></td>
                 <!-- Posición -->
-                <td class="py-3 d-none d-md-table-cell"><?php echo ucfirst($jugador->getPosicion()) ?></td>
+                <td class="d-none d-md-table-cell"><?php echo ucfirst($jugador->getPosicion()) ?></td>
                 <!-- Acciones -->
-                <td class="py-3">
+                <td>
                     <div class="row w-100">
                         <a class="boton-menu m-1 col-auto"
                            href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>">Ver</a>
