@@ -5,6 +5,11 @@
 }
 
 @font-face {
+    font-family: lato-bold;
+    src: url('../fonts/Lato/Lato-Bold.ttf');
+}
+
+@font-face {
     font-family: poppins-bold;
     src: url('../fonts/Poppins/Poppins-Bold.ttf');
 }
@@ -12,8 +17,11 @@
 /* ------------------- General ------------------------- */
 
 * {
-    font-family: lato-regular;
-    color: #0D0A0F;
+    font-family: inherit;
+}
+
+.input-group, .form-control, .input-group-text {
+    border-radius: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -253,7 +261,63 @@ footer a:hover {
 }
 
 /* Listado jugadores */
-.nacionalidades {
-    min-height: 30px;
-    box-sizing: border-box;
+
+div.cardJugador {
+    transition: transform 0.5s ease;
+}
+
+div.cardJugador:hover {
+    transform: scale(1.02);
+}
+
+img.fichado {
+    opacity: 0.6;
+}
+
+.estadoPill {
+    z-index: 1;
+    border-radius: 0;
+}
+
+.fondo {
+    background: linear-gradient(to bottom, #F26522 40%, #ffffff 40%);
+}
+
+.card, .card img {
+    border-radius: 0;
+}
+
+div#infoJugadores {
+    font-family: poppins-bold;
+    color: #fff;
+}
+
+div#filtros, div#filtros a {
+    font-family: poppins-bold;
+    color: #fff !important;
+}
+
+div#filtros label.titulo {
+    -webkit-box-shadow: 0px 8px 0px -5px #FFFFFF;
+    box-shadow: 0px 8px 0px -5px #FFFFFF;
+    margin-bottom: 1em;
+}
+
+div#filtros input {
+    color: #0D0A0F !important;
+}
+
+div#filtros .form-check-input:checked {
+    background-color: #00B2C1;
+    border-color: #00B2C1;
+}
+
+.form-check-input:focus, .form-control:focus {
+    border-color: #00B2C1;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(0 160 174 / 30%);
+}
+
+#caja-jugadores {
+    min-height: 100vh;
 }
