@@ -33,7 +33,15 @@ class Jugador
         }
         return $this->getNombre() . " " . $this->getPrimerApellido() . $apellido2;
     }
-    
+    function getAlturaCM() {
+        return $this->altura . "cm";
+    }
+
+    function getAñoNacimiento() {
+        return substr($this->fechaNacimiento, 0 ,4);
+    }
+
+
     /**
      * @return mixed
      */

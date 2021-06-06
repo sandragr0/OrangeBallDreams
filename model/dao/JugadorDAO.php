@@ -267,5 +267,23 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    function getJugadoresVisibles()
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT * FROM `viewjugadoresvisibles`");
+            $stm->execute();
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Jugador");
+                foreach ($result as $jugador) {
+                    $jugador->setNacionalidades($this->getNacionalidadesJugador($jugador->getIdJugador()));
+                }
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 
 }

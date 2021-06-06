@@ -1,9 +1,9 @@
-<footer class="container-fluid py-5 px-4">
+<footer class="container-fluid py-5 px-4 mt-auto">
     <div class="row">
         <div class="col-12 col-md mx-2">
             <div class="row mb-4">
                 <div class="col">
-                    <img class="img-fluid w-25" src="./assets/img/logo-dark.png"></img>
+                    <img class="img-fluid w-25" src="../assets/img/logo-dark.png"></img>
                 </div>
             </div>
             <div class="row mb-4">

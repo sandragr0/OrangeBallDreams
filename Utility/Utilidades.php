@@ -52,7 +52,7 @@ abstract class Utilidades
      */
     static function isString($string)
     {
-        if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú]+$)/", $string)) {
+        if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú\s]+$)/", $string)) {
             return true;
         }
         return false;

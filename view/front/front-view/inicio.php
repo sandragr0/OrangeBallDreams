@@ -1,4 +1,3 @@
-
 <div class="container-fluid position-relative fondo-banner">
     <div class="row">
         <div class="col texto-banner">
