@@ -2,7 +2,7 @@
     <div class="container" id="filtros">
         <div class="row justify-content-between mb-2">
             <div class="col-6">
-                <p class="fw-bold fs-3">Filtrar por...</p>
+                <p class="fw-bold fs-3"><em class="highlight">Filtrar por</em></p>
             </div>
             <div class="col-6 text-end">
                 <a href="#" onclick="quitarFiltros()"><p class="fw-bold fs-1"><i class="fas fa-times"></i></p></a>
@@ -132,7 +132,6 @@
                          data-genero="<?php echo $jugador->getGenero() ?>"
                          data-posicion="<?php echo $jugador->getPosicion() ?>"
                          data-extracomunitario="<?php echo $jugador->getExtracomunitario() ?>"
-                         data-genero="<?php echo $jugador->getGenero() ?>"
                          data-disponibilidad="<?php echo $jugador->getEstado() ?>"
                     >
                         <div class="card shadow-sm border-0 h-100">
