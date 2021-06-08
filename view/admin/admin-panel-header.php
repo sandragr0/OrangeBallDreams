@@ -77,8 +77,8 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="estadisticas-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=estadistica&a=list" class="link-dark rounded">Ver estadísticas</a></li>
-                            <li><a href="?c=estadistica&a=add" class="link-dark rounded">Añadir estadística</a></li>
+                            <li><a href="?c=estadistica&a=list" class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "list") ? "active" : "" ?>">Ver estadísticas</a></li>
+                            <li><a href="?c=estadistica&a=add" class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "add") ? "active" : "" ?>">Añadir estadística</a></li>
                         </ul>
                     </div>
                 </li>
