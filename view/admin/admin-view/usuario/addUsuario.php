@@ -179,12 +179,9 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mt-4 row">
-                <div class="col-auto pe-1">
-                    <input type="reset" class="btn btn-secondary" value="Reestablecer"></input>
-                </div>
-                <div class="col-auto ps-1">
-                    <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
+            <div class="row mt-4">
+                <div class="col">
+                    <button type="submit" class="btn boton-menu">Añadir</button>
                 </div>
             </div>
         </div>

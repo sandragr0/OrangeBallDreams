@@ -17,11 +17,11 @@
         <?php
     }
     ?>
-    <div class="card mb-3 border-0">
+    <div class="card border-0">
         <div class="card-body row">
             <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
             <!-- Nombre -->
-            <div class="mb-3 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -40,10 +40,10 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="mt-4">
+                    <button type="submit" class="btn boton-menu">Añadir</button>
+                </div>
             </div>
         </div>
     </div>

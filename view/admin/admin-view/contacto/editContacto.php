@@ -111,16 +111,16 @@
                 ?>
             </div>
             <!-- Nota -->
-            <div class="mb-3 col-12">
+            <div class="col-12">
                 <label for="nota" class="form-label">Nota</label>
                 <textarea id="nota" name="nota" name="nota"
                           class="form-control"><?php echo isset($_POST["nota"]) ? $_POST["nota"] :  $objeto->getNota() ?></textarea>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="mt-4">
+                    <button type="submit" class="btn boton-menu">Guardar cambios</button>
+                </div>
             </div>
         </div>
     </div>

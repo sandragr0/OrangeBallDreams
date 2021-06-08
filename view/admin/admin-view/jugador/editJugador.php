@@ -406,15 +406,16 @@
                           class="form-control"><?php echo isset($_POST["biografia"]) ? $_POST["biografia"] : $objeto->getBiografia() ?></textarea>
             </div>
             <!-- Informe -->
-            <div class="mb-3 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="informe" class="form-label">Informe</label>
                 <textarea id="informe" name="informe"
                           class="form-control"><?php echo isset($_POST["informe"]) ? $_POST["informe"] : $objeto->getInforme() ?></textarea>
             </div>
-
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-secondary boton-primario">Editar</button>
+            <div class="row mt-4">
+                <div class="col">
+                    <button type="submit" class="btn boton-menu">Guardar cambios</button>
+                </div>
             </div>
         </div>
     </div>

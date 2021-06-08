@@ -46,7 +46,9 @@
                     *</label>
                 <input type="text" class="form-control" id="ruta" name="ruta" aria-describedby="rutaHelp"
                        value="<?php echo isset($_POST["ruta"]) ? $_POST["ruta"] : "" ?>">
-                <small id="rutaHelp" class="form-text text-muted">Ruta del vídeo. <a href="#" data-bs-toggle='modal' data-bs-target='#rutaHelpModel'>¿Necesitas ayuda?</a></small>
+                <small id="rutaHelp" class="form-text text-muted">Ruta del vídeo. <a href="#" data-bs-toggle='modal'
+                                                                                     data-bs-target='#rutaHelpModel'>¿Necesitas
+                        ayuda?</a></small>
                 <?php
                 if (isset($error)) {
                     if ($error == CodigosError::ruta_empty) {
@@ -73,7 +75,7 @@
                 </select>
             </div>
             <!-- Tipo de video -->
-            <div class="mb-5 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="tipoVideo" class="form-label">Visibilidad</label>
                 <select class="form-select" id="tipoVideo" name="tipoVideo">
                     <option value="highlight" <?php echo isset($_POST["tipoVideo"]) ? $_POST["tipoVideo"] == "highlight" ? "selected" : "" : "" ?>>
@@ -85,10 +87,10 @@
                 </select>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="col">
+                    <button type="submit" class="btn boton-menu">Añadir</button>
+                </div>
             </div>
         </div>
     </div>
@@ -105,15 +107,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <ol>
-                   <li>En un ordenador, ve al vídeo de YouTube que quieras insertar.</li>
-                   <li> Debajo del vídeo, haz clic en Compartir.</li>
-                   <li> Haz clic en Insertar.</li>
-                   <li>En el cuadro de texto que aparece, copia el link del vídeo.</li>
-                   <img src="../assets/img/admin/video/AddVideoHelp1.png" class="img-fluid mt-2 mb-3" alt="VideoHelp1">
-                   <li> Pega el enlace del vídeo.</li>
-                   <img src="../assets/img/admin/video/AddVideoHelp2.png" class="img-fluid mt-2 mb-3" alt="VideoHelp2">
-               </ol>
+                <ol>
+                    <li>En un ordenador, ve al vídeo de YouTube que quieras insertar.</li>
+                    <li> Debajo del vídeo, haz clic en Compartir.</li>
+                    <li> Haz clic en Insertar.</li>
+                    <li>En el cuadro de texto que aparece, copia el link del vídeo.</li>
+                    <img src="../assets/img/admin/video/AddVideoHelp1.png" class="img-fluid mt-2 mb-3" alt="VideoHelp1">
+                    <li> Pega el enlace del vídeo.</li>
+                    <img src="../assets/img/admin/video/AddVideoHelp2.png" class="img-fluid mt-2 mb-3" alt="VideoHelp2">
+                </ol>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>

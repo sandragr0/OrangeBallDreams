@@ -140,11 +140,8 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
-            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn boton-menu">Guardar cambios</button>
         </div>
     </div>
 </form>

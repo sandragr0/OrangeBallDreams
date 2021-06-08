@@ -17,7 +17,7 @@
         <div class="card-body">
             <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
             <!-- Nombre -->
-            <div class="mb-3 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
@@ -36,10 +36,10 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <input type="submit" class="btn btn-primary boton-orange" value="Añadir">
-                <button href="?c=equipo&a=list" class="btn btn-secondary">Cancelar</button>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="mt-4">
+                    <button type="submit" class="btn boton-menu">Guardar cambios</button>
+                </div>
             </div>
         </div>
     </div>

@@ -242,7 +242,7 @@
                 ?>
             </div>
             <!-- MIN -->
-            <div class="mb-3 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="MIN" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">MIN</label>
                 <input type="text" class="form-control" id="MIN" name="MIN"
@@ -259,10 +259,10 @@
                 ?>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <input type="reset" class="btn btn-secondary" value="Cancelar"></input>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="col">
+                    <button type="submit" class="btn boton-menu">Añadir</button>
+                </div>
             </div>
         </div>
     </div>

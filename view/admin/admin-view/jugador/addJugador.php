@@ -99,7 +99,8 @@
             </div>
             <!-- fecha de nacimiento -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="fechaNac" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Fecha de nacimiento *</label>
+                <label for="fechaNac" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Fecha
+                    de nacimiento *</label>
                 <input type="date" class="form-control" id="fechaNac" name="fechaNac"
                        value="<?php echo isset($_POST["fechaNac"]) ? $_POST["fechaNac"] : "" ?>"
                        aria-describedby="fechaNacimientoHelp">
@@ -173,7 +174,8 @@
             <h2 class="card-title mb-4 fs-4">Datos Jugador</h2>
             <!-- Visible -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="visibilidad" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Visibilidad *</label>
+                <label for="visibilidad" class="form-label" data-toggle="tooltip" data-placement="top"
+                       title="Obligatorio">Visibilidad *</label>
                 <select class="form-select" id="visibilidad" name="visibilidad" aria-describedby="visibilidadHelp">
                     <option value="1" <?php echo isset($_POST["visibilidad"]) ? $_POST["visibilidad"] == "1" ? "selected" : "" : "" ?>>
                         Visible
@@ -187,7 +189,8 @@
             </div>
             <!-- Altura -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="altura" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Altura *</label>
+                <label for="altura" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Altura
+                    *</label>
                 <input type="text" class="form-control" id="altura" name="altura"
                        value="<?php echo isset($_POST["altura"]) ? $_POST["altura"] : "" ?>"
                        aria-describedby="alturaHelp">
@@ -206,7 +209,8 @@
             </div>
             <!-- Posicion -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="posicion" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Posicion *</label>
+                <label for="posicion" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Posicion
+                    *</label>
                 <select class="form-select" id="posicion" name="posicion">
                     <option value="Base" <?php echo isset($_POST["posicion"]) ? $_POST["posicion"] == "Base" ? "selected" : "" : "" ?>>
                         Base
@@ -227,7 +231,8 @@
             </div>
             <!-- Extracomunitario -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="extracomunitario" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Extracomunitario *</label>
+                <label for="extracomunitario" class="form-label" data-toggle="tooltip" data-placement="top"
+                       title="Obligatorio">Extracomunitario *</label>
                 <select class="form-select" id="extracomunitario" name="extracomunitario">
                     <option value="1" <?php echo isset($_POST["extracomunitario"]) ? $_POST["extracomunitario"] == "1" ? "selected" : "" : "" ?>>
                         Si
@@ -239,7 +244,8 @@
             </div>
             <!-- Estado -->
             <div class="mb-3 col-12 col-md-6">
-                <label for="estado" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Estado *</label>
+                <label for="estado" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Estado
+                    *</label>
                 <select class="form-select" id="estado" name="estado">
                     <option value="disponible" <?php echo isset($_POST["estado"]) ? $_POST["estado"] == "disponible" ? "selected" : "" : "" ?>>
                         Disponible
@@ -276,15 +282,16 @@
                           class="form-control"><?php echo isset($_POST["biografia"]) ? $_POST["biografia"] : "" ?></textarea>
             </div>
             <!-- Informe -->
-            <div class="mb-3 col-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <label for="informe" class="form-label">Informe</label>
                 <textarea id="informe" name="informe"
                           class="form-control"><?php echo isset($_POST["informe"]) ? $_POST["informe"] : "" ?></textarea>
             </div>
             <!-- Enviar -->
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary boton-orange">Añadir</button>
-                <div class="alert alert-danger mt-2 oculto" id="mensajeError" role="alert"></div>
+            <div class="row mt-4">
+                <div class="col">
+                    <button type="submit" class="btn boton-menu">Añadir</button>
+                </div>
             </div>
         </div>
     </div>
