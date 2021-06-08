@@ -1,9 +1,3 @@
-#caja-nacionalidades {
-    max-height: 170px;
-    min-height: 170px;
-    overflow: auto;
-}
-
 /* Fuentes */
 @font-face {
     font-family: lato-regular;
@@ -54,7 +48,19 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: .25rem;
     text-decoration: none;
     color: #212529;
+    background-color: #fafafa;
+}
 
+.boton-menu:hover {
+    color: #212529;
+    background-color: #fff;
+}
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #fafafa;
 }
 
 .boton-primario:hover {
@@ -187,6 +193,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: .75rem;
     text-transform: uppercase;
 }
+
 header, header a {
     color: #212529;
 }
@@ -194,6 +201,7 @@ header, header a {
 header {
     box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
 }
+
 /*
 * Navbar brand
 */
@@ -201,6 +209,7 @@ header {
 .logo, .oculto-opacidad {
     position: absolute;
 }
+
 .oculto-opacidad {
     opacity: 0;
     transition: all 0.3ms linear;
@@ -210,14 +219,15 @@ header {
     opacity: 1;
     transition: all 0.3ms linear;
 }
+
 .image-container {
     height: 50px;
     width: 160px;
 }
+
 /*
  * Navbar
  */
-
 
 
 .navbar-light .navbar-brand {
@@ -330,4 +340,10 @@ a.active {
 
 a.active:hover {
     color: #F26522;
+}
+
+#caja-nacionalidades {
+    max-height: 170px;
+    min-height: 170px;
+    overflow: auto;
 }

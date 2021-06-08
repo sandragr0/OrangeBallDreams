@@ -105,7 +105,7 @@ function getEstadisticas(id) {
                 });
 
                 if (datosFiltrados.length != 0) {
-                    let content = '<table class="table"><tr><th>Temporada</th><th>Liga</th><th>equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th><th>Acciones</th></tr>';
+                    let content = '<table class="table"><thead><tr><th>Temporada</th><th>Liga</th><th>equipo</th> <th>PPP</th><th>APP</th><th>RPP</th><th>%2T</th><th>%3T</th><th>%TL</th><th>MIN</th><th>ROB</th><th>TAP</th><th>Acciones</th></tr></thead><tbody>';
                     for (i = 0; i < datosFiltrados.length; i++) {
                         content +=
                             "<tr class='align-middle'>" +
@@ -127,7 +127,7 @@ function getEstadisticas(id) {
                             "</td>" +
                             "</tr>";
                     }
-                    content += '</table>';
+                    content += '</tbody></table>';
                     $("#panel_estadisticas").html(content);
                 } else {
                     $("#panel_estadisticas").html("El jugador aún no tiene estadísticas. <a href='?c=estadistica&a=add'>¿Quieres añadir una estadística?</a>");
@@ -160,7 +160,7 @@ function getVideos(id) {
                 });
                 if (datosFiltrados.length != 0) {
 
-                    let content = '<table class="table"><tr><th>Video</th></th><th>Visibilidad</th><th>Tipo de video</th><th>Acciones</th></tr>';
+                    let content = '<table class="table"><thead><tr><th>Video</th></th><th>Visibilidad</th><th>Tipo de video</th><th>Acciones</th></tr></thead><tbody>';
                     for (i = 0; i < datosFiltrados.length; i++) {
                         content +=
                             "<tr class='align-middle'>" +
@@ -172,7 +172,7 @@ function getVideos(id) {
                             "</td>" +
                             "</tr>";
                     }
-                    content += '</table>';
+                    content += '</tbody></table>';
                     $("#panel_videos").html(content);
                 } else {
                     $("#panel_videos").html("El jugador aún no tiene vídeos. <a href='?c=video&a=add'>¿Quieres añadir un video?</a>");
