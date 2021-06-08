@@ -145,9 +145,8 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="usuario-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=usuario&a=view&id=<?php echo $_SESSION['idUsuario']; ?>" class="link-dark rounded">Mi cuenta</a></li>
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded">Ver usuarios</a></li>
-                            <li><a href="?c=usuario&a=add" class="link-dark rounded">Añadir usuario</a></li>
+                            <li><a href="?c=usuario&a=list" class="link-dark rounded <?php echo ($controller == "usuario" && $action == "list") ? "active" : "" ?>">Ver usuarios</a></li>
+                            <li><a href="?c=usuario&a=add" class="link-dark rounded  <?php echo ($controller == "usuario" && $action == "add") ? "active" : "" ?>">Añadir usuario</a></li>
                         </ul>
                     </div>
                 </li>
