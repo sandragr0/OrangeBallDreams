@@ -3,7 +3,7 @@
     <?php
     if (isset($db_error)) {
         ?>
-        <div class="card  border-danger mb-3">
+        <div class="card border-danger mb-3">
             <div class="card-body">
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {

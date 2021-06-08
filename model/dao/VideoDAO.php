@@ -31,17 +31,13 @@ class VideoDAO extends BaseDAO
 
     function add(object $objeto)
     {
-        try {
-            $stm = $this->conexion->prepare("INSERT INTO `video`(`idJugador`, `tipoVideo`, `isPublico`, `ruta`) VALUES (?,?,?,?)");
-            $stm->execute(array(
-                $objeto->getIdJugador(),
-                $objeto->getTipoVideo(),
-                $objeto->getIsPublico(),
-                $objeto->getRuta()
-            ));
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        $stm = $this->conexion->prepare("INSERT INTO `video`(`idJugador`, `tipoVideo`, `isPublico`, `ruta`) VALUES (?,?,?,?)");
+        $stm->execute(array(
+            $objeto->getIdJugador(),
+            $objeto->getTipoVideo(),
+            $objeto->getIsPublico(),
+            $objeto->getRuta()
+        ));
     }
 
     public function getHighlightsFromJugador($id)
