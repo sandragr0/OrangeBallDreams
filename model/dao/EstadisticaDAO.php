@@ -1,4 +1,5 @@
 <?php
+
 class EstadisticaDAO extends BaseDAO
 {
     private $nombreTabla = "estadistica";
@@ -67,6 +68,21 @@ class EstadisticaDAO extends BaseDAO
                 $objeto->getTAP(),
                 $objeto->getTemporada()
             ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getJugadoresWithEstadistica($id)
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare("SELECT * FROM estadistica where idJugador=?;");
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Estadistica");
+            }
+            return $result;
         } catch (Exception $e) {
             die($e->getMessage());
         }

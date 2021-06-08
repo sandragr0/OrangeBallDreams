@@ -125,7 +125,7 @@ class AdminControllerJugador extends AdminController
     private function validarDatos($datos, $archivos)
     {
         if ($datos["nombre"] != "") {
-            if (!Utilidades::isString($datos["nombre"])) {
+            if (!Utilidades::isStringWithWhiteSpaces($datos["nombre"])) {
                 return CodigosError::nombre_invalid;
             }
         } else {
@@ -227,6 +227,7 @@ class AdminControllerJugador extends AdminController
             $jugador->setRuta($datos["antiguaRuta"]);
         } else {
             $nombreImagen = $datos["nombre"] . "-" . $datos["apellido1"];
+            $nombreImagen = preg_replace('/[[:space:]]+/', '-', $nombreImagen);
             $ext = pathinfo($archivos["imagen"]["name"], PATHINFO_EXTENSION);
 
 

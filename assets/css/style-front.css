@@ -16,8 +16,8 @@
 
 /* ------------------- General ------------------------- */
 
-* {
-    font-family: inherit;
+body {
+    font-family: lato-regular;
 }
 
 .input-group, .form-control, .input-group-text {
@@ -39,13 +39,55 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
 }
 
-/* ------------------- Utilidades ------------------------- */
+/* ------------------- Genericos ------------------------- */
 .detras {
     z-index: -1;
 }
 
+.zIndex0 {
+    z-index: 0;
+}
+
+.delante {
+    z-index: 1;
+}
+
+.blanco {
+    color: white;
+}
+
 .oculto-opacidad {
     opacity: 0;
+}
+
+.fondo-amarillo {
+    background-color: #ffc20b;
+}
+
+.fondo-naranja {
+    background-color: #F26522;
+}
+
+video {
+    object-fit: fill;
+    min-height: 100%;
+}
+
+.boton-llamativo {
+    padding: 0.77777778rem 3.16666667rem;
+    font-size: 1.11111111rem;
+    line-height: 1.66666667rem;
+    border-radius: 0;
+    font-family: 'poppins-bold';
+    border-color: #00B2C1;
+    background-color: #00B2C1;
+    color: #fff;
+}
+
+.boton-llamativo:hover {
+    color: #fff;
+    background-color: #33c1cd;
+    border-color: #33c1cd;
 }
 
 /* ------------------- Header ------------------------- */
@@ -61,24 +103,16 @@ a.navbar-brand {
     transition: opacity 0.5s linear;
 }
 
-#logo-normal, #logo-small {
+#logo-normal {
     opacity: 1;
 }
 
-#logo-animado, #logo-small-animado {
+#logo-animado {
     position: absolute;
     transition: opacity 0.5s linear;
 }
 
 @media (min-width: 992px) {
-    #logo-small {
-        display: inline !important;
-    }
-
-    #logo-small-animado {
-        display: inline !important;
-    }
-
     #logo {
         display: none !important;
     }
@@ -94,14 +128,6 @@ a.navbar-brand {
 }
 
 @media (min-width: 1200px) {
-    #logo-small {
-        display: none !important;
-    }
-
-    #logo-small-animado {
-        display: none !important;
-    }
-
     #logo {
         display: inline !important;
     }
@@ -116,6 +142,11 @@ a.navbar-brand {
 }
 
 /* Navbar */
+.navbar-nav {
+    font-family: poppins-bold;
+    font-size: 18px;
+}
+
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(242,101,34, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -161,12 +192,11 @@ a.navbar-brand {
     background-color: #00B2C1;
     color: #fff !important;
     border: solid 2px transparent;
-    transition: background 0.3s linear;
 }
 
 .nav-button-bold:hover {
-    background-color: #00D6E9;
-    border: solid 2px #00D6E9 !important;
+    background-color: #33c1cd;
+    border: solid 2px #33c1cd !important;
     border: solid 2px transparent;
 }
 
@@ -222,43 +252,74 @@ footer a:hover {
 /* ------------------- Página de inicio ------------------------- */
 
 /* Banner */
-.fondo-banner {
-    z-index: -1;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/inicio/banner-background.jpeg");
-    height: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-.texto-banner {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#banner-principal, #banner-principal a {
+    font-family: poppins-bold;
     color: white;
+
 }
+
+.fondo-banner {
+    height: 50vh;
+    background: linear-gradient(-45deg, #00b2c1, #f7941d, #f26522);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
+}
+
+#contenido-banner {
+    z-index: 2;
+}
+
+.link-banner {
+    transition: 0.3s;
+}
+
+.link-banner:hover {
+    transform: translateY(-4px);
+    transition: 0.3s;
+}
+
+#fondo-imagen {
+    top: -10px;
+    bottom: 0;
+    left: 1vw;
+    right: 0;
+    background-image: url(../img/Inicio/PngItem_14348.png);
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: top;
+    z-index: 1;
+
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 @media (min-width: 700px) {
-    .principal-banner {
-        font-size: 4vw !important;
+    .texto-banner {
+        font-size: 4.5em !important;
     }
 
-    .secundario-banner {
-        font-size: 2vh;
+    #fondo-banner {
+        height: 60vh;
     }
 }
 
-.principal-banner {
+.texto-banner {
     font-size: 10vw;
     letter-spacing: 3px;
 }
 
-.typewrite {
-    font-size: 4vh;
-}
 
 /* Listado jugadores */
 
@@ -284,6 +345,13 @@ img.fichado {
     z-index: 0;
 }
 
+.fondo-amarilloblanco {
+    background: linear-gradient(to bottom, #FFC20E 50%, #ffffff 50%);
+    z-index: 0;
+}
+.fondo-gradiente {
+    background: linear-gradient(-45deg, #00b2c1, #f7941d, #f26522);
+}
 .card, .card img {
     border-radius: 0;
 }
@@ -291,6 +359,7 @@ img.fichado {
 div#infoJugadores {
     font-family: poppins-bold;
     color: #fff;
+    font-size: 18px;
 }
 
 div#filtros, div#filtros a {
@@ -302,6 +371,7 @@ div#filtros label.titulo {
     -webkit-box-shadow: 0px 8px 0px -5px #FFFFFF;
     box-shadow: 0px 8px 0px -5px #FFFFFF;
     margin-bottom: 1em;
+    font-size: 18px;
 }
 
 div#filtros input {
@@ -329,14 +399,19 @@ em.highlight {
 
 }
 
- em.highlight::before {
-     background-color: #F7941D;
-     content: " ";
-     height: 28%;
-     position: absolute !important;
-     left: 0;
-     margin-left: -5px;
-     top: 65%;
-     width: calc(100% + 10px);
-     z-index:-1;
+em.highlight::before {
+    background-color: #F7941D;
+    content: " ";
+    height: 28%;
+    position: absolute !important;
+    left: 0;
+    margin-left: -5px;
+    top: 65%;
+    width: calc(100% + 10px);
+    z-index: -1;
+}
+
+.hide-video {
+    height: 215px;
+    width: 360px;
 }

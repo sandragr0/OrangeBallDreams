@@ -44,4 +44,34 @@ class VideoDAO extends BaseDAO
         }
     }
 
+    public function getHighlightsFromJugador($id)
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare('SELECT * FROM `video` WHERE idJugador=? and video.tipoVideo="highlight";');
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Video");
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getPartidosCompletosFromJugador($id)
+    {
+        try {
+            $result = null;
+            $stm = $this->conexion->prepare('SELECT * FROM `video` WHERE idJugador=? and video.tipoVideo="partido";');
+            $stm->execute(array($id));
+            if ($stm->rowCount() != 0) {
+                $result = $stm->fetchAll(PDO::FETCH_CLASS, "Video");
+            }
+            return $result;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

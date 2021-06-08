@@ -50,9 +50,21 @@ abstract class Utilidades
      * @param $string
      * @return bool
      */
-    static function isString($string)
+    static function isStringWithWhiteSpaces($string)
     {
         if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú\s]+$)/", $string)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $string
+     * @return bool
+     */
+    static function isString($string)
+    {
+        if (preg_match("/(^[A-Za-zñÑá-úÁ-Ú]+$)/", $string)) {
             return true;
         }
         return false;

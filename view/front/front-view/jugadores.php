@@ -1,8 +1,11 @@
 <div class="container-fluid py-5 fondo">
+    <div class="container py-4 mb-4 blanco">
+        <h1>Jugadores</h1>
+    </div>
     <div class="container" id="filtros">
         <div class="row justify-content-between mb-2">
             <div class="col-6">
-                <p class="fw-bold fs-3"><em class="highlight">Filtrar por</em></p>
+                <p class="fw-bold fs-2">Filtrar por</p>
             </div>
             <div class="col-6 text-end">
                 <a href="#" onclick="quitarFiltros()"><p class="fw-bold fs-1"><i class="fas fa-times"></i></p></a>
@@ -13,12 +16,13 @@
             <div class="col-12 col-md-3 mb-3 d-md-flex justify-content-start">
                 <div>
                     <label class="form-label fw-bold titulo" for="inputBuscarNombre">Nombre</label>
-                    <input type="text" class="form-control" id="inputBuscarNombre" onkeyup="filtrarJugador()"
+                    <input type="text" class="form-control border-0 py-2" id="inputBuscarNombre"
+                           onkeyup="filtrarJugador()"
                            placeholder="Buscar por nombre..." aria-describedby="buscarNombre">
                 </div>
             </div>
             <!-- Filtrar por género -->
-            <div class="col-12 col-md-2 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
                 <div id="generoCheckGroup">
                     <label class="form-label fw-bold titulo">Género</label>
                     <div class="form-check">
@@ -36,7 +40,7 @@
                 </div>
             </div>
             <!-- Filtrar por posicion -->
-            <div class="col-12 col-md-3 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-3 mb-3 d-md-flex justify-content-center">
                 <div>
                     <label class="form-label fw-bold titulo" for="inputBuscarNombre">Posición</label>
                     <div id="posicionCheckGroup">
@@ -74,7 +78,7 @@
                 </div>
             </div>
             <!-- Filtrar por extracomunitario -->
-            <div class="col-12 col-md-2 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
                 <div id="extracomunitarioCheckGroup">
                     <label class="form-label fw-bold titulo" for="extracomunitario">Extracomunitario</label>
                     <div class="form-check">
@@ -92,7 +96,7 @@
                 </div>
             </div>
             <!-- Filtrar por disponibilidad -->
-            <div class="col-12 col-md-2 mb-3 d-md-flex justify-content-end">
+            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
                 <div id="disponibilidadCheckGroup">
                     <label class="form-label fw-bold titulo" for="disponible">Disponible</label>
                     <div class="form-check">
@@ -146,7 +150,7 @@
                             <div class="card-body text-center">
                                 <!-- Nombre -->
                                 <h4 class="card-title text-uppercase">
-                                    <a href="?a=verJugador?&id=<?php echo $jugador->getIdJugador() ?>"
+                                    <a href="?a=jugador&id=<?php echo $jugador->getIdJugador() ?>"
                                        class="tituloLink stretched-link"><?php echo $jugador->getFullName() ?>
                                     </a>
                                 </h4>
@@ -178,7 +182,7 @@
                                     <?php
                                     if ($jugador->getExtracomunitario() == 1) { ?>
                                         <div class="col-auto border-start">
-                                            EXTRAC.
+                                            Extrac.
                                         </div>
                                     <?php } ?>
                                 </div>
