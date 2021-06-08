@@ -37,7 +37,7 @@
             }
             ?>
             <!-- Visible -->
-            <div>
+            <div class="my-2">
                 <label for="visibilidad" class="form-label">Visibilidad</label>
                 <select disabled class="form-select" id="visibilidad" name="visibilidad">
                     <option value="1" <?php echo $objeto->getVisible() == "1" ? "selected" : "" ?>>Visible</option>

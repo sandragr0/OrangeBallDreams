@@ -103,7 +103,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Añadir videos <i class="fab fa-youtube"></i></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Añadir videos</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -116,9 +116,6 @@
                     <li> Pega el enlace del vídeo.</li>
                     <img src="../assets/img/admin/video/AddVideoHelp2.png" class="img-fluid mt-2 mb-3" alt="VideoHelp2">
                 </ol>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>

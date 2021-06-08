@@ -40,7 +40,7 @@ if ($result == null) {
                     <div class="row align-items-center w-100">
                         <div class="col-auto">
                             <a href="?c=jugador&a=view&id=<?php echo $jugador->getIdjugador() ?>"><img
-                                        src="<?php echo ".." . $jugador->getRuta() ?>" class="img-fluid rounded-circle"
+                                        src="<?php echo ".." . $jugador->getRuta() ?>" class="img-fluid rounded-circle shadow-sm"
                                         alt="<?php echo $jugador->getFullName() ?>" width="90"></a>
                         </div>
                         <div class="col-auto">
