@@ -19,18 +19,15 @@
     <div class="card border-0 mb-3">
         <div class="card-body row">
             <!-- Datos del usuario -->
-            <h2 class="card-title mb-4 fs-4">Datos del usuario</h2>
             <!-- Nombre del usuario -->
             <div>
                 <input type="hidden" class="form-control" id="nombreUsuario" name="nombreUsuario"
                        value="<?php echo $objeto->getNombreUsuario() ?>">
             </div>
             <!-- Correo electrónico -->
-            <div class="mb-3 col-12 col-md-6">
-                <label for="correoElectronico" class="form-label" data-toggle="tooltip" data-placement="top"
-                       title="Obligatorio">Correo electrónico *</label>
-                <input type="text" class="form-control" id="correoElectronico" name="correoElectronico"
-                       value="<?php  echo $objeto->getCorreoElectronico() ?>">
+            <div>
+                <input type="hidden" class="form-control" id="correoElectronico" name="correoElectronico"
+                       value="<?php echo $objeto->getCorreoElectronico() ?>">
             </div>
             <!-- Contraseña -->
             <div>
@@ -41,23 +38,14 @@
                            value="true">
                 </div>
             </div>
-            <?php if ($objeto->getIdUsuario() != 1) { ?>
             <!-- Rol -->
-            <div class="mb-3 col-12 col-md-6">
-                <label for="rol" class="form-label">Rol</label>
-                <select class="form-select" id="rol" name="rol" aria-describedby="rolHelp">
-                    <option value="usuario" <?php echo isset($_POST["rol"]) ? $_POST["rol"] == "usuario" ? "selected" : "" : "" ?>>
-                        Usuario
-                    </option>
+            <div>
+                <select hidden class="form-select" id="rol" name="rol">
                     <option value="administrador" <?php echo isset($_POST["rol"]) ? $_POST["rol"] == "administrador" ? "selected" : "" : "" ?>>
                         Administrador
                     </option>
                 </select>
-                <small id="rol" class="form-text text-muted">Los usuarios con rol de administrador pueden acceder al
-                    panel de administración. Los usuarios con rol usuario pueden acceder al área privada de
-                    usuarios</small>
             </div>
-            <?php } ?>
 
             <!-- Datos personales -->
             <h2 class="card-title mb-4 fs-4">Datos personales</h2>
@@ -67,18 +55,15 @@
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
                        value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : $objeto->getNombre() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no es válido.</div>';
-                    }
-                }
-                ?>
+                <small class="text-muted">El usuario puede tener letras tanto mayúsculas como minúsculas y números. Debe
+                    tener una longitud de entre 6 y 8 carácteres</small>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Apellido 1 -->
             <div class="mb-3 col-12 col-md-6">
@@ -116,7 +101,8 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
-                       value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : $objeto->getDni() ?>" aria-describedby="dniHelp">
+                       value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : $objeto->getDni() ?>"
+                       aria-describedby="dniHelp">
                 <small id="dniHelp" class="form-text text-muted">DNI con letra, por ejemplo 38273637S</small>
             </div>
             <?php
@@ -142,6 +128,7 @@
             <!-- Enviar -->
             <div class="mt-4">
                 <button type="submit" class="btn boton-menu">Guardar cambios</button>
+            </div>
         </div>
     </div>
 </form>

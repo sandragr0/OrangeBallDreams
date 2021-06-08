@@ -1,25 +1,27 @@
 <h1>Ver estadisticas</h1>
-<div class="row mb-5">
-    <div class="col-12">
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
-            <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
-                   onkeyup="buscarJugador()"
-                   aria-describedby="buscarNombre">
+<div class="card">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+                <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+                       onkeyup="buscarJugador()"
+                       aria-describedby="buscarNombre">
+            </div>
+            <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
+            <select class="form-select" id="jugador" name="jugador">
+                <?php foreach ($jugadores as $jugador): ?>
+                    <option value="<?php echo $jugador->getIdJugador(); ?>">
+                        <?php echo $jugador->getFullName(); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
-        <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
-        <select class="form-select" id="jugador" name="jugador">
-            <?php foreach ($jugadores as $jugador): ?>
-                <option value="<?php echo $jugador->getIdJugador(); ?>">
-                    <?php echo $jugador->getFullName(); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
     </div>
+    <iframe onload="mostrarEstadisticas()" class="d-none"></iframe>
+    <noscript>No se puede mostrar la información porque Javascript está desactivado en tu navegador</noscript>
+    <div id="panel_estadisticas" class="table-responsive"></div>
 </div>
-<iframe onload="mostrarEstadisticas()" class="d-none"></iframe>
-<noscript>No se puede mostrar la información porque Javascript está desactivado en tu navegador</noscript>
-<div id="panel_estadisticas" class="table-responsive"></div>
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete" tabindex="-1"
      aria-labelledby="exampleModalLabel"

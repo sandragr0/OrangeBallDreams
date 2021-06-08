@@ -74,6 +74,7 @@ abstract class AdminController
     {
         if (isset($_REQUEST['id'])) {
             $this->model->delete($_REQUEST['id']);
+            header("Location: admin.php?c=$this->controllerName&a=list");
         }
     }
 

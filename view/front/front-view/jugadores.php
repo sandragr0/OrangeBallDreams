@@ -18,7 +18,7 @@
                     <label class="form-label fw-bold titulo" for="inputBuscarNombre">Nombre</label>
                     <input type="text" class="form-control border-0 py-2" id="inputBuscarNombre"
                            onkeyup="filtrarJugador()"
-                           placeholder="Buscar por nombre..." aria-describedby="buscarNombre">
+                           placeholder="Buscar por nombre...">
                 </div>
             </div>
             <!-- Filtrar por género -->
@@ -27,13 +27,13 @@
                     <label class="form-label fw-bold titulo">Género</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="genero" id="femenino">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label class="form-check-label">
                             Femenino
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="genero" id="masculino">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label class="form-check-label">
                             Masculino
                         </label>
                     </div>
@@ -46,31 +46,31 @@
                     <div id="posicionCheckGroup">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="posicion" id="Base">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label">
                                 Base
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="posicion" id="Escolta">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label">
                                 Escolta
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="posicion" id="Alero">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label">
                                 Alero
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="posicion" id="Ala-pivot">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label">
                                 Ala-pivot
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="posicion" id="Pivot">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label">
                                 Pivot
                             </label>
                         </div>
@@ -80,16 +80,16 @@
             <!-- Filtrar por extracomunitario -->
             <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
                 <div id="extracomunitarioCheckGroup">
-                    <label class="form-label fw-bold titulo" for="extracomunitario">Extracomunitario</label>
+                    <label class="form-label fw-bold titulo">Extracomunitario</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="extracomunitario" id="1">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label">
                             Si
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="extracomunitario" id="0">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label">
                             No
                         </label>
                     </div>
@@ -101,13 +101,13 @@
                     <label class="form-label fw-bold titulo" for="disponible">Disponible</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="disponible" id="disponible">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label">
                             Si
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="disponible" id="fichado">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <label class="form-check-label">
                             No
                         </label>
                     </div>

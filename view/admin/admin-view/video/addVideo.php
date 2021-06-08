@@ -7,7 +7,7 @@
             <div class="card-body">
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {
-                    echo "Error. Ya existe una estadística para esta temporada.";
+                    echo "Error. Ya has añadido ese vídeo.";
                 } else {
                     echo "Error en la base de datos. Contacte con el administrador del sitio.";
                 }
@@ -32,7 +32,7 @@
                 <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
                 <select class="form-select" id="jugador" name="jugador">
                     <?php foreach ($jugadores as $jugador): ?>
-                        <option value="<?php echo $jugador->getIdJugador(); ?>">
+                        <option value="<?php echo $jugador->getIdJugador(); ?>" <?php echo (isset($_POST["jugador"]) && $_POST["jugador"] == $jugador->getIdJugador()) ? "selected" : "" ?>>
                             <?php echo $jugador->getFullName(); ?>
                         </option>
                     <?php endforeach; ?>
@@ -49,18 +49,13 @@
                 <small id="rutaHelp" class="form-text text-muted">Ruta del vídeo. <a href="#" data-bs-toggle='modal'
                                                                                      data-bs-target='#rutaHelpModel'>¿Necesitas
                         ayuda?</a></small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::ruta_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::ruta_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::ruta_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorRutaEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::ruta_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorRutaInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- isPublico -->
             <div class="mb-3 col-12 col-md-6">
@@ -111,10 +106,12 @@
                     <li>En un ordenador, ve al vídeo de YouTube que quieras insertar.</li>
                     <li> Debajo del vídeo, haz clic en Compartir.</li>
                     <li> Haz clic en Insertar.</li>
-                    <li>En el cuadro de texto que aparece, copia el link del vídeo.</li>
-                    <img src="../assets/img/admin/video/AddVideoHelp1.png" class="img-fluid mt-2 mb-3" alt="VideoHelp1">
-                    <li> Pega el enlace del vídeo.</li>
-                    <img src="../assets/img/admin/video/AddVideoHelp2.png" class="img-fluid mt-2 mb-3" alt="VideoHelp2">
+                    <li>En el cuadro de texto que aparece, copia el link del vídeo.<img
+                                src="../assets/img/admin/video/AddVideoHelp1.png" class="d-block img-fluid mt-2 mb-3"
+                                alt="VideoHelp1"></li>
+
+                    <li> Pega el enlace del vídeo.<img src="../assets/img/admin/video/AddVideoHelp2.png"
+                                                       class="d-block img-fluid mt-2 mb-3" alt="VideoHelp2"></li>
                 </ol>
             </div>
         </div>

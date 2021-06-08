@@ -1,7 +1,7 @@
 <div class="container-fluid p-0 blanco">
     <div class="row w-100 p-0 m-0">
         <div class="col-5 d-none d-xl-block p-0">
-            <video class="embed-responsive-item" src="../assets/video/jugadores.mp4" autoplay muted loop>
+            <video class="embed-responsive-item" src="../assets/video/jugadores.mp4" autoplay muted loop></video>
         </div>
         <div class="col fondo-naranja zIndex0 d-flex justify-content-center align-items-center flex-column p-4">
             <div class="row pt-5 mx-4">
@@ -63,5 +63,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

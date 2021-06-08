@@ -1,25 +1,27 @@
 <h1>Ver videos</h1>
-<div class="col-12 mb-3">
-    <div class="input-group">
-        <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
-        <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
-               onkeyup="buscarJugador()"
-               aria-describedby="buscarNombre">
+<div class="card">
+    <div class="col-12 mb-3">
+        <div class="input-group">
+            <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+                   onkeyup="buscarJugador()"
+                   aria-describedby="buscarNombre">
+        </div>
     </div>
+    <div class="mb-3">
+        <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
+        <select class="form-select" id="jugador" name="jugador">
+            <?php foreach ($jugadores as $jugador): ?>
+                <option value="<?php echo $jugador->getIdJugador(); ?>">
+                    <?php echo $jugador->getFullName(); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <iframe onload="mostrarVideos()" class="d-none"></iframe>
+    <noscript>No se puede mostrar la información porque Javascript está desactivado en tu navegador</noscript>
+    <div id="panel_videos" class="table-responsive"></div>
 </div>
-<div class="mb-3">
-    <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
-    <select class="form-select" id="jugador" name="jugador">
-        <?php foreach ($jugadores as $jugador): ?>
-            <option value="<?php echo $jugador->getIdJugador(); ?>">
-                <?php echo $jugador->getFullName(); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</div>
-<iframe onload="mostrarVideos()" class="d-none"></iframe>
-<noscript>No se puede mostrar la información porque Javascript está desactivado en tu navegador</noscript>
-<div id="panel_videos" class="table-responsive"></div>
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete" tabindex="-1"
      aria-labelledby="exampleModalLabel"

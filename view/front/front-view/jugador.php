@@ -3,14 +3,16 @@
         <!-- Foto y datos principales -->
         <div class="row align-items-center">
             <div class="col-12 col-md-4 mb-4 mb-md-0 px-5">
-                <img class="img-fluid rounded-circle shadow-sm" src="..<?php echo $jugador->getRuta() ?>">
+                <img class="img-fluid rounded-circle shadow-sm" src="..<?php echo $jugador->getRuta() ?>"
+                     alt="<?php echo $jugador->getFullName() ?>">
             </div>
             <div class="col text-center text-md-start">
                 <?php if ($jugador->getNacionalidades() != null) { ?>
                     <div class="row my-4">
                         <div class="col">
                             <?php foreach ($jugador->getNacionalidades() as $nacionalidad) { ?>
-                                <img class="img-fluid" src="..<?php echo $nacionalidad->getIcono() ?>" width="40">
+                                <img class="img-fluid" src="..<?php echo $nacionalidad->getIcono() ?>" width="40"
+                                     alt="<?php echo $nacionalidad->getNombre() ?>">
                             <?php } ?>
                         </div>
                     </div>
@@ -19,7 +21,7 @@
                     <h1><?php echo $jugador->getFullName(); ?></h1>
                 </div>
                 <div class="row mb-2">
-                    <span class="fs-4 text-capitalize"><?php echo $jugador->getEstado(); ?> / <?php echo $jugador->getPosicion(); ?></span>
+                    <span class="fs-5 text-capitalize fw-bold px-4"><?php echo $jugador->getEstado(); ?> / <?php echo $jugador->getPosicion(); ?></span>
                 </div>
                 <div class="row my-4">
                     <hr class="w-75 m-md-0 m-auto"/>
@@ -82,59 +84,62 @@
             </div>
             <div class="row">
                 <?php if ($estadisticas != null) { ?>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Temporada</th>
-                            <th>Liga</th>
-                            <th>Equipo</th>
-                            <th>PPP</th>
-                            <th>APP</th>
-                            <th>RPP</th>
-                            <th>%2T</th>
-                            <th>%3T</th>
-                            <th>%TL</th>
-                            <th>MIN</th>
-                            <th>ROB</th>
-                            <th>TAP</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($estadisticas as $estadistica) { ?>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <td><?php echo $estadistica->getTemporada() ?></td>
-                                <td><?php echo $estadistica->getNombreLiga() ?></td>
-                                <td><?php echo $estadistica->getNombreEquipo() ?></td>
-                                <td><?php echo $estadistica->getPPP() ?></td>
-                                <td><?php echo $estadistica->getAPP() ?></td>
-                                <td><?php echo $estadistica->getRPP() ?></td>
-                                <td><?php echo $estadistica->getPorcentajeDobles() ?></td>
-                                <td><?php echo $estadistica->getPorcentajeTriples() ?></td>
-                                <td><?php echo $estadistica->getPorcentajeTL() ?></td>
-                                <td><?php echo $estadistica->getMIN() ?></td>
-                                <td><?php echo $estadistica->getROB() ?></td>
-                                <td><?php echo $estadistica->getTAP() ?></td>
+                                <th>Temporada</th>
+                                <th>Liga</th>
+                                <th>Equipo</th>
+                                <th>PPP</th>
+                                <th>APP</th>
+                                <th>RPP</th>
+                                <th>%2T</th>
+                                <th>%3T</th>
+                                <th>%TL</th>
+                                <th>MIN</th>
+                                <th>ROB</th>
+                                <th>TAP</th>
                             </tr>
-                        <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                <small class="text-muted">PPP = puntos por partido | RPP = rebotes por partido | APP = asistencias por
-                    partido |
-                    MIN = minutos por partido | %2P = porcentaje de tiros de 2 | %3P = porcentaje de tiros de 3 | %TL =
-                    porcentaje de tiros libres | ROB = robos | TAP = tapones<|small>
-                    <?php } else { ?>
-                        <p>Aún no tenemos estadísticas de este jugador</p>
-                    <?php } ?>
-                </small>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($estadisticas as $estadistica) { ?>
+                                <tr>
+                                    <td><?php echo $estadistica->getTemporada() ?></td>
+                                    <td><?php echo $estadistica->getNombreLiga() ?></td>
+                                    <td><?php echo $estadistica->getNombreEquipo() ?></td>
+                                    <td><?php echo $estadistica->getPPP() ?></td>
+                                    <td><?php echo $estadistica->getAPP() ?></td>
+                                    <td><?php echo $estadistica->getRPP() ?></td>
+                                    <td><?php echo $estadistica->getPorcentajeDobles() ?></td>
+                                    <td><?php echo $estadistica->getPorcentajeTriples() ?></td>
+                                    <td><?php echo $estadistica->getPorcentajeTL() ?></td>
+                                    <td><?php echo $estadistica->getMIN() ?></td>
+                                    <td><?php echo $estadistica->getROB() ?></td>
+                                    <td><?php echo $estadistica->getTAP() ?></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <small class="text-muted">
+                        PPP = puntos por partido | RPP = rebotes por partido | APP = asistencias
+                        por
+                        partido |
+                        MIN = minutos por partido | %2P = porcentaje de tiros de 2 | %3P = porcentaje de tiros de 3 |
+                        %TL =
+                        porcentaje de tiros libres | ROB = robos | TAP = tapones
+                    </small>
+                <?php } else { ?>
+                    <p>Aún no tenemos estadísticas de este jugador</p>
+                <?php } ?>
             </div>
         </div>
     </main>
 </div>
 
 <div class="container-fluid p-4">
-    <div class="container p-4">
+    <div class="container p-0 p-md-4">
         <div class="row mb-4">
             <div class="col">
                 <h2>Galeria de videos</h2>
@@ -146,10 +151,17 @@
                     <h3>Partidos completos</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-
-                </div>
+            <div class="row g-3">
+                <?php foreach ($partidosCompletos as $partidoCompleto) { ?>
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="iframe-container">
+                            <iframe src="<?php echo $partidoCompleto->getRuta() ?>?mute=1"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         <?php } ?>
         <?php if ($highlights != null) { ?>
@@ -158,39 +170,17 @@
                     <h3>Highlights</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div class="position-absolute hide-video"></div>
-                    </a>
-                    <?php foreach ($highlights as $highlight) { ?>
-                        <iframe width="360" height="215" src="<?php echo $highlight->getRuta() ?>" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                        </iframe>
-                        <!-- Modal-->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                        </button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row g-3">
+                <?php foreach ($highlights as $highlight) { ?>
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="iframe-container">
+                            <iframe src="<?php echo $highlight->getRuta() ?>?mute=1"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
                         </div>
-                    <?php } ?>
-                </div>
+                    </div>
+                <?php } ?>
             </div>
         <?php } ?>
     </div>

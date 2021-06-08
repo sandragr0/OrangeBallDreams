@@ -1,4 +1,3 @@
-<script src="../assets/js/addJugador.js"></script>
 <h1>Añadir jugador</h1>
 <form method="post" action="?c=jugador&a=add" enctype="multipart/form-data">
     <?php

@@ -211,9 +211,15 @@ $(document).on("click", ".botonEliminarVideo", function () {
     const id = $(this).attr('data-id');
     $("#link-eliminar").attr("href", "?c=video&a=delete&id=" + id)
 });
+
 $(document).on("click", ".botonEliminarContacto", function () {
     const id = $(this).attr('data-id');
     $("#link-eliminar").attr("href", "?c=contacto&a=delete&id=" + id)
+});
+
+$(document).on("click", ".botonEliminarUsuario", function () {
+    const id = $(this).attr('data-id');
+    $("#link-eliminar").attr("href", "?c=usuario&a=delete&id=" + id)
 });
 
 // Funciones de búsqueda y filtros ----------------------------------------------

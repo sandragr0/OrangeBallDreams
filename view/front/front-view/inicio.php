@@ -114,15 +114,15 @@
 <div class="container p-4 text-center text-md-start">
     <div class="row align-items-center p-4 gx-4">
         <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img class="img-fluid" src="../assets/img/Inicio/jugador.png">
+            <img class="img-fluid" src="../assets/img/Inicio/jugador.png" alt="jugador baloncesto">
         </div>
         <div class="col-12 col-md-6">
-            <div clas="row fs-2 py-3">
+            <div class="row fs-2 py-3">
                 <div class="col">
                     <h2><em class="highlight">Puedes mejorar</em> tus condiciones</h2>
                 </div>
             </div>
-            <div clas="row">
+            <div class="row">
                 <div class="col fs-3">
                     Estamos seguros de que encontraremos la mejor situación profesional y económica para ti. Trabajamos
                     muy duro para poder ofrecer las mejores condiciones para los atletas profesionales.

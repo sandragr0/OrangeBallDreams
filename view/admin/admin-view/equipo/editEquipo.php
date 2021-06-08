@@ -22,18 +22,13 @@
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
                        value="<?php echo $objeto->getNombre() != "" ? $objeto->getNombre() : "" ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Enviar -->
             <div class="row mt-4">
@@ -46,36 +41,38 @@
 </form>
 <?php
 if ($jugadores != null) {
-?>
-<div class="card mb-3 border-0 row">
-    <div class="card-body">
-        <h2 class="card-title mb-4 fs-4">Jugadores</h2>
-        <div class="col-12 col-md-6">
-            <table class="table mt-1">
-                <thead>
-                <th class="col-auto">Nombre</th>
-                <th>Acción</th>
-                </thead>
-                <?php
-                foreach ($jugadores as $jugador):
-                    ?>
-                    <tr class="align-middle">
-                        <td class="py-3"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
-                        <td>
-                            <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
-                               href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
-                            <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
-                               href="#" data-bs-toggle="modal" data-idequipo="<?php echo $objeto->getIdEquipo() ?>"
-                               data-idjugador="<?php echo $jugador->getIdJugador() ?>"
-                               data-bs-target="#confirm-delete">Quitar del equipo</a>
-                        </td>
-                    </tr>
-                <?php endforeach;
-                } ?>
-            </table>
+    ?>
+    <div class="card mb-3 border-0 row">
+        <div class="card-body">
+            <h2 class="card-title mb-4 fs-4">Jugadores</h2>
+            <div class="col-12 col-md-6">
+                <table class="table mt-1">
+                    <thead>
+                    <th class="col-auto">Nombre</th>
+                    <th>Acción</th>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($jugadores as $jugador):
+                        ?>
+                        <tr class="align-middle">
+                            <td class="py-3"><?php echo $jugador->getNombre() . " " . $jugador->getPrimerApellido() . " " . $jugador->getSegundoApellido(); ?></td>
+                            <td>
+                                <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
+                                   href="?c=jugador&a=view&id=<?php echo $jugador->getIdJugador() ?>">Ver</a>
+                                <a target="_blank" class="boton-menu m-1 col-auto botonEliminarJugadorEquipo"
+                                   href="#" data-bs-toggle="modal" data-idequipo="<?php echo $objeto->getIdEquipo() ?>"
+                                   data-idjugador="<?php echo $jugador->getIdJugador() ?>"
+                                   data-bs-target="#confirm-delete">Quitar del equipo</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php } ?>
 
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete" tabindex="-1"

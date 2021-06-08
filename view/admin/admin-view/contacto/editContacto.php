@@ -1,5 +1,5 @@
 <h1>Editar contacto</h1>
-<form method="post" action="?c=contacto&a=edit&id=<?php echo $_GET["id"]  ?>">
+<form method="post" action="?c=contacto&a=edit&id=<?php echo $_GET["id"] ?>">
     <?php
     if (isset($db_error)) {
         ?>
@@ -25,96 +25,75 @@
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
                        value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : $objeto->getNombre() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Apellido 1 -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Primer apellido *</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1"
-                       value="<?php echo isset($_POST["apellido1"]) ? $_POST["apellido1"] :  $objeto->getPrimerApellido() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::apellido1_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::apellido1_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no es válido.</div>';
-                    }
-                }
-                ?>
+                       value="<?php echo isset($_POST["apellido1"]) ? $_POST["apellido1"] : $objeto->getPrimerApellido() ?>">
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::apellido1_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorApellido1Empty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::apellido1_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorApellido1Invalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Apellido 2 -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="apellido2" class="form-label">Segundo apellido</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2"
-                       value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] :  $objeto->getSegundoApellido() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::apellido2_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El apellido no es válido.</div>';
-                    }
-                }
-                ?>
+                       value="<?php echo isset($_POST["apellido2"]) ? $_POST["apellido2"] : $objeto->getSegundoApellido() ?>">
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::apellido2_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorApellido2Invalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- dni -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label">DNI</label>
                 <input type="text" class="form-control" id="dni" name="dni"
-                       value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] :  $objeto->getDni() ?>" aria-describedby="dniHelp">
+                       value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : $objeto->getDni() ?>"
+                       aria-describedby="dniHelp">
                 <small id="dniHelp" class="form-text text-muted">DNI con letra, por ejemplo 38273637S</small>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::dni_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorDniInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
-            <?php
-            if (isset($error)) {
-                if ($error == CodigosError::dni_invalid) {
-                    echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El DNI no es válido.</div>';
-                }
-            }
-            ?>
             <!-- Telefono -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" class="form-control" id="telefono" name="telefono"
-                       value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] :  $objeto->getTelefono() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::telefono_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El teléfono no es válido.</div>';
-                    }
-                }
-                ?>
+                       value="<?php echo isset($_POST["telefono"]) ? $_POST["telefono"] : $objeto->getTelefono() ?>">
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::telefono_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorTelefonoInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Equipo -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
                 <input type="text" class="form-control" id="equipo" name="equipo"
-                       value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] :  $objeto->getEquipo() ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::equipo_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El equipo no es válido.</div>';
-                    }
-                }
-                ?>
+                       value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : $objeto->getEquipo() ?>">
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::equipo_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorEquipoInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Nota -->
             <div class="col-12">
                 <label for="nota" class="form-label">Nota</label>
-                <textarea id="nota" name="nota" name="nota"
-                          class="form-control"><?php echo isset($_POST["nota"]) ? $_POST["nota"] :  $objeto->getNota() ?></textarea>
+                <textarea id="nota" name="nota"
+                          class="form-control"><?php echo isset($_POST["nota"]) ? $_POST["nota"] : $objeto->getNota() ?></textarea>
             </div>
             <!-- Enviar -->
             <div class="row mt-4">

@@ -14,70 +14,71 @@
         </div>
     </div>
 </div>
-<form class="row">
-    <!-- Datos del usuario -->
-    <h2 class="mb-4 fs-4">Datos del usuario</h2>
-    <!-- Nombre del usuario -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="nombreUsuario" class="form-label" data-toggle="tooltip" data-placement="top"
-               title="Obligatorio">Nombre de usuario *</label>
-        <input disabled type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
-               value="<?php echo $objeto->getNombreUsuario(); ?>">
-    </div>
-    <!-- Correo electrónico -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="correoElectronico" class="form-label" data-toggle="tooltip" data-placement="top"
-               title="Obligatorio">Correo electrónico *</label>
-        <input disabled type="text" class="form-control" id="correoElectronico" name="correoElectronico"
-               value="<?php echo $objeto->getCorreoElectronico(); ?>">
-    </div>
-    <!-- Rol -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="rol" class="form-label">Rol</label>
-        <select disabled class="form-select" id="rol" name="rol">
-            <option value="usuario" <?php echo $objeto->getRol() == "usuario" ? "selected" : "" ?>>
-                Usuario
-            </option>
-            <option value="administrador" <?php echo $objeto->getRol() == "administrador" ? "selected" : "" ?>>
-                Administrador
-            </option>
-        </select>
-    </div>
+<div class="card">
+    <form class="row">
+        <!-- Datos del usuario -->
+        <h2 class="mb-4 fs-4">Datos del usuario</h2>
+        <!-- Nombre del usuario -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="nombreUsuario" class="form-label" data-toggle="tooltip" data-placement="top"
+                   title="Obligatorio">Nombre de usuario *</label>
+            <input disabled type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
+                   value="<?php echo $objeto->getNombreUsuario(); ?>">
+        </div>
+        <!-- Correo electrónico -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="correoElectronico" class="form-label" data-toggle="tooltip" data-placement="top"
+                   title="Obligatorio">Correo electrónico *</label>
+            <input disabled type="text" class="form-control" id="correoElectronico" name="correoElectronico"
+                   value="<?php echo $objeto->getCorreoElectronico(); ?>">
+        </div>
+        <!-- Rol -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="rol" class="form-label">Rol</label>
+            <select disabled class="form-select" id="rol" name="rol">
+                <option value="usuario" <?php echo $objeto->getRol() == "usuario" ? "selected" : "" ?>>
+                    Usuario
+                </option>
+                <option value="administrador" <?php echo $objeto->getRol() == "administrador" ? "selected" : "" ?>>
+                    Administrador
+                </option>
+            </select>
+        </div>
 
-    <!-- Datos personales -->
-    <h2 class="mb-4 fs-4">Datos personales</h2>
-    <!-- Nombre -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
-            *</label>
-        <input disabled type="text" class="form-control" id="nombre" name="nombre"
-               value="<?php echo $objeto->getNombre(); ?>">
-    </div>
-    <!-- Apellido 1 -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
-               title="Obligatorio">Primer apellido *</label>
-        <input disabled type="text" class="form-control" id="apellido1" name="apellido1"
-               value="<?php echo $objeto->getPrimerApellido(); ?>">
-    </div>
-    <!-- Apellido 2 -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="apellido2" class="form-label">Segundo apellido</label>
-        <input disabled type="text" class="form-control" id="apellido2" name="apellido2"
-               value="<?php echo $objeto->getSegundoApellido(); ?>">
-    </div>
-    <!-- dni -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="nombre" class="form-label">DNI</label>
-        <input disabled type="text" class="form-control" id="dni" name="dni"
-               value="<?php echo $objeto->getDni(); ?>">
-    </div>
-    <!-- Telefono -->
-    <div class="mb-3 col-12 col-md-6">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input disabled type="tel" class="form-control" id="telefono" name="telefono"
-               value="<?php echo $objeto->getTelefono() ?>">
-    </div>
-</form>
-
+        <!-- Datos personales -->
+        <h2 class="mb-4 fs-4">Datos personales</h2>
+        <!-- Nombre -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
+                *</label>
+            <input disabled type="text" class="form-control" id="nombre" name="nombre"
+                   value="<?php echo $objeto->getNombre(); ?>">
+        </div>
+        <!-- Apellido 1 -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="apellido1" class="form-label" data-toggle="tooltip" data-placement="top"
+                   title="Obligatorio">Primer apellido *</label>
+            <input disabled type="text" class="form-control" id="apellido1" name="apellido1"
+                   value="<?php echo $objeto->getPrimerApellido(); ?>">
+        </div>
+        <!-- Apellido 2 -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="apellido2" class="form-label">Segundo apellido</label>
+            <input disabled type="text" class="form-control" id="apellido2" name="apellido2"
+                   value="<?php echo $objeto->getSegundoApellido(); ?>">
+        </div>
+        <!-- dni -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="nombre" class="form-label">DNI</label>
+            <input disabled type="text" class="form-control" id="dni" name="dni"
+                   value="<?php echo $objeto->getDni(); ?>">
+        </div>
+        <!-- Telefono -->
+        <div class="mb-3 col-12 col-md-6">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input disabled type="tel" class="form-control" id="telefono" name="telefono"
+                   value="<?php echo $objeto->getTelefono() ?>">
+        </div>
+    </form>
+</div>
 </main>

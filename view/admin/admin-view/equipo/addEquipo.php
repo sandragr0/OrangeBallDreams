@@ -26,18 +26,13 @@
                     *</label>
                 <input type="text" class="form-control" id="nombre" name="nombre"
                        value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : "" ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Enviar -->
             <div class="row mt-4">

@@ -11,58 +11,62 @@ if ($result == null) {
     <?php
 } else {
 ?>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
-    <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..." onkeyup="buscarNombre('inputBuscarNombre', 'tabla_equipos')" aria-describedby="buscarNombre">
-</div>
-<div class="table-responsive">
-    <table class="table" id="tabla_equipos">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        foreach ($result as $equipo):
-            ?>
-            <tr class="align-middle">
-                <td class="py-2"><?php echo $equipo->getIdEquipo() ?></td>
-                <td class="py-2"><?php echo $equipo->getNombre() ?></td>
-                <!-- Acciones -->
-                <td>
-                    <div class="row w-100">
-                        <a class="boton-menu m-1 col-auto"
-                           href="?c=equipo&a=view&id=<?php echo $equipo->getIdEquipo() ?>">Ver</a>
-                        <a class="boton-menu m-1 col-auto"
-                           href="?c=equipo&a=edit&id=<?php echo $equipo->getIdEquipo() ?>">Editar</a>
-                        <a class="boton-menu m-1 col-auto botonEliminarEquipo" data-id="<?php echo $equipo->getIdEquipo() ?>" href="#" data-bs-toggle="modal"
-                           data-bs-target="#confirm-delete">Eliminar</a>
-                    </div>
-                </td>
+<div class="card">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="buscarNombre"><i class="fas fa-search"></i></span>
+        <input type="text" class="form-control" id="inputBuscarNombre" placeholder="Buscar por nombre..."
+               onkeyup="buscarNombre('inputBuscarNombre', 'tabla_equipos')" aria-describedby="buscarNombre">
+    </div>
+    <div class="table-responsive">
+        <table class="table" id="tabla_equipos">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-    <?php } ?>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ¿Estás seguro de que deseas eliminar?
-                Este cambio no se podrá deshacer
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a class="btn btn-danger btn-ok" id="link-eliminar" href="?c=equipo&a=delete&id=#">Eliminar</a>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($result as $equipo):
+                ?>
+                <tr class="align-middle">
+                    <td class="py-2"><?php echo $equipo->getIdEquipo() ?></td>
+                    <td class="py-2"><?php echo $equipo->getNombre() ?></td>
+                    <!-- Acciones -->
+                    <td>
+                        <div class="row w-100">
+                            <a class="boton-menu m-1 col-auto"
+                               href="?c=equipo&a=view&id=<?php echo $equipo->getIdEquipo() ?>">Ver</a>
+                            <a class="boton-menu m-1 col-auto"
+                               href="?c=equipo&a=edit&id=<?php echo $equipo->getIdEquipo() ?>">Editar</a>
+                            <a class="boton-menu m-1 col-auto botonEliminarEquipo"
+                               data-id="<?php echo $equipo->getIdEquipo() ?>" href="#" data-bs-toggle="modal"
+                               data-bs-target="#confirm-delete">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php } ?>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="confirm-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar?
+                    Este cambio no se podrá deshacer
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-danger btn-ok" id="link-eliminar" href="?c=equipo&a=delete&id=#">Eliminar</a>
+                </div>
             </div>
         </div>
     </div>

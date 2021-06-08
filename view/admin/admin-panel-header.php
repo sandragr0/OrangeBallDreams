@@ -26,7 +26,7 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
 <header class="navbar navbar-light sticky-top bg-white flex-md-nowrap p-0 align-items-center shadow-sm">
     <div class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fw-bold border-end">
         <div class="image-container">
-            <a href="inicio.php" target="_blank">
+            <a href="front.php" target="_blank">
                 <img src="../assets/img/logo.png" height="50" alt="Orange Ball Dreams logo" class="align-text-top logo"
                      id="logo">
                 <img src="../assets/img/logo-animado.gif" height="50" alt="Orange Ball Dreams logo"

@@ -5,6 +5,11 @@
 }
 
 @font-face {
+    font-family: lato-bold;
+    src: url('../fonts/Lato/Lato-Bold.ttf');
+}
+
+@font-face {
     font-family: poppins-bold;
     src: url('../fonts/Poppins/Poppins-Bold.ttf');
 }
@@ -14,11 +19,51 @@
 body {
     font-family: lato-regular, sans-serif;
     color: #0D0A0F;
+    background: linear-gradient(
+            -45deg, #00b2c1, #f7941d, #f26522);
+    background-attachment: fixed;
+    padding-bottom: 1em;
+}
+
+.card:not(.border-danger) {
+    min-height: 400px;
+    display: block;
+    padding: 2em 1.3em;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+div.card.border-danger div.card-body {
+    font-family: lato-bold, sans-serif;
+    font-weight: bold !important;
+    color: #dc3545;
+
+}
+
+div.card.border-danger {
+    border-width: 2px;
+    border: none;
+    border-left: solid;
+    border-radius: 0;
+}
+
+.modal-content {
+    border: none !important;
+}
+
+h1 {
+    padding-top: 0.5em;
+    color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: poppins-bold, sans-serif;
     margin-bottom: 1em;
+}
+
+.alert {
+    font-family: lato-bold, sans-serif;
+    font-weight: bold;
+    margin-top: 1em !important;
 }
 
 /* ------------------- Utilidad ------------------------- */
@@ -64,6 +109,13 @@ tbody tr:hover {
     background-color: #fafafa;
 }
 
+.table > :not(:last-child) > :last-child > * {
+    border-bottom-color: inherit !important;
+}
+
+table {
+    margin-top: 1em;
+}
 
 /* ------------------- Formulario login ------------------------- */
 .logo-login {
