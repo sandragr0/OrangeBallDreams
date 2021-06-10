@@ -53,18 +53,13 @@
                     <option value="<?php echo date("y") - 4 . "-" . date("y") - 3 ?>">
                 </datalist>
                 <small id="temporadaHelp" class="form-text text-muted">Formato YY-YY. Por ejemplo 20-21 </small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::temporada_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La temporada no puede estar vacia.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::temporada_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La temporada no es válida.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::temporada_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorTemporadaEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::temporada_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorTemporadaInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Nombre equipo -->
             <div class="mb-3 col-12 col-md-6">
@@ -73,18 +68,13 @@
                     *</label>
                 <input type="text" class="form-control" id="nombreEquipo" name="nombreEquipo"
                        value="<?php echo isset($_POST["nombreEquipo"]) ? $_POST["nombreEquipo"] : "" ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre de equipo no puede estar vacio.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::nombre_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El nombre de equipo no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Nombre Liga -->
             <div class="mb-3 col-12 col-md-6">
@@ -92,18 +82,13 @@
                        title="Obligatorio">Liga *</label>
                 <input type="text" class="form-control" id="nombreLiga" name="nombreLiga"
                        value="<?php echo isset($_POST["nombreLiga"]) ? $_POST["nombreLiga"] : "" ?>">
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::liga_empty) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La liga no puede estar vacia.</div>';
-                    }
-                }
-                if (isset($error)) {
-                    if ($error == CodigosError::liga_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: La liga no es válidá.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::liga_empty ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorLigaEmpty">ERROR: El campo no puede estar vacio.
+                </div>
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::liga_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorLigaInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- PPP -->
             <div class="mb-3 col-12 col-md-6">
@@ -114,13 +99,10 @@
                        value="<?php echo isset($_POST["PPP"]) ? $_POST["PPP"] : "" ?>">
                 <small id="PPPHelp" class="form-text text-muted">Puntos por partido. Número entero o decimal con punto
                     como separador, por ejemplo 3 o 3.4</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::ppp_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El ppp no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::ppp_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorPPPInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- APP -->
             <div class="mb-3 col-12 col-md-6">
@@ -131,13 +113,10 @@
                        value="<?php echo isset($_POST["APP"]) ? $_POST["APP"] : "" ?>">
                 <small id="APPHelp" class="form-text text-muted">Asistencias por partido. Número entero o decimal con
                     punto como separador, por ejemplo 3 o 3.4</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::app_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El app no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::app_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorAPPInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- RPP -->
             <div class="mb-3 col-12 col-md-6">
@@ -148,13 +127,10 @@
                        value="<?php echo isset($_POST["RPP"]) ? $_POST["RPP"] : "" ?>">
                 <small id="RPPHelp" class="form-text text-muted">Rebotes por partido. Número entero o decimal con punto
                     como separador, por ejemplo 3 o 3.4</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::rpp_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El rpp no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::rpp_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorRPPInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- %T2 -->
             <div class="mb-3 col-12 col-md-6">
@@ -165,13 +141,10 @@
                        value="<?php echo isset($_POST["porcentajeDobles"]) ? $_POST["porcentajeDobles"] : "" ?>">
                 <small id="porcentajeDoblesHelp" class="form-text text-muted">Porcentaje de tiros dobles. Número entero
                     o decimal separado por punto sin añadir símbolo %, por ejemplo 70 o 50.5</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::porcentajeTirosDobles_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El %2T no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::porcentajeTirosDobles_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorPorcentajeTirosDoblesInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- %T3 -->
             <div class="mb-3 col-12 col-md-6">
@@ -182,13 +155,10 @@
                        value="<?php echo isset($_POST["porcentajeTriples"]) ? $_POST["porcentajeTriples"] : "" ?>">
                 <small id="porcentajeTriplesHelp" class="form-text text-muted">Porcentaje de tiros triples. Número
                     entero o decimal separado por punto sin añadir símbolo %, por ejemplo 70 o 50.5</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::porcentajeTirosTriples_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El %3T no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::porcentajeTirosTriples_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorPorcentajeTirosTriplesInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- %TL -->
             <div class="mb-3 col-12 col-md-6">
@@ -199,13 +169,10 @@
                        value="<?php echo isset($_POST["porcentajeTL"]) ? $_POST["porcentajeTL"] : "" ?>">
                 <small id="porcentajeTLHelp" class="form-text text-muted">Porcentaje de tiros libres. Número entero o
                     decimal separado por punto sin añadir símbolo %, por ejemplo 70 o 50.5</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::porcentajeTirosLibres_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El %TL no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::porcentajeTirosLibres_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorPorcentajeTirosLibresInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- TAP -->
             <div class="mb-3 col-12 col-md-6">
@@ -216,13 +183,10 @@
                        value="<?php echo isset($_POST["TAP"]) ? $_POST["TAP"] : "" ?>">
                 <small id="TAPHelp" class="form-text text-muted">Tapones. Número entero o decimal con punto como
                     separador, por ejemplo 3 o 3.4</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::tap_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo TAP no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::tap_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorTAPInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- ROB -->
             <div class="mb-3 col-12 col-md-6">
@@ -233,13 +197,10 @@
                        value="<?php echo isset($_POST["ROB"]) ? $_POST["ROB"] : "" ?>">
                 <small id="ROBHelp" class="form-text text-muted">Robos. Número entero o decimal con punto como
                     separador, por ejemplo 3 o 3.4</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::rob_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo ROB no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::rob_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorROBInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- MIN -->
             <div class="col-12 col-md-6">
@@ -250,13 +211,10 @@
                        value="<?php echo isset($_POST["MIN"]) ? $_POST["MIN"] : "" ?>">
                 <small id="MINHelp" class="form-text text-muted">Minutos por partido. Número entero de hasta 3
                     cifras</small>
-                <?php
-                if (isset($error)) {
-                    if ($error == CodigosError::min_invalid) {
-                        echo '<div class="alert alert-danger mt-2" role="alert">ERROR: El campo MIN no es válido.</div>';
-                    }
-                }
-                ?>
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::min_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorMINInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Enviar -->
             <div class="row mt-4">
