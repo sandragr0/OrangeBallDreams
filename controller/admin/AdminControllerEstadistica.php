@@ -81,7 +81,7 @@ class AdminControllerEstadistica extends AdminController
                 }
             } else {
                 include_once '../view/admin/admin-panel-header.php';
-                include_once "../view/admin/admin-view/" . $this->controllerName . "/edit" . $this->controllerName . "ErrorJugador" . ".php";
+                include_once "../view/admin/admin-view/addErrorJugador.php";
                 include_once '../view/admin/admin-panel-footer.php';
             }
         }
@@ -121,7 +121,7 @@ class AdminControllerEstadistica extends AdminController
             }
         } else {
             include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . "ErrorJugador" . ".php";
+            include_once "../view/admin/admin-view/addErrorJugador.php";
             include_once '../view/admin/admin-panel-footer.php';
         }
     }

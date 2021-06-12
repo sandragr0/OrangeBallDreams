@@ -1,5 +1,5 @@
 <h1>Añadir usuario</h1>
-<form method="post" action="?c=usuario&a=add" enctype="multipart/form-data">
+<form method="post" action="?c=usuario&a=add" enctype="multipart/form-data" onsubmit="return validarFormUsuario()">
     <?php
     if (isset($db_error)) {
         ?>

@@ -72,14 +72,60 @@ class AdminControllerVideo extends AdminController
             }
         } else {
             include_once '../view/admin/admin-panel-header.php';
-            include_once "../view/admin/admin-view/" . $this->controllerName . "/add" . $this->controllerName . "ErrorJugador" . ".php";
+            include_once "../view/admin/admin-view/addErrorJugador.php";
             include_once '../view/admin/admin-panel-footer.php';
         }
     }
 
     function edit()
     {
-        // TODO: Implement edit() method.
+        if (isset($_REQUEST['id'])) {
+            $video = $this->model->view($_REQUEST['id']);
+        } else {
+            $video = null;
+        }
+
+        if ($video == null) {
+            include_once '../view/admin/admin-panel-header.php';
+            include_once "../view/admin/admin-view/error.php";
+            include_once '../view/admin/admin-panel-footer.php';
+        } else {
+            $jugadores = $this->getAllJugadores();
+            if ($jugadores != null) {
+                if (sizeof($_POST) == 0) {
+                    include_once '../view/admin/admin-panel-header.php';
+                    include_once "../view/admin/admin-view/" . $this->controllerName . "/edit" . $this->controllerName . ".php";
+                    include_once '../view/admin/admin-panel-footer.php';
+                } else {
+                    $error = $this->validarVideo($_POST);
+                    if ($error == 0) {
+                        $video = $this->createVideo($_POST);
+                        try {
+                            $this->model->edit($_REQUEST["id"], $video);
+                            header('Location: admin.php?c=video&a=list');
+                        } catch (Exception $e) {
+                            Utilidades::logError($e);
+                            if ($e->getCode() == 23000) {
+                                $db_error = CodigosError::db_duplicate_entry;
+                            } else {
+                                $db_error = CodigosError::db_generic_error;
+                            }
+                            include_once '../view/admin/admin-panel-header.php';
+                            include_once "../view/admin/admin-view/" . $this->controllerName . "/edit" . $this->controllerName . ".php";
+                            include_once '../view/admin/admin-panel-footer.php';
+                        }
+                    } else {
+                        include_once '../view/admin/admin-panel-header.php';
+                        include_once "../view/admin/admin-view/" . $this->controllerName . "/edit" . $this->controllerName . ".php";
+                        include_once '../view/admin/admin-panel-footer.php';
+                    }
+                }
+            } else {
+                include_once '../view/admin/admin-panel-header.php';
+                include_once "../view/admin/admin-view/addErrorJugador.php";
+                include_once '../view/admin/admin-panel-footer.php';
+            }
+        }
     }
 
     private function getAllJugadores()

@@ -60,18 +60,6 @@ class UsuarioDAO extends BaseDAO
                 $id
             )
         );
-
-        // Editar usuario
-        $pdo = $this->conexion->prepare('UPDATE `usuario` set `correoElectronico`=?, `contraseña`=?, `nombreUsuario`=?, `rol`=? where idUsuario=?;');
-        $pdo->execute(
-            array(
-                $usuario->getCorreoElectronico(),
-                $usuario->getContraseña(),
-                $usuario->getNombreUsuario(),
-                $usuario->getRol(),
-                $id
-            )
-        );
     }
 
     public function view($id)

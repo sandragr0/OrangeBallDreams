@@ -179,7 +179,7 @@ function filtrarJugador() {
     // ------------------------------------
 
     // Show resultados
-    var arrayMostrar;
+    let arrayMostrar;
     if (elementosDisponibilidad != null) {
         arrayMostrar = elementosDisponibilidad;
     } else if (elementosExtracomunitario != null) {

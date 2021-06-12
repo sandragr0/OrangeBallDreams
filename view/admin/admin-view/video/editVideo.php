@@ -1,5 +1,5 @@
-<h1>Añadir video</h1>
-<form method="post" action="?c=video&a=add" onsubmit="return validarFormVideo()">
+<h1>Editar video</h1>
+<form method="post" action="?c=video&a=edit&id=<?php echo $_GET["id"] ?>" onsubmit="return validarFormVideo()">
     <?php
     if (isset($db_error)) {
         ?>
@@ -32,7 +32,7 @@
                 <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
                 <select class="form-select" id="jugador" name="jugador">
                     <?php foreach ($jugadores as $jugador): ?>
-                        <option value="<?php echo $jugador->getIdJugador(); ?>" <?php echo (isset($_POST["jugador"]) && $_POST["jugador"] == $jugador->getIdJugador()) ? "selected" : "" ?>>
+                        <option value="<?php echo $jugador->getIdJugador(); ?>" <?php echo $jugador->getIdJugador() == $video->getIdJugador() ? "selected" : "" ?>>
                             <?php echo $jugador->getFullName(); ?>
                         </option>
                     <?php endforeach; ?>
@@ -45,7 +45,7 @@
                        title="Obligatorio">Link del vídeo
                     *</label>
                 <input type="text" class="form-control" id="ruta" name="ruta" aria-describedby="rutaHelp"
-                       value="<?php echo isset($_POST["ruta"]) ? $_POST["ruta"] : "" ?>">
+                       value="<?php echo isset($_POST["ruta"]) ? $_POST["ruta"] : $video->getRuta() ?>">
                 <small id="rutaHelp" class="form-text text-muted">Ruta del vídeo. <a href="#" data-bs-toggle='modal'
                                                                                      data-bs-target='#rutaHelpModel'>¿Necesitas
                         ayuda?</a></small>
@@ -61,10 +61,10 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="isPublico" class="form-label">Visibilidad</label>
                 <select class="form-select" id="isPublico" name="isPublico">
-                    <option value="1" <?php echo isset($_POST["isPublico"]) ? $_POST["isPublico"] == "1" ? "selected" : "" : "" ?>>
+                    <option value="1" <<?php echo $video->getIsPublico() == "1" ? "selected" : "" ?>>
                         Público
                     </option>
-                    <option value="0" <?php echo isset($_POST["isPublico"]) ? $_POST["isPublico"] == "0" ? "selected" : "" : "" ?>>
+                    <option value="0" <?php echo $video->getIsPublico() == "0" ? "selected" : "" ?>>
                         Privado
                     </option>
                 </select>
@@ -73,10 +73,10 @@
             <div class="col-12 col-md-6">
                 <label for="tipoVideo" class="form-label">Visibilidad</label>
                 <select class="form-select" id="tipoVideo" name="tipoVideo">
-                    <option value="highlight" <?php echo isset($_POST["tipoVideo"]) ? $_POST["tipoVideo"] == "highlight" ? "selected" : "" : "" ?>>
+                    <option value="highlight" <?php echo $video->getTipoVideo() == "highlight" ? "selected" : "" ?>>
                         Highlight
                     </option>
-                    <option value="partido" <?php echo isset($_POST["tipoVideo"]) ? $_POST["tipoVideo"] == "partido" ? "selected" : "" : "" ?>>
+                    <option value="partido" <?php echo $video->getTipoVideo() == "partido" ? "selected" : "" ?>>
                         Partido completo
                     </option>
                 </select>
@@ -107,8 +107,8 @@
                     <li> Debajo del vídeo, haz clic en Compartir.</li>
                     <li> Haz clic en Insertar.</li>
                     <li>En el cuadro de texto que aparece, copia el link del vídeo.<img
-                                src="../assets/img/admin/video/AddVideoHelp1.png" class="d-block img-fluid mt-2 mb-3"
-                                alt="VideoHelp1"></li>
+                            src="../assets/img/admin/video/AddVideoHelp1.png" class="d-block img-fluid mt-2 mb-3"
+                            alt="VideoHelp1"></li>
 
                     <li> Pega el enlace del vídeo.<img src="../assets/img/admin/video/AddVideoHelp2.png"
                                                        class="d-block img-fluid mt-2 mb-3" alt="VideoHelp2"></li>

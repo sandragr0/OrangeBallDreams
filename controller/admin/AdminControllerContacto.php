@@ -5,10 +5,12 @@ class AdminControllerContacto extends AdminController
 {
     private $model;
     private $controllerName = "contacto";
+    private $modelEquipo;
 
     public function __construct()
     {
         $this->model = new ContactoDAO();
+        $this->modelEquipo = new EquipoDAO();
         parent::__construct($this->controllerName, $this->model);
     }
 
@@ -17,6 +19,7 @@ class AdminControllerContacto extends AdminController
      */
     function add()
     {
+        $listadoNombresEquipos = $this->modelEquipo->getNombresEquipos();
         if (sizeof($_POST) == 0) {
             include_once '../view/admin/admin-panel-header.php';
             include_once "../view/admin/admin-view/" . $this->controllerName . "/addContacto.php";
@@ -124,6 +127,7 @@ class AdminControllerContacto extends AdminController
      */
     function edit()
     {
+        $listadoNombresEquipos = $this->modelEquipo->getNombresEquipos();
         if (isset($_REQUEST['id'])) {
             $objeto = $this->model->view($_REQUEST['id']);
         } else {

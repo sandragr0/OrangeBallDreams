@@ -20,8 +20,7 @@ body {
     font-family: lato-regular, sans-serif;
     color: #0D0A0F;
     background: linear-gradient(
-            -45deg, #00b2c1, #f7941d, #f26522);
-    background-attachment: fixed;
+            -45deg, #00b2c1, #f7941d, #f26522) fixed;
     padding-bottom: 1em;
 }
 
@@ -40,9 +39,8 @@ div.card.border-danger div.card-body {
 }
 
 div.card.border-danger {
-    border-width: 2px;
-    border: none;
-    border-left: solid;
+    border: 3px none;
+    border-left-style: solid;
     border-radius: 0;
 }
 
@@ -187,7 +185,6 @@ table {
     .navbar-brand {
         border-right: none !important;
     }
-
 }
 
 /* --------- Sidebar --------- */
@@ -270,7 +267,7 @@ header, header a {
 .navbar-light .navbar-brand {
     color: #fff;
     text-transform: uppercase;
-    font-family: 'poppins-bold';
+    font-family: 'poppins-bold', sans-serif;
 }
 
 
@@ -380,3 +377,4 @@ a.active:hover {
     min-height: 170px;
     overflow: auto;
 }
+

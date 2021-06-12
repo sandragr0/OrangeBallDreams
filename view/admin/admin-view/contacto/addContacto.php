@@ -1,9 +1,9 @@
 <h1>Añadir contacto</h1>
-<form method="post" action="?c=contacto&a=add">
+<form method="post" action="?c=contacto&a=add" onsubmit="return validarFormContacto()">
     <?php
     if (isset($db_error)) {
         ?>
-        <div class="card  border-danger mb-3">
+        <div class=" card border-danger mb-3">
             <div class="card-body">
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {
@@ -81,8 +81,15 @@
             <!-- Equipo -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
-                <input type="text" class="form-control" id="equipo" name="equipo"
+                <input list="equipos" autocomplete="off" class="form-control" id="equipo" name="equipo"
                        value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
+                <datalist id="equipos">
+                    <?php foreach ($listadoNombresEquipos
+
+                    as $equipo): ?>
+                    <option value="<?php echo $equipo["nombre"] ?>">
+                        <?php endforeach; ?>
+                </datalist>
                 <!-- Mensajes errores -->
                 <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::equipo_invalid ? "d-block" : "d-none") ?> error"
                      role="alert" id="errorEquipoInvalid">ERROR: El campo no es válido.

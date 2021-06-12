@@ -1,5 +1,5 @@
 <h1>Añadir estadistica</h1>
-<form method="post" action="?c=estadistica&a=add">
+<form method="post" action="?c=estadistica&a=add" onsubmit="return validarFormEstadistica()">
     <?php
     if (isset($db_error)) {
         ?>

@@ -1,5 +1,5 @@
 <h1>Editar estadistica</h1>
-<form method="post" action="?c=estadistica&a=edit&id=<?php echo $_GET["id"] ?>">
+<form method="post" action="?c=estadistica&a=edit&id=<?php echo $_GET["id"] ?>" onsubmit="return validarFormEstadistica()">
     <?php
     if (isset($db_error)) {
         ?>

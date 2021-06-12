@@ -12,32 +12,32 @@
         </div>
     </div>
 </div>
-<form method="post" action="?c=equipo&a=edit&id=<?php echo $_GET["id"] ?>" class="row">
-    <div class="card mb-3 border-0">
-        <div class="card-body">
-            <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
-            <!-- Nombre -->
-            <div class="col-12 col-md-6">
-                <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
-                    *</label>
-                <input type="text" class="form-control" id="nombre" name="nombre"
-                       value="<?php echo $objeto->getNombre() != "" ? $objeto->getNombre() : "" ?>">
-                <!-- Mensajes errores -->
-                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
-                     role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
-                </div>
-                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
-                     role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
-                </div>
-            </div>
-            <!-- Enviar -->
-            <div class="row mt-4">
-                <div class="mt-4">
-                    <button type="submit" class="btn boton-menu">Guardar cambios</button>
-                </div>
-            </div>
+<form method="post" action="?c=equipo&a=edit&id=<?php echo $_GET["id"] ?>" class="row" onsubmit="return validarFormEquipo()">
+    <div class=" card mb-3 border-0">
+<div class="card-body">
+    <h2 class="card-title mb-4 fs-4">Datos del equipo</h2>
+    <!-- Nombre -->
+    <div class="col-12 col-md-6">
+        <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
+            *</label>
+        <input type="text" class="form-control" id="nombre" name="nombre"
+               value="<?php echo $objeto->getNombre() != "" ? $objeto->getNombre() : "" ?>">
+        <!-- Mensajes errores -->
+        <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
+             role="alert" id="errorNombreEmpty">ERROR: El campo no puede estar vacio.
+        </div>
+        <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_invalid ? "d-block" : "d-none") ?> error"
+             role="alert" id="errorNombreInvalid">ERROR: El campo no es válido.
         </div>
     </div>
+    <!-- Enviar -->
+    <div class="row mt-4">
+        <div class="mt-4">
+            <button type="submit" class="btn boton-menu">Guardar cambios</button>
+        </div>
+    </div>
+</div>
+</div>
 </form>
 <?php
 if ($jugadores != null) {

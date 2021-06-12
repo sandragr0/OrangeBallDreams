@@ -1,5 +1,5 @@
 <h1>Añadir jugador</h1>
-<form method="post" action="?c=jugador&a=add" enctype="multipart/form-data">
+<form method="post" action="?c=jugador&a=add" enctype="multipart/form-data" onsubmit="return validarFormJugador()">
     <?php
     if (isset($db_error)) {
         ?>
@@ -63,10 +63,10 @@
                 <input type="text" class="form-control" id="dni" name="dni"
                        value="<?php echo isset($_POST["dni"]) ? $_POST["dni"] : "" ?>" aria-describedby="dniHelp">
                 <small id="dniHelp" class="form-text text-muted">DNI con letra, por ejemplo 38273637S</small>
-            </div>
-            <!-- Mensajes errores -->
-            <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::dni_invalid ? "d-block" : "d-none") ?> error"
-                 role="alert" id="errorDniInvalid">ERROR: El campo no es válido.
+                <!-- Mensajes errores -->
+                <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::dni_invalid ? "d-block" : "d-none") ?> error"
+                     role="alert" id="errorDniInvalid">ERROR: El campo no es válido.
+                </div>
             </div>
             <!-- Género -->
             <div class="mb-3 col-12 col-md-6">

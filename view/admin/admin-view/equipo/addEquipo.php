@@ -1,5 +1,5 @@
 <h1>Añadir equipo</h1>
-<form method="post" action="?c=equipo&a=add">
+<form method="post" action="?c=equipo&a=add" onsubmit="return validarFormEquipo()">
     <?php
     if (isset($db_error)) {
         ?>

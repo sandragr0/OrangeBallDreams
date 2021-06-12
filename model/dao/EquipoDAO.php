@@ -1,12 +1,16 @@
 <?php
-class EquipoDAO extends BaseDAO {
+
+class EquipoDAO extends BaseDAO
+{
     private $nombreTabla = "equipo";
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct($this->nombreTabla);
     }
 
-    public function add(object $equipo) {
+    public function add(object $equipo)
+    {
         $pdo = $this->conexion->prepare('INSERT INTO `equipo`( `nombre`) VALUES (?)');
         $pdo->execute(
             array(
@@ -17,23 +21,27 @@ class EquipoDAO extends BaseDAO {
 
     public function edit($id, object $equipo)
     {
-        $pdo = $this->conexion->prepare('UPDATE `equipo` set `nombre`=?');
+        $pdo = $this->conexion->prepare('UPDATE `equipo` set `nombre`=? where idEquipo=?');
         $pdo->execute(
             array(
                 $equipo->getNombre(),
+                $id
             )
         );
     }
 
-    public function view($id) {
-      return parent::view($id);
+    public function view($id)
+    {
+        return parent::view($id);
     }
 
-    public function list() {
+    public function list()
+    {
         return parent::list();
     }
 
-    public function getJugadores($id) {
+    public function getJugadores($id)
+    {
         try {
             $result = null;
             $stm = $this->conexion->prepare("SELECT jugador.idJugador, persona.nombre, persona.primerApellido, persona.segundoApellido FROM $this->nombreTabla INNER JOIN jugador on jugador.idEquipo = equipo.idEquipo LEFT JOIN persona on jugador.idJugador = persona.idPersona WHERE equipo.idEquipo=?");
@@ -47,7 +55,8 @@ class EquipoDAO extends BaseDAO {
         }
     }
 
-    public function deleteJugador($id) {
+    public function deleteJugador($id)
+    {
         try {
             $stm = $this->conexion->prepare("UPDATE jugador set idEquipo=null where idJugador=?");
             $stm->execute(array($id));
@@ -56,7 +65,8 @@ class EquipoDAO extends BaseDAO {
         }
     }
 
-    public function deleteJugadorSetDispo($id) {
+    public function deleteJugadorSetDispo($id)
+    {
         try {
             $stm = $this->conexion->prepare("UPDATE jugador set idEquipo=null, estado='disponible' where idJugador=?");
             $stm->execute(array($id));
@@ -81,7 +91,8 @@ class EquipoDAO extends BaseDAO {
         }
     }
 
-    public function getNombresEquipos() {
+    public function getNombresEquipos()
+    {
         try {
             $result = array();
             $stm = $this->conexion->prepare("select equipo.nombre from equipo");

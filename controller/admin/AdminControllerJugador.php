@@ -1,12 +1,27 @@
 <?php
 
+/**
+ * Class AdminControllerJugador
+ */
 class AdminControllerJugador extends AdminController
 {
 
+    /**
+     * @var JugadorDAO
+     */
     private $model;
+    /**
+     * @var EquipoDAO
+     */
     private $modelEquipo;
+    /**
+     * @var string
+     */
     private $controllerName = "Jugador";
 
+    /**
+     * AdminControllerJugador constructor.
+     */
     public function __construct()
     {
         $this->modelEquipo = new EquipoDAO();
@@ -14,6 +29,9 @@ class AdminControllerJugador extends AdminController
         parent::__construct($this->controllerName, $this->model);
     }
 
+    /**
+     *
+     */
     public function add()
     {
         $nacionalidades = $this->model->listNacionalidades();
@@ -49,6 +67,9 @@ class AdminControllerJugador extends AdminController
         }
     }
 
+    /**
+     *
+     */
     public function edit()
     {
         if (isset($_REQUEST['id'])) {
@@ -95,16 +116,25 @@ class AdminControllerJugador extends AdminController
         }
     }
 
+    /**
+     *
+     */
     public function list()
     {
         parent::list();
     }
 
+    /**
+     *
+     */
     public function view()
     {
         parent::view();
     }
 
+    /**
+     *
+     */
     public function delete()
     {
         if (isset($_REQUEST['id'])) {
@@ -122,7 +152,12 @@ class AdminControllerJugador extends AdminController
         }
     }
 
-    private function validarDatos($datos, $archivos)
+    /**
+     * @param $datos
+     * @param $archivos
+     * @return int
+     */
+    private function validarDatos($datos, $archivos): int
     {
         if ($datos["nombre"] != "") {
             if (!Utilidades::isStringWithWhiteSpaces($datos["nombre"])) {
@@ -194,7 +229,12 @@ class AdminControllerJugador extends AdminController
         return 0;
     }
 
-    private function createJugador($datos, $archivos)
+    /**
+     * @param $datos
+     * @param $archivos
+     * @return Jugador
+     */
+    private function createJugador($datos, $archivos): Jugador
     {
         // Limpiar datos y mapearlos
         $jugador = new Jugador();
@@ -230,23 +270,26 @@ class AdminControllerJugador extends AdminController
             $nombreImagen = preg_replace('/[[:space:]]+/', '-', $nombreImagen);
             $ext = pathinfo($archivos["imagen"]["name"], PATHINFO_EXTENSION);
 
-
             $isImagenSubida = $this->guardarImagen($archivos, $nombreImagen, $ext);
             if ($isImagenSubida) {
                 $ruta = "/assets/img/jugador/uploads/" . $nombreImagen . "." . "$ext";
-                $jugador->setRuta($ruta);
             } else {
                 $ruta = "/assets/img/jugador/default/imagen-default.jpg";
-                $jugador->setRuta($ruta);
             }
+            $jugador->setRuta($ruta);
         }
         return $jugador;
     }
 
-    private function guardarImagen($archivos, $nombreImagen, $ext)
+    /**
+     * @param $archivos
+     * @param $nombreImagen
+     * @param $ext
+     * @return bool
+     */
+    private function guardarImagen($archivos, $nombreImagen, $ext): bool
     {
         $resultado = move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
         return $resultado;
     }
-
 }

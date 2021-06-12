@@ -26,7 +26,14 @@ class VideoDAO extends BaseDAO
 
     function edit($id, object $objeto)
     {
-        // TODO: Implement edit() method.
+        $stm = $this->conexion->prepare("UPDATE `video` set `idJugador`=?, `tipoVideo`=?, `isPublico`=?, `ruta`=? where idVideo=?");
+        $stm->execute(array(
+            $objeto->getIdJugador(),
+            $objeto->getTipoVideo(),
+            $objeto->getIsPublico(),
+            $objeto->getRuta(),
+            $id
+        ));
     }
 
     function add(object $objeto)

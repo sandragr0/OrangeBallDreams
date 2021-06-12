@@ -17,7 +17,7 @@
 /* ------------------- General ------------------------- */
 
 body {
-    font-family: lato-regular;
+    font-family: lato-regular, sans-serif;
 }
 
 .input-group, .form-control, .input-group-text {
@@ -25,13 +25,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
 }
 
 .tituloLink {
     color: #0D0A0F;
     text-decoration: none;
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
 }
 
 .tituloLink:hover {
@@ -93,7 +93,7 @@ video {
     font-size: 1.11111111rem;
     line-height: 1.66666667rem;
     border-radius: 0;
-    font-family: 'poppins-bold';
+    font-family: 'poppins-bold', sans-serif;
     border-color: #00B2C1;
     background-color: #00B2C1;
     color: #fff;
@@ -158,7 +158,7 @@ a.navbar-brand {
 
 /* Navbar */
 .navbar-nav {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
     font-size: 18px;
 }
 
@@ -172,7 +172,7 @@ a.navbar-brand {
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .nav-link, a.nav-link span {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
     color: #F26522;
     border-bottom: solid 2px transparent;
     border-top: solid 2px transparent;
@@ -211,7 +211,6 @@ a.navbar-brand {
 
 .nav-button-bold:hover {
     background-color: #33c1cd;
-    border: solid 2px #33c1cd !important;
     border: solid 2px transparent;
 }
 
@@ -268,7 +267,7 @@ footer a:hover {
 
 /* Banner */
 #banner-principal, #banner-principal a {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
     color: white;
 
 }
@@ -309,20 +308,20 @@ footer a:hover {
 
 @keyframes gradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
 
 @media (min-width: 700px) {
     .texto-banner {
-        font-size: 4.5em !important;
+        font-size: 3.5em !important;
     }
 
     #fondo-banner {
@@ -364,27 +363,29 @@ img.fichado {
     background: linear-gradient(to bottom, #FFC20E 50%, #ffffff 50%);
     z-index: 0;
 }
+
 .fondo-gradiente {
     background: linear-gradient(-45deg, #00b2c1, #f7941d, #f26522);
 }
+
 .card, .card img {
     border-radius: 0;
 }
 
 div#infoJugadores {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
     color: #fff;
     font-size: 18px;
 }
 
 div#filtros, div#filtros a {
-    font-family: poppins-bold;
+    font-family: poppins-bold, sans-serif;
     color: #fff !important;
 }
 
 div#filtros label.titulo {
-    -webkit-box-shadow: 0px 8px 0px -5px #FFFFFF;
-    box-shadow: 0px 8px 0px -5px #FFFFFF;
+    -webkit-box-shadow: 0 8px 0 -5px #FFFFFF;
+    box-shadow: 0 8px 0 -5px #FFFFFF;
     margin-bottom: 1em;
     font-size: 18px;
 }

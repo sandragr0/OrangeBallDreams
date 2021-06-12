@@ -13,7 +13,7 @@
         </div>
         <div class="row gx-5" onchange="filtrarJugador()">
             <!-- Filtrar por nombre -->
-            <div class="col-12 col-md-3 mb-3 d-md-flex justify-content-start">
+            <div class="col-12 col-md-auto mb-3 d-md-flex justify-content-start">
                 <div>
                     <label class="form-label fw-bold titulo" for="inputBuscarNombre">Nombre</label>
                     <input type="text" class="form-control border-0 py-2" id="inputBuscarNombre"
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <!-- Filtrar por género -->
-            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-auto mb-3 d-md-flex justify-content-center">
                 <div id="generoCheckGroup">
                     <label class="form-label fw-bold titulo">Género</label>
                     <div class="form-check">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <!-- Filtrar por posicion -->
-            <div class="col-6 col-md-3 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-auto mb-3 d-md-flex justify-content-center">
                 <div>
                     <label class="form-label fw-bold titulo" for="inputBuscarNombre">Posición</label>
                     <div id="posicionCheckGroup">
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <!-- Filtrar por extracomunitario -->
-            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-auto mb-3 d-md-flex justify-content-center">
                 <div id="extracomunitarioCheckGroup">
                     <label class="form-label fw-bold titulo">Extracomunitario</label>
                     <div class="form-check">
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <!-- Filtrar por disponibilidad -->
-            <div class="col-6 col-md-2 mb-3 d-md-flex justify-content-center">
+            <div class="col-6 col-md-auto mb-3 d-md-flex justify-content-center">
                 <div id="disponibilidadCheckGroup">
                     <label class="form-label fw-bold titulo" for="disponible">Disponible</label>
                     <div class="form-check">

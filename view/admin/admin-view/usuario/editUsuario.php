@@ -1,5 +1,5 @@
 <h1>Editar usuario</h1>
-<form method="post" action="?c=usuario&a=edit&id=<?php echo $_GET["id"] ?>">
+<form method="post" action="?c=usuario&a=edit&id=<?php echo $_GET["id"] ?>" onsubmit="return validarFormUsuario()">
     <?php
     if (isset($db_error)) {
         ?>
