@@ -4,9 +4,8 @@
  * Class CodigosError
  * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com">sandraguerreror1995@gmail.com</a>
  */
-abstract class CodigosEror
+abstract class CodigosError
 {
-
     const usuario_empty = 1;
     const pass_empty = 2;
     const user_not_exists = 3;
