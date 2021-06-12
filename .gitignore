@@ -1,5 +1,3 @@
 # ignore player picture uploads
 .idea
-logs/*
 assets/data/*
-!logs
