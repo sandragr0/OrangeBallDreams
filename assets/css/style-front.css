@@ -54,6 +54,23 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.fondo-gradiente {
+    background: linear-gradient(-45deg, #00b2c1, #f7941d, #f26522);
+}
+
+/* ------------------- Estilos formularios ------------------------- */
+.form-check-input:checked {
+    background-color: #00B2C1;
+    border-color: #00B2C1;
+}
+
+.form-check-input:focus, .form-control:focus, .form-select:focus {
+    border-color: #00B2C1;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(0 160 174 / 30%);
+}
+
+
 /* ------------------- Genericos ------------------------- */
 .detras {
     z-index: -1;
@@ -364,9 +381,6 @@ img.fichado {
     z-index: 0;
 }
 
-.fondo-gradiente {
-    background: linear-gradient(-45deg, #00b2c1, #f7941d, #f26522);
-}
 
 .card, .card img {
     border-radius: 0;
@@ -377,6 +391,8 @@ div#infoJugadores {
     color: #fff;
     font-size: 18px;
 }
+
+/* Filtros */
 
 div#filtros, div#filtros a {
     font-family: poppins-bold, sans-serif;
@@ -392,17 +408,6 @@ div#filtros label.titulo {
 
 div#filtros input {
     color: #0D0A0F !important;
-}
-
-div#filtros .form-check-input:checked {
-    background-color: #00B2C1;
-    border-color: #00B2C1;
-}
-
-.form-check-input:focus, .form-control:focus {
-    border-color: #00B2C1;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(0 160 174 / 30%);
 }
 
 #caja-jugadores {

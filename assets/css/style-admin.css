@@ -64,6 +64,19 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1em !important;
 }
 
+/* ------------------- Estilos formularios ------------------------- */
+.form-check-input:checked {
+    background-color: #00B2C1;
+    border-color: #00B2C1;
+}
+
+.form-check-input:focus, .form-control:focus, .form-select:focus {
+    border-color: #00B2C1;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(0 160 174 / 30%);
+}
+
+
 /* ------------------- Utilidad ------------------------- */
 .oculto {
     display: none;
