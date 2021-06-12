@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteBase /OrangeBallDreams/
+RewriteRule ^/$ index.php [L]
+RewriteRule ^$ /public/front.php [L]
+RewriteRule ^admin$ /public/admin.php [L]
