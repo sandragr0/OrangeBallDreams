@@ -2,7 +2,7 @@
 
 /**
  * Class BaseDAO
- * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com">sandraguerreror1995@gmail.com</a>
  */
 abstract class BaseDAO implements InterfaceDAO
 {

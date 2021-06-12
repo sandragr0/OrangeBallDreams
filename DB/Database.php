@@ -2,7 +2,7 @@
 
 /**
  * Class Database
- * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com">sandraguerreror1995@gmail.com</a>
  */
 class Database
 {
