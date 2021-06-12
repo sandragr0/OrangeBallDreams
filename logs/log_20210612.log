@@ -1,2 +1,0 @@
-12:29:33 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Juan-Perico-' for key 'nombre'
-12:30:03 SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Juan-Perico-' for key 'nombre'
