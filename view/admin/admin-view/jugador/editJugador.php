@@ -351,7 +351,7 @@
             <!-- Equipo -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
-                <input list="equipos" class="form-control" id="equipo" name="equipo"
+                <input list="equipos" autocomplete="off" class="form-control" id="equipo" name="equipo"
                        value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : $objeto->getEquipo() ?>">
                 <datalist id="equipos">
                     <?php

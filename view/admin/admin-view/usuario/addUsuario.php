@@ -24,7 +24,7 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="nombreUsuario" class="form-label" data-toggle="tooltip" data-placement="top"
                        title="Obligatorio">Nombre de usuario *</label>
-                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario"
+                <input type="text" autofocus class="form-control" id="nombreUsuario" name="nombreUsuario"
                        value="<?php echo isset($_POST["nombreUsuario"]) ? $_POST["nombreUsuario"] : "" ?>">
                 <small class="text-muted">El usuario puede tener letras tanto mayúsculas como minúsculas y números. Debe
                     tener una longitud de entre 6 y 8 carácteres</small>

@@ -23,7 +23,7 @@
             <div class="mb-3 col-12 col-md-6">
                 <label for="nombre" class="form-label" data-toggle="tooltip" data-placement="top" title="Obligatorio">Nombre
                     *</label>
-                <input type="text" class="form-control" id="nombre" name="nombre"
+                <input type="text" autofocus class="form-control" id="nombre" name="nombre"
                        value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"] : "" ?>">
                 <!-- Mensajes errores -->
                 <div class="alert alert-danger mt-2 <?php echo(isset($error) && $error == CodigosError::nombre_empty ? "d-block" : "d-none") ?> error"
@@ -227,7 +227,7 @@
             <!-- Equipo -->
             <div class="mb-3 col-12 col-md-6">
                 <label for="equipo" class="form-label">Equipo</label>
-                <input list="equipos" class="form-control" id="equipo" name="equipo"
+                <input list="equipos" autocomplete="off" class="form-control" id="equipo" name="equipo"
                        value="<?php echo isset($_POST["equipo"]) ? $_POST["equipo"] : "" ?>">
                 <datalist id="equipos">
                     <?php foreach ($listadoNombresEquipos

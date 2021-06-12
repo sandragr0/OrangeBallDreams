@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3 col-12">
                 <label for="jugador" class="form-label">Jugador<i id="search-icon"></i></label>
-                <select class="form-select" id="jugador" name="jugador">
+                <select autofocus class="form-select" id="jugador" name="jugador">
                     <?php foreach ($jugadores as $jugador): ?>
                         <option value="<?php echo $jugador->getIdJugador(); ?>" <?php echo (isset($_POST["jugador"]) && $_POST["jugador"] == $jugador->getIdJugador()) ? "selected" : "" ?>>
                             <?php echo $jugador->getFullName(); ?>
