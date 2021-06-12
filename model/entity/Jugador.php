@@ -1,30 +1,96 @@
 <?php
 
+/**
+ * Class Jugador
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class Jugador
 {
-
-    // Atributos
+    /**
+     * @var
+     */
     private $idJugador;
+    /**
+     * @var
+     */
     private $dni;
+    /**
+     * @var
+     */
     private $nombre;
+    /**
+     * @var
+     */
     private $primerApellido;
+    /**
+     * @var
+     */
     private $segundoApellido;
+    /**
+     * @var
+     */
     private $apellidos;
+    /**
+     * @var
+     */
     private $altura;
+    /**
+     * @var
+     */
     private $extracomunitario;
+    /**
+     * @var
+     */
     private $fechaNacimiento;
+    /**
+     * @var
+     */
     private $telefono;
+    /**
+     * @var
+     */
     private $estado;
+    /**
+     * @var
+     */
     private $biografia;
+    /**
+     * @var
+     */
     private $informe;
+    /**
+     * @var
+     */
     private $idEquipo;
+    /**
+     * @var
+     */
     private $posicion;
+    /**
+     * @var
+     */
     private $visible;
+    /**
+     * @var
+     */
     private $equipo;
+    /**
+     * @var
+     */
     private $ruta;
+    /**
+     * @var
+     */
     private $genero;
+    /**
+     * @var
+     */
     private $nacionalidades;
 
+    /**
+     * Function getFullName
+     * @return string
+     */
     function getFullName() {
         if ($this->getSegundoApellido() != "") {
             $apellido2 = " " . $this->getSegundoApellido();
@@ -33,10 +99,19 @@ class Jugador
         }
         return $this->getNombre() . " " . $this->getPrimerApellido() . $apellido2;
     }
+
+    /**
+     * Function getAlturaCM
+     * @return string
+     */
     function getAlturaCM() {
         return $this->altura . "cm";
     }
 
+    /**
+     * Function getAñoNacimiento
+     * @return false|string
+     */
     function getAñoNacimiento() {
         return substr($this->fechaNacimiento, 0 ,4);
     }

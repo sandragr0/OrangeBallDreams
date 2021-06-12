@@ -1,17 +1,32 @@
 <?php
 
+/**
+ * Class AdminControllerUsuario
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class AdminControllerUsuario extends AdminController
 {
-
+    /**
+     * @var \UsuarioDAO
+     */
     private $model;
+    /**
+     * @var string
+     */
     private $controllerName = "Usuario";
 
+    /**
+     * AdminControllerUsuario constructor.
+     */
     public function __construct()
     {
         $this->model = new UsuarioDAO();
         parent::__construct($this->controllerName, $this->model);
     }
 
+    /**
+     * Function login
+     */
     public function login()
     {
         if (sizeof($_POST) == 0) {
@@ -34,6 +49,9 @@ class AdminControllerUsuario extends AdminController
         }
     }
 
+    /**
+     * Function exit
+     */
     public function exit()
     {
         $_SESSION['usuario'] = null;
@@ -41,6 +59,10 @@ class AdminControllerUsuario extends AdminController
         include_once "../view/admin/admin-view/" . $this->controllerName . "/login-admin.php";
     }
 
+    /**
+     * Function add
+     * @return void
+     */
     public function add()
     {
         if (sizeof($_POST) == 0) {
@@ -73,6 +95,10 @@ class AdminControllerUsuario extends AdminController
         }
     }
 
+    /**
+     * Function edit
+     * @return void
+     */
     public function edit()
     {
         if (isset($_REQUEST['id'])) {
@@ -117,17 +143,12 @@ class AdminControllerUsuario extends AdminController
         }
     }
 
-    public function list()
-    {
-        parent::list();
-    }
-
-    public function view()
-    {
-        parent::view();
-    }
-
-    private function validarDatos($datos)
+    /**
+     * Function validarDatos
+     * @param $datos
+     * @return int
+     */
+    private function validarDatos($datos): int
     {
         // Nombre de usuario
         if ($datos["nombreUsuario"] != "") {
@@ -196,7 +217,12 @@ class AdminControllerUsuario extends AdminController
         return 0;
     }
 
-    private function createUsuario($datos)
+    /**
+     * Function createUsuario
+     * @param $datos
+     * @return \Usuario
+     */
+    private function createUsuario($datos): Usuario
     {
         // Limpiar datos y mapearlos
         $usuario = new Usuario();

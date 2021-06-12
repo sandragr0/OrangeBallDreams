@@ -1,7 +1,9 @@
 <?php
 
+
 /**
  * Class Estadistica
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
  */
 class Estadistica implements JsonSerializable
 {
@@ -62,7 +64,9 @@ class Estadistica implements JsonSerializable
      */
     private $temporada;
 
+
     /**
+     * Function getIdEstadistica
      * @return mixed
      */
     public function getIdEstadistica()
@@ -70,15 +74,19 @@ class Estadistica implements JsonSerializable
         return $this->idEstadistica;
     }
 
+
     /**
-     * @param mixed $idEstadistica
+     * Function setIdEstadistica
+     * @param $idEstadistica
      */
     public function setIdEstadistica($idEstadistica): void
     {
         $this->idEstadistica = $idEstadistica;
     }
 
+
     /**
+     * Function getIdJugador
      * @return mixed
      */
     public function getIdJugador()
@@ -86,15 +94,19 @@ class Estadistica implements JsonSerializable
         return $this->idJugador;
     }
 
+
     /**
-     * @param mixed $idJugador
+     * Function setIdJugador
+     * @param $idJugador
      */
     public function setIdJugador($idJugador): void
     {
         $this->idJugador = $idJugador;
     }
 
+
     /**
+     * Function getNombreEquipo
      * @return mixed
      */
     public function getNombreEquipo()
@@ -102,15 +114,19 @@ class Estadistica implements JsonSerializable
         return $this->nombreEquipo;
     }
 
+
     /**
-     * @param mixed $nombreEquipo
+     * Function setNombreEquipo
+     * @param $nombreEquipo
      */
     public function setNombreEquipo($nombreEquipo): void
     {
         $this->nombreEquipo = $nombreEquipo;
     }
 
+
     /**
+     * Function getNombreLiga
      * @return mixed
      */
     public function getNombreLiga()
@@ -118,15 +134,19 @@ class Estadistica implements JsonSerializable
         return $this->nombreLiga;
     }
 
+
     /**
-     * @param mixed $nombreLiga
+     * Function setNombreLiga
+     * @param $nombreLiga
      */
     public function setNombreLiga($nombreLiga): void
     {
         $this->nombreLiga = $nombreLiga;
     }
 
+
     /**
+     * Function getPPP
      * @return mixed
      */
     public function getPPP()
@@ -134,15 +154,19 @@ class Estadistica implements JsonSerializable
         return $this->PPP;
     }
 
+
     /**
-     * @param mixed $PPP
+     * Function setPPP
+     * @param $PPP
      */
     public function setPPP($PPP): void
     {
         $this->PPP = $PPP;
     }
 
+
     /**
+     * Function getAPP
      * @return mixed
      */
     public function getAPP()
@@ -150,8 +174,10 @@ class Estadistica implements JsonSerializable
         return $this->APP;
     }
 
+
     /**
-     * @param mixed $APP
+     * Function setAPP
+     * @param $APP
      */
     public function setAPP($APP): void
     {
@@ -187,7 +213,7 @@ class Estadistica implements JsonSerializable
      */
     public function getPorcentajeDoblesWithSimbolo()
     {
-        return $this->porcentajeDobles ."%";
+        return $this->porcentajeDobles . "%";
     }
 
     /**
@@ -310,7 +336,9 @@ class Estadistica implements JsonSerializable
         $this->temporada = $temporada;
     }
 
+
     /**
+     * Function jsonSerialize
      * @return array
      */
     public function jsonSerialize()

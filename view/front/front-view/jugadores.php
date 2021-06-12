@@ -8,7 +8,7 @@
                 <p class="fw-bold fs-2">Filtrar por</p>
             </div>
             <div class="col-6 text-end">
-                <a href="#" onclick="quitarFiltros()"><p class="fw-bold fs-1"><i class="fas fa-times"></i></p></a>
+                <a href="#" onclick="quitarFiltros()" aria-label="eliminar filtros"><p class="fw-bold fs-1 removeFiltros"><i class="fas fa-times" title="eliminar filtros"></i></p></a>
             </div>
         </div>
         <div class="row gx-5" onchange="filtrarJugador()">

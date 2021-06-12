@@ -2,14 +2,15 @@
 
 /**
  * Class AdminController
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
  */
 abstract class AdminController
 {
-
     /**
      * @var mixed
      */
     private $model;
+
     /**
      * @var
      */
@@ -27,7 +28,7 @@ abstract class AdminController
     }
 
     /**
-     *
+     * Function list
      */
     public function list()
     {
@@ -38,7 +39,7 @@ abstract class AdminController
     }
 
     /**
-     *
+     * Function view
      */
     public function view()
     {
@@ -57,18 +58,19 @@ abstract class AdminController
     }
 
     /**
-     *
+     * Function add
+     * @return mixed
      */
     abstract function add();
 
-
     /**
-     *
+     * Function edit
+     * @return mixed
      */
     abstract function edit();
 
     /**
-     *
+     * Function delete
      */
     public function delete()
     {
@@ -77,6 +79,4 @@ abstract class AdminController
             header("Location: admin.php?c=$this->controllerName&a=list");
         }
     }
-
-
 }

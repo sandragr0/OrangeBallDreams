@@ -1,17 +1,36 @@
 <?php
 
+/**
+ * Class BaseDAO
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 abstract class BaseDAO implements InterfaceDAO
 {
 
+    /**
+     * @var
+     */
     private $nombreTabla;
+    /**
+     * @var \PDO
+     */
     protected $conexion;
 
+    /**
+     * BaseDAO constructor.
+     * @param $nombreTabla
+     */
     function __construct($nombreTabla)
     {
         $this->nombreTabla = $nombreTabla;
         $this->conexion = Database::connect();
     }
 
+    /**
+     * Function view
+     * @param $id
+     * @return mixed|null
+     */
     function view($id)
     {
         try {
@@ -27,6 +46,10 @@ abstract class BaseDAO implements InterfaceDAO
         }
     }
 
+    /**
+     * Function list
+     * @return array|null
+     */
     function list()
     {
         try {
@@ -43,10 +66,25 @@ abstract class BaseDAO implements InterfaceDAO
         }
     }
 
+    /**
+     * Function edit
+     * @param $id
+     * @param object $objeto
+     * @return mixed
+     */
     abstract function edit($id, object $objeto);
 
+    /**
+     * Function add
+     * @param object $objeto
+     * @return mixed
+     */
     abstract function add(object $objeto);
 
+    /**
+     * Function delete
+     * @param object $id
+     */
     function delete($id)
     {
         try {

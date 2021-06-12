@@ -1,20 +1,39 @@
 <?php
 
+/**
+ * Class UsuarioDAO
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class UsuarioDAO extends BaseDAO
 {
 
+    /**
+     * @var string
+     */
     private $nombreTabla = "usuario";
 
+    /**
+     * Function getNombreTabla
+     * @return string
+     */
     function getNombreTabla()
     {
         return $this->nombreTabla;
     }
 
+    /**
+     * UsuarioDAO constructor.
+     */
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
     }
 
+    /**
+     * Function add
+     * @param object $usuario
+     * @return mixed|void
+     */
     public function add(object $usuario)
     {
         // Añadir persona
@@ -45,6 +64,12 @@ class UsuarioDAO extends BaseDAO
         );
     }
 
+    /**
+     * Function edit
+     * @param $id
+     * @param object $usuario
+     * @return mixed|void
+     */
     public function edit($id, object $usuario)
     {
         // Editar persona
@@ -62,6 +87,11 @@ class UsuarioDAO extends BaseDAO
         );
     }
 
+    /**
+     * Function view
+     * @param $id
+     * @return mixed|null
+     */
     public function view($id)
     {
         try {
@@ -77,6 +107,10 @@ class UsuarioDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function list
+     * @return array|null
+     */
     public function list()
     {
         try {
@@ -93,6 +127,11 @@ class UsuarioDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function createSesionUsuario
+     * @param $usuario
+     * @return mixed
+     */
     public function createSesionUsuario($usuario)
     {
         try {
@@ -102,12 +141,21 @@ class UsuarioDAO extends BaseDAO
             $_SESSION["idUsuario"] = $data["idUsuario"];
             $_SESSION["usuario"] = $data["nombreUsuario"];
             $_SESSION["rol"] = $data["rol"];
+            // Actualizar fecha acceso
+            $pdo = $this->conexion->prepare("UPDATE usuario set fechaAcceso=? where idUsuario=?");
+            $pdo->execute(array(date("Y-m-d"), $data["idUsuario"]));
             return $data;
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
+    /**
+     * Function login
+     * @param $usuario
+     * @param $rol
+     * @return mixed
+     */
     public function login($usuario, $rol)
     {
         try {
@@ -120,6 +168,13 @@ class UsuarioDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function validarUsuario
+     * @param $usuario
+     * @param $pass
+     * @param $rol
+     * @return int
+     */
     public function validarUsuario($usuario, $pass, $rol)
     {
         if ($usuario == null) {
@@ -138,6 +193,11 @@ class UsuarioDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function delete
+     * @param object $id
+     * @return mixed|void
+     */
     public function delete($id)
     {
         parent::delete($id);

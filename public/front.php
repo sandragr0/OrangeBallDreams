@@ -7,6 +7,10 @@ spl_autoload_register('autoloadModelEntidad');
 spl_autoload_register('autoloadModelDAO');
 spl_autoload_register('autoloadutilidades');
 
+/**
+ * Function autoloadDB
+ * @param $className
+ */
 function autoloadDB($className)
 {
     $filename = __DIR__ . "/../DB/" . $className . ".php";
@@ -15,6 +19,10 @@ function autoloadDB($className)
     }
 }
 
+/**
+ * Function autoloadControlador
+ * @param $className
+ */
 function autoloadControlador($className)
 {
     $filename = __DIR__ . "/../controller/front/FrontController.php";
@@ -23,6 +31,10 @@ function autoloadControlador($className)
     }
 }
 
+/**
+ * Function autoloadModelEntidad
+ * @param $className
+ */
 function autoloadModelEntidad($className)
 {
     $filename = __DIR__ . "/../model/entity/" . $className . ".php";
@@ -31,6 +43,10 @@ function autoloadModelEntidad($className)
     }
 }
 
+/**
+ * Function autoloadModelDAO
+ * @param $className
+ */
 function autoloadModelDAO($className)
 {
     $filename = __DIR__ . "/../model/dao/" . $className . ".php";
@@ -39,6 +55,10 @@ function autoloadModelDAO($className)
     }
 }
 
+/**
+ * Function autoloadutilidades
+ * @param $className
+ */
 function autoloadutilidades($className)
 {
     $filename = __DIR__ . "/../utility/" . $className . ".php";

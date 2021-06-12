@@ -1,11 +1,24 @@
 <?php
 
 
+/**
+ * Class Nacionalidad
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class Nacionalidad
 {
-private $idNacionalidad;
-private $nombre;
-private $icono;
+    /**
+     * @var
+     */
+    private $idNacionalidad;
+    /**
+     * @var
+     */
+    private $nombre;
+    /**
+     * @var
+     */
+    private $icono;
 
     /**
      * @return mixed

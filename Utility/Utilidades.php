@@ -1,12 +1,16 @@
 <?php
 
+
 /**
  * Class Utilidades
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
  */
 abstract class Utilidades
 {
 
+
     /**
+     * Function getDocumentRoot
      * @return string
      */
     static function getDocumentRoot(): string
@@ -14,7 +18,9 @@ abstract class Utilidades
         return $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams";
     }
 
+
     /**
+     * Function isAlpha
      * @param $string
      * @return bool
      */
@@ -26,7 +32,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isStringWithWhiteSpaces
      * @param $string
      * @return bool
      */
@@ -38,7 +46,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isString
      * @param $string
      * @return bool
      */
@@ -50,7 +60,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isTelefono
      * @param $string
      * @return bool
      */
@@ -62,7 +74,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isAltura
      * @param $string
      * @return bool
      */
@@ -74,7 +88,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isEmpty
      * @param $string
      * @return bool
      */
@@ -86,7 +102,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isDNI
      * @param $string
      * @return bool
      */
@@ -98,7 +116,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function cleanValue
      * @param $string
      * @return string
      */
@@ -107,7 +127,9 @@ abstract class Utilidades
         return strip_tags(trim($string));
     }
 
+
     /**
+     * Function isFecha
      * @param $fecha
      * @return bool
      */
@@ -124,7 +146,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isTemporada
      * @param $string
      * @return bool
      */
@@ -136,7 +160,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isNumeroValidoHastaDosCifras
      * @param $num
      * @return bool
      */
@@ -148,7 +174,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isNumeroValidoHastaTresCifras
      * @param $num
      * @return bool
      */
@@ -160,7 +188,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isDecimalHastaDosCifras
      * @param $num
      * @return bool
      */
@@ -172,7 +202,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isRuta
      * @param $string
      * @return bool
      */
@@ -184,7 +216,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isCorreoElectronico
      * @param $string
      * @return bool
      */
@@ -196,7 +230,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isValidUsuario
      * @param $string
      * @return bool
      */
@@ -208,7 +244,9 @@ abstract class Utilidades
         return false;
     }
 
+
     /**
+     * Function isValidPassword
      * @param $string
      * @return bool
      */
@@ -220,8 +258,8 @@ abstract class Utilidades
         return false;
     }
 
-
     /**
+     * Function mb_ucfirst
      * @param $string
      * @param string $encoding
      * @return string
@@ -235,6 +273,7 @@ abstract class Utilidades
     }
 
     /**
+     * Function imgFormatoCorrecto
      * @param $type
      * @return bool
      */
@@ -247,6 +286,7 @@ abstract class Utilidades
     }
 
     /**
+     * Function isValidImgSize
      * @param $size
      * @return bool
      */
@@ -259,6 +299,7 @@ abstract class Utilidades
     }
 
     /**
+     * Function logError
      * @param $e
      */
     static function logError($e)

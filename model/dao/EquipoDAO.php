@@ -1,14 +1,29 @@
 <?php
 
+/**
+ * Class EquipoDAO
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class EquipoDAO extends BaseDAO
 {
+    /**
+     * @var string
+     */
     private $nombreTabla = "equipo";
 
+    /**
+     * EquipoDAO constructor.
+     */
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
     }
 
+    /**
+     * Function add
+     * @param object $equipo
+     * @return mixed|void
+     */
     public function add(object $equipo)
     {
         $pdo = $this->conexion->prepare('INSERT INTO `equipo`( `nombre`) VALUES (?)');
@@ -19,6 +34,12 @@ class EquipoDAO extends BaseDAO
         );
     }
 
+    /**
+     * Function edit
+     * @param $id
+     * @param object $equipo
+     * @return mixed|void
+     */
     public function edit($id, object $equipo)
     {
         $pdo = $this->conexion->prepare('UPDATE `equipo` set `nombre`=? where idEquipo=?');
@@ -30,16 +51,30 @@ class EquipoDAO extends BaseDAO
         );
     }
 
+    /**
+     * Function view
+     * @param $id
+     * @return mixed|null
+     */
     public function view($id)
     {
         return parent::view($id);
     }
 
+    /**
+     * Function list
+     * @return array|null
+     */
     public function list()
     {
         return parent::list();
     }
 
+    /**
+     * Function getJugadores
+     * @param $id
+     * @return array|null
+     */
     public function getJugadores($id)
     {
         try {
@@ -55,6 +90,10 @@ class EquipoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function deleteJugador
+     * @param $id
+     */
     public function deleteJugador($id)
     {
         try {
@@ -65,6 +104,10 @@ class EquipoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function deleteJugadorSetDispo
+     * @param $id
+     */
     public function deleteJugadorSetDispo($id)
     {
         try {
@@ -75,6 +118,11 @@ class EquipoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getIdEquipo
+     * @param $nombreEquipo
+     * @return mixed|string
+     */
     public function getIdEquipo($nombreEquipo)
     {
         try {
@@ -91,6 +139,10 @@ class EquipoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getNombresEquipos
+     * @return array
+     */
     public function getNombresEquipos()
     {
         try {

@@ -1,11 +1,30 @@
 <?php
 
+/**
+ * Class Video
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class Video implements JsonSerializable
 {
+    /**
+     * @var
+     */
     private $idVideo;
+    /**
+     * @var
+     */
     private $tipoVideo;
+    /**
+     * @var
+     */
     private $isPublico;
+    /**
+     * @var
+     */
     private $ruta;
+    /**
+     * @var
+     */
     private $idJugador;
 
     /**
@@ -89,6 +108,10 @@ class Video implements JsonSerializable
     }
 
 
+    /**
+     * Function jsonSerialize
+     * @return array
+     */
     public function jsonSerialize()
     {
         return [

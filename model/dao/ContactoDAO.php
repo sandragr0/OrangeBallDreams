@@ -1,17 +1,36 @@
 <?php
 
 
+/**
+ * Class ContactoDAO
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class ContactoDAO extends BaseDAO
 {
+    /**
+     * @var string
+     */
     private $nombreTabla = "contacto";
+    /**
+     * @var \EquipoDAO
+     */
     private $modelEquipo;
 
+    /**
+     * ContactoDAO constructor.
+     */
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
         $this->modelEquipo = new EquipoDAO();
     }
 
+    /**
+     * Function edit
+     * @param $id
+     * @param object $contacto
+     * @return mixed|void
+     */
     function edit($id, object $contacto)
     {
         // Actualizar persona
@@ -51,6 +70,11 @@ class ContactoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function add
+     * @param object $contacto
+     * @return mixed|void
+     */
     function add(object $contacto)
     {
         // Añadir persona
@@ -91,6 +115,11 @@ class ContactoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function view
+     * @param $id
+     * @return mixed|null
+     */
     function view($id)
     {
         try {
@@ -106,7 +135,11 @@ class ContactoDAO extends BaseDAO
         }
     }
 
-    function list()
+    /**
+     * Function list
+     * @return array|null
+     */
+    function list(): ?array
     {
         try {
             $result = null;
@@ -122,10 +155,13 @@ class ContactoDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function delete
+     * @param object $id
+     */
     function delete($id)
     {
         parent::delete($id);
     }
-
 
 }

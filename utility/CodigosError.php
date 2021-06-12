@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Description of codigosError
- *
- * @author Sandra
+ * Class CodigosError
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
  */
-abstract class CodigosError
+abstract class CodigosEror
 {
 
     const usuario_empty = 1;

@@ -46,7 +46,7 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group mb-3">
-                            <input type="password" name="password" class="form-control fs-6" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
+                            <input type="password" autocomplete="off"  name="password" class="form-control fs-6" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
                             <span class="input-group-text" style="width:3em;" id="basic-addon1" onclick="visibilidadPass()"><i class="fas fa-eye" id="ojo"></i></span>
                         </div>
                         <div class="alert alert-danger mt-2 oculto" id="mensajeError2" role="alert">Error: el campo contraseña no puede estar vacio</div>

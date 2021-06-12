@@ -1,17 +1,52 @@
 <?php
 
+/**
+ * Class Contacto
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class Contacto
 {
+    /**
+     * @var
+     */
     private $idContacto;
+    /**
+     * @var
+     */
     private $nota;
+    /**
+     * @var
+     */
     private $idEquipo;
+    /**
+     * @var
+     */
     private $dni;
+    /**
+     * @var
+     */
     private $nombre;
+    /**
+     * @var
+     */
     private $primerApellido;
+    /**
+     * @var
+     */
     private $segundoApellido;
+    /**
+     * @var
+     */
     private $telefono;
+    /**
+     * @var
+     */
     private $equipo;
 
+    /**
+     * Function getFullName
+     * @return string
+     */
     function getFullName()
     {
         if ($this->getSegundoApellido() != "") {

@@ -7,7 +7,7 @@
             <div class="card-body">
                 <?php
                 if ($db_error == CodigosError::db_duplicate_entry) {
-                    echo "Error. Ya existe un usuario con el mismo nombre y apellidos.";
+                    echo "Error. Ya existe un usuario/jugador/contacto con el mismo nombre y apellidos.";
                 } else if ($db_error == CodigosError::db_generic_error) {
                     echo "Error en la base de datos. Contacte con el administrador del sitio.";
                 }

@@ -1,19 +1,22 @@
 <?php
 
+
 /**
  * Class AdminControllerJugador
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
  */
 class AdminControllerJugador extends AdminController
 {
-
     /**
-     * @var JugadorDAO
+     * @var \JugadorDAO
      */
     private $model;
+
     /**
-     * @var EquipoDAO
+     * @var \EquipoDAO
      */
     private $modelEquipo;
+
     /**
      * @var string
      */
@@ -30,7 +33,8 @@ class AdminControllerJugador extends AdminController
     }
 
     /**
-     *
+     * Function add
+     * @return void
      */
     public function add()
     {
@@ -68,7 +72,8 @@ class AdminControllerJugador extends AdminController
     }
 
     /**
-     *
+     * Function edit
+     * @return void
      */
     public function edit()
     {
@@ -117,23 +122,7 @@ class AdminControllerJugador extends AdminController
     }
 
     /**
-     *
-     */
-    public function list()
-    {
-        parent::list();
-    }
-
-    /**
-     *
-     */
-    public function view()
-    {
-        parent::view();
-    }
-
-    /**
-     *
+     * Function delete
      */
     public function delete()
     {
@@ -153,6 +142,7 @@ class AdminControllerJugador extends AdminController
     }
 
     /**
+     * Function validarDatos
      * @param $datos
      * @param $archivos
      * @return int
@@ -229,10 +219,12 @@ class AdminControllerJugador extends AdminController
         return 0;
     }
 
+
     /**
+     * Function createJugador
      * @param $datos
      * @param $archivos
-     * @return Jugador
+     * @return \Jugador
      */
     private function createJugador($datos, $archivos): Jugador
     {
@@ -282,6 +274,7 @@ class AdminControllerJugador extends AdminController
     }
 
     /**
+     * Function guardarImagen
      * @param $archivos
      * @param $nombreImagen
      * @param $ext
@@ -289,7 +282,6 @@ class AdminControllerJugador extends AdminController
      */
     private function guardarImagen($archivos, $nombreImagen, $ext): bool
     {
-        $resultado = move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
-        return $resultado;
+        return move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
     }
 }

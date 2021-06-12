@@ -1,10 +1,27 @@
 <?php
+
+/**
+ * Class AdminControllerEstadistica
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class AdminControllerEstadistica extends AdminController
 {
+    /**
+     * @var \EstadisticaDAO
+     */
     private $model;
+    /**
+     * @var \JugadorDAO
+     */
     private $modelJugador;
+    /**
+     * @var string
+     */
     private $controllerName = "Estadistica";
 
+    /**
+     * AdminControllerEstadistica constructor.
+     */
     public function __construct()
     {
         $this->model = new EstadisticaDAO();
@@ -12,6 +29,9 @@ class AdminControllerEstadistica extends AdminController
         parent::__construct($this->controllerName, $this->model);
     }
 
+    /**
+     * Function delete
+     */
     public function delete()
     {
         parent::delete();
@@ -19,6 +39,9 @@ class AdminControllerEstadistica extends AdminController
         header('Location:?c=estadistica&a=list');
     }
 
+    /**
+     * Function list
+     */
     public function list()
     {
         include_once '../view/admin/admin-panel-header.php';
@@ -36,6 +59,10 @@ class AdminControllerEstadistica extends AdminController
         include_once '../view/admin/admin-panel-footer.php';
     }
 
+    /**
+     * Function edit
+     * @return void
+     */
     public function edit()
     {
         if (isset($_REQUEST['id'])) {
@@ -87,6 +114,10 @@ class AdminControllerEstadistica extends AdminController
         }
     }
 
+    /**
+     * Function add
+     * @return mixed|void
+     */
     public function add()
     {
         $jugadores = $this->getJugadores();
@@ -126,7 +157,12 @@ class AdminControllerEstadistica extends AdminController
         }
     }
 
-    private function validarEstadistica($datos)
+    /**
+     * Function validarEstadistica
+     * @param $datos
+     * @return int
+     */
+    private function validarEstadistica($datos): int
     {
         // Temporada
         if (Utilidades::isEmpty($datos["temporada"])) {
@@ -220,7 +256,12 @@ class AdminControllerEstadistica extends AdminController
 
     }
 
-    private function createEstadistica($datos)
+    /**
+     * Function createEstadistica
+     * @param $datos
+     * @return \Estadistica
+     */
+    private function createEstadistica($datos): Estadistica
     {
         $estadistica = new Estadistica();
         $estadistica->setIdJugador($datos["jugador"]);
@@ -239,12 +280,20 @@ class AdminControllerEstadistica extends AdminController
         return $estadistica;
     }
 
-    private function getJugadores()
+    /**
+     * Function getJugadores
+     * @return array|null
+     */
+    private function getJugadores(): ?array
     {
         return $this->modelJugador->getJugadores();
     }
 
-    private function getJugadoresWithEstadistica()
+    /**
+     * Function getJugadoresWithEstadistica
+     * @return array|null
+     */
+    private function getJugadoresWithEstadistica(): ?array
     {
         return $this->modelJugador->getJugadoresWithEstadisticas();
     }

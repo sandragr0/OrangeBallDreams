@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * Class AdminControllerVideo
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class AdminControllerVideo extends AdminController
 {
+    /**
+     * @var \VideoDAO
+     */
     private $model;
+    /**
+     * @var \JugadorDAO
+     */
     private $modelJugador;
+    /**
+     * @var string
+     */
     private $controllerName = "Video";
 
+    /**
+     * AdminControllerVideo constructor.
+     */
     public function __construct()
     {
         $this->model = new VideoDAO();
@@ -13,6 +29,9 @@ class AdminControllerVideo extends AdminController
         parent::__construct($this->controllerName, $this->model);
     }
 
+    /**
+     * Function delete
+     */
     public function delete()
     {
         parent::delete();
@@ -20,6 +39,9 @@ class AdminControllerVideo extends AdminController
         header('Location:?c=video&a=list');
     }
 
+    /**
+     * Function list
+     */
     public function list()
     {
         include_once '../view/admin/admin-panel-header.php';
@@ -38,6 +60,10 @@ class AdminControllerVideo extends AdminController
         include_once '../view/admin/admin-panel-footer.php';
     }
 
+    /**
+     * Function add
+     * @return void
+     */
     function add()
     {
         $jugadores = $this->getAllJugadores();
@@ -77,6 +103,10 @@ class AdminControllerVideo extends AdminController
         }
     }
 
+    /**
+     * Function edit
+     * @return void
+     */
     function edit()
     {
         if (isset($_REQUEST['id'])) {
@@ -128,17 +158,30 @@ class AdminControllerVideo extends AdminController
         }
     }
 
-    private function getAllJugadores()
+    /**
+     * Function getAllJugadores
+     * @return array|null
+     */
+    private function getAllJugadores(): ?array
     {
         return $this->modelJugador->getJugadores();
     }
 
-    private function getJugadores()
+    /**
+     * Function getJugadores
+     * @return array|null
+     */
+    private function getJugadores(): ?array
     {
         return $this->modelJugador->getJugadoresWithVideos();
     }
 
-    private function validarVideo($datos)
+    /**
+     * Function validarVideo
+     * @param $datos
+     * @return int
+     */
+    private function validarVideo($datos): int
     {
         // Ruta
         if (Utilidades::isEmpty($datos["ruta"])) {
@@ -153,7 +196,12 @@ class AdminControllerVideo extends AdminController
 
     }
 
-    private function createVideo($datos)
+    /**
+     * Function createVideo
+     * @param $datos
+     * @return \Video
+     */
+    private function createVideo($datos): Video
     {
         $video = new Video();
         $video->setIdJugador($datos["jugador"]);

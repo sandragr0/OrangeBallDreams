@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * Class Equipo
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class Equipo {
-private $idEquipo;
-private $nombre;
+    /**
+     * @var
+     */
+    private $idEquipo;
+    /**
+     * @var
+     */
+    private $nombre;
 
     /**
      * @return mixed

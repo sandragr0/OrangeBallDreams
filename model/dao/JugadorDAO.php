@@ -1,17 +1,35 @@
 <?php
 
+/**
+ * Class JugadorDAO
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class JugadorDAO extends BaseDAO
 {
 
+    /**
+     * @var string
+     */
     private $nombreTabla = "jugador";
+    /**
+     * @var \EquipoDAO
+     */
     private $modelEquipo;
 
+    /**
+     * JugadorDAO constructor.
+     */
     public function __construct()
     {
         parent::__construct($this->nombreTabla);
         $this->modelEquipo = new EquipoDAO();
     }
 
+    /**
+     * Function add
+     * @param object $jugador
+     * @return mixed|void
+     */
     public function add(object $jugador)
     {
         // Añadir persona
@@ -75,6 +93,12 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function edit
+     * @param $idJugador
+     * @param object $jugador
+     * @return mixed|void
+     */
     public function edit($idJugador, object $jugador)
     {
         // Editar persona
@@ -143,6 +167,10 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function list
+     * @return array|null
+     */
     function list()
     {
         try {
@@ -159,6 +187,11 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function view
+     * @param $id
+     * @return mixed|null
+     */
     function view($id)
     {
         try {
@@ -177,6 +210,11 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getNacionalidadesJugador
+     * @param $idJugador
+     * @return array
+     */
     private function getNacionalidadesJugador($idJugador)
     {
         $nacionalidades = array();
@@ -189,6 +227,10 @@ class JugadorDAO extends BaseDAO
 
     }
 
+    /**
+     * Function listNacionalidades
+     * @return array|null
+     */
     function listNacionalidades()
     {
         $nacionalidades = null;
@@ -202,11 +244,21 @@ class JugadorDAO extends BaseDAO
     }
 
 
+    /**
+     * Function delete
+     * @param object $id
+     * @return mixed|void
+     */
     public function delete($id)
     {
         parent::delete($id);
     }
 
+    /**
+     * Function getImage
+     * @param $id
+     * @return mixed|null
+     */
     public function getImage($id)
     {
         try {
@@ -222,6 +274,10 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getJugadoresWithEstadisticas
+     * @return array|null
+     */
     function getJugadoresWithEstadisticas()
     {
         try {
@@ -237,6 +293,10 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getJugadoresWithVideos
+     * @return array|null
+     */
     function getJugadoresWithVideos()
     {
         try {
@@ -252,6 +312,10 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getJugadores
+     * @return array|null
+     */
     function getJugadores()
     {
         try {
@@ -267,6 +331,10 @@ class JugadorDAO extends BaseDAO
         }
     }
 
+    /**
+     * Function getJugadoresVisibles
+     * @return array|null
+     */
     function getJugadoresVisibles()
     {
         try {

@@ -1,12 +1,28 @@
 <?php
 
-
+/**
+ * Class AdminControllerContacto
+ * @author Sandra <a href="mailto:sandraguerreror1995@gmail.com>sandraguerreror1995@gmail.com</a>
+ */
 class AdminControllerContacto extends AdminController
 {
+    /**
+     * @var \ContactoDAO
+     */
     private $model;
+    /**
+     * @var string
+     */
     private $controllerName = "contacto";
+
+    /**
+     * @var \EquipoDAO
+     */
     private $modelEquipo;
 
+    /**
+     * AdminControllerContacto constructor.
+     */
     public function __construct()
     {
         $this->model = new ContactoDAO();
@@ -15,7 +31,8 @@ class AdminControllerContacto extends AdminController
     }
 
     /**
-     * @inheritDoc
+     * Function add
+     * @return void
      */
     function add()
     {
@@ -50,7 +67,12 @@ class AdminControllerContacto extends AdminController
         }
     }
 
-    private function validarDatos($datos)
+    /**
+     * Function validarDatos
+     * @param $datos
+     * @return int
+     */
+    private function validarDatos($datos): int
     {
         if ($datos["nombre"] != "") {
             if (!Utilidades::isString($datos["nombre"])) {
@@ -99,15 +121,14 @@ class AdminControllerContacto extends AdminController
             }
         }
 
+        return 0;
     }
 
-    public function delete()
-    {
-        parent::delete();
-        header('Location: admin.php?c=contacto&a=list');
-    }
-
-
+    /**
+     * Function createContacto
+     * @param $datos
+     * @return \Contacto
+     */
     private function createContacto($datos): Contacto
     {
         // Limpiar datos y mapearlos
@@ -123,7 +144,8 @@ class AdminControllerContacto extends AdminController
     }
 
     /**
-     * @inheritDoc
+     * Function edit
+     * @return void
      */
     function edit()
     {
@@ -168,6 +190,5 @@ class AdminControllerContacto extends AdminController
                 }
             }
         }
-
     }
 }
