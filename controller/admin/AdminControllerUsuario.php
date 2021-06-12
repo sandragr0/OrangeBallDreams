@@ -23,6 +23,10 @@ class AdminControllerUsuario extends AdminController
             if ($estadoErrores == 0) {
                 session_start();
                 $this->model->createSesionUsuario($usuario);
+                if (isset($_POST["recordar"])) {
+                    $tiempoCookie = time() + 7 * 24 * 60 * 60;
+                    setcookie("UsuarioRecordar", $usuario, $tiempoCookie);
+                }
                 header('Location: admin.php?c=jugador&a=list');
             } else {
                 include_once "../view/admin/admin-view/" . $this->controllerName . "/login-admin.php";

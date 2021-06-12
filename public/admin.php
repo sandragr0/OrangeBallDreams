@@ -51,6 +51,11 @@ function autoloadutilidades($className)
 session_start();
 
 // Obtener parámetros de la sesión
+if (isset($_COOKIE["UsuarioRecordar"])) {
+    $modelo = new UsuarioDAO();
+    $modelo->createSesionUsuario($_COOKIE["UsuarioRecordar"]);
+}
+
 $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
 
 // Obtener controlador y acción solicitada

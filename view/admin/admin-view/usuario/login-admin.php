@@ -7,7 +7,13 @@
         <link href="../assets/fonts/fontawesome/css/all.css" rel="stylesheet">
         <link href="../assets/css/style-admin.css" rel="stylesheet">
         <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/admin.js"></script>
+        <script src="../assets/js/tableSort/js/jquery.tablesorter.min.js"></script>
 
     </head>
     <body>
@@ -40,7 +46,7 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group mb-3">
-                            <input type="password" name="password" class="form-control" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
+                            <input type="password" name="password" class="form-control fs-6" id="password"  value="<?php echo isset($_POST['password']) ? $_POST['password'] : "" ?>">
                             <span class="input-group-text" style="width:3em;" id="basic-addon1" onclick="visibilidadPass()"><i class="fas fa-eye" id="ojo"></i></span>
                         </div>
                         <div class="alert alert-danger mt-2 oculto" id="mensajeError2" role="alert">Error: el campo contraseña no puede estar vacio</div>
@@ -51,6 +57,10 @@
                             }
                         }
                         ?>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-check-input" id="recordar" name="recordar" value="true">
+                        <label class="form-check-label" for="recordar">Recordar usuario en este navegador</label>
                     </div>
                     <button type="submit" class="btn btn-secondary mt-3 boton-primario">Acceder</button>
                 </form>
