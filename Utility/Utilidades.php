@@ -304,7 +304,7 @@ abstract class Utilidades
      */
     static function logError($e)
     {
-        $log_filename = $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/logs/log_" . date('Ymd') . ".log";
+        $log_filename = $_SERVER['DOCUMENT_ROOT'] . "/logs/log_" . date('Ymd') . ".log";
         if (!file_exists($log_filename)) {
             fopen($log_filename, "x");
         }
