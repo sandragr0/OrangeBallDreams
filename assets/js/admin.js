@@ -85,7 +85,7 @@ function mostrarEstadisticas() {
 }
 
 function getEstadisticas(id) {
-    fetch("http://localhost/OrangeBallDreams/assets/data/estadisticas.json", {mode: 'cors'})
+    fetch("https://orangeballdreams.com/assets/data/estadisticas.json", {mode: 'cors'})
         .then((resp) => resp.json()) // Transformar los datos a JSON
         .then(function (datos) {
                 const datosFiltrados = $(datos).filter(function (datos, datoFiltrado) { // Filtrar el json
@@ -140,7 +140,7 @@ function mostrarVideos() {
 }
 
 function getVideos(id) {
-    fetch("http://localhost/OrangeBallDreams/assets/data/videos.json", {mode: 'cors'})
+    fetch("https://orangeballdreams.com/assets/data/videos.json", {mode: 'cors'})
         .then((resp) => resp.json()) // Transformar los datos a JSON
         .then(function (datos) {
                 const datosFiltrados = $(datos).filter(function (datos, datoFiltrado) { // Filtrar el json
