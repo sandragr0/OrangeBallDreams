@@ -1,5 +1,22 @@
-Los archivos de inicio están en 
+Los archivos de inicio están en:
 /public/front.php -> parte pública a usuarios
 /public/admin.php -> panel de administración
 
+-----------------------------------------------------------------------
+
+Acceso a la web desde la máquina virtual:
+
+La máquina virtual tiene instalado XAMPP. Para acceder a la aplicación es necesario abrir el panel de control y se autoiniciarán los servicios necesarios.
+
+Página de inicio: https://orangeballdreams.com/
+Página de administración: https://orangeballdreams.com/admin
+
 El usuario del panel de administración es sandra con contraseña abc123.
+
+-----------------------------------------------------------------------
+
+Usuarios de acceso al ftp de la máquina virtual
+Usuario: sandra contraseña: abc123. (permisos lectura+escritura)
+Usuario: lucho contraseña abc123. (permisos lectura)
+
+--------------------------------------------------------------------------
