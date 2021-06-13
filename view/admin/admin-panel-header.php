@@ -1,3 +1,7 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -77,8 +81,12 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="estadisticas-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=estadistica&a=list" class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "list") ? "active" : "" ?>">Ver estadísticas</a></li>
-                            <li><a href="?c=estadistica&a=add" class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "add") ? "active" : "" ?>">Añadir estadística</a></li>
+                            <li><a href="?c=estadistica&a=list"
+                                   class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "list") ? "active" : "" ?>">Ver
+                                    estadísticas</a></li>
+                            <li><a href="?c=estadistica&a=add"
+                                   class="link-dark rounded <?php echo ($controller == "estadistica" && $action == "add") ? "active" : "" ?>">Añadir
+                                    estadística</a></li>
                         </ul>
                     </div>
                 </li>
@@ -145,8 +153,12 @@ $action = isset($_REQUEST["a"]) ? $_REQUEST["a"] : null;
                     </button>
                     <div class="collapse show" id="usuario-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="?c=usuario&a=list" class="link-dark rounded <?php echo ($controller == "usuario" && $action == "list") ? "active" : "" ?>">Ver usuarios</a></li>
-                            <li><a href="?c=usuario&a=add" class="link-dark rounded  <?php echo ($controller == "usuario" && $action == "add") ? "active" : "" ?>">Añadir usuario</a></li>
+                            <li><a href="?c=usuario&a=list"
+                                   class="link-dark rounded <?php echo ($controller == "usuario" && $action == "list") ? "active" : "" ?>">Ver
+                                    usuarios</a></li>
+                            <li><a href="?c=usuario&a=add"
+                                   class="link-dark rounded  <?php echo ($controller == "usuario" && $action == "add") ? "active" : "" ?>">Añadir
+                                    usuario</a></li>
                         </ul>
                     </div>
                 </li>
