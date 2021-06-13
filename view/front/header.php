@@ -28,17 +28,20 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item me-3 text-uppercase">
-                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "inicio") ? "active" : "" ?>"
+                    <a class="nav-link <?php echo (!isset($_GET["a"])) || (isset($_GET["a"]) && $_GET["a"] == "inicio") ? "active" : "" ?>"
                        aria-current="page" href="?a=inicio">Inicio</a>
                 </li>
                 <li class="nav-item me-3 text-uppercase">
-                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "jugadores") ? "active" : "" ?>" href="?a=jugadores">Jugadores</a>
+                    <a class="nav-link <?php echo (isset($_GET["a"]) && ($_GET["a"] == "jugadores" || $_GET["a"] == "jugador")) ? "active" : "" ?>"
+                       href="?a=jugadores">Jugadores</a>
                 </li>
                 <li class="nav-item me-3 text-uppercase">
-                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "nosotros") ? "active" : "" ?>" href="?a=nosotros">Sobre nosotros</a>
+                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "nosotros") ? "active" : "" ?>"
+                       href="?a=nosotros">Sobre nosotros</a>
                 </li>
                 <li class="nav-item me-5 text-uppercase">
-                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "contacto") ? "active" : "" ?>" href="?a=contacto">Contacto</a>
+                    <a class="nav-link <?php echo (isset($_GET["a"]) && $_GET["a"] == "contacto") ? "active" : "" ?>"
+                       href="?a=contacto">Contacto</a>
                 </li>
                 <li class="nav-item text-uppercase d-none d-lg-block">
                     <a class="nav-link nav-button-bold" href="tel:654565565">654-565-565</a>
