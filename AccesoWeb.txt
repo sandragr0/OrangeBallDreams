@@ -1,0 +1,5 @@
+Los archivos de inicio están en 
+/public/front.php -> parte pública a usuarios
+/public/admin.php -> panel de administración
+
+El usuario del panel de administración es sandra con contraseña abc123.
