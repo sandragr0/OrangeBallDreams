@@ -1,4 +1,12 @@
 <div class="container-fluid fondo-gradiente py-4 px-md-4 h-100">
+    <div class="py-3 container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb fw-bold">
+                <li class="breadcrumb-item"><a href="?a=jugadores">Jugadores</a></li>
+                <li class="breadcrumb-item active" aria-current="page">jugador</li>
+            </ol>
+        </nav>
+    </div>
     <main class="container bg-white shadow rounded py-4">
         <!-- Foto y datos principales -->
         <div class="row align-items-center">
@@ -21,21 +29,21 @@
                     <h1><?php echo $jugador->getFullName(); ?></h1>
                 </div>
                 <div class="row mb-2">
-                    <span class="fs-5 text-capitalize fw-bold px-4"><?php echo $jugador->getEstado(); ?> / <?php echo $jugador->getPosicion(); ?></span>
+                    <span class="text-capitalize fw-bold bold-lato px-4"><?php echo $jugador->getEstado(); ?> / <?php echo $jugador->getPosicion(); ?></span>
                 </div>
                 <div class="row my-4">
                     <hr class="w-75 m-md-0 m-auto"/>
                 </div>
                 <div class="row">
-                    <span class="fs-5"><span class="fw-bold">Género: </span> <?php echo $jugador->getGenero(); ?></span>
+                    <span><span class="fw-bold bold-lato">Género: </span> <?php echo $jugador->getGenero(); ?></span>
                 </div>
                 <div class="row">
-                    <span class="fs-5"><span
-                                class="fw-bold">Altura: </span> <?php echo $jugador->getAlturaCM(); ?></span>
+                    <span><span
+                                class="fw-bold bold-lato">Altura: </span> <?php echo $jugador->getAlturaCM(); ?></span>
                 </div>
                 <div class="row">
-                    <span class="fs-5"><span
-                                class="fw-bold">Año nacimiento: </span> <?php echo $jugador->getAñoNacimiento(); ?></span>
+                    <span><span
+                                class="fw-bold bold-lato">Año nacimiento: </span> <?php echo $jugador->getAñoNacimiento(); ?></span>
                 </div>
             </div>
         </div>
