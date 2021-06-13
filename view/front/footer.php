@@ -1,5 +1,5 @@
 <footer class="container-fluid py-5 px-4 mt-auto">
-    <div class="row justify-content-center">
+    <div class="row d-flex justify-content-center align-items-center">
         <div class="col-12 col-md mx-2">
             <div class="row mb-4">
                 <div class="col">
@@ -38,9 +38,9 @@
         <div class="col-12 col-md mx-2">
             <div class="row mb-4">
                 <div class="col fs-1 social">
-                    <a href="#"><i class="fab fa-twitter-square"></i></a>
-                    <a href="#"><i class="fab fa-instagram-square"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp-square"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram-square"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square"></i></a>
                 </div>
             </div>
         </div>

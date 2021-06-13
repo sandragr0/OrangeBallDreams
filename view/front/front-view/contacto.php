@@ -22,17 +22,17 @@
                         <div class="row">
                             <div class="row mb-4">
                                 <div class="col">
-                                    <span>Email: </span><span>contacto@orangeballdreams.com</span>
+                                    <span class="fw-bold bold-lato">Email: </span><a href="mailto:contacto@orangeballdreams.com">contacto@orangeballdreams.com</a>
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">
-                                    <span>Teléfono: </span><span>657-475-485</span>
+                                    <span class="fw-bold bold-lato">Teléfono: </span><a href="tel:654-565-565">657-475-485</a>
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">
-                                    <span>Dirección: </span> <span>Calle Españoleto 34 Ferrol, 15405</span>
+                                    <span class="fw-bold bold-lato">Dirección: </span> <span>Calle Españoleto 34 Ferrol, 15405</span>
                                 </div>
                             </div>
                         </div>
