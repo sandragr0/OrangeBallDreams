@@ -8,14 +8,13 @@
 abstract class Utilidades
 {
 
-
     /**
      * Function getDocumentRoot
      * @return string
      */
     static function getDocumentRoot(): string
     {
-        return $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams";
+        return $_SERVER['DOCUMENT_ROOT'];
     }
 
 
