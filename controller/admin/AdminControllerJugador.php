@@ -282,6 +282,6 @@ class AdminControllerJugador extends AdminController
      */
     private function guardarImagen($archivos, $nombreImagen, $ext): bool
     {
-        return move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/OrangeBallDreams/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
+        return move_uploaded_file($archivos["imagen"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/assets/img/jugador/uploads/" . $nombreImagen . "." . $ext);
     }
 }
