@@ -228,7 +228,7 @@ a.navbar-brand {
 
 .nav-button-bold:hover {
     background-color: #33c1cd;
-    border: solid 2px transparent;
+    border: solid 2px transparent !important;
 }
 
 
