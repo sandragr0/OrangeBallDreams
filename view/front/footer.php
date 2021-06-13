@@ -21,7 +21,7 @@
         <div class="col-12 col-md mx-2">
             <div class="row mb-4">
                 <div class="col">
-                    <span>Teléfono contacto: <a href="#" class="fw-bold">+34 657 465 747</a></span>
+                    <span>Teléfono contacto: <a class="fw-bold" href="tel:654565565">654-565-565</a></span>
                 </div>
             </div>
             <div class="row mb-1">

@@ -20,14 +20,13 @@
         <div class="col-12 col-md-1 d-flex align-items-center fs-2">
             <div class="row w-100 text-center g-4">
                 <div class="col col-md-12 link-banner">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="col col-md-12 link-banner">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 </div>
                 <div class="col col-md-12 link-banner">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-
+                    <a href="www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
